@@ -1292,7 +1292,7 @@
 <td style="text-align: left;"><strong>セルラー (3G/4G/SIM)</strong></td>
 <td style="text-align: center;"><strong>高 (条件付き)</strong></td>
 <td style="text-align: left;">・機内モード (<code>airplane_mode_on=1</code>)<br>・<code>ro.radio.noril=true</code> による Framework マスク<br>・init スクリプトによるプロパティ動的注入</td>
-<td style="text-align: left;">① 機内モード解除<br>② <code>ro.radio.noril=false</code> 化 ＆ <code>init.class_main.sh</code> 修正<br>③ 物理SIMスロット・アンテナ配線の確認</td>
+<td style="text-align: left;">① 機内モード解除<br>② <code>ro.radio.noril=false</code> 化 ＆ <code>init.class_main.sh</code> 修正<br>③ 物理SIMスロット確認・<strong>アンテナ後付け</strong></td>
 </tr>
 </tbody>
 </table>
@@ -1368,7 +1368,7 @@
 <li><code>/vendor/build.prop</code> および <code>/system/build.prop</code> の <code>ro.radio.noril=true</code> を <code>false</code> に書き換え。</li>
 <li><strong>ハードウェアの物理確認</strong>:</li>
 <li>メイン基板上の SIM カードスロットの実装有無（ソケットがハンダ付けされているか）。</li>
-<li>LTE / 3G アンテナ用同軸ケーブル（IPEXコネクタ）が配線・接続されているかの物理確認。</li>
+<li><strong>[確認済]</strong> LTE / 3G アンテナ用同軸ケーブル（IPEXコネクタ）が配線・接続されているかの物理確認。➔ <strong>結果: 基板上にコネクタは2基あるが、アンテナ自体は非搭載（未結線）。実運用には汎用アンテナの後付けが必須。</strong></li>
 </ol>
 <hr />
 <h2 id="_4">関連ドキュメント<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>

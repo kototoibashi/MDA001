@@ -395,6 +395,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#5-rf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📡 5. RF アンテナ物理実装状況
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -959,6 +970,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#5-rf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📡 5. RF アンテナ物理実装状況
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1097,6 +1119,19 @@
 <li><strong>パーミッション</strong>: <code>crwxrwxrwx</code> (全ユーザー読込・書込可)</li>
 <li><strong>用途</strong>: アルコール測定用周辺機器モジュールとのUART通信ポートとして機能</li>
 </ul>
+<hr />
+<h2 id="5-rf">📡 5. RF アンテナ物理実装状況<a class="headerlink" href="#5-rf" title="Permanent link">&para;</a></h2>
+<p>実機を分解・確認した結果、基板上にアンテナ接続用の同軸コネクタ（U.FL または IPEX MHF1）自体は<strong>実装済み（ハンダ付けされている）</strong>ですが、そこから伸びるはずのアンテナ本体（ケーブルやフィルムアンテナ等）は<strong>すべて非搭載</strong>の状態であることが判明しました。</p>
+<ul>
+<li><strong>Wi-Fi 2.4GHz &amp; Bluetooth アンテナ</strong>: コネクタ 1基実装済み（アンテナ本体は非搭載）</li>
+<li><strong>Wi-Fi 5GHz アンテナ</strong>: SOM側のパッドがNC（Not Connected）となっており、コネクタや配線パターン自体が存在しません。そのため5GHz帯は物理的に利用不可（SOMから直接ジャンパー線を引き出せば利用可能な可能性はあるが未検証）。</li>
+<li><strong>セルラー (LTE/3G) アンテナ</strong>: コネクタ 2基実装済み（メイン・サブアンテナ用と思われるが、アンテナ本体は非搭載）</li>
+<li><strong>GPS アンテナ</strong>: 未検証（コネクタ有無の特定待ち）</li>
+<li><strong>NFC アンテナ</strong>: 未検証（コネクタ有無の特定待ち）</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> ソフトウェア（OS）レイヤーでWi-Fiやセルラーを有効化しても、物理的なアンテナが接続されていないため、ルーター至近距離以外では電波を拾うことができません。運用にあたっては汎用のIPEX/U.FLアンテナを自前で取り付ける必要があります。</p>
+</blockquote>
 
 
 

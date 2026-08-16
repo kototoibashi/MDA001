@@ -1050,14 +1050,19 @@
 </ol>
 <h3 id="22-rf">2.2 ハードウェア・RFレイヤーの課題<a class="headerlink" href="#22-rf" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>Wi-Fi 電波の著しい脆弱性</strong>:<ul>
-<li>ルーターの至近距離以外では電波を掴みにくい。コストカットにより Wi-Fi 用の物理アンテナが基板に実装されていない可能性が高い。</li>
-<li><strong>対策</strong>: 分解して u.FL (IPEX) コネクタの有無を確認し、空いていれば汎用アンテナを取り付ける。</li>
+<li><strong>Wi-Fi 電波の著しい脆弱性と 5GHz 帯の物理的欠如</strong>:<ul>
+<li><strong>実機確認結果</strong>: 分解の結果、アンテナ接続用の同軸コネクタ（U.FL / IPEX MHF1）自体は基板上にハンダ付けされていますが、そこから伸びるアンテナ本体はすべて非搭載であることが確定しました。Wi-Fi 2.4GHz / Bluetooth 共用コネクタが1基実装されているため、ルーター至近距離以外での通信には汎用アンテナの後付けが必須。</li>
+<li>また、<strong>Wi-Fi 5GHz 用はSOMのパッドがNC（Not Connected）で配線パターン自体が存在しない</strong>ため、5GHz 帯は物理的に使用不可（SOMから直接ジャンパー線を引き出せば使用可能な可能性はあるが未検証）。</li>
 </ul>
 </li>
 <li><strong>セルラー通信 (LTE/3G) の不通</strong>:<ul>
 <li>SIM を挿入してもネットワークに繋がらない問題。</li>
-<li><strong>対策</strong>: <code>adb logcat -b radio</code> や <code>dumpsys telephony.registry</code> で SW 的にモデムが認識されているか確認。ハードウェア的（アンテナ未結線）なのか、SW/NVRAM 制御でモデム機能が封印されているかの切り分けが必要。</li>
+<li><strong>実機確認結果</strong>: セルラー用アンテナコネクタも2基実装されていますが、やはりアンテナ本体は非搭載です。</li>
+<li><strong>対策</strong>: セルラー用アンテナを取り付けた上で、<code>adb logcat -b radio</code> や <code>dumpsys telephony.registry</code> 等による SW/NVRAM のモデム制御状況のさらなる切り分けが必要。</li>
+</ul>
+</li>
+<li><strong>その他のRF機能</strong>:<ul>
+<li>GPS アンテナコネクタ、NFC アンテナコネクタの有無については未検証（今後基板の再調査が必要）。</li>
 </ul>
 </li>
 </ol>

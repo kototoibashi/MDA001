@@ -1284,7 +1284,8 @@
 ➔ <strong>周辺 2.4GHz 帯の Wi-Fi 電波をリアルタイムで正常取得。</strong></p>
 <h3 id="4-android-ui">4. Android 純正「設定」アプリ UI 検証<a class="headerlink" href="#4-android-ui" title="Permanent link">&para;</a></h3>
 <ul>
-<li>設定アプリ内の Wi-Fi 設定画面 (<code>android.settings.WIFI_SETTINGS</code>) を開き、<strong>「Wi-Fi の使用」トグルスイッチおよび利用可能ネットワーク一覧の画面表示復元</strong> を画面キャプチャにて物理確認済み。</li>
+<li><strong>結果</strong>: 完全な成功には至らず（設定アプリのトップメニューにWi-FiやBluetoothの項目は表示されないまま）。</li>
+<li><strong>現状の運用</strong>: ただし、Activityを直接叩く系のアプリ（Activity Launcher等）から <code>android.settings.WIFI_SETTINGS</code> などを直接起動することは可能であり、「Wi-Fi の使用」トグルスイッチおよびネットワーク一覧画面自体は正常に動作する。実運用上これで困っていないため、メニューに表示させるためのさらなる深追いはしていない状態。</li>
 </ul>
 <hr />
 <h2 id="_1">🔙 万が一の復旧・リストア方法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
