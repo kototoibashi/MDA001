@@ -13,26 +13,28 @@
       
       
       
+        <link rel="prev" href="../applications/">
       
-        <link rel="next" href="hardware/overview/">
+      
+        <link rel="next" href="../backup_strategy/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Hikvision DS-MDA001 解析レポート</title>
+        <title>アルコール検知機能解析 - Hikvision DS-MDA001 解析レポート</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,7 +53,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hikvision-ds-mda001" class="md-skip">
+        <a href="#ad-alcohol-concentration" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -92,7 +94,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="ヘッダー">
-    <a href="." title="Hikvision DS-MDA001 解析レポート" class="md-header__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
+    <a href="../.." title="Hikvision DS-MDA001 解析レポート" class="md-header__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -112,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ホーム
+              アルコール検知機能解析
             
           </span>
         </div>
@@ -218,7 +220,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Hikvision DS-MDA001 解析レポート" class="md-nav__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
+    <a href="../.." title="Hikvision DS-MDA001 解析レポート" class="md-nav__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -233,37 +235,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ホーム
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -279,59 +254,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目次">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目次
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        コイツは何
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        入手性・相場
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hardwaresom" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hardware構成・SOMなど
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -395,7 +317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="hardware/overview/" class="md-nav__link">
+      <a href="../../hardware/overview/" class="md-nav__link">
         
   
   
@@ -423,7 +345,7 @@
   
   
     <li class="md-nav__item">
-      <a href="hardware/components/" class="md-nav__link">
+      <a href="../../hardware/components/" class="md-nav__link">
         
   
   
@@ -451,7 +373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="hardware/partitions/" class="md-nav__link">
+      <a href="../../hardware/partitions/" class="md-nav__link">
         
   
   
@@ -538,7 +460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="network/interfaces/" class="md-nav__link">
+      <a href="../../network/interfaces/" class="md-nav__link">
         
   
   
@@ -566,7 +488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="network/wifi_enablement/" class="md-nav__link">
+      <a href="../../network/wifi_enablement/" class="md-nav__link">
         
   
   
@@ -594,7 +516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="network/bluetooth/" class="md-nav__link">
+      <a href="../../network/bluetooth/" class="md-nav__link">
         
   
   
@@ -681,7 +603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="peripherals/printer/" class="md-nav__link">
+      <a href="../../peripherals/printer/" class="md-nav__link">
         
   
   
@@ -709,7 +631,7 @@
   
   
     <li class="md-nav__item">
-      <a href="peripherals/serial_protocol/" class="md-nav__link">
+      <a href="../../peripherals/serial_protocol/" class="md-nav__link">
         
   
   
@@ -737,7 +659,7 @@
   
   
     <li class="md-nav__item">
-      <a href="peripherals/print_server/" class="md-nav__link">
+      <a href="../../peripherals/print_server/" class="md-nav__link">
         
   
   
@@ -769,8 +691,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -781,11 +705,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
@@ -806,7 +730,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -824,7 +748,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software/applications/" class="md-nav__link">
+      <a href="../applications/" class="md-nav__link">
         
   
   
@@ -849,10 +773,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="software/alcohol_ad_values/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    アルコール検知機能解析
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -868,6 +819,109 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        抽出方法
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        抽出結果テーブル
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        回帰分析
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="回帰分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        線形フィット
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        べき乗フィット（log-log回帰）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        推測される換算式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        注意点・限界
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -880,7 +934,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software/backup_strategy/" class="md-nav__link">
+      <a href="../backup_strategy/" class="md-nav__link">
         
   
   
@@ -908,7 +962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software/security/" class="md-nav__link">
+      <a href="../security/" class="md-nav__link">
         
   
   
@@ -966,7 +1020,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        コイツは何
+        抽出方法
       
     </span>
   </a>
@@ -977,7 +1031,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        入手性・相場
+        抽出結果テーブル
       
     </span>
   </a>
@@ -985,10 +1039,60 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#hardwaresom" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hardware構成・SOMなど
+        回帰分析
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="回帰分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        線形フィット
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        べき乗フィット（log-log回帰）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        推測される換算式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        注意点・限界
       
     </span>
   </a>
@@ -1012,30 +1116,81 @@
 
 
 
-<h1 id="hikvision-ds-mda001">Hikvision DS-MDA001 解析レポート<a class="headerlink" href="#hikvision-ds-mda001" title="Permanent link">&para;</a></h1>
-<h2 id="_1">コイツは何<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>本端末は <strong>Hikvision DS-MDA001</strong> と呼ばれるAndroidベースの専用端末です。
-本来はアルコールチェックや業務用途などで使用されるデバイスですが、Android OSを搭載しているため、内部構造や通信仕様を解析することで様々な活用・検証が可能です。</p>
-<h2 id="_2">入手性・相場<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>現時点での主な入手ルートはヤフオク（Yahoo!オークション）などの中古市場です。
-相場としては、おおむね <strong>1.2万円から</strong> 取引されています。</p>
-<h2 id="hardwaresom">Hardware構成・SOMなど<a class="headerlink" href="#hardwaresom" title="Permanent link">&para;</a></h2>
-<p>本端末の主要なハードウェア構成は以下の通りです。詳細は各解析ページを参照してください。</p>
+<h1 id="ad-alcohol-concentration">AD値 → Alcohol Concentration 換算式の推測<a class="headerlink" href="#ad-alcohol-concentration" title="Permanent link">&para;</a></h1>
+<p>対象ログ: <code>breath_test_log.csv</code></p>
+<h2 id="_1">抽出方法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><code>passiveTest</code>コマンドの最終結果行（<code>final flag=...</code>）と、<strong>同じ<code>elapsed_s</code>で発行された</strong><code>findAlcoholAD</code>行（＝同時刻にトリガーされたAD生値）をペアとして抽出した。中間に挟まる<code>MPa</code>行や、待機中に追加取得された<code>findAlcoholAD</code>行はセンサー安定待ちの読み取りとみなし、ペアリングからは除外している。</p>
+<p>Alcohol Concentration が <strong>0.05〜2.0</strong> の範囲にある結果のみを対象とした。</p>
+<h2 id="_2">抽出結果テーブル<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>AD値</th>
+<th>elapsed_s</th>
+<th>Alcohol Concentration</th>
+<th>flag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>530</td>
+<td>18.503</td>
+<td>0.1023</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1097</td>
+<td>107.054</td>
+<td>0.1116</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1544</td>
+<td>89.468</td>
+<td>0.1990</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3403</td>
+<td>67.264</td>
+<td>0.5701</td>
+<td>3</td>
+</tr>
+<tr>
+<td>9252</td>
+<td>55.550</td>
+<td>1.6384</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>範囲外として除外した値:
+- 0.0272 (AD=256, flag=1) — 0.05未満
+- 3.8337 (AD=13449, flag=3) — 2.0超
+- elapsed=120.456 の行 — <code>TIMEOUT</code>（結果なし）</p>
+<h2 id="_3">回帰分析<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="_4">線形フィット<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Alcohol Concentration ≈ 0.0001823 × AD − 0.0527
+</span></code></pre></div>
+R² ≈ 0.997</p>
+<h3 id="log-log">べき乗フィット（log-log回帰）<a class="headerlink" href="#log-log" title="Permanent link">&para;</a></h3>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Alcohol Concentration ≈ 1.008×10⁻⁴ × AD^1.052
+</span></code></pre></div>
+R² ≈ 0.953</p>
+<p>線形フィットの方が当てはまりが良く、この範囲ではAD値とAlcohol Concentrationはほぼ比例関係とみなせる。</p>
+<h2 id="_5">推測される換算式<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Alcohol Concentration ≈ 0.000182 × AD − 0.053
+</span></code></pre></div>
+<p>逆算（AD値から濃度を求める場合の逆関数）:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>AD ≈ 5495 × (Concentration + 0.053)
+</span></code></pre></div>
+<h2 id="_6">注意点・限界<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>SOM (System on Module):</strong> MeiG SLM758</li>
-<li><strong>SoC:</strong> Snapdragon 625 (MSM8953)</li>
-<li><strong>OS:</strong> Android 10</li>
-<li><strong>ストレージ:</strong> eMMC搭載</li>
-<li><strong>その他の構成要素:</strong><ul>
-<li>拡張インターフェース（シリアル通信など）</li>
-<li>内蔵プリンターや周辺機器への制御機能</li>
+<li>サンプル数が5点と少なく、特に低AD側（AD=530）は残差が大きい（実測0.1023 vs 予測0.044）。傾き・切片の精度には限界がある。</li>
+<li>切片が負のため、AD値が概ね290未満では式上Concentrationが負になり物理的に不整合。この式は今回検証した <strong>AD 530〜9252</strong> の範囲でのみ有効な近似。</li>
+<li>ペアリングは「同一elapsed_s（同時刻に発行されたコマンド）のAD値＝その瞬間の生値」という前提に基づく。ログ上で単純に直前の行のAD値を使う想定であれば結果が変わる可能性がある。</li>
+<li>より精度の高い換算式を得るには、低濃度域（0.05近辺）を含むより多くのサンプルを収集することが望ましい。</li>
 </ul>
-</li>
-</ul>
-<hr />
-<blockquote>
-<p>💡 各詳細な解析データ（基板、ネットワーク、ソフトウェア構成など）については、左側のサイドメニューからそれぞれの調査レポートを参照してください。</p>
-</blockquote>
 
 
 
@@ -1091,10 +1246,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

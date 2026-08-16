@@ -13,26 +13,28 @@
       
       
       
+        <link rel="prev" href="../../peripherals/print_server/">
       
-        <link rel="next" href="hardware/overview/">
+      
+        <link rel="next" href="../alcohol_ad_values/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Hikvision DS-MDA001 解析レポート</title>
+        <title>内蔵アプリ・APK構造 - Hikvision DS-MDA001 解析レポート</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,7 +53,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hikvision-ds-mda001" class="md-skip">
+        <a href="#04-apk-applications-extracted-apks" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -92,7 +94,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="ヘッダー">
-    <a href="." title="Hikvision DS-MDA001 解析レポート" class="md-header__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
+    <a href="../.." title="Hikvision DS-MDA001 解析レポート" class="md-header__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -112,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ホーム
+              内蔵アプリ・APK構造
             
           </span>
         </div>
@@ -218,7 +220,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Hikvision DS-MDA001 解析レポート" class="md-nav__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
+    <a href="../.." title="Hikvision DS-MDA001 解析レポート" class="md-nav__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -233,37 +235,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ホーム
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -279,59 +254,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目次">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目次
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        コイツは何
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        入手性・相場
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hardwaresom" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hardware構成・SOMなど
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -395,7 +317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="hardware/overview/" class="md-nav__link">
+      <a href="../../hardware/overview/" class="md-nav__link">
         
   
   
@@ -423,7 +345,7 @@
   
   
     <li class="md-nav__item">
-      <a href="hardware/components/" class="md-nav__link">
+      <a href="../../hardware/components/" class="md-nav__link">
         
   
   
@@ -451,7 +373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="hardware/partitions/" class="md-nav__link">
+      <a href="../../hardware/partitions/" class="md-nav__link">
         
   
   
@@ -538,7 +460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="network/interfaces/" class="md-nav__link">
+      <a href="../../network/interfaces/" class="md-nav__link">
         
   
   
@@ -566,7 +488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="network/wifi_enablement/" class="md-nav__link">
+      <a href="../../network/wifi_enablement/" class="md-nav__link">
         
   
   
@@ -594,7 +516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="network/bluetooth/" class="md-nav__link">
+      <a href="../../network/bluetooth/" class="md-nav__link">
         
   
   
@@ -681,7 +603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="peripherals/printer/" class="md-nav__link">
+      <a href="../../peripherals/printer/" class="md-nav__link">
         
   
   
@@ -709,7 +631,7 @@
   
   
     <li class="md-nav__item">
-      <a href="peripherals/serial_protocol/" class="md-nav__link">
+      <a href="../../peripherals/serial_protocol/" class="md-nav__link">
         
   
   
@@ -737,7 +659,7 @@
   
   
     <li class="md-nav__item">
-      <a href="peripherals/print_server/" class="md-nav__link">
+      <a href="../../peripherals/print_server/" class="md-nav__link">
         
   
   
@@ -769,8 +691,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -781,11 +705,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
@@ -806,7 +730,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -821,10 +745,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="software/applications/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    内蔵アプリ・APK構造
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -840,6 +791,104 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-apk-extracted-apk-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦 1. 抽出済み APK アーカイブ一覧 (Extracted APK Summary)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦 1. 抽出済み APK アーカイブ一覧 (Extracted APK Summary)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        保存ディレクトリ構造
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-apksdata_3rdparty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🍺 2. サードパーティアプリケーション (apks/data_3rdparty/)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-apksvendor-apkssystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏢 3. ベンダー・システム主要サービスアプリ (apks/vendor/, apks/system/)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏢 3. ベンダー・システム主要サービスアプリ (apks/vendor/, apks/system/)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apksvendor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主要ベンダーアプリ (apks/vendor/)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apkssystem-apksproduct" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主要システムアプリ (apks/system/, apks/product/)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -852,7 +901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software/alcohol_ad_values/" class="md-nav__link">
+      <a href="../alcohol_ad_values/" class="md-nav__link">
         
   
   
@@ -880,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software/backup_strategy/" class="md-nav__link">
+      <a href="../backup_strategy/" class="md-nav__link">
         
   
   
@@ -908,7 +957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software/security/" class="md-nav__link">
+      <a href="../security/" class="md-nav__link">
         
   
   
@@ -963,10 +1012,38 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#1-apk-extracted-apk-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦 1. 抽出済み APK アーカイブ一覧 (Extracted APK Summary)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦 1. 抽出済み APK アーカイブ一覧 (Extracted APK Summary)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        コイツは何
+        保存ディレクトリ構造
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-apksdata_3rdparty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🍺 2. サードパーティアプリケーション (apks/data_3rdparty/)
       
     </span>
   </a>
@@ -974,24 +1051,41 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#3-apksvendor-apkssystem" class="md-nav__link">
     <span class="md-ellipsis">
       
-        入手性・相場
+        🏢 3. ベンダー・システム主要サービスアプリ (apks/vendor/, apks/system/)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏢 3. ベンダー・システム主要サービスアプリ (apks/vendor/, apks/system/)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apksvendor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主要ベンダーアプリ (apks/vendor/)
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#hardwaresom" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#apkssystem-apksproduct" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hardware構成・SOMなど
+        主要システムアプリ (apks/system/, apks/product/)
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1012,30 +1106,47 @@
 
 
 
-<h1 id="hikvision-ds-mda001">Hikvision DS-MDA001 解析レポート<a class="headerlink" href="#hikvision-ds-mda001" title="Permanent link">&para;</a></h1>
-<h2 id="_1">コイツは何<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>本端末は <strong>Hikvision DS-MDA001</strong> と呼ばれるAndroidベースの専用端末です。
-本来はアルコールチェックや業務用途などで使用されるデバイスですが、Android OSを搭載しているため、内部構造や通信仕様を解析することで様々な活用・検証が可能です。</p>
-<h2 id="_2">入手性・相場<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>現時点での主な入手ルートはヤフオク（Yahoo!オークション）などの中古市場です。
-相場としては、おおむね <strong>1.2万円から</strong> 取引されています。</p>
-<h2 id="hardwaresom">Hardware構成・SOMなど<a class="headerlink" href="#hardwaresom" title="Permanent link">&para;</a></h2>
-<p>本端末の主要なハードウェア構成は以下の通りです。詳細は各解析ページを参照してください。</p>
+<h1 id="04-apk-applications-extracted-apks">📲 04. アプリケーション・抽出APKアーカイブ (Applications &amp; Extracted APKs)<a class="headerlink" href="#04-apk-applications-extracted-apks" title="Permanent link">&para;</a></h1>
+<p>本ドキュメントでは、端末にインストールされているパッケージ、サードパーティアプリケーション、およびローカル環境へ全抽出した179個のAPKファイルの分類構造についてまとめています。</p>
+<hr />
+<h2 id="1-apk-extracted-apk-summary">📦 1. 抽出済み APK アーカイブ一覧 (Extracted APK Summary)<a class="headerlink" href="#1-apk-extracted-apk-summary" title="Permanent link">&para;</a></h2>
+<p>端末から全 <strong>179 個</strong> の APK ファイルを取得し、以下のカテゴリごとに分類・保存しています。</p>
 <ul>
-<li><strong>SOM (System on Module):</strong> MeiG SLM758</li>
-<li><strong>SoC:</strong> Snapdragon 625 (MSM8953)</li>
-<li><strong>OS:</strong> Android 10</li>
-<li><strong>ストレージ:</strong> eMMC搭載</li>
-<li><strong>その他の構成要素:</strong><ul>
-<li>拡張インターフェース（シリアル通信など）</li>
-<li>内蔵プリンターや周辺機器への制御機能</li>
+<li><strong>ローカル保存場所</strong>: <code>[MASKED_PATH]</code></li>
 </ul>
-</li>
+<h3 id="_1">保存ディレクトリ構造<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>apks/
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── data_3rdparty/   # 1 個  (サードパーティ追加アプリ)
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── product/         # 35 個 (プロダクト標準アプリ・テーマオーバーレイ)
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── system/          # 131 個 (Android OSシステム標準・サービス)
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>└── vendor/          # 12 個 (Qualcomm / ベンダー固有サービス)
+</span></code></pre></div>
+<hr />
+<h2 id="2-apksdata_3rdparty">🍺 2. サードパーティアプリケーション (<code>apks/data_3rdparty/</code>)<a class="headerlink" href="#2-apksdata_3rdparty" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>パッケージ名</strong>: <code>com.hikvision.alcoholtest</code></li>
+<li><strong>APK パス</strong>: <code>apks/data_3rdparty/com.hikvision.alcoholtest.apk</code></li>
+<li><strong>元のインストール場所</strong>: <code>/data/app/com.hikvision.alcoholtest-yU0d63z910i3rOOrkaWqhA==/base.apk</code></li>
+<li><strong>概要</strong>: Hikvision製 アルコール測定・チェッカー管理アプリケーション</li>
 </ul>
 <hr />
-<blockquote>
-<p>💡 各詳細な解析データ（基板、ネットワーク、ソフトウェア構成など）については、左側のサイドメニューからそれぞれの調査レポートを参照してください。</p>
-</blockquote>
+<h2 id="3-apksvendor-apkssystem">🏢 3. ベンダー・システム主要サービスアプリ (<code>apks/vendor/</code>, <code>apks/system/</code>)<a class="headerlink" href="#3-apksvendor-apkssystem" title="Permanent link">&para;</a></h2>
+<h3 id="apksvendor">主要ベンダーアプリ (<code>apks/vendor/</code>)<a class="headerlink" href="#apksvendor" title="Permanent link">&para;</a></h3>
+<ol>
+<li><code>com.qualcomm.qti.qdma</code>: QDMA (Qualcomm Diagnostic Monitoring Agent)</li>
+<li><code>com.qualcomm.qti.cne</code>: CNE (Connectivity Engine)</li>
+<li><code>com.qualcomm.qti.sensors.qsensortest</code>: QSensorTest (Qualcomm センサーテストツール)</li>
+<li><code>com.qualcomm.timeservice</code>: TimeService (時間同期サービス)</li>
+<li><code>com.qualcomm.qti.qms.service.trustzoneaccess</code>: TrustZone Access Service</li>
+</ol>
+<h3 id="apkssystem-apksproduct">主要システムアプリ (<code>apks/system/</code>, <code>apks/product/</code>)<a class="headerlink" href="#apkssystem-apksproduct" title="Permanent link">&para;</a></h3>
+<ol>
+<li><code>com.android.settings</code>: 設定 (<code>Settings.apk</code>)</li>
+<li><code>com.android.systemui</code>: システムUI (<code>SystemUI.apk</code>)</li>
+<li><code>org.codeaurora.snapcam</code>: Snapdragon Camera (<code>SnapdragonCamera.apk</code>)</li>
+<li><code>com.android.dialer</code>: 電話アプリ</li>
+<li><code>com.android.inputmethod.latin</code>: Latin IME キーボード</li>
+</ol>
 
 
 
@@ -1091,10 +1202,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

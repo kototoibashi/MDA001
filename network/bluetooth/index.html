@@ -13,26 +13,28 @@
       
       
       
+        <link rel="prev" href="../wifi_enablement/">
       
-        <link rel="next" href="hardware/overview/">
+      
+        <link rel="next" href="../../peripherals/printer/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Hikvision DS-MDA001 解析レポート</title>
+        <title>Bluetooth制限事項 - Hikvision DS-MDA001 解析レポート</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,7 +53,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hikvision-ds-mda001" class="md-skip">
+        <a href="#17-bluetooth-failed-attempt" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -92,7 +94,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="ヘッダー">
-    <a href="." title="Hikvision DS-MDA001 解析レポート" class="md-header__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
+    <a href="../.." title="Hikvision DS-MDA001 解析レポート" class="md-header__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -112,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ホーム
+              Bluetooth制限事項
             
           </span>
         </div>
@@ -218,7 +220,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Hikvision DS-MDA001 解析レポート" class="md-nav__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
+    <a href="../.." title="Hikvision DS-MDA001 解析レポート" class="md-nav__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -233,37 +235,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ホーム
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -279,59 +254,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目次">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目次
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        コイツは何
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        入手性・相場
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hardwaresom" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hardware構成・SOMなど
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -395,7 +317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="hardware/overview/" class="md-nav__link">
+      <a href="../../hardware/overview/" class="md-nav__link">
         
   
   
@@ -423,7 +345,7 @@
   
   
     <li class="md-nav__item">
-      <a href="hardware/components/" class="md-nav__link">
+      <a href="../../hardware/components/" class="md-nav__link">
         
   
   
@@ -451,7 +373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="hardware/partitions/" class="md-nav__link">
+      <a href="../../hardware/partitions/" class="md-nav__link">
         
   
   
@@ -483,8 +405,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -495,11 +419,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -520,7 +444,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -538,7 +462,7 @@
   
   
     <li class="md-nav__item">
-      <a href="network/interfaces/" class="md-nav__link">
+      <a href="../interfaces/" class="md-nav__link">
         
   
   
@@ -566,7 +490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="network/wifi_enablement/" class="md-nav__link">
+      <a href="../wifi_enablement/" class="md-nav__link">
         
   
   
@@ -591,10 +515,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="network/bluetooth/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bluetooth制限事項
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -610,6 +561,104 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 1. 事前調査で判明していた事実
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-gsi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 2. 実施した復旧アプローチ (GSIからの移植)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💥 3. 発生した障害 (詳細解析)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💥 3. 発生した障害 (詳細解析)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#root-cause" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 エラーの根本原因 (Root Cause)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚫 4. 結論と今後の展望
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚫 4. 結論と今後の展望">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bluetooth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        今後 Bluetooth を復旧するための現実的な選択肢
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -681,7 +730,7 @@
   
   
     <li class="md-nav__item">
-      <a href="peripherals/printer/" class="md-nav__link">
+      <a href="../../peripherals/printer/" class="md-nav__link">
         
   
   
@@ -709,7 +758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="peripherals/serial_protocol/" class="md-nav__link">
+      <a href="../../peripherals/serial_protocol/" class="md-nav__link">
         
   
   
@@ -737,7 +786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="peripherals/print_server/" class="md-nav__link">
+      <a href="../../peripherals/print_server/" class="md-nav__link">
         
   
   
@@ -824,7 +873,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software/applications/" class="md-nav__link">
+      <a href="../../software/applications/" class="md-nav__link">
         
   
   
@@ -852,7 +901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software/alcohol_ad_values/" class="md-nav__link">
+      <a href="../../software/alcohol_ad_values/" class="md-nav__link">
         
   
   
@@ -880,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software/backup_strategy/" class="md-nav__link">
+      <a href="../../software/backup_strategy/" class="md-nav__link">
         
   
   
@@ -908,7 +957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software/security/" class="md-nav__link">
+      <a href="../../software/security/" class="md-nav__link">
         
   
   
@@ -963,10 +1012,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        コイツは何
+        📌 1. 事前調査で判明していた事実
       
     </span>
   </a>
@@ -974,10 +1023,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#2-gsi" class="md-nav__link">
     <span class="md-ellipsis">
       
-        入手性・相場
+        🚀 2. 実施した復旧アプローチ (GSIからの移植)
       
     </span>
   </a>
@@ -985,13 +1034,58 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#hardwaresom" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hardware構成・SOMなど
+        💥 3. 発生した障害 (詳細解析)
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="💥 3. 発生した障害 (詳細解析)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#root-cause" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 エラーの根本原因 (Root Cause)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚫 4. 結論と今後の展望
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚫 4. 結論と今後の展望">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bluetooth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        今後 Bluetooth を復旧するための現実的な選択肢
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1012,30 +1106,61 @@
 
 
 
-<h1 id="hikvision-ds-mda001">Hikvision DS-MDA001 解析レポート<a class="headerlink" href="#hikvision-ds-mda001" title="Permanent link">&para;</a></h1>
-<h2 id="_1">コイツは何<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>本端末は <strong>Hikvision DS-MDA001</strong> と呼ばれるAndroidベースの専用端末です。
-本来はアルコールチェックや業務用途などで使用されるデバイスですが、Android OSを搭載しているため、内部構造や通信仕様を解析することで様々な活用・検証が可能です。</p>
-<h2 id="_2">入手性・相場<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>現時点での主な入手ルートはヤフオク（Yahoo!オークション）などの中古市場です。
-相場としては、おおむね <strong>1.2万円から</strong> 取引されています。</p>
-<h2 id="hardwaresom">Hardware構成・SOMなど<a class="headerlink" href="#hardwaresom" title="Permanent link">&para;</a></h2>
-<p>本端末の主要なハードウェア構成は以下の通りです。詳細は各解析ページを参照してください。</p>
-<ul>
-<li><strong>SOM (System on Module):</strong> MeiG SLM758</li>
-<li><strong>SoC:</strong> Snapdragon 625 (MSM8953)</li>
-<li><strong>OS:</strong> Android 10</li>
-<li><strong>ストレージ:</strong> eMMC搭載</li>
-<li><strong>その他の構成要素:</strong><ul>
-<li>拡張インターフェース（シリアル通信など）</li>
-<li>内蔵プリンターや周辺機器への制御機能</li>
-</ul>
-</li>
-</ul>
+<h1 id="17-bluetooth-failed-attempt">🚫 17. Bluetooth 完全恒久有効化 失敗レポートおよび詳細解析 (Failed Attempt)<a class="headerlink" href="#17-bluetooth-failed-attempt" title="Permanent link">&para;</a></h1>
+<p>本ドキュメントは、メーカーによって無効化されていた Bluetooth 機能を復旧する試みが失敗に終わった原因と、その技術的な詳細解析の記録です。</p>
 <hr />
-<blockquote>
-<p>💡 各詳細な解析データ（基板、ネットワーク、ソフトウェア構成など）については、左側のサイドメニューからそれぞれの調査レポートを参照してください。</p>
-</blockquote>
+<h2 id="1">📌 1. 事前調査で判明していた事実<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>Wi-Fi の恒久有効化（<a href="../wifi_enablement/">wifi_enablement.md</a> 参照）の成功例に倣い、Bluetooth の状態を調査した結果、以下の「希望が持てる状態」であることが確認できていました。</p>
+<ol>
+<li><strong>Bluetooth HAL は存在</strong>: <code>/vendor/etc/vintf/manifest.xml</code> に <code>android.hardware.bluetooth</code> などの記述が既に存在する。</li>
+<li><strong>Bluetooth サービスは稼働中</strong>: <code>/vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc</code> が存在し、バックグラウンドプロセスとして <code>vendor.bluetooth-1-0-qti</code> が正常稼働している。</li>
+<li><strong>設定ディレクトリが存在</strong>: <code>/data/misc/bluetooth</code> ディレクトリが適切な権限（<code>bluetooth:bluetooth</code>）で既に存在している。</li>
+</ol>
+<p><strong>唯一の欠落要素</strong>として、AndroidフレームワークとBluetoothハードウェアを繋ぎ、UIを提供する大元のシステムアプリである <strong><code>Bluetooth.apk</code> (<code>com.android.bluetooth</code>) がシステムから物理的に削除（完全消去）されている</strong>ことが判明しました。</p>
+<hr />
+<h2 id="2-gsi">🚀 2. 実施した復旧アプローチ (GSIからの移植)<a class="headerlink" href="#2-gsi" title="Permanent link">&para;</a></h2>
+<p>オリジナルファームウェアのバックアップが存在しなかったため、同じ Android 10 (arm64) の <strong>AOSP Generic System Image (GSI)</strong> から標準の Bluetooth アプリを抽出し、移植するアプローチを取りました。</p>
+<ol>
+<li><code>phhusson</code> 氏の Android 10 GSI (<code>system-quack-arm64-aonly-vanilla.img.xz</code>) をダウンロード。</li>
+<li><code>7-Zip</code> を用いて EXT4 イメージ内から以下の2ファイルを抽出。</li>
+<li><code>/app/Bluetooth/Bluetooth.apk</code></li>
+<li><code>/lib64/libbluetooth_jni.so</code></li>
+<li>端末の <code>/system</code> 領域を Read-Write でマウントし、上記ファイルをプッシュ。</li>
+<li>適切な権限（chmod 644）を付与し、端末を再起動。</li>
+</ol>
+<p>結果として、OSは新しく追加された <code>com.android.bluetooth</code> パッケージを認識し、設定メニューから Bluetooth のトグルUIにアクセスできるようになりました。</p>
+<hr />
+<h2 id="3">💥 3. 発生した障害 (詳細解析)<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>Bluetooth を ON にした直後、「Bluetooth が繰り返し停止しています」というクラッシュダイアログが発生しました。
+<code>adb logcat -b crash</code> を用いてクラッシュダンプを詳細解析した結果、以下の致命的なエラー（FATAL EXCEPTION）が記録されていました。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>08-06 22:33:31.010  3979  3979 E AndroidRuntime: FATAL EXCEPTION: main
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>08-06 22:33:31.010  3979  3979 E AndroidRuntime: Process: com.android.bluetooth, PID: 3979
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>08-06 22:33:31.010  3979  3979 E AndroidRuntime: java.lang.UnsatisfiedLinkError: dlopen failed: library &quot;libbluetooth-binder.so&quot; not found
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>08-06 22:33:31.010  3979  3979 E AndroidRuntime:    at java.lang.Runtime.loadLibrary0(Runtime.java:1071)
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>08-06 22:33:31.010  3979  3979 E AndroidRuntime:    at com.android.bluetooth.btservice.AdapterApp.&lt;clinit&gt;(AdapterApp.java:36)
+</span></code></pre></div>
+<h3 id="root-cause">🔍 エラーの根本原因 (Root Cause)<a class="headerlink" href="#root-cause" title="Permanent link">&para;</a></h3>
+<p>この <code>UnsatisfiedLinkError</code> は、GSIから抽出した汎用的な <code>Bluetooth.apk</code> が起動時に <strong><code>libbluetooth-binder.so</code></strong> という共有ライブラリをロードしようとして失敗したことを示しています。</p>
+<p>端末内の共有ライブラリ構成を再調査（<code>find /system /vendor -name "*bluetooth*.so"</code>）したところ、本端末特有の致命的な事実が判明しました。</p>
+<ul>
+<li><strong>AOSP (標準のAndroid) の仕様</strong>:
+    標準の Android では、Bluetooth スタックとして <code>libbluetooth.so</code> および <code>libbluetooth-binder.so</code> が使用されます。</li>
+<li><strong>本端末 (Qualcomm SoC) の仕様</strong>:
+    本端末は Qualcomm のプロプライエタリな Bluetooth スタックを採用しており、システム内には <strong><code>libbluetooth_qti.so</code></strong> というカスタマイズされたライブラリしか存在しません。（※プロパティ <code>ro.bluetooth.library_name=libbluetooth_qti.so</code> にも明記されています）</li>
+</ul>
+<p><strong>結論</strong>:
+移植した汎用的な <code>Bluetooth.apk</code> は「標準の AOSP ライブラリ」を要求して設計されていますが、本端末のファームウェアは「Qualcomm 独自の Bluetooth ライブラリ (<code>libbluetooth_qti.so</code>)」専用に構築されています。この <strong>JNI (Java Native Interface) レイヤーの依存関係の不一致</strong>が原因で、アプリがネイティブライブラリをロードできず即座にクラッシュしています。</p>
+<hr />
+<h2 id="4">🚫 4. 結論と今後の展望<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>今回のアプローチでは、<strong>Qualcomm 独自実装と AOSP 標準実装の間のバイナリ互換性の壁</strong>により、Bluetooth の有効化は失敗に終わりました。</p>
+<p>Wi-Fi の場合は、Android フレームワークの標準コードで十分動作する範囲だったため設定ファイルの復元のみで成功しましたが、Bluetooth においてはベンダー（Qualcomm）固有の拡張が深く入り込んでいるため、単純な APK のポン付けでは動作しません。</p>
+<h3 id="bluetooth">今後 Bluetooth を復旧するための現実的な選択肢<a class="headerlink" href="#bluetooth" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>同型機・同ファームウェアからの完全なバックアップの入手</strong>:
+    この端末本来の <code>Bluetooth.apk</code> (Qualcomm 独自ライブラリを参照するようにコンパイルされたもの) を探し出し、プッシュするしかありません。</li>
+<li><strong>Qualcomm 製 Android 10 (Snapdragon 625 世代) の他機種 ROM からの流用</strong>:
+    他メーカーであっても、同じく Qualcomm のスタック (<code>libbluetooth_qti.so</code>) を使用している Android 10 機種（例: Xiaomi等の MIUI ベース等）から <code>Bluetooth.apk</code> を抽出すれば、依存関係が一致し動作する可能性が僅かに残されています。</li>
+</ol>
 
 
 
@@ -1091,10 +1216,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
