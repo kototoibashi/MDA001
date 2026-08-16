@@ -830,7 +830,7 @@
   <a href="#62-ad" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.2 AD値との非線形性
+        6.2 AD値との非線形性と活用方法
       
     </span>
   </a>
@@ -1308,7 +1308,7 @@
   <a href="#62-ad" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.2 AD値との非線形性
+        6.2 AD値との非線形性と活用方法
       
     </span>
   </a>
@@ -1441,7 +1441,7 @@
 <h3 id="61">6.1 単位仕様<a class="headerlink" href="#61" title="Permanent link">&para;</a></h3>
 <p>プロトコルから取得できるFloat値の単位は <strong><code>mg/L(BrAC)</code>（呼気中アルコール濃度）</strong> です。
 公式アプリ側で「血中濃度（BAC）」等として表示する場合は、この値に <code>220.0</code> 等の定数を乗算して画面表示しています。</p>
-<h3 id="62-ad">6.2 AD値との非線形性<a class="headerlink" href="#62-ad" title="Permanent link">&para;</a></h3>
+<h3 id="62-ad">6.2 AD値との非線形性と活用方法<a class="headerlink" href="#62-ad" title="Permanent link">&para;</a></h3>
 <p>アルコール蒸気テストによる生データの比較（AD値 vs 濃度）から、両者は完全に比例するわけではないことが判明しました。</p>
 <table>
 <thead>
@@ -1461,7 +1461,12 @@
 </tr>
 </tbody>
 </table>
-<p>比率がベースラインとピークで約56倍も変動するため、生のAD値を単純な線形係数で濃度に変換（代理指標として使用）することはできません。必ず <code>AlcoholContent</code> などの正式なコマンドでデバイス内のアルゴリズムを通した濃度値を取得してください。</p>
+<p>比率がベースラインとピークで約56倍も変動するため、生のAD値を<strong>単純な線形係数で濃度に一発変換することはできません</strong>。正確な確定値が必要な場合は、必ず <code>AlcoholContent</code> などの正式なコマンドでデバイス内のアルゴリズムを通した濃度値を取得してください。</p>
+<p><strong>AD値の活用ポテンシャル:</strong>
+完全な線形性はないものの、AD値の変動カーブ自体は濃度カーブの推移と非常によく一致します。そのため、以下のような用途であれば十分に活用できる余地があります。
+1. <strong>リアルタイムの目安表示</strong>: <code>passiveTest</code> の数十秒の待機中に、現在アルコールを検知して数値が跳ね上がっている最中なのか、下がり始めているのかを示すUI上のプログレス（非確定の相対指標）としての利用。
+2. <strong>高速・非ブロッキングな状態監視</strong>: <code>AlcoholContent</code> が分析中で数十秒ブロックされるのに対し、<code>findAlcoholAD</code> は<strong>どのStateであっても 50〜150ms という短時間で即座に返答が来る</strong>ため、UIスレッドを詰まらせずに現在のセンサー状況を監視するのに極めて適しています。
+3. <strong>独自の高度な補正</strong>: 複数点の基準ガスを用いた非線形キャリブレーションカーブ（曲線近似）を自力で実装する場合の生データとしての利用。</p>
 
 
 
