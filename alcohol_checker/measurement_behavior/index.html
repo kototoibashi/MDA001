@@ -13,8 +13,10 @@
       
       
       
-        <link rel="prev" href="../backup_strategy/">
+        <link rel="prev" href="../serial_protocol/">
       
+      
+        <link rel="next" href="../alcohol_ad_values/">
       
       
         
@@ -25,7 +27,7 @@
     
     
       
-        <title>セキュリティ評価 - Hikvision DS-MDA001 解析レポート</title>
+        <title>実際の測定コマンドの動作 - Hikvision DS-MDA001 解析レポート</title>
       
     
     
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#selinux-dm-verity" class="md-skip">
+        <a href="#measurement-behavior-advanced-analysis" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -112,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              セキュリティ評価
+              実際の測定コマンドの動作
             
           </span>
         </div>
@@ -546,8 +548,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -558,11 +562,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
@@ -583,7 +587,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -601,7 +605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../alcohol_checker/serial_protocol/" class="md-nav__link">
+      <a href="../serial_protocol/" class="md-nav__link">
         
   
   
@@ -626,10 +630,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../alcohol_checker/measurement_behavior/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    実際の測定コマンドの動作
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -645,6 +676,176 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 通常測定シーケンスフロー
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 実証された濃度取得の非同期プロトコル
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 実証された濃度取得の非同期プロトコル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-flag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 非同期待機ロジック (flag バイト)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 応答レイテンシの実測値
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. パッシブ（受動）テストと AD値ノイズ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. パッシブ（受動）テストと AD値ノイズ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 測定サイクル
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 サイクル境界のノイズ問題
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. デバイス状態遷移とコマンド受付可否
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. TCPブリッジアプリにおけるトラフィック混入問題
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-ad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. AD値と濃度の非線形性・単位仕様
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. AD値と濃度の非線形性・単位仕様">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 単位仕様
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-ad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 AD値との非線形性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -657,7 +858,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../alcohol_checker/alcohol_ad_values/" class="md-nav__link">
+      <a href="../alcohol_ad_values/" class="md-nav__link">
         
   
   
@@ -804,8 +1005,6 @@
       
   
   
-    
-  
   
   
     
@@ -818,11 +1017,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
@@ -843,7 +1042,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -861,7 +1060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../applications/" class="md-nav__link">
+      <a href="../../software/applications/" class="md-nav__link">
         
   
   
@@ -889,7 +1088,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../backup_strategy/" class="md-nav__link">
+      <a href="../../software/backup_strategy/" class="md-nav__link">
         
   
   
@@ -914,37 +1113,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    セキュリティ評価
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../software/security/" class="md-nav__link">
         
   
   
@@ -960,109 +1132,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目次">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目次
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 調査結果の概要
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 各セキュリティ機能の詳細
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. 各セキュリティ機能の詳細">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-selinux-security-enhanced-linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.1. SELinux (Security-Enhanced Linux)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-dm-verity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.2. dm-verity (改ざん検知)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.3. ブートローダーのロック状態
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#24" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.4. その他のセキュリティ関連プロパティ
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 今後の方針・影響
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1105,7 +1174,7 @@
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 調査結果の概要
+        1. 通常測定シーケンスフロー
       
     </span>
   </a>
@@ -1116,19 +1185,19 @@
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 各セキュリティ機能の詳細
+        2. 実証された濃度取得の非同期プロトコル
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. 各セキュリティ機能の詳細">
+    <nav class="md-nav" aria-label="2. 実証された濃度取得の非同期プロトコル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-selinux-security-enhanced-linux" class="md-nav__link">
+  <a href="#21-flag" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1. SELinux (Security-Enhanced Linux)
+        2.1 非同期待機ロジック (flag バイト)
       
     </span>
   </a>
@@ -1136,32 +1205,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-dm-verity" class="md-nav__link">
+  <a href="#22" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2. dm-verity (改ざん検知)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.3. ブートローダーのロック状態
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#24" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.4. その他のセキュリティ関連プロパティ
+        2.2 応答レイテンシの実測値
       
     </span>
   </a>
@@ -1174,13 +1221,102 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#3-ad" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. 今後の方針・影響
+        3. パッシブ（受動）テストと AD値ノイズ
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="3. パッシブ（受動）テストと AD値ノイズ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 測定サイクル
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 サイクル境界のノイズ問題
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. デバイス状態遷移とコマンド受付可否
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. TCPブリッジアプリにおけるトラフィック混入問題
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-ad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. AD値と濃度の非線形性・単位仕様
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. AD値と濃度の非線形性・単位仕様">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 単位仕様
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-ad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 AD値との非線形性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1201,48 +1337,131 @@
 
 
 
-<h1 id="selinux-dm-verity">端末のセキュリティ機能（SELinux / dm-verity 等）の調査結果<a class="headerlink" href="#selinux-dm-verity" title="Permanent link">&para;</a></h1>
-<p>本ドキュメントでは、対象のAndroid端末におけるシステムレベルのセキュリティ機能（SELinux、dm-verity、ブートローダーのロック状態など）の調査結果をまとめる。</p>
-<h2 id="1">1. 調査結果の概要<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<p><strong>結論：この端末のセキュリティ機能は非常に緩く（無効化されており）、システム改造・解析を行う上で非常に自由度が高い状態である。</strong></p>
-<p>システム領域の改ざん検知や権限ブロックなどが働いていないため、root権限さえ確保できれば、システムファイルの直接編集、不要な標準アプリの削除、各種検証などが制限なく行える。</p>
-<h2 id="2">2. 各セキュリティ機能の詳細<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
-<p>adb shell経由で各種プロパティや状態を確認した結果は以下の通りである。</p>
-<h3 id="21-selinux-security-enhanced-linux">2.1. SELinux (Security-Enhanced Linux)<a class="headerlink" href="#21-selinux-security-enhanced-linux" title="Permanent link">&para;</a></h3>
+<h1 id="measurement-behavior-advanced-analysis">実際の測定コマンドの動作 (Measurement Behavior &amp; Advanced Analysis)<a class="headerlink" href="#measurement-behavior-advanced-analysis" title="Permanent link">&para;</a></h1>
+<p>本ドキュメントでは、<code>serial_protocol.md</code> で定義されたコマンド群が、<strong>実際の測定時にどのような非同期挙動やレイテンシを示すか</strong>、およびデバイスの状態遷移に関する実機検証（生TCPブリッジ経由でのパケット解析・アルコール蒸気テスト）の結果をまとめています。</p>
+<hr />
+<h2 id="1">1. 通常測定シーケンスフロー<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>アルコール検知におけるメインアプリケーションとセンサー基板間の標準的な交互作用シーケンス図です。</p>
+<pre class="mermaid"><code>sequenceDiagram
+    autonumber
+    participant App as Android App (NormalTestModeActivity)
+    participant Driver as Serial Driver (/dev/ttyMSM1)
+    participant Board as Alcohol Sensor Board
+
+    App-&gt;&gt;Driver: Open /dev/ttyMSM1 (9600 bps)
+    App-&gt;&gt;Board: Send startTest (FE020C0002010101010EF0FE)
+    Board--&gt;&gt;App: Return ACK (33 / 0x21)
+
+    loop ゼロ点クリア確認
+        App-&gt;&gt;Board: Send findAlcoholAD (FE020C0002010102000CF0FE)
+        Board--&gt;&gt;App: Return AD Value (mRecvBuf[8..11])
+    end
+
+    App-&gt;&gt;Board: Send blow (FE020C0002010104010BF0FE)
+    Note over App,Board: 吹込待機状態へ遷移
+
+    loop 吹き込み実行中
+        Board--&gt;&gt;App: Notify Blow Status (0x24 0x01 ~ 0x04)
+    end
+    Board--&gt;&gt;App: Notify Blow Completed (0x24 0x05)
+
+    App-&gt;&gt;Board: Send exitBlow (FE020C00020101040208F0FE)
+    Board--&gt;&gt;App: Return ACK (33 / 0x21)
+
+    App-&gt;&gt;Board: Send AlcoholContent (FE020C00020101080107F0FE)
+    Board--&gt;&gt;App: Return Float Concentration (mRecvBuf[9..12])
+
+    Note over App: 判定表示 (未超標 / 飲酒 / 酔酒) &amp; SQLite 保存</code></pre>
+<hr />
+<h2 id="2">2. 実証された濃度取得の非同期プロトコル<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>濃度を取得するコマンド（<code>AlcoholContent</code> / <code>passiveTest</code>）は、<strong>単一の要求に対する即座の応答フレームで確定値が返るとは限りません。</strong></p>
+<h3 id="21-flag">2.1 非同期待機ロジック (<code>flag</code> バイト)<a class="headerlink" href="#21-flag" title="Permanent link">&para;</a></h3>
+<p>これらのコマンドのレスポンス（<code>0x23</code> Data Packet）の第8バイト（<code>mRecvBuf[8]</code>）は <strong><code>flag</code></strong> として機能します。</p>
 <ul>
-<li><strong>状態:</strong> <code>Permissive</code>（寛容モード）</li>
-<li><strong>確認コマンド:</strong> <code>getenforce</code></li>
-<li><strong>影響:</strong>
-  本来、ポリシーに違反するアクセスをブロックする機能であるが、<code>Permissive</code>モードでは「ルール違反をログに記録するのみ」であり、実際のアクセスブロックは行われない。これにより、権限周りのエラー（Permission Deniedなど）でシステムへの操作が弾かれるケースはほぼない。</li>
+<li><code>flag == 0</code>: 「現在気体を分析中」を意味する暫定応答。確定値ではないため、<strong>同じリクエストへの応答をさらに待ち続ける</strong>必要があります。（リトライ送信は不要）</li>
+<li><code>flag == 1, 2, 3</code>: <strong>確定値</strong>。第9〜12バイトの Float 値を最終的な濃度結果として採用します。</li>
 </ul>
-<h3 id="22-dm-verity">2.2. dm-verity (改ざん検知)<a class="headerlink" href="#22-dm-verity" title="Permanent link">&para;</a></h3>
+<h3 id="22">2.2 応答レイテンシの実測値<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<p>分析にかかる時間は、センサー内部の残留アルコール濃度（≒AD値）に比例して顕著に伸びます。</p>
+<table>
+<thead>
+<tr>
+<th>状態</th>
+<th>確定応答までのレイテンシ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>素面ベースライン</td>
+<td>1.3〜3.9秒</td>
+</tr>
+<tr>
+<td>濃度ピーク時 (18.23 mg/L相当)</td>
+<td>最大 <strong>22〜24秒</strong></td>
+</tr>
+<tr>
+<td>減衰中 (3.11 → 0.09)</td>
+<td>23秒 → 13秒 と単調減少</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!WARNING]
+独自のクライアントを実装する場合、10秒程度の固定タイムアウトでは高濃度時に<strong>確実にタイムアウトして失敗します</strong>。タイムアウトは<strong>30秒以上</strong>の余裕を持たせる必要があります。</p>
+</blockquote>
+<hr />
+<h2 id="3-ad">3. パッシブ（受動）テストと AD値ノイズ<a class="headerlink" href="#3-ad" title="Permanent link">&para;</a></h2>
+<p>「受動測定（被动测试）」モードは、対象者がマウスピースに息を吹き込むのではなく、機器が周囲の空気を吸引して検知するモードです。</p>
+<h3 id="31">3.1 測定サイクル<a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<p><code>passiveTest</code> コマンドを送信すると、確定応答（<code>flag=1,2,3</code>）が返るまで分析が継続されます。アプリ側では確定後に <code>findAlcoholAD</code> でベースラインを再確認し、再び <code>passiveTest</code> ループに入ることで常時監視（Passive Monitor）を実現できます。</p>
+<h3 id="32">3.2 サイクル境界のノイズ問題<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<p>実機テストにおいて、<code>passiveTest</code> の測定サイクルが切り替わる瞬間（前回確定応答が届き、次回を送信する直後）に、<code>findAlcoholAD</code> で取得できる生のAD値が一時的に急上昇するノイズ現象が確認されました。</p>
 <ul>
-<li><strong>状態:</strong> <code>Disabled</code>（無効）</li>
-<li><strong>確認プロパティ:</strong> <code>[ro.boot.veritymode]: [disabled]</code></li>
-<li><strong>マウント状態:</strong> <code>/system</code>や<code>/vendor</code>等のマウントに<code>dm-</code> (device-mapper) を介したものが存在しない。</li>
-<li><strong>影響:</strong>
-  システム領域（<code>/system</code>など）の改ざんをブロック・検知する機能が無効になっている。そのため、<code>mount -o rw,remount /system</code> で書き込み可能にしてファイルを直接編集・差し替えても、次回起動時に文鎮化（ブートループ等）することはない。</li>
+<li><strong>仮説</strong>: <code>passiveTest</code> の測定サイクル切り替え時に内部の<strong>ソレノイドバルブ等が物理的に動作</strong>し、その振動や気流変化がセンサーの生値に過渡的なノイズとして乗っていると考えられます。</li>
+<li><strong>注意点</strong>: AD値の短期的なスパイクを実際のアルコール蒸気濃度変化と解釈する際は、それが <code>passiveTest</code> の切り替えタイミングと重なっていないか警戒する必要があります。</li>
 </ul>
-<h3 id="23">2.3. ブートローダーのロック状態<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="4">4. デバイス状態遷移とコマンド受付可否<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>通常測定時、センサー基板は内部で状態（State）を遷移させています。</p>
+<ol>
+<li><strong>IDLE</strong>: 待機状態。全26種類のコマンドを高速（50〜150ms）に処理可能。</li>
+<li><strong>ZEROING</strong>: <code>findAlcoholAD</code> をループ送信しゼロクリアを待つ状態。</li>
+<li><strong>WAIT_BLOW / BLOWING</strong>: <code>blow</code> 送信後、吹き込みを待っている状態。</li>
+<li><strong>並行コマンドの危険性</strong>: この状態で <code>findAlcoholAD</code> や <code>MPa</code> 以外のコマンド（<code>AlcoholContent</code> 等）を高頻度（例: 0.4秒間隔）で並行送信すると、<strong>デバイスが完全に応答不能になる（フリーズする）</strong>ことが確認されています。ポーリングは 1.5秒以上の間隔を開け、最低限のコマンドに留めるのが安全です。</li>
+<li><strong>ANALYZING</strong>: 息を吹き終え、<code>AlcoholContent</code> の確定応答を待っている状態。</li>
+</ol>
+<hr />
+<h2 id="5-tcp">5. TCPブリッジアプリにおけるトラフィック混入問題<a class="headerlink" href="#5-tcp" title="Permanent link">&para;</a></h2>
+<p>我々が開発したデバッガーアプリ内部では、TCPソケットでの通信中継（TCPブリッジ）を行っています。しかし、アプリ内部で「センサー自動ポーリング」や「標準測定シーケンス」が裏で動いていると、<strong>それらが送信したコマンドの応答フレームが、TCPクライアント向けのストリームに混入してしまう問題</strong>が発生しました。</p>
 <ul>
-<li><strong>状態:</strong> アンロック済み（Unlocked）</li>
-<li><strong>確認プロパティ:</strong> <code>[ro.boot.verifiedbootstate]: [orange]</code></li>
-<li><strong>影響:</strong>
-  AndroidのVerified Boot (AVB) のステータスが <code>orange</code> であることは、ブートローダーがアンロックされていることを意味する。メーカーの公式署名がないカスタムイメージ（boot.imgやrecovery.img）をフラッシュして起動させることが可能な状態である。</li>
+<li><strong>対策</strong>: TCPクライアントが接続した際は、アプリ内部からの自動ポーリング等を一時停止させるよう排他制御（Mutex）を実装しました。これにより、外部からのコマンド送信と応答がクリーンに一対一で対応するようになります。</li>
 </ul>
-<h3 id="24">2.4. その他のセキュリティ関連プロパティ<a class="headerlink" href="#24" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>ユーザーデータ領域の暗号化:</strong> 有効 (<code>[ro.crypto.state]: [encrypted]</code>)
-  ※ Android標準仕様であり、システム改造自体を妨げるものではない。</li>
-<li><strong>adbのセキュア状態:</strong> 有効 (<code>[ro.secure]: [1]</code>)
-  ※ ただし、<code>su</code>バイナリなどが存在するか、root権限を取得できれば問題なく回避可能。</li>
-</ul>
-<h2 id="3">3. 今後の方針・影響<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
-<ul>
-<li>開発、デバッグ、カスタマイズの障壁となるカーネル/OSレベルの制限はほぼ解除された状態である。</li>
-<li>システムアプリの無効化・差し替えや、<code>/system</code> へのバイナリ・スクリプトの配置等が問題なく実行可能。</li>
-<li>セキュリティ機能がシステムを保護していないため、誤ったファイルを書き換えた際のリスク（起動不可になるリスク）は自己責任となる。変更前には必ず対象ファイルのバックアップを取るよう留意すること。</li>
-</ul>
+<hr />
+<h2 id="6-ad">6. AD値と濃度の非線形性・単位仕様<a class="headerlink" href="#6-ad" title="Permanent link">&para;</a></h2>
+<h3 id="61">6.1 単位仕様<a class="headerlink" href="#61" title="Permanent link">&para;</a></h3>
+<p>プロトコルから取得できるFloat値の単位は <strong><code>mg/L(BrAC)</code>（呼気中アルコール濃度）</strong> です。
+公式アプリ側で「血中濃度（BAC）」等として表示する場合は、この値に <code>220.0</code> 等の定数を乗算して画面表示しています。</p>
+<h3 id="62-ad">6.2 AD値との非線形性<a class="headerlink" href="#62-ad" title="Permanent link">&para;</a></h3>
+<p>アルコール蒸気テストによる生データの比較（AD値 vs 濃度）から、両者は完全に比例するわけではないことが判明しました。</p>
+<table>
+<thead>
+<tr>
+<th>状態</th>
+<th>Concentration (濃度) / AD 比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ベースライン</td>
+<td>≈ 5.1 × 10⁻⁶</td>
+</tr>
+<tr>
+<td>ピーク時</td>
+<td>≈ 2.85 × 10⁻⁴</td>
+</tr>
+</tbody>
+</table>
+<p>比率がベースラインとピークで約56倍も変動するため、生のAD値を単純な線形係数で濃度に変換（代理指標として使用）することはできません。必ず <code>AlcoholContent</code> などの正式なコマンドでデバイス内のアルゴリズムを通した濃度値を取得してください。</p>
 
 
 

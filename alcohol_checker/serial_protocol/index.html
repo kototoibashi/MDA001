@@ -16,7 +16,7 @@
         <link rel="prev" href="../../network/bluetooth/">
       
       
-        <link rel="next" href="../alcohol_ad_values/">
+        <link rel="next" href="../measurement_behavior/">
       
       
         
@@ -815,17 +815,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. 通常測定シーケンスフロー
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -840,6 +829,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../measurement_behavior/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    実際の測定コマンドの動作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1311,17 +1328,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. 通常測定シーケンスフロー
-      
-    </span>
-  </a>
   
 </li>
       
@@ -1889,44 +1895,11 @@
 </tbody>
 </table>
 <hr />
-<h2 id="6">6. 通常測定シーケンスフロー<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
-<p>アルコール検知におけるメインアプリケーションとセンサー基板間の交互作用シーケンス図です。</p>
-<pre class="mermaid"><code>sequenceDiagram
-    autonumber
-    participant App as Android App (NormalTestModeActivity)
-    participant Driver as Serial Driver (/dev/ttyMSM1)
-    participant Board as Alcohol Sensor Board
-
-    App-&gt;&gt;Driver: Open /dev/ttyMSM1 (9600 bps)
-    App-&gt;&gt;Board: Send startTest (FE020C0002010101010EF0FE)
-    Board--&gt;&gt;App: Return ACK (33 / 0x21)
-
-    loop ゼロ点クリア確認
-        App-&gt;&gt;Board: Send findAlcoholAD (FE020C0002010102000CF0FE)
-        Board--&gt;&gt;App: Return AD Value (mRecvBuf[8..11])
-    end
-
-    App-&gt;&gt;Board: Send blow (FE020C0002010104010BF0FE)
-    Note over App,Board: 吹込待機状態へ遷移
-
-    loop 吹き込み実行中
-        Board--&gt;&gt;App: Notify Blow Status (0x24 0x01 ~ 0x04)
-    end
-    Board--&gt;&gt;App: Notify Blow Completed (0x24 0x05)
-
-    App-&gt;&gt;Board: Send exitBlow (FE020C00020101040208F0FE)
-    Board--&gt;&gt;App: Return ACK (33 / 0x21)
-
-    App-&gt;&gt;Board: Send AlcoholContent (FE020C00020101080107F0FE)
-    Board--&gt;&gt;App: Return Float Concentration (mRecvBuf[9..12])
-
-    Note over App: 判定表示 (未超標 / 飲酒 / 酔酒) &amp; SQLite 保存</code></pre>
-<hr />
 <h2 id="_1">関連ドキュメント<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../../hardware/overview/">overview.md</a> - デバイス概要</li>
 <li><a href="../../hardware/components/">components.md</a> - ハードウェアおよびドライバ構成</li>
-<li><a href="printer.md">printer.md</a> - サーマルプリンター制御仕様書</li>
+<li><a href="../../printer/printer/">printer.md</a> - サーマルプリンター制御仕様書</li>
 </ul>
 
 
