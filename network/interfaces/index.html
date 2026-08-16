@@ -582,6 +582,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📡 ハードウェアに関する重要事項: アンテナの追加
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1055,6 +1066,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📡 ハードウェアに関する重要事項: アンテナの追加
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1138,6 +1160,11 @@
 <li><strong>Wi-Fi</strong>: ドライバ (<code>pronto_wlan.ko</code>) を自動ロードし <code>wlan0</code> を自動出現させ、周辺アクセスポイント (<code>[MASKED_SSID]</code> 等) のリアルタイム実測スキャンに<strong>100% 成功</strong>！</li>
 <li><strong>永続化</strong>: <code>/vendor/bin/init.class_main.sh</code> の <code>noril</code> 抑止スクリプト解除 ＋ <code>init.radio_enable.rc</code> へのドライバ自動 <code>insmod</code> 定義 ＋ 機内モード OFF を適用完了。</li>
 </ul>
+<hr />
+<h2 id="_2">📡 ハードウェアに関する重要事項: アンテナの追加<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>システム設定上での各種無線モジュール（Wi-Fi, Bluetooth, セルラー）の有効化に加え、<strong>物理的なアンテナの後付け</strong>が必須となります。
+本端末の基板にはU.FL / IPEXコネクタのみが実装されており、アンテナ本体は搭載されていません。
+詳細な実装状況については、<a href="../../hardware/components/#5-rf-">ハードウェア構成: RFアンテナ物理実装状況</a> を参照してください。</p>
 
 
 

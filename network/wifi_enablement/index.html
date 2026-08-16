@@ -550,10 +550,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-wi-fi-4" class="md-nav__link">
+  <a href="#1-wi-fi-5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📌 1. Wi-Fi 無効化の全貌と 4 つの障壁
+        📌 1. Wi-Fi 無効化の全貌と 5 つの障壁
       
     </span>
   </a>
@@ -573,10 +573,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-1-ui" class="md-nav__link">
+  <a href="#step-1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1: UI の隠蔽解除（プロパティの修正）
+        Step 1: プロパティの修正と機内モード解除
       
     </span>
   </a>
@@ -679,6 +679,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📡 ハードウェアに関する重要事項: アンテナの追加
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1067,10 +1078,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-wi-fi-4" class="md-nav__link">
+  <a href="#1-wi-fi-5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📌 1. Wi-Fi 無効化の全貌と 4 つの障壁
+        📌 1. Wi-Fi 無効化の全貌と 5 つの障壁
       
     </span>
   </a>
@@ -1090,10 +1101,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-1-ui" class="md-nav__link">
+  <a href="#step-1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1: UI の隠蔽解除（プロパティの修正）
+        Step 1: プロパティの修正と機内モード解除
       
     </span>
   </a>
@@ -1199,6 +1210,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📡 ハードウェアに関する重要事項: アンテナの追加
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1217,21 +1239,22 @@
 
 
 <h1 id="16-wi-fi-final-report">📶 16. Wi-Fi 機能の完全恒久有効化・復旧手順書 (Final Report)<a class="headerlink" href="#16-wi-fi-final-report" title="Permanent link">&para;</a></h1>
-<p>本ドキュメントは、メーカーによってシステムレベルで無効化されていた本端末（<code>********</code>）の Wi-Fi 機能を、<strong>純正の Android 端末と全く同じように設定 UI から自由に ON/OFF でき、再起動後も状態を維持できる「完全な恒久有効化」</strong> に成功した際の全手順とトラブルシューティングの記録です。</p>
+<p>本ドキュメントは、メーカーによってシステムレベルで無効化されていた本端末（<code>********</code>）の Wi-Fi 機能を、<strong>完全な恒久有効化</strong> に成功した際の全手順とトラブルシューティングの記録です。（※標準の設定アプリのメニューには復活しませんが、サードパーティのランチャーアプリ等から直接設定画面を呼び出すことで自由にON/OFF可能です）</p>
 <hr />
-<h2 id="1-wi-fi-4">📌 1. Wi-Fi 無効化の全貌と 4 つの障壁<a class="headerlink" href="#1-wi-fi-4" title="Permanent link">&para;</a></h2>
-<p>調査の結果、本端末ではハードウェア（Wi-Fiモジュールやアンテナ）は正常に実装されているものの、ソフトウェア（OS）レベルで以下の 4 重のロックが掛けられていました。</p>
+<h2 id="1-wi-fi-5">📌 1. Wi-Fi 無効化の全貌と 5 つの障壁<a class="headerlink" href="#1-wi-fi-5" title="Permanent link">&para;</a></h2>
+<p>調査の結果、本端末ではソフトウェア（OS）レベルでの4重のロックに加え、物理的なハードウェアの制約という<strong>合計5つの障壁</strong>によってWi-Fi機能が封じられていました。</p>
 <ol>
-<li><strong>UI の隠蔽</strong>: <code>ro.radio.noril=true</code> により、設定アプリ（Settings.apk）から通信系のメニューが動的に消去される。</li>
-<li><strong>HAL 許可リストからの除外</strong>: <code>manifest.xml</code> から Wi-Fi 関連の HAL が削除されており、フレームワークが Wi-Fi デバイスにアクセスしようとすると <code>hwservicemanager</code> に通信をブロックされる。</li>
-<li><strong>サービス定義の削除</strong>: <code>wpa_supplicant</code>（Wi-Fi制御デーモン）を起動するための <code>wpa_supplicant.rc</code> が <code>/vendor/etc/init/</code> から削除されており、システムが Wi-Fi をオンにしようとしてもプロセスを起動できない。</li>
-<li><strong>ディレクトリ構造の欠落</strong>: <code>/data/vendor/wifi</code> など、<code>wpa_supplicant</code> が動作するために必須となる設定ファイルディレクトリが存在しない。</li>
+<li><strong>UI の隠蔽 (ソフトウェア)</strong>: <code>ro.radio.noril=true</code> やその他システムレベルの設定により、設定アプリ（Settings.apk）から通信系のメニューが完全に消去されている。（※後述の通り、プロパティを修正しても標準メニューは復活しないため、ActivityLauncher等による直接呼び出しが必要となります）</li>
+<li><strong>HAL 許可リストからの除外 (ソフトウェア)</strong>: <code>manifest.xml</code> から Wi-Fi 関連の HAL が削除されており、フレームワークが Wi-Fi デバイスにアクセスしようとすると <code>hwservicemanager</code> に通信をブロックされる。</li>
+<li><strong>サービス定義の削除 (ソフトウェア)</strong>: <code>wpa_supplicant</code>（Wi-Fi制御デーモン）を起動するための <code>wpa_supplicant.rc</code> が <code>/vendor/etc/init/</code> から削除されており、システムが Wi-Fi をオンにしようとしてもプロセスを起動できない。</li>
+<li><strong>ディレクトリ構造の欠落 (ソフトウェア)</strong>: <code>/data/vendor/wifi</code> など、<code>wpa_supplicant</code> が動作するために必須となる設定ファイルディレクトリが存在しない。</li>
+<li><strong>アンテナの非搭載 (ハードウェア)</strong>: Wi-Fiモジュール自体は基板上に存在するものの、コネクタのみで<strong>アンテナ本体が物理的に搭載されておらず</strong>、ソフトウェア側を復旧しても実用的な距離で電波を拾うことができない。</li>
 </ol>
 <hr />
 <h2 id="2">🚀 2. 完全恒久有効化のための全ステップ（実行手順）<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
 <p>以下の手順を順に実行することで、ゼロから完全に Wi-Fi を復旧させることができます。（※すべて <code>adb root</code> および <code>adb remount</code> で <code>/vendor</code> を書き込み可能にしてから実行します）</p>
-<h3 id="step-1-ui">Step 1: UI の隠蔽解除（プロパティの修正）<a class="headerlink" href="#step-1-ui" title="Permanent link">&para;</a></h3>
-<p>起動時に強制的に無効化プロパティを注入するスクリプトを修正し、設定メニューを表示させます。</p>
+<h3 id="step-1">Step 1: プロパティの修正と機内モード解除<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
+<p>起動時に強制的に無効化プロパティを注入するスクリプトを無効化し、システム全体の通信遮断を解除します。</p>
 <ol>
 <li><strong><code>/vendor/bin/init.class_main.sh</code> の修正</strong> (Line 40付近)
    <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 修正前: setprop ro.vendor.radio.noril yes</span>
@@ -1242,6 +1265,10 @@
    <div class="language-powershell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">adb</span> <span class="n">shell</span> <span class="n">settings</span> <span class="n">put</span> <span class="n">global</span> <span class="n">airplane_mode_on</span> <span class="n">0</span>
 </span></code></pre></div></li>
 </ol>
+<blockquote>
+<p>[!NOTE]
+プロパティを修正しても、標準の「設定 (Settings)」アプリ内に Wi-Fi メニューは表示されません。Wi-Fi の設定画面を開くには、PlayストアやAPKから「Activity Launcher」等のアプリをインストールし、<code>com.android.settings.Settings$WifiSettingsActivity</code> などを直接起動してください。</p>
+</blockquote>
 <h3 id="step-2">Step 2: データディレクトリの作成と権限設定<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
 <p><code>wpa_supplicant</code> が動作するためのディレクトリと設定ファイル（空）を作成し、Wi-Fi ユーザー (<code>wifi:wifi</code>) に権限を付与します。</p>
 <div class="language-powershell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">adb</span> <span class="n">shell</span> <span class="n">mkdir</span> <span class="n">-p</span> <span class="p">/</span><span class="n">data</span><span class="p">/</span><span class="n">vendor</span><span class="p">/</span><span class="n">wifi</span><span class="p">/</span><span class="n">wpa</span><span class="p">/</span><span class="n">sockets</span>
@@ -1337,6 +1364,11 @@ Android の仕様では、Wi-Fi を ON にした瞬間に Wi-Fi HAL 自らがド
 <li><strong>原因</strong>: 起動時スクリプトで <code>pronto_wlan.ko</code> を強制ロードしていたため、Wi-Fi HAL が自身でロードしようとして競合エラー (<code>finit_module return: -1: File exists</code>) が発生。</li>
 <li><strong>解決</strong>: 強制ロード用の <code>init.radio_enable.rc</code> を削除し、ドライバ管理を完全に Android に委譲した。</li>
 </ul>
+<hr />
+<h2 id="_2">📡 ハードウェアに関する重要事項: アンテナの追加<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>OS上の設定でWi-Fiの有効化に成功しても、本端末の基板には初期状態で<strong>アンテナ本体が搭載されていません</strong>（コネクタのみ実装されています）。
+ルーター至近距離以外で実用的な電波を送受信するためには、汎用のIPEX/U.FLアンテナを自前で取り付ける必要があります。
+詳細については、<a href="../../hardware/components/#5-rf-">ハードウェア構成: RFアンテナ物理実装状況</a> を参照してください。</p>
 
 
 
