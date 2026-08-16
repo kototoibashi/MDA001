@@ -1,0 +1,1867 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hikvision DS-MDA001 (Android端末) のハードウェアおよびソフトウェア解析ドキュメント">
+      
+      
+        <meta name="author" content="kototoibashi">
+      
+      
+      
+        <link rel="prev" href="../12_volatile_network_test_results/">
+      
+      
+        <link rel="next" href="../14_permanent_enablement_execution_log/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>🚀 13. 無線機能（Wi-Fi / BT / セルラー）の恒久有効化・永続化方針書 - Hikvision DS-MDA001 解析レポート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#13-wi-fi-bt" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="Hikvision DS-MDA001 解析レポート" class="md-header__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hikvision DS-MDA001 解析レポート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🚀 13. 無線機能（Wi-Fi / BT / セルラー）の恒久有効化・永続化方針書
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Hikvision DS-MDA001 解析レポート
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../01_device_overview/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📱 01. 端末基本情報・OS仕様 (Device &amp; OS Overview)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../02_hardware_and_drivers/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🔌 02. ハードウェア基板・IC型番・ドライバ解析 (Hardware &amp; Drivers)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../03_network_and_connectivity/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🌐 03. ネットワーク・通信仕様 (Network &amp; Connectivity)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../04_applications_and_apks/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📲 04. アプリケーション・抽出APKアーカイブ (Applications &amp; Extracted APKs)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../05_adb_commands_reference/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🛠️ 05. ADBコマンド・デバッグリファレンス (ADB Command Reference)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../06_backup_strategy/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  💾 06. バックアップ推奨戦略・手順ガイド (Backup Strategy Guide)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../07_partition_table/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  💾 07. パーティションテーブル解析仕様書 (Partition Table Specification)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../08_checksum_verification/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🔒 08. バックアップイメージ SHA-256 チェックサム検証記録 (Checksum Verification)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../09_printer_control/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  プリンター制御仕様書 (Printer Control Documentation)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../10_serial_protocol_spec/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  シリアル通信仕様書 (Serial Communication Protocol Documentation)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../11_radio_status_and_enablement_investigation/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📻 11. Radio（Wi-Fi / BT / セルラー）無効化原因・有効化可能性調査報告書
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../12_volatile_network_test_results/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🧪 12. Volatile（非永続）ネットワーク有効化テスト結果報告書
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🚀 13. 無線機能（Wi-Fi / BT / セルラー）の恒久有効化・永続化方針書
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../14_permanent_enablement_execution_log/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📝 14. 無線機能恒久有効化（アプローチ A）実施完了記録・変更ログ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../15_security_assessment/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  端末のセキュリティ機能（SELinux / dm-verity 等）の調査結果
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../16_wifi_permanent_enablement_final_report/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📶 16. Wi-Fi 機能の完全恒久有効化・復旧手順書 (Final Report)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../17_bluetooth_enablement_failed_attempt/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🚫 17. Bluetooth 完全恒久有効化 失敗レポートおよび詳細解析 (Failed Attempt)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18_printer_server_app_development/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  18. PrinterServerApp 開発とトラブルシューティング記録
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19_current_status_and_future_tasks/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  19. 現状まとめと今後のタスク (Current Status &amp; Future Tasks)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../20_alcohol_ad_value_conversion_analysis/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  AD値 → Alcohol Concentration 換算式の推測
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Hikvision DS-MDA001 解析レポート" class="md-nav__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Hikvision DS-MDA001 解析レポート
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hikvision DS-MDA001 解析レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_device_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📱 01. 端末基本情報・OS仕様 (Device &amp; OS Overview)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_hardware_and_drivers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔌 02. ハードウェア基板・IC型番・ドライバ解析 (Hardware &amp; Drivers)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_network_and_connectivity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🌐 03. ネットワーク・通信仕様 (Network &amp; Connectivity)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_applications_and_apks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📲 04. アプリケーション・抽出APKアーカイブ (Applications &amp; Extracted APKs)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_adb_commands_reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ 05. ADBコマンド・デバッグリファレンス (ADB Command Reference)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_backup_strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💾 06. バックアップ推奨戦略・手順ガイド (Backup Strategy Guide)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_partition_table/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💾 07. パーティションテーブル解析仕様書 (Partition Table Specification)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_checksum_verification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔒 08. バックアップイメージ SHA-256 チェックサム検証記録 (Checksum Verification)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_printer_control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プリンター制御仕様書 (Printer Control Documentation)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_serial_protocol_spec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    シリアル通信仕様書 (Serial Communication Protocol Documentation)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_radio_status_and_enablement_investigation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📻 11. Radio（Wi-Fi / BT / セルラー）無効化原因・有効化可能性調査報告書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12_volatile_network_test_results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 12. Volatile（非永続）ネットワーク有効化テスト結果報告書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚀 13. 無線機能（Wi-Fi / BT / セルラー）の恒久有効化・永続化方針書
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚀 13. 無線機能（Wi-Fi / BT / セルラー）の恒久有効化・永続化方針書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 1. 恒久有効化の目標と解決課題
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📌 1. 恒久有効化の目標と解決課題">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 到達目標
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔑 2. 永続化に必要な 3 大改変要件
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ 3. 恒久化実装アプローチ（3 パターン）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ 3. 恒久化実装アプローチ（3 パターン）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-vendor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アプローチ A: /vendor パーティション直接修正法 (最推奨・最もスマート)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-magisk-serviced-boot-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アプローチ B: 起動時自動スクリプト法 (Magisk service.d / Boot script)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-magisk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アプローチ C: Magisk モジュールによるシステムレスオーバーレイ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ 4. 実行前の安全策・バックアップ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-settingsapk-radio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📱 5. 純正「設定 (Settings.apk)」アプリで Radio 項目が消えるメカニズムと復元
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📱 5. 純正「設定 (Settings.apk)」アプリで Radio 項目が消えるメカニズムと復元">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wi-fi-bt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧐 なぜ設定アプリから Wi-Fi / BT / セルラー項目が消えているのか？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧐 なぜ設定アプリから Wi-Fi / BT / セルラー項目が消えているのか？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-os-pm-list-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. OSの機能宣言 (pm list features) は正常に生きている
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-roradionoriltrue-settingsapk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 原因は ro.radio.noril=true による Settings.apk のフィルタリング
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎉 設定アプリの画面項目を復元させる方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📑 関連ドキュメント
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14_permanent_enablement_execution_log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📝 14. 無線機能恒久有効化（アプローチ A）実施完了記録・変更ログ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15_security_assessment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端末のセキュリティ機能（SELinux / dm-verity 等）の調査結果
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16_wifi_permanent_enablement_final_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📶 16. Wi-Fi 機能の完全恒久有効化・復旧手順書 (Final Report)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17_bluetooth_enablement_failed_attempt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚫 17. Bluetooth 完全恒久有効化 失敗レポートおよび詳細解析 (Failed Attempt)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18_printer_server_app_development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. PrinterServerApp 開発とトラブルシューティング記録
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19_current_status_and_future_tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. 現状まとめと今後のタスク (Current Status &amp; Future Tasks)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20_alcohol_ad_value_conversion_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AD値 → Alcohol Concentration 換算式の推測
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 1. 恒久有効化の目標と解決課題
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📌 1. 恒久有効化の目標と解決課題">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 到達目標
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔑 2. 永続化に必要な 3 大改変要件
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ 3. 恒久化実装アプローチ（3 パターン）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ 3. 恒久化実装アプローチ（3 パターン）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-vendor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アプローチ A: /vendor パーティション直接修正法 (最推奨・最もスマート)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-magisk-serviced-boot-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アプローチ B: 起動時自動スクリプト法 (Magisk service.d / Boot script)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-magisk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アプローチ C: Magisk モジュールによるシステムレスオーバーレイ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ 4. 実行前の安全策・バックアップ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-settingsapk-radio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📱 5. 純正「設定 (Settings.apk)」アプリで Radio 項目が消えるメカニズムと復元
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📱 5. 純正「設定 (Settings.apk)」アプリで Radio 項目が消えるメカニズムと復元">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wi-fi-bt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧐 なぜ設定アプリから Wi-Fi / BT / セルラー項目が消えているのか？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧐 なぜ設定アプリから Wi-Fi / BT / セルラー項目が消えているのか？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-os-pm-list-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. OSの機能宣言 (pm list features) は正常に生きている
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-roradionoriltrue-settingsapk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 原因は ro.radio.noril=true による Settings.apk のフィルタリング
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎉 設定アプリの画面項目を復元させる方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📑 関連ドキュメント
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="13-wi-fi-bt">🚀 13. 無線機能（Wi-Fi / BT / セルラー）の恒久有効化・永続化方針書<a class="headerlink" href="#13-wi-fi-bt" title="Permanent link">&para;</a></h1>
+<p>本ドキュメントでは、本端末（<code>********</code>）において現在無効化されている Radio 機能（Wi-Fi, Bluetooth, セルラー）を、<strong>端末の再起動後も常に自動で有効化・日常利用可能（普通のAndroid端末化）にするための恒久化（永続化）方針・手順</strong> をまとめています。</p>
+<hr />
+<h2 id="1">📌 1. 恒久有効化の目標と解決課題<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h3 id="_1">🎯 到達目標<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>端末の電源を投入（再起動）した際、特別なコマンド操作を行うことなく以下の状態が自動維持されること。
+1. <strong>Wi-Fi</strong>: 設定画面や通知トグルから自由にオン/オフ・アクセスポイント接続が可能であること。
+2. <strong>Bluetooth</strong>: ペアリングおよび通信が常時可能であること。
+3. <strong>セルラー (SIM)</strong>: SIMカードを挿入した際に電波を掴み、モバイルデータ通信・通話が可能であること。</p>
+<hr />
+<h2 id="2-3">🔑 2. 永続化に必要な 3 大改変要件<a class="headerlink" href="#2-3" title="Permanent link">&para;</a></h2>
+<p>前回の調査・実測テストにより、起動時に以下の 3 つが阻害要因となっていることが特定されています。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>flowchart TD
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    Issue1[&quot;① Wi-Fiドライバ未ロード&lt;br&gt;(pronto_wlan.ko)&quot;] --&gt; Fix1[&quot;init.rc等で自動 insmod&quot;]
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    Issue2[&quot;② 起動時 noril プロパティ自動注入&lt;br&gt;(init.class_main.sh)&quot;] --&gt; Fix2[&quot;スクリプト修正 (noril -&gt; no)&quot;]
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    Issue3[&quot;③ 機内モードON固定&quot;] --&gt; Fix3[&quot;Settings DB で airplane_mode_on -&gt; 0&quot;]
+</span></code></pre></div>
+<hr />
+<h2 id="3-3">🛠️ 3. 恒久化実装アプローチ（3 パターン）<a class="headerlink" href="#3-3" title="Permanent link">&para;</a></h2>
+<p>本端末は <code>userdebug</code> ビルド（<code>adb root</code> 可能）であるため、複数の永続化アプローチが可能です。</p>
+<h3 id="a-vendor">アプローチ A: <code>/vendor</code> パーティション直接修正法 (最推奨・最もスマート)<a class="headerlink" href="#a-vendor" title="Permanent link">&para;</a></h3>
+<p>システム構成ファイルを直接修正し、標準のAndroid同様にネイティブ動作させる方法です。</p>
+<ul>
+<li><strong>前提条件</strong>: <code>adb root</code> および <code>adb remount</code> (または Magisk / TWRP)</li>
+<li>
+<p><strong>作業手順</strong>:</p>
+</li>
+<li>
+<p><strong><code>/vendor</code> パーティションの書き込みマウント</strong>:
+   <div class="language-powershell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">adb</span> <span class="n">root</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">adb</span> <span class="nb">disable-verity</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">adb</span> <span class="n">reboot</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">adb</span> <span class="n">root</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">adb</span> <span class="n">remount</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>起動時 <code>noril</code> 自動注入スクリプトの修正</strong>:</p>
+</li>
+<li><strong>対象ファイル</strong>: <code>/vendor/bin/init.class_main.sh</code> (Line 40)</li>
+<li><strong>修正前</strong>:
+     <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>setprop<span class="w"> </span>ro.vendor.radio.noril<span class="w"> </span>yes
+</span></code></pre></div></li>
+<li>
+<p><strong>修正後</strong>:
+     <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>setprop<span class="w"> </span>ro.vendor.radio.noril<span class="w"> </span>no
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Wi-Fi ドライバの自動ロード設定</strong>:</p>
+</li>
+<li><strong>対象ファイル</strong>: <code>/vendor/etc/init/hw/init.qcom.rc</code></li>
+<li>
+<p><strong>追加内容</strong>: <code>on boot</code> セクションにドライバインサートを追加
+     <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>on boot
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules pronto_wlan
+</span></code></pre></div>
+     <em>(または <code>insmod /vendor/lib/modules/pronto_wlan.ko</code>)</em></p>
+</li>
+<li>
+<p><strong><code>build.prop</code> の無効化フラグ修正</strong>:</p>
+</li>
+<li><strong>対象ファイル</strong>: <code>/vendor/build.prop</code> (Line 110)</li>
+<li>
+<p><strong>修正内容</strong>: <code>ro.radio.noril=true</code> ➔ <code>ro.radio.noril=false</code></p>
+</li>
+<li>
+<p><strong>機内モードの恒久解除</strong>:
+   <div class="language-powershell highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">adb</span> <span class="n">shell</span> <span class="n">settings</span> <span class="n">put</span> <span class="n">global</span> <span class="n">airplane_mode_on</span> <span class="n">0</span>
+</span></code></pre></div></p>
+</li>
+</ul>
+<hr />
+<h3 id="b-magisk-serviced-boot-script">アプローチ B: 起動時自動スクリプト法 (Magisk service.d / Boot script)<a class="headerlink" href="#b-magisk-serviced-boot-script" title="Permanent link">&para;</a></h3>
+<p><code>/vendor</code> パーティションを直接変更せず、起動完了直後にバックグラウンドスクリプトで自動アタッチする方法です。</p>
+<ul>
+<li><strong>仕組み</strong>: <code>service.d</code> や <code>/system/etc/init/</code> 内にスクリプトを配置し、boot時に以下を自動実行させる。
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="ch">#!/system/bin/sh</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>insmod<span class="w"> </span>/vendor/lib/modules/pronto_wlan.ko
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>settings<span class="w"> </span>put<span class="w"> </span>global<span class="w"> </span>airplane_mode_on<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>am<span class="w"> </span>broadcast<span class="w"> </span>-a<span class="w"> </span>android.intent.action.AIRPLANE_MODE<span class="w"> </span>--ez<span class="w"> </span>state<span class="w"> </span><span class="nb">false</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>wlan0<span class="w"> </span>up
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>svc<span class="w"> </span>wifi<span class="w"> </span><span class="nb">enable</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>svc<span class="w"> </span>bluetooth<span class="w"> </span><span class="nb">enable</span>
+</span></code></pre></div></li>
+</ul>
+<hr />
+<h3 id="c-magisk">アプローチ C: Magisk モジュールによるシステムレスオーバーレイ<a class="headerlink" href="#c-magisk" title="Permanent link">&para;</a></h3>
+<p>Magisk を導入している場合、システムファイルを変更せずにメモリ上で <code>/vendor/build.prop</code> やスクリプトを置き換えます。</p>
+<hr />
+<h2 id="4">⚠️ 4. 実行前の安全策・バックアップ<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>恒久化（ファイルシステムの書き換え）を行う前に、万が一の起動不能（Bootloop）を防ぐため、以下のバックアップを推奨します。</p>
+<ol>
+<li><strong><code>vendor</code> / <code>boot</code> / <code>system</code> パーティションのバックアップ</strong>:</li>
+<li><a href="../06_backup_strategy/">06_backup_strategy.md</a> の手順に従い、<code>dd</code> または QFIL / EDL にて <code>/vendor</code> パーティションのイメージバックアップを作成する。</li>
+</ol>
+<hr />
+<h2 id="5-settingsapk-radio">📱 5. 純正「設定 (Settings.apk)」アプリで Radio 項目が消えるメカニズムと復元<a class="headerlink" href="#5-settingsapk-radio" title="Permanent link">&para;</a></h2>
+<h3 id="wi-fi-bt">🧐 なぜ設定アプリから Wi-Fi / BT / セルラー項目が消えているのか？<a class="headerlink" href="#wi-fi-bt" title="Permanent link">&para;</a></h3>
+<p>ユーザーから最も指摘される「設定アプリを開いても Radio 系の項目が丸ごと消えている」問題の根本原因は以下の通りです。</p>
+<h4 id="1-os-pm-list-features">1. OSの機能宣言 (<code>pm list features</code>) は正常に生きている<a class="headerlink" href="#1-os-pm-list-features" title="Permanent link">&para;</a></h4>
+<p>調査の結果、PackageManager レベルの機能宣言は一切削除されておらず、完全に残っています。
+* <code>feature:android.hardware.wifi</code> ➔ <strong>正常</strong>
+* <code>feature:android.hardware.bluetooth</code> ➔ <strong>正常</strong>
+* <code>feature:android.hardware.telephony</code> ➔ <strong>正常</strong></p>
+<h4 id="2-roradionoriltrue-settingsapk">2. 原因は <code>ro.radio.noril=true</code> による Settings.apk のフィルタリング<a class="headerlink" href="#2-roradionoriltrue-settingsapk" title="Permanent link">&para;</a></h4>
+<p>Android の純正 <code>Settings.apk</code> (AOSP / CodeAurora Framework) は、設定画面のメニューツリーを描画する際、以下のコード分岐を実行します。</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// AOSP Settings.apk 内部の判定処理イメージ</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kt">boolean</span><span class="w"> </span><span class="n">isNoRadio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SystemProperties</span><span class="p">.</span><span class="na">getBoolean</span><span class="p">(</span><span class="s">&quot;ro.radio.noril&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isNoRadio</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="c1">// 画面レイアウトから無線・通信関連の Preference をすべて動的に削除 (removePreference)</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="n">removePreference</span><span class="p">(</span><span class="n">KEY_NETWORK_PROVIDER</span><span class="p">);</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="n">removePreference</span><span class="p">(</span><span class="n">KEY_CONNECTED_DEVICES</span><span class="p">);</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="n">removePreference</span><span class="p">(</span><span class="n">KEY_SIM_CARDS</span><span class="p">);</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>このプロパティが <code>true</code> になっているため、<code>Settings.apk</code> が起動時に「この端末は無線機能を持たない」と誤判定し、画面レイアウトから項目を非表示化 (<code>removePreference</code>) しています。</p>
+<hr />
+<h3 id="_2">🎉 設定アプリの画面項目を復元させる方法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong><code>ro.radio.noril</code> の解除 (根本解決)</strong>:</li>
+<li>
+<p>永続化手順（アプローチ A）で <code>/vendor/bin/init.class_main.sh</code> の <code>setprop ro.vendor.radio.noril no</code> に修正すると、<code>ro.radio.noril=false</code> となり、<strong>設定アプリを次回開いた際に自動的に Wi-Fi, Bluetooth, モバイルネットワーク のメニュー項目がすべて元通り再表示されます。</strong></p>
+</li>
+<li>
+<p><strong>直通インテントでの個別起動 (裏技/テスト用)</strong>:
+   項目が消えていても、内部の画面 Activity は存在するため、ADB やショートカットアプリ等から以下のインテントを発行すると設定画面を直接開くことが可能です。</p>
+</li>
+<li>Wi-Fi 設定画面を開く:
+     <div class="language-powershell highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">adb</span> <span class="n">shell</span> <span class="n">am</span> <span class="nb">start </span><span class="n">-a</span> <span class="n">android</span><span class="p">.</span><span class="n">settings</span><span class="p">.</span><span class="n">WIFI_SETTINGS</span>
+</span></code></pre></div></li>
+<li>Bluetooth 設定画面を開く:
+     <div class="language-powershell highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">adb</span> <span class="n">shell</span> <span class="n">am</span> <span class="nb">start </span><span class="n">-a</span> <span class="n">android</span><span class="p">.</span><span class="n">settings</span><span class="p">.</span><span class="n">BLUETOOTH_SETTINGS</span>
+</span></code></pre></div></li>
+<li>モバイルネットワーク設定画面を開く:
+     <div class="language-powershell highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">adb</span> <span class="n">shell</span> <span class="n">am</span> <span class="nb">start </span><span class="n">-a</span> <span class="n">android</span><span class="p">.</span><span class="n">settings</span><span class="p">.</span><span class="n">DATA_ROAMING_SETTINGS</span>
+</span></code></pre></div></li>
+</ol>
+<hr />
+<h2 id="_3">📑 関連ドキュメント<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../03_network_and_connectivity/">03_network_and_connectivity.md</a> - ネットワーク基本仕様</li>
+<li><a href="../11_radio_status_and_enablement_investigation/">11_radio_status_and_enablement_investigation.md</a> - 事前調査報告書</li>
+<li><a href="../12_volatile_network_test_results/">12_volatile_network_test_results.md</a> - 実動テスト結果報告書</li>
+<li><a href="./">13_permanent_enablement_strategy.md</a> - 恒久有効化方針書</li>
+<li><a href="../14_permanent_enablement_execution_log/">14_permanent_enablement_execution_log.md</a> - 恒久有効化・変更実施完了ログ</li>
+<li><a href="../06_backup_strategy/">06_backup_strategy.md</a> - バックアップ・リカバリ手順書</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

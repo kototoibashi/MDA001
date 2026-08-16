@@ -1,0 +1,2284 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hikvision DS-MDA001 (Android端末) のハードウェアおよびソフトウェア解析ドキュメント">
+      
+      
+        <meta name="author" content="kototoibashi">
+      
+      
+      
+        <link rel="prev" href="../09_printer_control/">
+      
+      
+        <link rel="next" href="../11_radio_status_and_enablement_investigation/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>シリアル通信仕様書 (Serial Communication Protocol Documentation) - Hikvision DS-MDA001 解析レポート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#serial-communication-protocol-documentation" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="Hikvision DS-MDA001 解析レポート" class="md-header__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hikvision DS-MDA001 解析レポート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              シリアル通信仕様書 (Serial Communication Protocol Documentation)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Hikvision DS-MDA001 解析レポート
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../01_device_overview/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📱 01. 端末基本情報・OS仕様 (Device &amp; OS Overview)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../02_hardware_and_drivers/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🔌 02. ハードウェア基板・IC型番・ドライバ解析 (Hardware &amp; Drivers)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../03_network_and_connectivity/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🌐 03. ネットワーク・通信仕様 (Network &amp; Connectivity)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../04_applications_and_apks/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📲 04. アプリケーション・抽出APKアーカイブ (Applications &amp; Extracted APKs)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../05_adb_commands_reference/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🛠️ 05. ADBコマンド・デバッグリファレンス (ADB Command Reference)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../06_backup_strategy/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  💾 06. バックアップ推奨戦略・手順ガイド (Backup Strategy Guide)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../07_partition_table/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  💾 07. パーティションテーブル解析仕様書 (Partition Table Specification)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../08_checksum_verification/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🔒 08. バックアップイメージ SHA-256 チェックサム検証記録 (Checksum Verification)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../09_printer_control/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  プリンター制御仕様書 (Printer Control Documentation)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  シリアル通信仕様書 (Serial Communication Protocol Documentation)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../11_radio_status_and_enablement_investigation/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📻 11. Radio（Wi-Fi / BT / セルラー）無効化原因・有効化可能性調査報告書
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../12_volatile_network_test_results/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🧪 12. Volatile（非永続）ネットワーク有効化テスト結果報告書
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../13_permanent_enablement_strategy/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🚀 13. 無線機能（Wi-Fi / BT / セルラー）の恒久有効化・永続化方針書
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../14_permanent_enablement_execution_log/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📝 14. 無線機能恒久有効化（アプローチ A）実施完了記録・変更ログ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../15_security_assessment/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  端末のセキュリティ機能（SELinux / dm-verity 等）の調査結果
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../16_wifi_permanent_enablement_final_report/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📶 16. Wi-Fi 機能の完全恒久有効化・復旧手順書 (Final Report)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../17_bluetooth_enablement_failed_attempt/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🚫 17. Bluetooth 完全恒久有効化 失敗レポートおよび詳細解析 (Failed Attempt)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18_printer_server_app_development/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  18. PrinterServerApp 開発とトラブルシューティング記録
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19_current_status_and_future_tasks/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  19. 現状まとめと今後のタスク (Current Status &amp; Future Tasks)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../20_alcohol_ad_value_conversion_analysis/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  AD値 → Alcohol Concentration 換算式の推測
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Hikvision DS-MDA001 解析レポート" class="md-nav__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Hikvision DS-MDA001 解析レポート
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hikvision DS-MDA001 解析レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_device_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📱 01. 端末基本情報・OS仕様 (Device &amp; OS Overview)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_hardware_and_drivers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔌 02. ハードウェア基板・IC型番・ドライバ解析 (Hardware &amp; Drivers)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_network_and_connectivity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🌐 03. ネットワーク・通信仕様 (Network &amp; Connectivity)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_applications_and_apks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📲 04. アプリケーション・抽出APKアーカイブ (Applications &amp; Extracted APKs)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_adb_commands_reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ 05. ADBコマンド・デバッグリファレンス (ADB Command Reference)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_backup_strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💾 06. バックアップ推奨戦略・手順ガイド (Backup Strategy Guide)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_partition_table/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💾 07. パーティションテーブル解析仕様書 (Partition Table Specification)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_checksum_verification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔒 08. バックアップイメージ SHA-256 チェックサム検証記録 (Checksum Verification)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_printer_control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プリンター制御仕様書 (Printer Control Documentation)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    シリアル通信仕様書 (Serial Communication Protocol Documentation)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    シリアル通信仕様書 (Serial Communication Protocol Documentation)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 物理層およびシリアルポート仕様
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 通信フレーム構造およびプロトコル規約
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 通信フレーム構造およびプロトコル規約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 パケットフレーム構成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-lrc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 LRC チェックサム算出アルゴリズム
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-command-catalog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. コマンドフレーム一覧 (Command Catalog)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 受信パケット種別および状態遷移ロジック
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 受信パケット種別および状態遷移ロジック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-mrecvbuf7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 応答ステータスコード (mRecvBuf[7])
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-mrecvbuf7-0x24-mrecvbuf8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 吹き込み進捗ステータスコード (mRecvBuf[7] == 0x24 時の mRecvBuf[8])
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. データデコードと閾値判定ロジック
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. データデコードと閾値判定ロジック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-ad-cmdtypegetalcolholad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 ゼロ点 AD 値 (CmdType.getAlcolholAD)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-cmdtypegetalcoholconcentration-cmdtypepassivetest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 アルコール濃度値 (CmdType.GetAlcoholConcentration &amp; CmdType.PassiveTest)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 標定（キャリブレーション）データ構造
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 通常測定シーケンスフロー
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        関連ドキュメント
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_radio_status_and_enablement_investigation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📻 11. Radio（Wi-Fi / BT / セルラー）無効化原因・有効化可能性調査報告書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12_volatile_network_test_results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 12. Volatile（非永続）ネットワーク有効化テスト結果報告書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13_permanent_enablement_strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚀 13. 無線機能（Wi-Fi / BT / セルラー）の恒久有効化・永続化方針書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14_permanent_enablement_execution_log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📝 14. 無線機能恒久有効化（アプローチ A）実施完了記録・変更ログ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15_security_assessment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端末のセキュリティ機能（SELinux / dm-verity 等）の調査結果
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16_wifi_permanent_enablement_final_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📶 16. Wi-Fi 機能の完全恒久有効化・復旧手順書 (Final Report)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17_bluetooth_enablement_failed_attempt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚫 17. Bluetooth 完全恒久有効化 失敗レポートおよび詳細解析 (Failed Attempt)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18_printer_server_app_development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. PrinterServerApp 開発とトラブルシューティング記録
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19_current_status_and_future_tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. 現状まとめと今後のタスク (Current Status &amp; Future Tasks)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20_alcohol_ad_value_conversion_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AD値 → Alcohol Concentration 換算式の推測
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 物理層およびシリアルポート仕様
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 通信フレーム構造およびプロトコル規約
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 通信フレーム構造およびプロトコル規約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 パケットフレーム構成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-lrc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 LRC チェックサム算出アルゴリズム
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-command-catalog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. コマンドフレーム一覧 (Command Catalog)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 受信パケット種別および状態遷移ロジック
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 受信パケット種別および状態遷移ロジック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-mrecvbuf7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 応答ステータスコード (mRecvBuf[7])
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-mrecvbuf7-0x24-mrecvbuf8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 吹き込み進捗ステータスコード (mRecvBuf[7] == 0x24 時の mRecvBuf[8])
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. データデコードと閾値判定ロジック
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. データデコードと閾値判定ロジック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-ad-cmdtypegetalcolholad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 ゼロ点 AD 値 (CmdType.getAlcolholAD)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-cmdtypegetalcoholconcentration-cmdtypepassivetest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 アルコール濃度値 (CmdType.GetAlcoholConcentration &amp; CmdType.PassiveTest)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 標定（キャリブレーション）データ構造
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 通常測定シーケンスフロー
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        関連ドキュメント
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="serial-communication-protocol-documentation">シリアル通信仕様書 (Serial Communication Protocol Documentation)<a class="headerlink" href="#serial-communication-protocol-documentation" title="Permanent link">&para;</a></h1>
+<p>本ドキュメントでは、Hikvision製アルコール検知端末 (<code>com.hikvision.alcoholtest</code>) とアルコールセンサー基板（検知モジュール）間で行われるシリアル通信の物理層仕様、フレーム規約、コマンド一覧、および状態遷移ロジックについて解説します。</p>
+<hr />
+<h2 id="1">1. 物理層およびシリアルポート仕様<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>アルコール検知端末のメイン基板とアルコールセンサーモジュールは、Android OS上のシリアルデバイスノードを介して調停されます。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">設定値 / 仕様</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>デバイスファイル</strong></td>
+<td style="text-align: left;"><code>/dev/ttyMSM1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ボーレート (Baud Rate)</strong></td>
+<td style="text-align: left;"><code>9600 bps</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>データビット (Data Bits)</strong></td>
+<td style="text-align: left;">8 bit</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ストップビット (Stop Bits)</strong></td>
+<td style="text-align: left;">1 bit</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>パリティ (Parity)</strong></td>
+<td style="text-align: left;">None (パリティなし)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>フロー制御</strong></td>
+<td style="text-align: left;">None</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Nativeライブラリ</strong></td>
+<td style="text-align: left;"><code>libgzds_utils.so</code> (<code>com.gzds.utils.CSerialPort</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Java側ドライバー制御</strong></td>
+<td style="text-align: left;"><a href="../apks/decompiled/com.hikvision.alcoholtest/sources/com/hikvision/alcoholtest/comassistant/SerialHelper.java">SerialHelper.java</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2">2. 通信フレーム構造およびプロトコル規約<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>通信パケットは可変長フレーム構造を持ち、スタートヘッダ <code>0xFE 0x02</code> とエンドトレーラ <code>0xF0 0xFE</code> でサンドイッチされた形で送受信されます。</p>
+<h3 id="21">2.1 パケットフレーム構成<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>  +-----------+--------------+--------------+-------------+----------------+----------------+---------+-----------+
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  | Header    | Length       | Address      | Cmd ID      | Sub Cmd        | Data Payload   | Checksum| Trailer   |
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  | (2 Bytes) | (2 Bytes)    | (2 Bytes)    | (1 Byte)    | (1 Byte)       | (Variable)     | (1 Byte)| (2 Bytes) |
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  +-----------+--------------+--------------+-------------+----------------+----------------+---------+-----------+
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  | FE  02    | 00  0C       | 02  01       | 01          | 01             | ...            | XX      | F0  FE    |
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  +-----------+--------------+--------------+-------------+----------------+----------------+---------+-----------+
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">バイト位置</th>
+<th style="text-align: left;">フィールド名</th>
+<th style="text-align: left;">サイズ</th>
+<th style="text-align: left;">説明 / 値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>[0..1]</code></td>
+<td style="text-align: left;"><strong>Header</strong></td>
+<td style="text-align: left;">2 Bytes</td>
+<td style="text-align: left;">固定フレーム開始文字: <code>0xFE 0x02</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>[2..3]</code></td>
+<td style="text-align: left;"><strong>Length</strong></td>
+<td style="text-align: left;">2 Bytes</td>
+<td style="text-align: left;">フレーム全バイト長（Big-Endian short）。例: <code>0x000C</code> = 12 Byte</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>[4..5]</code></td>
+<td style="text-align: left;"><strong>Address</strong></td>
+<td style="text-align: left;">2 Bytes</td>
+<td style="text-align: left;">送受信ノード識別子: <code>0x02 0x01</code> (Host &lt;-&gt; Board)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>[6]</code></td>
+<td style="text-align: left;"><strong>Cmd ID</strong></td>
+<td style="text-align: left;">1 Byte</td>
+<td style="text-align: left;">コマンドカテゴリ（0x01: 測定制御, 0x04: 吹込制御, 0x08: 濃度取得等）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>[7]</code></td>
+<td style="text-align: left;"><strong>Sub Cmd</strong></td>
+<td style="text-align: left;">1 Byte</td>
+<td style="text-align: left;">サブコマンド / モード動作コード</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>[8..N-4]</code></td>
+<td style="text-align: left;"><strong>Data Payload</strong></td>
+<td style="text-align: left;">可変</td>
+<td style="text-align: left;">制御パラメータ、日時データ、計測値データなど</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>[N-3]</code></td>
+<td style="text-align: left;"><strong>Checksum (LRC)</strong></td>
+<td style="text-align: left;">1 Byte</td>
+<td style="text-align: left;"><strong>XOR チェックサム</strong>: バイトインデックス 2 (<code>Length</code>) から <code>Data Payload</code> 末尾までの排他論理和</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>[N-2..N-1]</code></td>
+<td style="text-align: left;"><strong>Trailer</strong></td>
+<td style="text-align: left;">2 Bytes</td>
+<td style="text-align: left;">固定フレーム終了文字: <code>0xF0 0xFE</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-lrc">2.2 LRC チェックサム算出アルゴリズム<a class="headerlink" href="#22-lrc" title="Permanent link">&para;</a></h3>
+<p>チェックサムは、<code>DataUtils.getLRC()</code> によって算定されます。<code>FE02</code>（ヘッダ）を除く全データバイトの排他論理和（XOR）です。</p>
+<p>$$LRC = B_2 \oplus B_3 \oplus B_4 \oplus \dots \oplus B_{N-4}$$</p>
+<hr />
+<h2 id="3-command-catalog">3. コマンドフレーム一覧 (Command Catalog)<a class="headerlink" href="#3-command-catalog" title="Permanent link">&para;</a></h2>
+<p>ソースコード <a href="../apks/decompiled/com.hikvision.alcoholtest/sources/com/hikvision/alcoholtest/util/OrderTools.java">OrderTools.java</a> で定義されている全送信コマンドの16進数パケット一覧です。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">コマンド名 (変数名)</th>
+<th style="text-align: left;">16進数コマンド文字列</th>
+<th style="text-align: left;">コマンドID / サブ</th>
+<th style="text-align: left;">機能・動作概要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>startTest</code></td>
+<td style="text-align: left;"><code>FE020C0002010101010EF0FE</code></td>
+<td style="text-align: left;"><code>0x01 / 0x01</code></td>
+<td style="text-align: left;">通常テストモード開始</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>exitTest</code></td>
+<td style="text-align: left;"><code>FE020C0002010101020DF0FE</code></td>
+<td style="text-align: left;"><code>0x01 / 0x02</code></td>
+<td style="text-align: left;">テストモード終了</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>findAlcoholAD</code></td>
+<td style="text-align: left;"><code>FE020C0002010102000CF0FE</code></td>
+<td style="text-align: left;"><code>0x02 / 0x00</code></td>
+<td style="text-align: left;">アルコールAD値（ゼロ点クリア確認）要求</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Buzzing</code></td>
+<td style="text-align: left;"><code>FE020C0002010103010CF0FE</code></td>
+<td style="text-align: left;"><code>0x03 / 0x01</code></td>
+<td style="text-align: left;">ブザー発音（短鳴）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>BuzzingLong</code></td>
+<td style="text-align: left;"><code>FE020C0002010103020FF0FE</code></td>
+<td style="text-align: left;"><code>0x03 / 0x02</code></td>
+<td style="text-align: left;">ブザー発音（長鳴）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>blow</code></td>
+<td style="text-align: left;"><code>FE020C0002010104010BF0FE</code></td>
+<td style="text-align: left;"><code>0x04 / 0x01</code></td>
+<td style="text-align: left;">呼気吹き込み待機モード開始</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>exitBlow</code></td>
+<td style="text-align: left;"><code>FE020C00020101040208F0FE</code></td>
+<td style="text-align: left;"><code>0x04 / 0x02</code></td>
+<td style="text-align: left;">呼気吹き込みモード終了</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>QuickBlow</code> / <code>blowQuick</code></td>
+<td style="text-align: left;"><code>FE020C00020101040309F0FE</code></td>
+<td style="text-align: left;"><code>0x04 / 0x03</code></td>
+<td style="text-align: left;">迅速吹き込み（スクリーニング）モード開始</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Countdown</code></td>
+<td style="text-align: left;"><code>FE020C0002010105000BF0FE</code></td>
+<td style="text-align: left;"><code>0x05 / 0x00</code></td>
+<td style="text-align: left;">カウントダウン指示</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>MPa</code></td>
+<td style="text-align: left;"><code>FE020C00020101060008F0FE</code></td>
+<td style="text-align: left;"><code>0x06 / 0x00</code></td>
+<td style="text-align: left;">圧力 (MPa) 値読み出し</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>temperature</code></td>
+<td style="text-align: left;"><code>FE020C00020101070009F0FE</code></td>
+<td style="text-align: left;"><code>0x07 / 0x00</code></td>
+<td style="text-align: left;">センサー温度 (℃) 読み出し</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>AlcoholContent</code></td>
+<td style="text-align: left;"><code>FE020C00020101080107F0FE</code></td>
+<td style="text-align: left;"><code>0x08 / 0x01</code></td>
+<td style="text-align: left;">アルコール測定濃度値取得</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>demarcate</code></td>
+<td style="text-align: left;"><code>FE020C00020101080204F0FE</code></td>
+<td style="text-align: left;"><code>0x08 / 0x02</code></td>
+<td style="text-align: left;">標定（キャリブレーション）全パラメータ取得</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>getParam</code></td>
+<td style="text-align: left;"><code>FE020C000201010A0004F0FE</code></td>
+<td style="text-align: left;"><code>0x0A / 0x00</code></td>
+<td style="text-align: left;">センサー基板設定パラメータ取得</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Setconcentration</code></td>
+<td style="text-align: left;"><code>FE020E000201010B01010106F0FE</code></td>
+<td style="text-align: left;"><code>0x0B / 0x01</code></td>
+<td style="text-align: left;">アルコール濃度閾値設定</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>SetBlowConcentration</code></td>
+<td style="text-align: left;"><code>FE020E000201010B01020105F0FE</code></td>
+<td style="text-align: left;"><code>0x0B / 0x01</code></td>
+<td style="text-align: left;">吹き込み濃度閾値設定</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>getUnit</code></td>
+<td style="text-align: left;"><code>FE020E000201010B02000005F0FE</code></td>
+<td style="text-align: left;"><code>0x0B / 0x02</code></td>
+<td style="text-align: left;">単位設定取得</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>getbloodUnit</code></td>
+<td style="text-align: left;"><code>FE020E000201010B02010004F0FE</code></td>
+<td style="text-align: left;"><code>0x0B / 0x02</code></td>
+<td style="text-align: left;">血液アルコール単位取得</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>getblowUnit</code></td>
+<td style="text-align: left;"><code>FE020E000201010B02020007F0FE</code></td>
+<td style="text-align: left;"><code>0x0B / 0x02</code></td>
+<td style="text-align: left;">呼気アルコール単位取得</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Getconcentration</code></td>
+<td style="text-align: left;"><code>FE020E000201010B02010105F0FE</code></td>
+<td style="text-align: left;"><code>0x0B / 0x02</code></td>
+<td style="text-align: left;">設定濃度取得</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>settingBlowHigh</code></td>
+<td style="text-align: left;"><code>FE020E000201010D01010100F0FE</code></td>
+<td style="text-align: left;"><code>0x0D / 0x01</code></td>
+<td style="text-align: left;">呼気検出感度【高】設定</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>seetingBlowMiddle</code></td>
+<td style="text-align: left;"><code>FE020E000201010D01010203F0FE</code></td>
+<td style="text-align: left;"><code>0x0D / 0x01</code></td>
+<td style="text-align: left;">呼気検出感度【中】設定</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>settingBlowLow</code></td>
+<td style="text-align: left;"><code>FE020E000201010D01010302F0FE</code></td>
+<td style="text-align: left;"><code>0x0D / 0x01</code></td>
+<td style="text-align: left;">呼気検出感度【低】設定</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Pump</code></td>
+<td style="text-align: left;"><code>FE020C000201010E0000F0FE</code></td>
+<td style="text-align: left;"><code>0x0E / 0x00</code></td>
+<td style="text-align: left;">エアポンプ駆動指示</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>coreVersion</code></td>
+<td style="text-align: left;"><code>FE020C000201010F0001F0FE</code></td>
+<td style="text-align: left;"><code>0x0F / 0x00</code></td>
+<td style="text-align: left;">ファームウェアコアバージョン取得</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>passiveTest</code></td>
+<td style="text-align: left;"><code>FE020C0002010110001EF0FE</code></td>
+<td style="text-align: left;"><code>0x10 / 0x00</code></td>
+<td style="text-align: left;">パッシブ（被動）テスト実行指示</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>DateTime</code></td>
+<td style="text-align: left;"><code>FE021A00020101110200000000...F0FE</code></td>
+<td style="text-align: left;"><code>0x11 / 0x02</code></td>
+<td style="text-align: left;">システム日時読み出し</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>getDeviceId</code></td>
+<td style="text-align: left;"><code>FE021600020101120200000000...F0FE</code></td>
+<td style="text-align: left;"><code>0x12 / 0x02</code></td>
+<td style="text-align: left;">デバイス固有識別ID取得</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>getRTC</code></td>
+<td style="text-align: left;"><code>FE021300020101130200000000...F0FE</code></td>
+<td style="text-align: left;"><code>0x13 / 0x02</code></td>
+<td style="text-align: left;">RTC時計データ取得</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>setRTC</code></td>
+<td style="text-align: left;"><code>FE021300020101130120180122...F0FE</code></td>
+<td style="text-align: left;"><code>0x13 / 0x01</code></td>
+<td style="text-align: left;">RTC時計設定</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>getFlowVelocity</code></td>
+<td style="text-align: left;"><code>FE021600020101140200000000...F0FE</code></td>
+<td style="text-align: left;"><code>0x14 / 0x02</code></td>
+<td style="text-align: left;">呼気流速測定値取得</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>caliFlowVelocityStart</code></td>
+<td style="text-align: left;"><code>FE020C0002010115011AF0FE</code></td>
+<td style="text-align: left;"><code>0x15 / 0x01</code></td>
+<td style="text-align: left;">流速キャリブレーション開始</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>caliFlowVelocityRead</code></td>
+<td style="text-align: left;"><code>FE020C00020101150219F0FE</code></td>
+<td style="text-align: left;"><code>0x15 / 0x02</code></td>
+<td style="text-align: left;">流速キャリブレーション値読出</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4">4. 受信パケット種別および状態遷移ロジック<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p><a href="../apks/decompiled/com.hikvision.alcoholtest/sources/com/hikvision/alcoholtest/activity/NormalTestModeActivity.java">NormalTestModeActivity.java</a> 内の <code>Handler.handleMessage</code> で処理されるレスポンス種別一覧です。</p>
+<h3 id="41-mrecvbuf7">4.1 応答ステータスコード (<code>mRecvBuf[7]</code>)<a class="headerlink" href="#41-mrecvbuf7" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ステータスコード</th>
+<th style="text-align: left;">16進表記</th>
+<th style="text-align: left;">レスポンス種別</th>
+<th style="text-align: left;">概要・処理フロー</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>33</code></td>
+<td style="text-align: left;"><code>0x21</code></td>
+<td style="text-align: left;"><strong>ACK (成功)</strong></td>
+<td style="text-align: left;">コマンド受信成功応答</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>34</code></td>
+<td style="text-align: left;"><code>0x22</code></td>
+<td style="text-align: left;"><strong>NAK (エラー)</strong></td>
+<td style="text-align: left;">初期化失敗、コマンドエラー、または中断通知</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>35</code></td>
+<td style="text-align: left;"><code>0x23</code></td>
+<td style="text-align: left;"><strong>Data Packet</strong></td>
+<td style="text-align: left;">計測結果データ（AD値、濃度、温度、標定データなど）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>36</code></td>
+<td style="text-align: left;"><code>0x24</code></td>
+<td style="text-align: left;"><strong>Blowing Notify</strong></td>
+<td style="text-align: left;">吹き込み中のリアルタイム状態進捗通知</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-mrecvbuf7-0x24-mrecvbuf8">4.2 吹き込み進捗ステータスコード (<code>mRecvBuf[7] == 0x24</code> 時の <code>mRecvBuf[8]</code>)<a class="headerlink" href="#42-mrecvbuf7-0x24-mrecvbuf8" title="Permanent link">&para;</a></h3>
+<p>呼気吹き込み動作中、センサー基板からリアルタイムで状態コードが通知されます。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>graph TD
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    A[&quot;吹き込み開始&quot;] --&gt; B{&quot;mRecvBuf[8] の値&quot;}
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    B --&gt;|1| C[&quot;吹き込み正常進行中&lt;br/&gt;(blowing_normal_start)&quot;]
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    B --&gt;|2| D[&quot;呼気量不足&lt;br/&gt;(expiratory_time_volume_is_too_small)&quot;]
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    B --&gt;|3| E[&quot;吹き込み時間短小&lt;br/&gt;(expiratory_duration_is_too_short)&quot;]
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    B --&gt;|4| F[&quot;低呼気圧継続&lt;br/&gt;(persistent_low_expiratory_volume)&quot;]
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    B --&gt;|5| G[&quot;吹き込み完了&lt;br/&gt;(blowing_normal_stop)&quot;]
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    G --&gt; H[&quot;exitBlow 送信&lt;br/&gt;-&gt; AlcoholContent (濃度取得) へ&quot;]
+</span></code></pre></div>
+<hr />
+<h2 id="5">5. データデコードと閾値判定ロジック<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h3 id="51-ad-cmdtypegetalcolholad">5.1 ゼロ点 AD 値 (<code>CmdType.getAlcolholAD</code>)<a class="headerlink" href="#51-ad-cmdtypegetalcolholad" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>受信位置</strong>: <code>mRecvBuf[8..11]</code> (32bit Integer)</li>
+<li><strong>判定値</strong>:</li>
+<li><code>AD値 &lt;= 200</code>: ゼロクリア完了。<code>blow</code> コマンドを発行し吹込待機へ遷移。</li>
+<li><code>AD値 &gt; 200</code>: センサーゼロ点クリア処理中。再度 <code>findAlcoholAD</code> を発行し待機。</li>
+</ul>
+<h3 id="52-cmdtypegetalcoholconcentration-cmdtypepassivetest">5.2 アルコール濃度値 (<code>CmdType.GetAlcoholConcentration</code> &amp; <code>CmdType.PassiveTest</code>)<a class="headerlink" href="#52-cmdtypegetalcoholconcentration-cmdtypepassivetest" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>受信位置</strong>: <code>mRecvBuf[9..12]</code> (4 Bytes Big-Endian <strong>IEEE 754 Float</strong>)</li>
+<li><strong>酒気帯び判定閾値 (中国 / 日本規約基準)</strong>:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">濃度範囲 (mg/100ml)</th>
+<th style="text-align: left;">判定文字列 (<code>alcolholFlag</code>)</th>
+<th style="text-align: left;">画面表示</th>
+<th style="text-align: left;">データベース記録</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>&lt; 20.0 mg/100ml</strong></td>
+<td style="text-align: left;">未超標 (Not Exceeding Standard)</td>
+<td style="text-align: left;">緑色 (<code>#006400</code>)</td>
+<td style="text-align: left;">OK (<code>0.0 &lt;= f &lt; 0.15 mg/L</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>20.0 ～ 79.9 mg/100ml</strong></td>
+<td style="text-align: left;">飲酒後駕車 (Drinking Driving)</td>
+<td style="text-align: left;">黄色 (<code>#DAA520</code>)</td>
+<td style="text-align: left;">NG (<code>f &gt;= 0.15 mg/L</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>&gt;= 80.0 mg/100ml</strong></td>
+<td style="text-align: left;">酔酒後駕車 (Drunk Driving)</td>
+<td style="text-align: left;">赤色 (CATEGORY_MASK)</td>
+<td style="text-align: left;">NG (<code>f &gt;= 0.15 mg/L</code>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="53">5.3 標定（キャリブレーション）データ構造<a class="headerlink" href="#53" title="Permanent link">&para;</a></h3>
+<p><code>CmdType.Demarcate</code> (<code>mRecvBuf[7] == 0x23</code>) のレスポンスに含まれるバイナリデータ構造体マップです。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>  Index: 0   1   2   3   4   5   6   7   8   9..12   13..14   15..16   17..20   21..24   25..28   ...   57..60
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>        [Header ] [Len   ] [Addr  ] Cmd Sub [TemVal ] [Start ] [Peak  ] [Integ  ] [K0Val  ] [B0Val  ]       [MaxDate]
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">バイト領域</th>
+<th style="text-align: left;">データ型</th>
+<th style="text-align: left;">変数名</th>
+<th style="text-align: left;">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>[9..12]</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;"><code>temvalue</code></td>
+<td style="text-align: left;">測定時温度</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>[13..14]</code></td>
+<td style="text-align: left;">Int</td>
+<td style="text-align: left;"><code>startValue</code></td>
+<td style="text-align: left;">測定開始AD値</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>[15..16]</code></td>
+<td style="text-align: left;">Int</td>
+<td style="text-align: left;"><code>peakValue</code></td>
+<td style="text-align: left;">ピークAD値</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>[17..20]</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;"><code>integalValue</code></td>
+<td style="text-align: left;">信号積分値</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>[21..24]</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;"><code>K0Value</code></td>
+<td style="text-align: left;">補正係数 K0</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>[25..28]</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;"><code>B0Value</code></td>
+<td style="text-align: left;">オフセット B0</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>[29..32]</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;"><code>K1Value</code></td>
+<td style="text-align: left;">補正係数 K1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>[33..36]</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;"><code>B1Value</code></td>
+<td style="text-align: left;">オフセット B1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>[37..40]</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;"><code>K2Value</code></td>
+<td style="text-align: left;">補正係数 K2</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>[41..44]</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;"><code>B2Value</code></td>
+<td style="text-align: left;">オフセット B2</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>[45..46]</code></td>
+<td style="text-align: left;">Int</td>
+<td style="text-align: left;"><code>samplingNum</code></td>
+<td style="text-align: left;">サンプリング点数</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>[47..50]</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;"><code>concentrationValue</code></td>
+<td style="text-align: left;">校正濃度値</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>[51..54]</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;"><code>TemperatureIntegralValue</code></td>
+<td style="text-align: left;">温度積分値</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>[55..56]</code></td>
+<td style="text-align: left;">Int</td>
+<td style="text-align: left;"><code>maxValue</code></td>
+<td style="text-align: left;">最大ADピーク</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>[57..60]</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;"><code>maxdateValue</code></td>
+<td style="text-align: left;">Peak発生時刻データ</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6">6. 通常測定シーケンスフロー<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<p>アルコール検知におけるメインアプリケーションとセンサー基板間の交互作用シーケンス図です。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sequenceDiagram
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    autonumber
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    participant App as Android App (NormalTestModeActivity)
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    participant Driver as Serial Driver (/dev/ttyMSM1)
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    participant Board as Alcohol Sensor Board
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    App-&gt;&gt;Driver: Open /dev/ttyMSM1 (9600 bps)
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    App-&gt;&gt;Board: Send startTest (FE020C0002010101010EF0FE)
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    Board--&gt;&gt;App: Return ACK (33 / 0x21)
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    loop ゼロ点クリア確認
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>        App-&gt;&gt;Board: Send findAlcoholAD (FE020C0002010102000CF0FE)
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>        Board--&gt;&gt;App: Return AD Value (mRecvBuf[8..11])
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    end
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>    App-&gt;&gt;Board: Send blow (FE020C0002010104010BF0FE)
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>    Note over App,Board: 吹込待機状態へ遷移
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>    loop 吹き込み実行中
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>        Board--&gt;&gt;App: Notify Blow Status (0x24 0x01 ~ 0x04)
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>    end
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>    Board--&gt;&gt;App: Notify Blow Completed (0x24 0x05)
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>    App-&gt;&gt;Board: Send exitBlow (FE020C00020101040208F0FE)
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>    Board--&gt;&gt;App: Return ACK (33 / 0x21)
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>    App-&gt;&gt;Board: Send AlcoholContent (FE020C00020101080107F0FE)
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>    Board--&gt;&gt;App: Return Float Concentration (mRecvBuf[9..12])
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>    Note over App: 判定表示 (未超標 / 飲酒 / 酔酒) &amp; SQLite 保存
+</span></code></pre></div>
+<hr />
+<h2 id="_1">関連ドキュメント<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../01_device_overview/">01_device_overview.md</a> - デバイス概要</li>
+<li><a href="../02_hardware_and_drivers/">02_hardware_and_drivers.md</a> - ハードウェアおよびドライバ構成</li>
+<li><a href="../09_printer_control/">09_printer_control.md</a> - サーマルプリンター制御仕様書</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

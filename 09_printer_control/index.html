@@ -1,0 +1,1910 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hikvision DS-MDA001 (Android端末) のハードウェアおよびソフトウェア解析ドキュメント">
+      
+      
+        <meta name="author" content="kototoibashi">
+      
+      
+      
+        <link rel="prev" href="../08_checksum_verification/">
+      
+      
+        <link rel="next" href="../10_serial_protocol_spec/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>プリンター制御仕様書 (Printer Control Documentation) - Hikvision DS-MDA001 解析レポート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#printer-control-documentation" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="Hikvision DS-MDA001 解析レポート" class="md-header__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hikvision DS-MDA001 解析レポート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              プリンター制御仕様書 (Printer Control Documentation)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Hikvision DS-MDA001 解析レポート
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../01_device_overview/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📱 01. 端末基本情報・OS仕様 (Device &amp; OS Overview)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../02_hardware_and_drivers/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🔌 02. ハードウェア基板・IC型番・ドライバ解析 (Hardware &amp; Drivers)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../03_network_and_connectivity/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🌐 03. ネットワーク・通信仕様 (Network &amp; Connectivity)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../04_applications_and_apks/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📲 04. アプリケーション・抽出APKアーカイブ (Applications &amp; Extracted APKs)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../05_adb_commands_reference/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🛠️ 05. ADBコマンド・デバッグリファレンス (ADB Command Reference)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../06_backup_strategy/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  💾 06. バックアップ推奨戦略・手順ガイド (Backup Strategy Guide)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../07_partition_table/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  💾 07. パーティションテーブル解析仕様書 (Partition Table Specification)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../08_checksum_verification/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🔒 08. バックアップイメージ SHA-256 チェックサム検証記録 (Checksum Verification)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  プリンター制御仕様書 (Printer Control Documentation)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../10_serial_protocol_spec/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  シリアル通信仕様書 (Serial Communication Protocol Documentation)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../11_radio_status_and_enablement_investigation/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📻 11. Radio（Wi-Fi / BT / セルラー）無効化原因・有効化可能性調査報告書
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../12_volatile_network_test_results/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🧪 12. Volatile（非永続）ネットワーク有効化テスト結果報告書
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../13_permanent_enablement_strategy/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🚀 13. 無線機能（Wi-Fi / BT / セルラー）の恒久有効化・永続化方針書
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../14_permanent_enablement_execution_log/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📝 14. 無線機能恒久有効化（アプローチ A）実施完了記録・変更ログ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../15_security_assessment/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  端末のセキュリティ機能（SELinux / dm-verity 等）の調査結果
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../16_wifi_permanent_enablement_final_report/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📶 16. Wi-Fi 機能の完全恒久有効化・復旧手順書 (Final Report)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../17_bluetooth_enablement_failed_attempt/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🚫 17. Bluetooth 完全恒久有効化 失敗レポートおよび詳細解析 (Failed Attempt)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18_printer_server_app_development/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  18. PrinterServerApp 開発とトラブルシューティング記録
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19_current_status_and_future_tasks/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  19. 現状まとめと今後のタスク (Current Status &amp; Future Tasks)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../20_alcohol_ad_value_conversion_analysis/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  AD値 → Alcohol Concentration 換算式の推測
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Hikvision DS-MDA001 解析レポート" class="md-nav__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Hikvision DS-MDA001 解析レポート
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hikvision DS-MDA001 解析レポート
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_device_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📱 01. 端末基本情報・OS仕様 (Device &amp; OS Overview)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_hardware_and_drivers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔌 02. ハードウェア基板・IC型番・ドライバ解析 (Hardware &amp; Drivers)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_network_and_connectivity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🌐 03. ネットワーク・通信仕様 (Network &amp; Connectivity)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_applications_and_apks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📲 04. アプリケーション・抽出APKアーカイブ (Applications &amp; Extracted APKs)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_adb_commands_reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ 05. ADBコマンド・デバッグリファレンス (ADB Command Reference)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_backup_strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💾 06. バックアップ推奨戦略・手順ガイド (Backup Strategy Guide)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_partition_table/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💾 07. パーティションテーブル解析仕様書 (Partition Table Specification)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_checksum_verification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔒 08. バックアップイメージ SHA-256 チェックサム検証記録 (Checksum Verification)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プリンター制御仕様書 (Printer Control Documentation)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プリンター制御仕様書 (Printer Control Documentation)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. システムアーキテクチャ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. システムアーキテクチャ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主なモジュールと構成ファイル
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-jni-interface-native" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. JNI Interface &amp; Native コマンド仕様
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. JNI Interface &amp; Native コマンド仕様">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opcode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コマンドコード（Opcode）一覧
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. テキスト描画・ラスタライズ制御フロー
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. テキスト描画・ラスタライズ制御フロー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-bit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1-bit モノクロ化・ビットパックアルゴリズム
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. レシート（許可証・測定結果）印字フォーマット
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. レシート（許可証・測定結果）印字フォーマット">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        印字レイアウト構成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        判定条件ロジック
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. ハードウェア・デバイスノード仕様
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-api-comgzdsutilsprinter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. API リファレンス概要 (com.gzds.utils.Printer)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_serial_protocol_spec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    シリアル通信仕様書 (Serial Communication Protocol Documentation)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_radio_status_and_enablement_investigation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📻 11. Radio（Wi-Fi / BT / セルラー）無効化原因・有効化可能性調査報告書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12_volatile_network_test_results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 12. Volatile（非永続）ネットワーク有効化テスト結果報告書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13_permanent_enablement_strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚀 13. 無線機能（Wi-Fi / BT / セルラー）の恒久有効化・永続化方針書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14_permanent_enablement_execution_log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📝 14. 無線機能恒久有効化（アプローチ A）実施完了記録・変更ログ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15_security_assessment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端末のセキュリティ機能（SELinux / dm-verity 等）の調査結果
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16_wifi_permanent_enablement_final_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📶 16. Wi-Fi 機能の完全恒久有効化・復旧手順書 (Final Report)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17_bluetooth_enablement_failed_attempt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚫 17. Bluetooth 完全恒久有効化 失敗レポートおよび詳細解析 (Failed Attempt)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18_printer_server_app_development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. PrinterServerApp 開発とトラブルシューティング記録
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19_current_status_and_future_tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. 現状まとめと今後のタスク (Current Status &amp; Future Tasks)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20_alcohol_ad_value_conversion_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AD値 → Alcohol Concentration 換算式の推測
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. システムアーキテクチャ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. システムアーキテクチャ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主なモジュールと構成ファイル
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-jni-interface-native" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. JNI Interface &amp; Native コマンド仕様
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. JNI Interface &amp; Native コマンド仕様">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opcode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コマンドコード（Opcode）一覧
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. テキスト描画・ラスタライズ制御フロー
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. テキスト描画・ラスタライズ制御フロー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-bit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1-bit モノクロ化・ビットパックアルゴリズム
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. レシート（許可証・測定結果）印字フォーマット
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. レシート（許可証・測定結果）印字フォーマット">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        印字レイアウト構成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        判定条件ロジック
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. ハードウェア・デバイスノード仕様
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-api-comgzdsutilsprinter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. API リファレンス概要 (com.gzds.utils.Printer)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="printer-control-documentation">プリンター制御仕様書 (Printer Control Documentation)<a class="headerlink" href="#printer-control-documentation" title="Permanent link">&para;</a></h1>
+<p>本ドキュメントでは、Hikvision製アルコール検知端末 (<code>com.hikvision.alcoholtest</code>) に組み込まれているサーマルプリンター制御のアーキテクチャ、JNI/Nativeコマンド仕様、印字フロー、および制御コードについて解説します。</p>
+<hr />
+<h2 id="1">1. システムアーキテクチャ<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>プリンター制御システムは、上位アプリケーション層からNative (C/C++) ライブラリ、シリアル通信ドライバ層までの多層構造で構成されています。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>graph TD
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    A[&quot;Hikvision Activity&lt;br/&gt;(NormalTestModeActivity)&quot;] --&gt;|PrintUtil.printAll()| B[&quot;PrintUtil&lt;br/&gt;(com.hikvision.alcoholtest.util)&quot;]
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    B --&gt;|High-Level API| C[&quot;Printer / CPrint&lt;br/&gt;(com.gzds.utils)&quot;]
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    C --&gt;|JNI Command Call| D[&quot;libgzds_utils.so&lt;br/&gt;(Native Command &amp; Protocol)&quot;]
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    C --&gt;|Serial Port I/O| E[&quot;CSerialPort&lt;br/&gt;(com.gzds.utils)&quot;]
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    D &amp; E --&gt;|Character Device / SPI| F[&quot;内蔵サーマルプリンターハードウェア&lt;br/&gt;(/dev/prn-dev)&quot;]
+</span></code></pre></div>
+<h3 id="_1">主なモジュールと構成ファイル<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">モジュール名</th>
+<th style="text-align: left;">パッケージ / パス</th>
+<th style="text-align: left;">役割・概要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>PrintUtil</strong></td>
+<td style="text-align: left;"><a href="../apks/decompiled/com.hikvision.alcoholtest/sources/com/hikvision/alcoholtest/util/PrintUtil.java">PrintUtil.java</a></td>
+<td style="text-align: left;">アルコール測定結果（許可証）や顔写真画像の非同期印刷タスク生成</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Printer</strong></td>
+<td style="text-align: left;"><a href="../apks/decompiled/com.gzds.utils/Printer.java">Printer.java</a></td>
+<td style="text-align: left;"><code>CPrint</code> のラッパークラス。Boolean型戻り値への変換インターフェース</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CPrint</strong></td>
+<td style="text-align: left;"><a href="../apks/decompiled/com.gzds.utils/CPrint.java">CPrint.java</a></td>
+<td style="text-align: left;">テキストのBitmap描画、モノクロ化・ビットパック、JNI Nativeメソッド呼出</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CSerialPort</strong></td>
+<td style="text-align: left;"><a href="../apks/decompiled/com.gzds.utils/CSerialPort.java">CSerialPort.java</a></td>
+<td style="text-align: left;">Nativeシリアルポートオープン（<code>su</code>によるパーミッション昇格含む）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>libgzds_utils.so</strong></td>
+<td style="text-align: left;">Native Library (<code>System.loadLibrary("gzds_utils")</code>)</td>
+<td style="text-align: left;">プリンター制御コマンドパケット生成およびシリアル送信を行うC/C++共有ライブラリ</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-jni-interface-native">2. JNI Interface &amp; Native コマンド仕様<a class="headerlink" href="#2-jni-interface-native" title="Permanent link">&para;</a></h2>
+<p><code>CPrint</code> クラスでは、JNIを通じて <code>libgzds_utils.so</code> 内の <code>Command</code> 関数を呼び出し、プリンターに対して各種制御コマンドを発行します。</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">native</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">Command</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">param1</span><span class="p">,</span><span class="w"> </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">printerType</span><span class="p">);</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">native</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">Close</span><span class="p">();</span>
+</span></code></pre></div>
+<h3 id="opcode">コマンドコード（Opcode）一覧<a class="headerlink" href="#opcode" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Opcode (10進)</th>
+<th style="text-align: center;">Hex</th>
+<th style="text-align: left;">定数名 (CPrint)</th>
+<th style="text-align: left;">パラメータ / データ</th>
+<th style="text-align: left;">機能説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>68</strong></td>
+<td style="text-align: center;"><code>0x44</code></td>
+<td style="text-align: left;"><code>PRINTER_STATUS</code></td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">プリンターのステータス取得</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>85</strong></td>
+<td style="text-align: center;"><code>0x55</code></td>
+<td style="text-align: left;"><code>PRINTER_PRINTER_FEED</code></td>
+<td style="text-align: left;"><code>param1</code>: 送り量<br/><code>data</code>: <code>bufferMove</code></td>
+<td style="text-align: left;">紙送り（正方向）。<code>speed(byte[])</code> 関数でも使用</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>102</strong></td>
+<td style="text-align: center;"><code>0x66</code></td>
+<td style="text-align: left;"><code>PRINTER_TASK</code></td>
+<td style="text-align: left;"><code>param1</code>: 高さ (px)<br/><code>data</code>: ビットマップバイト列</td>
+<td style="text-align: left;">1bitモノクログラフィックデータ（テキスト描画結果含む）の印刷</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>103</strong></td>
+<td style="text-align: center;"><code>0x67</code></td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><code>param1</code>: 120<br/><code>data</code>: 16階調グレースケールバイト</td>
+<td style="text-align: left;">顔写真等の画像データ印刷 (<code>sendPrintPictureData</code>)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>119</strong></td>
+<td style="text-align: center;"><code>0x77</code></td>
+<td style="text-align: left;"><code>PRINTER_PAPERCHECK</code></td>
+<td style="text-align: left;"><code>data</code>: <code>{20}</code></td>
+<td style="text-align: left;">用紙有無チェック (<code>PrintCheckPaper</code>)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>136</strong></td>
+<td style="text-align: center;"><code>0x88</code></td>
+<td style="text-align: left;"><code>PRINTER_DARKNESS</code></td>
+<td style="text-align: left;"><code>data</code>: <code>{darkness}</code> (1～20)</td>
+<td style="text-align: left;">印字濃度（ダークネス）の設定 (<code>PrinterSetDarkness</code>)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>153</strong></td>
+<td style="text-align: center;"><code>0x99</code></td>
+<td style="text-align: left;"><code>PRINTER_BACKWARD</code></td>
+<td style="text-align: left;"><code>param1</code>: 逆送り量</td>
+<td style="text-align: left;">用紙の逆送り（バックフィード）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3">3. テキスト描画・ラスタライズ制御フロー<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>サーマルプリンターへのテキスト印刷は、文字コード直接送信ではなく、Androidの <code>Canvas</code> を使用してメモリ上でビットマップ画像に描画・ラスタライズしてからプリンターへ送出する方式が採用されています。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sequenceDiagram
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    participant App as PrintUtil / Activity
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    participant CPrint as CPrint.java
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    participant Canvas as Android Canvas/Bitmap
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    participant Native as libgzds_utils.so
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    App-&gt;&gt;CPrint: PrintData(&quot;許可証&quot;, 40)
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    CPrint-&gt;&gt;CPrint: GetTextIfon() (フォント高さ・改行計算)
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    CPrint-&gt;&gt;Canvas: Bitmap.createBitmap() &amp; Canvas.drawText()
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    CPrint-&gt;&gt;CPrint: ピクセル走査 (ARGB_8888 -&gt; 1bit Monochrome Byte Array)
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    CPrint-&gt;&gt;Native: Command(102, mTextHeight, bArr, PrinterType)
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    CPrint-&gt;&gt;Canvas: mBitmap.recycle()
+</span></code></pre></div>
+<h3 id="1-bit">1-bit モノクロ化・ビットパックアルゴリズム<a class="headerlink" href="#1-bit" title="Permanent link">&para;</a></h3>
+<p><code>CPrint.PrintText()</code> 内で、描画された <code>ARGB_8888</code> ビットマップの全ピクセルを走査し、白以外のピクセル（<code>pixel != -1</code>）を黒ドット（ビット <code>1</code>）として1バイトに8ピクセル分パックします。</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">i2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kt">byte</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kt">int</span><span class="w"> </span><span class="n">i3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i4</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">mTextHeight</span><span class="p">;</span><span class="w"> </span><span class="n">i4</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i5</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">mTextWidth</span><span class="p">;</span><span class="w"> </span><span class="n">i5</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mBitmap</span><span class="p">.</span><span class="na">getPixel</span><span class="p">(</span><span class="n">i5</span><span class="p">,</span><span class="w"> </span><span class="n">i4</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">            </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">byte</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i2</span><span class="p">));</span><span class="w"> </span><span class="c1">// 黒ドットのビットを立てる</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="n">i2</span><span class="o">--</span><span class="p">;</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i2</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">            </span><span class="n">bArr</span><span class="o">[</span><span class="n">i3</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">            </span><span class="n">i3</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">            </span><span class="n">i2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">            </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="p">}</span>
+</span></code></pre></div>
+<hr />
+<h2 id="4">4. レシート（許可証・測定結果）印字フォーマット<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p><code>PrintUtil.printAll()</code> によって出力されるアルコール測定結果レシートのフォーマット構成です。</p>
+<h3 id="_2">印字レイアウト構成<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>+------------------------------------------+
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>|             許可証                      | &lt;- タイトル (40pt)
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>|               スタンドアロンモード       | &lt;- 動作モード (30pt, 条件指定時)
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>| [顔写真 16階調グレースケール画像 240x120]  | &lt;- 写真データ (i == 1 の場合)
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>| ID：12345                                | &lt;- ユーザーID
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>| 氏名：山田 太郎                          | &lt;- 氏名
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>| 時間：2026-08-06 20:00:00                | &lt;- 測定日時
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>| 車両出帰状態：出庫                      | &lt;- 車両ステータス
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>| 車両番号：品川 500 あ 12-34               | &lt;- ナンバープレート
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>| アルコール濃度:0.00mg/L                  | &lt;- 測定濃度
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>| 温度：36.5℃                             | &lt;- 体温/センサー温度
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>| 判定：OK                                 | &lt;- 判定結果 (OK: &lt;0.15, NG: &gt;=0.15)
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>|                                          |
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>|                                          | &lt;- 紙送り 3行 (PrintLineFeed(3))
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>+------------------------------------------+
+</span></code></pre></div>
+<h3 id="_3">判定条件ロジック<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>アルコール濃度 threshold</strong>: <code>0.15 mg/L</code></li>
+<li><code>濃度 &lt; 0.15 mg/L</code> $\rightarrow$ <strong>判定：OK</strong></li>
+<li><code>濃度 &gt;= 0.15 mg/L</code> $\rightarrow$ <strong>判定：NG</strong></li>
+</ul>
+<hr />
+<h2 id="5">5. ハードウェア・デバイスノード仕様<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>プリンター専用デバイスノード</strong>: <code>/dev/prn-dev</code> (Native <code>libgzds_utils.so</code> 内で <code>ioctl</code> 制御)</li>
+<li><strong>汎用シリアルポートデバイス</strong>: <code>/dev/ttyMSM1</code> (アルコールセンサーモジュール等で使用されるUARTポート)</li>
+<li><strong>パーミッション自動昇格</strong>:
+  シリアルデバイスやプリンターノードのアクセス権限がない場合、<code>CSerialPort</code> コンストラクタ内部で <code>/system/bin/su</code> を実行し、自動的に <code>chmod 777</code> を発行してパーミッションを獲得します。</li>
+</ul>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">file</span><span class="p">.</span><span class="na">canRead</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="n">file</span><span class="p">.</span><span class="na">canWrite</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">Process</span><span class="w"> </span><span class="n">processExec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Runtime</span><span class="p">.</span><span class="na">getRuntime</span><span class="p">().</span><span class="na">exec</span><span class="p">(</span><span class="s">&quot;/system/bin/su&quot;</span><span class="p">);</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="n">processExec</span><span class="p">.</span><span class="na">getOutputStream</span><span class="p">().</span><span class="na">write</span><span class="p">((</span><span class="s">&quot;chmod 777 &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="na">getAbsolutePath</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;\nexit\n&quot;</span><span class="p">).</span><span class="na">getBytes</span><span class="p">());</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="n">processExec</span><span class="p">.</span><span class="na">waitFor</span><span class="p">();</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<hr />
+<h2 id="6-api-comgzdsutilsprinter">6. API リファレンス概要 (<code>com.gzds.utils.Printer</code>)<a class="headerlink" href="#6-api-comgzdsutilsprinter" title="Permanent link">&para;</a></h2>
+<p>外部モジュールから利用可能な主要メソッド：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">メソッド</th>
+<th style="text-align: left;">引数</th>
+<th style="text-align: left;">戻り値</th>
+<th style="text-align: left;">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>PrinterInit(int type)</code></td>
+<td style="text-align: left;"><code>int type</code></td>
+<td style="text-align: left;"><code>int</code></td>
+<td style="text-align: left;">プリンタータイプ初期化 (通常 <code>1</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>PrinterSetDarkness(byte darkness)</code></td>
+<td style="text-align: left;"><code>byte</code> (1-20)</td>
+<td style="text-align: left;"><code>Boolean</code></td>
+<td style="text-align: left;">印字濃度設定</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>PrinterSetFont(Typeface font)</code></td>
+<td style="text-align: left;"><code>Typeface</code></td>
+<td style="text-align: left;"><code>Boolean</code></td>
+<td style="text-align: left;">使用フォントスタイルの指定</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>PrinterSetFontZoom(float scale)</code></td>
+<td style="text-align: left;"><code>float</code></td>
+<td style="text-align: left;"><code>Boolean</code></td>
+<td style="text-align: left;">フォント横方向倍率の指定 (<code>mZoomWidth</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>PrintData(String text, int size)</code></td>
+<td style="text-align: left;"><code>String</code>, <code>int</code></td>
+<td style="text-align: left;"><code>Boolean</code></td>
+<td style="text-align: left;">テキスト文字列の印刷</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>PrintLineFeed(int lines)</code></td>
+<td style="text-align: left;"><code>int</code></td>
+<td style="text-align: left;"><code>Boolean</code></td>
+<td style="text-align: left;">指定行数の紙送り（負数の場合はバックフィード）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>PrintCheckPaper()</code></td>
+<td style="text-align: left;">なし</td>
+<td style="text-align: left;"><code>Boolean</code></td>
+<td style="text-align: left;">用紙の有無状態チェック</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>PrinterClose()</code></td>
+<td style="text-align: left;">なし</td>
+<td style="text-align: left;"><code>Boolean</code></td>
+<td style="text-align: left;">プリンターリソースの解放および終了</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
