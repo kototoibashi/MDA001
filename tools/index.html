@@ -12,31 +12,31 @@
         <meta name="author" content="kototoibashi">
       
       
-        <link rel="canonical" href="https://kototoibashi.github.io/MDA001/software/security/">
+        <link rel="canonical" href="https://kototoibashi.github.io/MDA001/tools/">
       
       
-        <link rel="prev" href="../../network/bluetooth/">
+        <link rel="prev" href="../software/backup_strategy/">
       
       
-        <link rel="next" href="../applications/">
+        <link rel="next" href="../appendix/adb_reference/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>セキュリティ状態 - Hikvision DS-MDA001 解析レポート</title>
+        <title>自作ツール一覧 - Hikvision DS-MDA001 解析レポート</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,7 +55,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#selinux-dm-verity" class="md-skip">
+        <a href="#_1" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -96,7 +96,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="ヘッダー">
-    <a href="../.." title="Hikvision DS-MDA001 解析レポート" class="md-header__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
+    <a href=".." title="Hikvision DS-MDA001 解析レポート" class="md-header__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              セキュリティ状態
+              自作ツール一覧
             
           </span>
         </div>
@@ -222,7 +222,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Hikvision DS-MDA001 解析レポート" class="md-nav__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
+    <a href=".." title="Hikvision DS-MDA001 解析レポート" class="md-nav__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -240,7 +240,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -329,7 +329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../identity/" class="md-nav__link">
+      <a href="../identity/" class="md-nav__link">
         
   
   
@@ -357,7 +357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/overview/" class="md-nav__link">
+      <a href="../hardware/overview/" class="md-nav__link">
         
   
   
@@ -385,7 +385,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/components/" class="md-nav__link">
+      <a href="../hardware/components/" class="md-nav__link">
         
   
   
@@ -413,7 +413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/partitions/" class="md-nav__link">
+      <a href="../hardware/partitions/" class="md-nav__link">
         
   
   
@@ -510,7 +510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../alcohol_checker/test_modes/" class="md-nav__link">
+      <a href="../alcohol_checker/test_modes/" class="md-nav__link">
         
   
   
@@ -538,7 +538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../alcohol_checker/serial_protocol/" class="md-nav__link">
+      <a href="../alcohol_checker/serial_protocol/" class="md-nav__link">
         
   
   
@@ -566,7 +566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../alcohol_checker/measurement_behavior/" class="md-nav__link">
+      <a href="../alcohol_checker/measurement_behavior/" class="md-nav__link">
         
   
   
@@ -594,7 +594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../alcohol_checker/alcohol_ad_values/" class="md-nav__link">
+      <a href="../alcohol_checker/alcohol_ad_values/" class="md-nav__link">
         
   
   
@@ -689,7 +689,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../printer/printer/" class="md-nav__link">
+      <a href="../printer/printer/" class="md-nav__link">
         
   
   
@@ -717,7 +717,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../printer/printing_tips/" class="md-nav__link">
+      <a href="../printer/printing_tips/" class="md-nav__link">
         
   
   
@@ -745,7 +745,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../printer/print_server/" class="md-nav__link">
+      <a href="../printer/print_server/" class="md-nav__link">
         
   
   
@@ -840,7 +840,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/interfaces/" class="md-nav__link">
+      <a href="../network/interfaces/" class="md-nav__link">
         
   
   
@@ -868,7 +868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/wifi_enablement/" class="md-nav__link">
+      <a href="../network/wifi_enablement/" class="md-nav__link">
         
   
   
@@ -896,7 +896,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/bluetooth/" class="md-nav__link">
+      <a href="../network/bluetooth/" class="md-nav__link">
         
   
   
@@ -928,10 +928,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -952,11 +950,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
@@ -977,7 +975,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -992,37 +990,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    セキュリティ状態
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../software/security/" class="md-nav__link">
         
   
   
@@ -1038,109 +1009,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目次">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目次
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 調査結果の概要
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 各セキュリティ機能の詳細
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. 各セキュリティ機能の詳細">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-selinux-security-enhanced-linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.1. SELinux (Security-Enhanced Linux)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-dm-verity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.2. dm-verity (改ざん検知)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.3. ブートローダーのロック状態
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#24" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.4. その他のセキュリティ関連プロパティ
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 今後の方針・影響
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1153,7 +1021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../applications/" class="md-nav__link">
+      <a href="../software/applications/" class="md-nav__link">
         
   
   
@@ -1181,7 +1049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fixes/" class="md-nav__link">
+      <a href="../software/fixes/" class="md-nav__link">
         
   
   
@@ -1209,7 +1077,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../backup_strategy/" class="md-nav__link">
+      <a href="../software/backup_strategy/" class="md-nav__link">
         
   
   
@@ -1241,8 +1109,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -1259,11 +1129,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
@@ -1284,7 +1154,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1299,10 +1169,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../tools/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自作ツール一覧
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1318,6 +1215,59 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#alcoholtestdebugger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AlcoholTestDebugger
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#printerserverapp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PrinterServerApp
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mda001tweak" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MDA001Tweak
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1330,7 +1280,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../appendix/adb_reference/" class="md-nav__link">
+      <a href="../appendix/adb_reference/" class="md-nav__link">
         
   
   
@@ -1385,10 +1335,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#alcoholtestdebugger" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 調査結果の概要
+        AlcoholTestDebugger
       
     </span>
   </a>
@@ -1396,71 +1346,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#printerserverapp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 各セキュリティ機能の詳細
+        PrinterServerApp
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="2. 各セキュリティ機能の詳細">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-selinux-security-enhanced-linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.1. SELinux (Security-Enhanced Linux)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-dm-verity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.2. dm-verity (改ざん検知)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.3. ブートローダーのロック状態
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#24" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.4. その他のセキュリティ関連プロパティ
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#mda001tweak" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. 今後の方針・影響
+        MDA001Tweak
       
     </span>
   </a>
@@ -1484,49 +1384,77 @@
 
 
 
-<p><a href="https://github.com/kototoibashi/MDA001/blob/master/software/security.md">Markdown版はこちら</a></p>
-<h1 id="selinux-dm-verity">端末のセキュリティ機能（SELinux / dm-verity 等）の調査結果<a class="headerlink" href="#selinux-dm-verity" title="Permanent link">&para;</a></h1>
-<p>本ドキュメントでは、対象のAndroid端末におけるシステムレベルのセキュリティ機能（SELinux、dm-verity、ブートローダーのロック状態など）の調査結果をまとめる。</p>
-<h2 id="1">1. 調査結果の概要<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<p><strong>結論：この端末のセキュリティ機能は非常に緩く（無効化されており）、システム改造・解析を行う上で非常に自由度が高い状態である。</strong></p>
-<p>システム領域の改ざん検知や権限ブロックなどが働いていないため、root権限さえ確保できれば、システムファイルの直接編集、不要な標準アプリの削除、各種検証などが制限なく行える。</p>
-<h2 id="2">2. 各セキュリティ機能の詳細<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
-<p>adb shell経由で各種プロパティや状態を確認した結果は以下の通りである。</p>
-<h3 id="21-selinux-security-enhanced-linux">2.1. SELinux (Security-Enhanced Linux)<a class="headerlink" href="#21-selinux-security-enhanced-linux" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/kototoibashi/MDA001/blob/master/tools.md">Markdown版はこちら</a></p>
+<h1 id="_1">自作ツール一覧<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>本プロジェクトの解析過程で作成した Android アプリ／スクリプト群です。いずれも DS-MDA001 実機上で動作させることを前提にしています。</p>
+<hr />
+<h2 id="alcoholtestdebugger">AlcoholTestDebugger<a class="headerlink" href="#alcoholtestdebugger" title="Permanent link">&para;</a></h2>
+<p>アルコールセンサー基板と直接会話するためのデバッグ用 Android アプリ (Kotlin / Jetpack Compose)。</p>
+<p><strong>できること</strong></p>
 <ul>
-<li><strong>状態:</strong> <code>Permissive</code>（寛容モード）</li>
-<li><strong>確認コマンド:</strong> <code>getenforce</code></li>
-<li><strong>影響:</strong>
-  本来、ポリシーに違反するアクセスをブロックする機能であるが、<code>Permissive</code>モードでは「ルール違反をログに記録するのみ」であり、実際のアクセスブロックは行われない。これにより、権限周りのエラー（Permission Deniedなど）でシステムへの操作が弾かれるケースはほぼない。</li>
+<li><code>/dev/ttyMSM1</code> を開いて、<a href="../alcohol_checker/serial_protocol/#3-command-catalog">コマンドカタログ</a> の全コマンドを手動送信</li>
+<li>標準測定シーケンス（<code>startTest</code> → <code>findAlcoholAD</code> → <code>blow</code> → <code>exitBlow</code> → <code>AlcoholContent</code>）の自動実行と状態表示</li>
+<li>Passive Monitor（<code>passiveTest</code> + <code>findAlcoholAD</code> のループ）による常時監視と最大値保持</li>
+<li>センサー値の 1 秒周期オートポーリング</li>
+<li><strong>TCP ブリッジ (<code>0.0.0.0:8000</code>)</strong> — PC から生のフレームを投げて生の応答を受け取る。プロトコル解析はほぼこれで行いました</li>
 </ul>
-<h3 id="22-dm-verity">2.2. dm-verity (改ざん検知)<a class="headerlink" href="#22-dm-verity" title="Permanent link">&para;</a></h3>
+<p><strong>元アプリからの流用</strong></p>
+<p>JNI シグネチャの整合性を保つため、<code>com.gzds.utils.CSerialPort</code> と <code>com.hikvision.alcoholtest.comassistant.SerialHelper</code> / <code>util.OrderTools</code> / <code>util.DataUtils</code> は元 APK のパッケージ名のまま取り込んでいます。</p>
+<p><strong>PC 側スクリプト</strong> (<code>tools/tcp_tests/</code>)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">スクリプト</th>
+<th style="text-align: left;">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>log_breath_test.py</code></td>
+<td style="text-align: left;">呼気テスト中の全フレームを CSV へ記録（<a href="../alcohol_checker/alcohol_ad_values/">AD値解析</a> の元データ）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>test_passive.py</code></td>
+<td style="text-align: left;">パッシブ測定サイクルの挙動確認</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>test_async.py</code></td>
+<td style="text-align: left;">非同期応答（<code>flag=0</code> 中間応答）のレイテンシ測定</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>test_blow_interleave.py</code> / <code>test_interleave.py</code></td>
+<td style="text-align: left;">吹込中の並行コマンド送信によるフリーズ再現</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>parse_responses.py</code></td>
+<td style="text-align: left;">収集したフレームのデコード</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>test_ordertools.py</code></td>
+<td style="text-align: left;">コマンド生成・LRC 計算の検証</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">TCP ブリッジ使用時の注意</p>
+<p>アプリ内部の自動ポーリングが動いたままだと、その応答が TCP クライアント向けストリームに混入します。クライアント接続中は内部ポーリングを Mutex で排他停止するようにしてあります。詳細は <a href="../alcohol_checker/measurement_behavior/">実測挙動</a> を参照してください。</p>
+</div>
+<hr />
+<h2 id="printerserverapp">PrinterServerApp<a class="headerlink" href="#printerserverapp" title="Permanent link">&para;</a></h2>
+<p>内蔵サーマルプリンターをネットワーク経由・ローカル双方から叩くためのハイブリッドアプリ。</p>
 <ul>
-<li><strong>状態:</strong> <code>Disabled</code>（無効）</li>
-<li><strong>確認プロパティ:</strong> <code>[ro.boot.veritymode]: [disabled]</code></li>
-<li><strong>マウント状態:</strong> <code>/system</code>や<code>/vendor</code>等のマウントに<code>dm-</code> (device-mapper) を介したものが存在しない。</li>
-<li><strong>影響:</strong>
-  システム領域（<code>/system</code>など）の改ざんをブロック・検知する機能が無効になっている。そのため、<code>mount -o rw,remount /system</code> で書き込み可能にしてファイルを直接編集・差し替えても、次回起動時に文鎮化（ブートループ等）することはない。</li>
+<li><strong>NanoHTTPD サーバー (ポート 8080)</strong> — <code>POST /api/print</code> で Base64 画像を直接印刷、<code>/api/project</code> でレイアウト JSON を保存・読込</li>
+<li><strong>Fabric.js ベースの Web レイアウトエディタ</strong> — PPT 感覚でテキスト・画像を配置し、2値化（Threshold / Bayer / Floyd–Steinberg）をブラウザ上でリアルタイムプレビュー</li>
+<li><strong>輪郭抽出ブレンド</strong> — ラプラシアンでエッジを抽出し、ディザ前に重み付き合成してシャープな印字を得る</li>
+<li><strong>電圧降下シミュレーション</strong> — 1 ラインあたりの黒画素率が 30% を超えると薄く描画し、実機のかすれを事前に可視化（プレビュー専用）</li>
+<li><strong>フォアグラウンドサービス常駐</strong> — 画面を閉じてもサーバーとプリンタ接続を維持</li>
 </ul>
-<h3 id="23">2.3. ブートローダーのロック状態<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>状態:</strong> アンロック済み（Unlocked）</li>
-<li><strong>確認プロパティ:</strong> <code>[ro.boot.verifiedbootstate]: [orange]</code></li>
-<li><strong>影響:</strong>
-  AndroidのVerified Boot (AVB) のステータスが <code>orange</code> であることは、ブートローダーがアンロックされていることを意味する。メーカーの公式署名がないカスタムイメージ（boot.imgやrecovery.img）をフラッシュして起動させることが可能な状態である。</li>
-</ul>
-<h3 id="24">2.4. その他のセキュリティ関連プロパティ<a class="headerlink" href="#24" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>ユーザーデータ領域の暗号化:</strong> 有効 (<code>[ro.crypto.state]: [encrypted]</code>)
-  ※ Android標準仕様であり、システム改造自体を妨げるものではない。</li>
-<li><strong>adbのセキュア状態:</strong> 有効 (<code>[ro.secure]: [1]</code>)
-  ※ ただし、<code>su</code>バイナリなどが存在するか、root権限を取得できれば問題なく回避可能。</li>
-</ul>
-<h2 id="3">3. 今後の方針・影響<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
-<ul>
-<li>開発、デバッグ、カスタマイズの障壁となるカーネル/OSレベルの制限はほぼ解除された状態である。</li>
-<li>システムアプリの無効化・差し替えや、<code>/system</code> へのバイナリ・スクリプトの配置等が問題なく実行可能。</li>
-<li>セキュリティ機能がシステムを保護していないため、誤ったファイルを書き換えた際のリスク（起動不可になるリスク）は自己責任となる。変更前には必ず対象ファイルのバックアップを取るよう留意すること。</li>
-</ul>
+<p>詳細な開発記録とハマりどころは <a href="../printer/print_server/">PrinterServerApp 開発記録</a> を参照してください。</p>
+<hr />
+<h2 id="mda001tweak">MDA001Tweak<a class="headerlink" href="#mda001tweak" title="Permanent link">&para;</a></h2>
+<p>端末側の設定を書き換えるためのツールアプリ（開発中）。</p>
+<p><code>AndroidManifest.xml</code> で <code>android:sharedUserId="android.uid.shell"</code> を宣言し <code>WRITE_SECURE_SETTINGS</code> を要求するため、<strong>プラットフォーム鍵での署名が必要</strong>です。本端末はブートローダーアンロック済み・<code>Permissive</code> のため、抽出したプラットフォーム鍵 (<code>platform.pk8</code> / <code>platform.x509.pem</code>) で署名すればそのままインストールできます。</p>
+<p>現時点では UI スケルトンのみで、機能実装はこれからです。</p>
 
 
 
@@ -1582,18 +1510,18 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.indexes", "navigation.top", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "content.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.indexes", "navigation.top", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "content.tooltips"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../javascripts/mathjax.js"></script>
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
-        <script src="../../javascripts/load_mermaid.js"></script>
+        <script src="../javascripts/load_mermaid.js"></script>
       
     
   </body>

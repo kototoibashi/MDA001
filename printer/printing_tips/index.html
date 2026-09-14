@@ -12,13 +12,13 @@
         <meta name="author" content="kototoibashi">
       
       
-        <link rel="canonical" href="https://kototoibashi.github.io/MDA001/software/security/">
+        <link rel="canonical" href="https://kototoibashi.github.io/MDA001/printer/printing_tips/">
       
       
-        <link rel="prev" href="../../network/bluetooth/">
+        <link rel="prev" href="../printer/">
       
       
-        <link rel="next" href="../applications/">
+        <link rel="next" href="../print_server/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>セキュリティ状態 - Hikvision DS-MDA001 解析レポート</title>
+        <title>印字ノウハウ・ハマりどころ - Hikvision DS-MDA001 解析レポート</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#selinux-dm-verity" class="md-skip">
+        <a href="#_1" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              セキュリティ状態
+              印字ノウハウ・ハマりどころ
             
           </span>
         </div>
@@ -626,8 +626,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -646,11 +648,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
@@ -671,7 +673,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -689,7 +691,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../printer/printer/" class="md-nav__link">
+      <a href="../printer/" class="md-nav__link">
         
   
   
@@ -714,10 +716,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../printer/printing_tips/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    印字ノウハウ・ハマりどころ
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -733,6 +762,176 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. データは「まとめて」流し込む
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. データは「まとめて」流し込む">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        許容される最大長は未確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        やむを得ず分割するときは
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. グレースケールモードは印字幅が狭い
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. グレースケールモードは印字幅が狭い">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使い分けの目安
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-1bit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 1bit で写真を印字するなら前処理が効く
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 1bit で写真を印字するなら前処理が効く">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        輪郭抽出ブレンドを噛ませる
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        黒レベル・白レベル・ガンマを広めに振る
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 電圧降下によるかすれ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-printersetdarkness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 濃度設定 (PrinterSetDarkness) は効いていない
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 用紙まわり
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        関連ページ
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -745,7 +944,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../printer/print_server/" class="md-nav__link">
+      <a href="../print_server/" class="md-nav__link">
         
   
   
@@ -928,10 +1127,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -952,11 +1149,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
@@ -977,7 +1174,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -992,37 +1189,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    セキュリティ状態
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../software/security/" class="md-nav__link">
         
   
   
@@ -1038,109 +1208,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目次">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目次
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 調査結果の概要
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 各セキュリティ機能の詳細
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. 各セキュリティ機能の詳細">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-selinux-security-enhanced-linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.1. SELinux (Security-Enhanced Linux)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-dm-verity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.2. dm-verity (改ざん検知)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.3. ブートローダーのロック状態
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#24" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.4. その他のセキュリティ関連プロパティ
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 今後の方針・影響
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1153,7 +1220,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../applications/" class="md-nav__link">
+      <a href="../../software/applications/" class="md-nav__link">
         
   
   
@@ -1181,7 +1248,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fixes/" class="md-nav__link">
+      <a href="../../software/fixes/" class="md-nav__link">
         
   
   
@@ -1209,7 +1276,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../backup_strategy/" class="md-nav__link">
+      <a href="../../software/backup_strategy/" class="md-nav__link">
         
   
   
@@ -1388,30 +1455,19 @@
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 調査結果の概要
+        1. データは「まとめて」流し込む
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 各セキュリティ機能の詳細
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. 各セキュリティ機能の詳細">
+    <nav class="md-nav" aria-label="1. データは「まとめて」流し込む">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-selinux-security-enhanced-linux" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1. SELinux (Security-Enhanced Linux)
+        許容される最大長は未確認
       
     </span>
   </a>
@@ -1419,32 +1475,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-dm-verity" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2. dm-verity (改ざん検知)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.3. ブートローダーのロック状態
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#24" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.4. その他のセキュリティ関連プロパティ
+        やむを得ず分割するときは
       
     </span>
   </a>
@@ -1457,10 +1491,110 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. 今後の方針・影響
+        2. グレースケールモードは印字幅が狭い
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. グレースケールモードは印字幅が狭い">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使い分けの目安
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-1bit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 1bit で写真を印字するなら前処理が効く
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 1bit で写真を印字するなら前処理が効く">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        輪郭抽出ブレンドを噛ませる
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        黒レベル・白レベル・ガンマを広めに振る
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 電圧降下によるかすれ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-printersetdarkness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 濃度設定 (PrinterSetDarkness) は効いていない
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 用紙まわり
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        関連ページ
       
     </span>
   </a>
@@ -1484,48 +1618,183 @@
 
 
 
-<p><a href="https://github.com/kototoibashi/MDA001/blob/master/software/security.md">Markdown版はこちら</a></p>
-<h1 id="selinux-dm-verity">端末のセキュリティ機能（SELinux / dm-verity 等）の調査結果<a class="headerlink" href="#selinux-dm-verity" title="Permanent link">&para;</a></h1>
-<p>本ドキュメントでは、対象のAndroid端末におけるシステムレベルのセキュリティ機能（SELinux、dm-verity、ブートローダーのロック状態など）の調査結果をまとめる。</p>
-<h2 id="1">1. 調査結果の概要<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<p><strong>結論：この端末のセキュリティ機能は非常に緩く（無効化されており）、システム改造・解析を行う上で非常に自由度が高い状態である。</strong></p>
-<p>システム領域の改ざん検知や権限ブロックなどが働いていないため、root権限さえ確保できれば、システムファイルの直接編集、不要な標準アプリの削除、各種検証などが制限なく行える。</p>
-<h2 id="2">2. 各セキュリティ機能の詳細<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
-<p>adb shell経由で各種プロパティや状態を確認した結果は以下の通りである。</p>
-<h3 id="21-selinux-security-enhanced-linux">2.1. SELinux (Security-Enhanced Linux)<a class="headerlink" href="#21-selinux-security-enhanced-linux" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/kototoibashi/MDA001/blob/master/printer/printing_tips.md">Markdown版はこちら</a></p>
+<h1 id="_1">印字ノウハウ・ハマりどころ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p><a href="../printer/">プリンター制御仕様</a> がプロトコルの話であるのに対し、こちらは<strong>実際にきれいに印字するための実践的な知見</strong>をまとめたページです。ほとんどが実機で試して痛い目を見た結果です。</p>
+<hr />
+<h2 id="1">1. データは「まとめて」流し込む<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p><strong>これが一番重要です。</strong></p>
+<p>1bit ラスタ印字 (<code>0x66</code>) は、<code>Command(102, 行数, データ, 1)</code> の 1 回の呼び出しで <code>行数 × 48 + 5</code> バイトを <strong>単一の <code>write(2)</code></strong> としてデバイスに流し込みます。ネイティブ側に分割処理は一切ありません。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[0x66][行数 (LE32)][行数 × 48 バイトのラスタデータ]
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  1B      4B                    可変長
+</span></code></pre></div>
+<p>問題は、<strong>この呼び出しを分割すると、その継ぎ目に横線が入る</strong>ことです。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>  ┌────────────────────┐
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  │  1回目の Command   │
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  │  で送った部分      │
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  ├────────────────────┤  ← ここに黒い横スジが入る
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  │  2回目の Command   │
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  │  で送った部分      │
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>  └────────────────────┘
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">対策: 1 枚の縦長ビットマップを 1 回で送る</p>
+<p>テキストを 1 行ずつ <code>PrintData()</code> で送るのではなく、<strong>印字したい内容全体を 1 枚のビットマップに描画してから 1 回で送出</strong>してください。行間のスジが消え、見た目が劇的に良くなります。</p>
+<p>レシート全体を Canvas に描いてから流し込む、というのが基本戦略になります。</p>
+</div>
+<h3 id="_2">許容される最大長は未確認<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>コード上には<strong>長さの上限が存在しません</strong>。<code>libgzds_utils.so</code> にも <code>CPrint.java</code> にも <code>PrinterServerApp</code> にもチェックはなく、<code>malloc(行数 × 48 + 5)</code> して <code>write()</code> するだけです。実際の上限があるとすれば <code>/dev/prn-dev</code> のカーネルドライバ側ですが、<strong>そのドライバのソースは入手できていないため上限は不明です</strong>。</p>
+<p>実績として分かっているのは以下の数字だけです。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">参考値</th>
+<th style="text-align: right;">バイト数</th>
+<th style="text-align: left;">出どころ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>PrinterServerApp</code> が実際に発行する最大チャンク</td>
+<td style="text-align: right;">1536 行 × 48 + 5 = <strong>73,733 B</strong></td>
+<td style="text-align: left;"><code>chunkHeight = bitmap.width * 4</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">紙送りバッファ <code>bufferMove</code> のサイズ</td>
+<td style="text-align: right;">100 行 × 48 = 4,800 B</td>
+<td style="text-align: left;"><code>CPrint.java</code> の定数</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>PrintLineFeed()</code> の 1 回あたり</td>
+<td style="text-align: right;">50 行 × 48 = 2,400 B</td>
+<td style="text-align: left;">同上</td>
+</tr>
+</tbody>
+</table>
+<p>少なくとも 73KB 程度は一度に通ることが実機で確認できています。<strong>どこまで伸ばせるかは未検証</strong>なので、長大なレイアウトを扱う場合は自分で試してください。</p>
+<h3 id="_3">やむを得ず分割するときは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>分割の継ぎ目を減らすため、チャンクは<strong>できるだけ大きく</strong>取ります。また、次のチャンクを投げる前にプリンターのビジー状態が抜けるのを待ちます。</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">CPrint</span><span class="p">.</span><span class="na">getPrinterStatus</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="m">50</span><span class="p">)</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">}</span>
+</span></code></pre></div>
+<hr />
+<h2 id="2">2. グレースケールモードは印字幅が狭い<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>プリンターには 1bit モノクロのほかに <strong>16階調グレースケールモード (<code>0x67</code>)</strong> があります。ただし<strong>印字幅が 384px → 240px に狭くなります</strong>。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">1bit モノクロ</th>
+<th style="text-align: left;">グレースケール</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">印字幅</td>
+<td style="text-align: left;"><strong>384 px</strong></td>
+<td style="text-align: left;"><strong>240 px</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">1行あたり</td>
+<td style="text-align: left;">48 バイト</td>
+<td style="text-align: left;">120 バイト</td>
+</tr>
+<tr>
+<td style="text-align: left;">階調</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">16</td>
+</tr>
+<tr>
+<td style="text-align: left;">送信単位</td>
+<td style="text-align: left;">任意行数をまとめて 1 回</td>
+<td style="text-align: left;"><strong>1 スキャンラインずつ固定</strong></td>
+</tr>
+</tbody>
+</table>
+<p>元アプリでの用途は<strong>測定者の顔写真の印刷のみ</strong>（240×240 にリサイズして印字）で、おそらくこのモードは顔写真の印刷のために用意されたものです。</p>
+<div class="admonition warning">
+<p class="admonition-title">グレースケールは 1 ライン = 1 コマンド固定</p>
+<p><code>0x67</code> パスは <code>libgzds_utils.so</code> の中で<strong>ペイロード長 120 バイトがハードコード</strong>されており、<code>param1</code> は無視されます。つまり「まとめて流し込む」ことが構造的にできず、240 行の画像なら 240 回のコマンド発行になります。
+幅の狭さと合わせて、<strong>テキストや罫線を含むレイアウト全体は 1bit モードで組むのが基本</strong>です。</p>
+</div>
+<h3 id="_4">使い分けの目安<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">印字したいもの</th>
+<th style="text-align: left;">推奨モード</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">テキスト、罫線、QR コード、ロゴ</td>
+<td style="text-align: left;"><strong>1bit (384px)</strong> — 幅が広くエッジが立つ</td>
+</tr>
+<tr>
+<td style="text-align: left;">写真・グラデーション</td>
+<td style="text-align: left;">グレースケール (240px)、または 1bit ＋ ディザリング</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-1bit">3. 1bit で写真を印字するなら前処理が効く<a class="headerlink" href="#3-1bit" title="Permanent link">&para;</a></h2>
+<p>1bit モードで写真を印字する場合、単純な閾値 2 値化では潰れます。<a href="../print_server/">PrinterServerApp</a> では以下を実装しています。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">手法</th>
+<th style="text-align: left;">向き・特徴</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>単純2値化 (Threshold)</strong></td>
+<td style="text-align: left;">線画・文字・ロゴ。輪郭がくっきり出る</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ベイヤー (Bayer)</strong></td>
+<td style="text-align: left;">規則的なパターン。グラデーションが安定するが模様が目立つ</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>フロイド–スタインバーグ</strong></td>
+<td style="text-align: left;">写真向き。最も自然だが、感熱紙では細かいドットが飛びやすい</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_5">輪郭抽出ブレンドを噛ませる<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>ディザリングだけだと輪郭がぼやけます。3×3 ラプラシアンでエッジを抽出し、<code>Weight × エッジ画像 + (1 - Weight) × 元画像</code> でブレンドしてから 2 値化すると、境界線に確実に黒ドットが落ちてシャープになります。</p>
+<h3 id="_6">黒レベル・白レベル・ガンマを広めに振る<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p><code>PrinterServerApp</code> では Black / White Level の範囲を標準の <code>0〜100</code> から <code>-50〜150</code> に、ガンマを最大 <code>5.0</code> まで拡張しています。感熱紙は中間調の再現域が狭いので、<strong>元画像のコントラストを事前に大きく潰しておく</strong>方が結果が良くなります。</p>
+<hr />
+<h2 id="4">4. 電圧降下によるかすれ<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>安価なサーマルヘッド共通の物理特性として、<strong>1 ラインあたりに同時加熱するドットが多いと電源電圧が落ちて印字がかすれます</strong>。</p>
+<p>ベタ塗りの大きな黒面を印字すると、その部分だけ薄くなるのはこのためです。</p>
+<div class="admonition tip">
+<p class="admonition-title">対策</p>
 <ul>
-<li><strong>状態:</strong> <code>Permissive</code>（寛容モード）</li>
-<li><strong>確認コマンド:</strong> <code>getenforce</code></li>
-<li><strong>影響:</strong>
-  本来、ポリシーに違反するアクセスをブロックする機能であるが、<code>Permissive</code>モードでは「ルール違反をログに記録するのみ」であり、実際のアクセスブロックは行われない。これにより、権限周りのエラー（Permission Deniedなど）でシステムへの操作が弾かれるケースはほぼない。</li>
+<li>ベタ塗りを避け、ディザやハーフトーンで黒ドット密度を落とす</li>
+<li>大きな塗りつぶし矩形は、白抜き文字＋細めの枠線に置き換える</li>
 </ul>
-<h3 id="22-dm-verity">2.2. dm-verity (改ざん検知)<a class="headerlink" href="#22-dm-verity" title="Permanent link">&para;</a></h3>
+</div>
+<p><code>PrinterServerApp</code> のエディタでは、<strong>1 ラインあたりの黒画素率が 30% を超えると、超過分に応じてプレビュー上の黒を薄く描画</strong>して、この現象を事前に可視化しています（印刷データ生成時はバイパスされます）。</p>
+<hr />
+<h2 id="5-printersetdarkness">5. 濃度設定 (<code>PrinterSetDarkness</code>) は効いていない<a class="headerlink" href="#5-printersetdarkness" title="Permanent link">&para;</a></h2>
+<p><code>PrinterSetDarkness(byte darkness)</code> は API として存在しますが、<strong>現在の呼び出し方では濃度値がプリンターに届いていません</strong>。</p>
+<p><code>printerType = 1</code> のパケット組み立てはデータ長を <code>param1 × 48</code> で計算するため、<code>param1 = 0</code> で呼ばれているこのコマンドではペイロードが 0 バイトになります。詳細は <a href="../printer/#3">プリンター制御仕様 §3</a> を参照してください。</p>
+<p>濃度を変えたい場合は、当面<strong>画像側（ガンマ・黒レベル）で調整するのが現実的</strong>です。</p>
+<hr />
+<h2 id="6">6. 用紙まわり<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>状態:</strong> <code>Disabled</code>（無効）</li>
-<li><strong>確認プロパティ:</strong> <code>[ro.boot.veritymode]: [disabled]</code></li>
-<li><strong>マウント状態:</strong> <code>/system</code>や<code>/vendor</code>等のマウントに<code>dm-</code> (device-mapper) を介したものが存在しない。</li>
-<li><strong>影響:</strong>
-  システム領域（<code>/system</code>など）の改ざんをブロック・検知する機能が無効になっている。そのため、<code>mount -o rw,remount /system</code> で書き込み可能にしてファイルを直接編集・差し替えても、次回起動時に文鎮化（ブートループ等）することはない。</li>
+<li>紙幅 <strong>57〜58mm</strong>、ロール外径 <strong>25mm</strong> まで。市販のレシート用紙がそのまま使えます</li>
+<li><code>PrintCheckPaper()</code> (<code>0x77</code>) は用紙有無を見ますが、<code>getPrinterStatus()</code> (<code>0x44</code>) は <strong>紙の有無では変化しません</strong>（0 = 待機 / 1 = 印刷中のみ）</li>
+<li>印字後は <code>PrintLineFeed(3)</code> 程度送ってからカットすると、最終行が切り取り線に隠れません</li>
 </ul>
-<h3 id="23">2.3. ブートローダーのロック状態<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="_7">関連ページ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>状態:</strong> アンロック済み（Unlocked）</li>
-<li><strong>確認プロパティ:</strong> <code>[ro.boot.verifiedbootstate]: [orange]</code></li>
-<li><strong>影響:</strong>
-  AndroidのVerified Boot (AVB) のステータスが <code>orange</code> であることは、ブートローダーがアンロックされていることを意味する。メーカーの公式署名がないカスタムイメージ（boot.imgやrecovery.img）をフラッシュして起動させることが可能な状態である。</li>
-</ul>
-<h3 id="24">2.4. その他のセキュリティ関連プロパティ<a class="headerlink" href="#24" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>ユーザーデータ領域の暗号化:</strong> 有効 (<code>[ro.crypto.state]: [encrypted]</code>)
-  ※ Android標準仕様であり、システム改造自体を妨げるものではない。</li>
-<li><strong>adbのセキュア状態:</strong> 有効 (<code>[ro.secure]: [1]</code>)
-  ※ ただし、<code>su</code>バイナリなどが存在するか、root権限を取得できれば問題なく回避可能。</li>
-</ul>
-<h2 id="3">3. 今後の方針・影響<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
-<ul>
-<li>開発、デバッグ、カスタマイズの障壁となるカーネル/OSレベルの制限はほぼ解除された状態である。</li>
-<li>システムアプリの無効化・差し替えや、<code>/system</code> へのバイナリ・スクリプトの配置等が問題なく実行可能。</li>
-<li>セキュリティ機能がシステムを保護していないため、誤ったファイルを書き換えた際のリスク（起動不可になるリスク）は自己責任となる。変更前には必ず対象ファイルのバックアップを取るよう留意すること。</li>
+<li><a href="../printer/">プリンター制御仕様</a> — プロトコルとオペコードの詳細</li>
+<li><a href="../print_server/">PrinterServerApp 開発記録</a> — 上記を実装した自作アプリ</li>
 </ul>
 
 

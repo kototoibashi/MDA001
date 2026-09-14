@@ -12,13 +12,11 @@
         <meta name="author" content="kototoibashi">
       
       
-        <link rel="canonical" href="https://kototoibashi.github.io/MDA001/software/security/">
+        <link rel="canonical" href="https://kototoibashi.github.io/MDA001/appendix/adb_reference/">
       
       
-        <link rel="prev" href="../../network/bluetooth/">
+        <link rel="prev" href="../../tools/">
       
-      
-        <link rel="next" href="../applications/">
       
       
         
@@ -29,7 +27,7 @@
     
     
       
-        <title>セキュリティ状態 - Hikvision DS-MDA001 解析レポート</title>
+        <title>ADBコマンドリファレンス - Hikvision DS-MDA001 解析レポート</title>
       
     
     
@@ -80,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#selinux-dm-verity" class="md-skip">
+        <a href="#adb" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -116,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              セキュリティ状態
+              ADBコマンドリファレンス
             
           </span>
         </div>
@@ -928,10 +926,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -952,11 +948,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
@@ -977,7 +973,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -992,37 +988,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    セキュリティ状態
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../software/security/" class="md-nav__link">
         
   
   
@@ -1038,109 +1007,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目次">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目次
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 調査結果の概要
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 各セキュリティ機能の詳細
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. 各セキュリティ機能の詳細">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-selinux-security-enhanced-linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.1. SELinux (Security-Enhanced Linux)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-dm-verity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.2. dm-verity (改ざん検知)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.3. ブートローダーのロック状態
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#24" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.4. その他のセキュリティ関連プロパティ
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 今後の方針・影響
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1153,7 +1019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../applications/" class="md-nav__link">
+      <a href="../../software/applications/" class="md-nav__link">
         
   
   
@@ -1181,7 +1047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fixes/" class="md-nav__link">
+      <a href="../../software/fixes/" class="md-nav__link">
         
   
   
@@ -1209,7 +1075,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../backup_strategy/" class="md-nav__link">
+      <a href="../../software/backup_strategy/" class="md-nav__link">
         
   
   
@@ -1241,8 +1107,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -1259,11 +1127,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
@@ -1284,7 +1152,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1327,10 +1195,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../appendix/adb_reference/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADBコマンドリファレンス
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1346,6 +1241,114 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 基本操作
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. ログ取得
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 画面操作・スクリーンショット
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. アプリ・アクティビティ管理
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. ハードウェア・センサー状態
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. シリアルポート / プリンター
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. セキュリティ状態の確認
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. バックアップ
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1388,7 +1391,7 @@
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 調査結果の概要
+        1. 基本操作
       
     </span>
   </a>
@@ -1399,60 +1402,10 @@
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 各セキュリティ機能の詳細
+        2. ログ取得
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="2. 各セキュリティ機能の詳細">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-selinux-security-enhanced-linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.1. SELinux (Security-Enhanced Linux)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-dm-verity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.2. dm-verity (改ざん検知)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.3. ブートローダーのロック状態
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#24" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.4. その他のセキュリティ関連プロパティ
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1460,7 +1413,62 @@
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. 今後の方針・影響
+        3. 画面操作・スクリーンショット
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. アプリ・アクティビティ管理
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. ハードウェア・センサー状態
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. シリアルポート / プリンター
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. セキュリティ状態の確認
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. バックアップ
       
     </span>
   </a>
@@ -1484,49 +1492,109 @@
 
 
 
-<p><a href="https://github.com/kototoibashi/MDA001/blob/master/software/security.md">Markdown版はこちら</a></p>
-<h1 id="selinux-dm-verity">端末のセキュリティ機能（SELinux / dm-verity 等）の調査結果<a class="headerlink" href="#selinux-dm-verity" title="Permanent link">&para;</a></h1>
-<p>本ドキュメントでは、対象のAndroid端末におけるシステムレベルのセキュリティ機能（SELinux、dm-verity、ブートローダーのロック状態など）の調査結果をまとめる。</p>
-<h2 id="1">1. 調査結果の概要<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<p><strong>結論：この端末のセキュリティ機能は非常に緩く（無効化されており）、システム改造・解析を行う上で非常に自由度が高い状態である。</strong></p>
-<p>システム領域の改ざん検知や権限ブロックなどが働いていないため、root権限さえ確保できれば、システムファイルの直接編集、不要な標準アプリの削除、各種検証などが制限なく行える。</p>
-<h2 id="2">2. 各セキュリティ機能の詳細<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
-<p>adb shell経由で各種プロパティや状態を確認した結果は以下の通りである。</p>
-<h3 id="21-selinux-security-enhanced-linux">2.1. SELinux (Security-Enhanced Linux)<a class="headerlink" href="#21-selinux-security-enhanced-linux" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>状態:</strong> <code>Permissive</code>（寛容モード）</li>
-<li><strong>確認コマンド:</strong> <code>getenforce</code></li>
-<li><strong>影響:</strong>
-  本来、ポリシーに違反するアクセスをブロックする機能であるが、<code>Permissive</code>モードでは「ルール違反をログに記録するのみ」であり、実際のアクセスブロックは行われない。これにより、権限周りのエラー（Permission Deniedなど）でシステムへの操作が弾かれるケースはほぼない。</li>
-</ul>
-<h3 id="22-dm-verity">2.2. dm-verity (改ざん検知)<a class="headerlink" href="#22-dm-verity" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>状態:</strong> <code>Disabled</code>（無効）</li>
-<li><strong>確認プロパティ:</strong> <code>[ro.boot.veritymode]: [disabled]</code></li>
-<li><strong>マウント状態:</strong> <code>/system</code>や<code>/vendor</code>等のマウントに<code>dm-</code> (device-mapper) を介したものが存在しない。</li>
-<li><strong>影響:</strong>
-  システム領域（<code>/system</code>など）の改ざんをブロック・検知する機能が無効になっている。そのため、<code>mount -o rw,remount /system</code> で書き込み可能にしてファイルを直接編集・差し替えても、次回起動時に文鎮化（ブートループ等）することはない。</li>
-</ul>
-<h3 id="23">2.3. ブートローダーのロック状態<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>状態:</strong> アンロック済み（Unlocked）</li>
-<li><strong>確認プロパティ:</strong> <code>[ro.boot.verifiedbootstate]: [orange]</code></li>
-<li><strong>影響:</strong>
-  AndroidのVerified Boot (AVB) のステータスが <code>orange</code> であることは、ブートローダーがアンロックされていることを意味する。メーカーの公式署名がないカスタムイメージ（boot.imgやrecovery.img）をフラッシュして起動させることが可能な状態である。</li>
-</ul>
-<h3 id="24">2.4. その他のセキュリティ関連プロパティ<a class="headerlink" href="#24" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>ユーザーデータ領域の暗号化:</strong> 有効 (<code>[ro.crypto.state]: [encrypted]</code>)
-  ※ Android標準仕様であり、システム改造自体を妨げるものではない。</li>
-<li><strong>adbのセキュア状態:</strong> 有効 (<code>[ro.secure]: [1]</code>)
-  ※ ただし、<code>su</code>バイナリなどが存在するか、root権限を取得できれば問題なく回避可能。</li>
-</ul>
-<h2 id="3">3. 今後の方針・影響<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
-<ul>
-<li>開発、デバッグ、カスタマイズの障壁となるカーネル/OSレベルの制限はほぼ解除された状態である。</li>
-<li>システムアプリの無効化・差し替えや、<code>/system</code> へのバイナリ・スクリプトの配置等が問題なく実行可能。</li>
-<li>セキュリティ機能がシステムを保護していないため、誤ったファイルを書き換えた際のリスク（起動不可になるリスク）は自己責任となる。変更前には必ず対象ファイルのバックアップを取るよう留意すること。</li>
-</ul>
+<p><a href="https://github.com/kototoibashi/MDA001/blob/master/appendix/adb_reference.md">Markdown版はこちら</a></p>
+<h1 id="adb">ADB コマンドリファレンス<a class="headerlink" href="#adb" title="Permanent link">&para;</a></h1>
+<p>本端末の調査・デバッグでよく使う ADB コマンドをまとめた実用リファレンスです。</p>
+<p>本端末は <code>userdebug</code> ビルドかつ <code>su</code> が最初から入っているため、<code>adb root</code> / <code>adb remount</code> がそのまま通ります。USB を挿すと ADB と RNDIS が自動で有効になるため、無線が死んでいても PC からは常にフルアクセスできます。</p>
+<div class="admonition tip">
+<p class="admonition-title">シリアル番号の指定</p>
+<p>以下の例では <code>-s &lt;SERIAL&gt;</code> を明示していますが、端末が 1 台しか繋がっていない場合は省略できます。</p>
+</div>
+<hr />
+<h2 id="1">1. 基本操作<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c"># 接続確認</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">adb</span> <span class="n">devices</span> <span class="n">-l</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c"># シェル</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">adb</span> <span class="n">shell</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c"># root 化 &amp; /system, /vendor を書き込み可能に</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">adb</span> <span class="n">root</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">adb</span> <span class="n">remount</span>
+</span></code></pre></div>
+<h2 id="2">2. ログ取得<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c"># リアルタイムログ</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">adb</span> <span class="n">logcat</span> <span class="n">-v</span> <span class="n">time</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c"># ファイルへ保存</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">adb</span> <span class="n">logcat</span> <span class="n">-v</span> <span class="n">time</span> <span class="p">&gt;</span> <span class="n">logcat</span><span class="p">.</span><span class="n">txt</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c"># クラッシュのみ</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">adb</span> <span class="n">logcat</span> <span class="n">-b</span> <span class="n">crash</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c"># 無線まわりのログ（セルラー調査用）</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="n">adb</span> <span class="n">logcat</span> <span class="n">-b</span> <span class="n">radio</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c"># カーネルログ</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="n">adb</span> <span class="n">shell</span> <span class="n">dmesg</span> <span class="p">&gt;</span> <span class="n">dmesg</span><span class="p">.</span><span class="n">log</span>
+</span></code></pre></div>
+<h2 id="3">3. 画面操作・スクリーンショット<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">adb</span> <span class="n">shell</span> <span class="n">screencap</span> <span class="n">-p</span> <span class="p">/</span><span class="n">sdcard</span><span class="p">/</span><span class="n">screen</span><span class="p">.</span><span class="n">png</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">adb</span> <span class="n">pull</span> <span class="p">/</span><span class="n">sdcard</span><span class="p">/</span><span class="n">screen</span><span class="p">.</span><span class="n">png</span> <span class="p">.</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c"># 画面録画</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">adb</span> <span class="n">shell</span> <span class="n">screenrecord</span> <span class="p">/</span><span class="n">sdcard</span><span class="p">/</span><span class="n">rec</span><span class="p">.</span><span class="n">mp4</span>
+</span></code></pre></div>
+<h2 id="4">4. アプリ・アクティビティ管理<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c"># 最前面のアプリ/アクティビティ</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">adb</span> <span class="n">shell</span> <span class="s2">&quot;dumpsys window | grep -E &#39;mCurrentFocus|mFocusedApp&#39;&quot;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c"># サードパーティアプリ一覧</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">adb</span> <span class="n">shell</span> <span class="n">pm</span> <span class="n">list</span> <span class="n">packages</span> <span class="p">-</span><span class="n">3</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c"># 全パッケージ（インストールパス付き）</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">adb</span> <span class="n">shell</span> <span class="n">pm</span> <span class="n">list</span> <span class="n">packages</span> <span class="o">-f</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c"># APK パスの確認と取得</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="n">adb</span> <span class="n">shell</span> <span class="n">pm</span> <span class="n">path</span> <span class="n">com</span><span class="p">.</span><span class="n">hikvision</span><span class="p">.</span><span class="n">alcoholtest</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="n">adb</span> <span class="n">pull</span> <span class="p">/</span><span class="n">data</span><span class="p">/</span><span class="n">app</span><span class="p">/</span><span class="n">com</span><span class="p">.</span><span class="n">hikvision</span><span class="p">.</span><span class="n">alcoholtest</span><span class="p">-&lt;</span><span class="n">hash</span><span class="p">&gt;/</span><span class="n">base</span><span class="p">.</span><span class="n">apk</span> <span class="p">./</span><span class="n">alcoholtest</span><span class="p">.</span><span class="n">apk</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="c"># 設定画面など、ランチャーから消されている Activity を直接起動する</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="n">adb</span> <span class="n">shell</span> <span class="n">am</span> <span class="nb">start </span><span class="n">-n</span> <span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">settings</span><span class="p">/.</span><span class="n">Settings</span><span class="p">\</span><span class="nv">$WifiSettingsActivity</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">設定メニューが消えている件</p>
+<p>本端末は Settings.apk から通信系メニューが削除されています。上記の <code>am start</code> や Activity Launcher 系アプリで直接 Activity を叩くのが定石です。詳細は <a href="../../network/wifi_enablement/">Wi-Fi 恒久有効化手順</a> を参照してください。</p>
+</div>
+<h2 id="5">5. ハードウェア・センサー状態<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c"># I2C デバイス一覧（Goodix タッチ、PCF8563 RTC、AW2013 LED などが見える）</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">adb</span> <span class="n">shell</span> <span class="s2">&quot;ls -l /sys/bus/i2c/devices/&quot;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c"># 入力イベントのモニタリング（物理ボタンの死活確認に有用）</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">adb</span> <span class="n">shell</span> <span class="n">getevent</span> <span class="o">-lt</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c"># GPIO の状態（ホームボタンの GPIO 88 特定に使用）</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">adb</span> <span class="n">shell</span> <span class="nb">cat </span><span class="p">/</span><span class="n">sys</span><span class="p">/</span><span class="n">kernel</span><span class="p">/</span><span class="n">debug</span><span class="p">/</span><span class="n">gpio</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c"># バッテリー状態</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="n">adb</span> <span class="n">shell</span> <span class="n">dumpsys</span> <span class="n">battery</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="c"># ロード中カーネルモジュール</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="n">adb</span> <span class="n">shell</span> <span class="nb">cat </span><span class="p">/</span><span class="n">proc</span><span class="p">/</span><span class="n">modules</span>
+</span></code></pre></div>
+<h2 id="6">6. シリアルポート / プリンター<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c"># アルコールセンサー基板の UART</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">adb</span> <span class="n">shell</span> <span class="nb">ls </span><span class="n">-l</span> <span class="p">/</span><span class="n">dev</span><span class="p">/</span><span class="n">ttyMSM1</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c"># サーマルプリンターのキャラクタデバイス</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">adb</span> <span class="n">shell</span> <span class="nb">ls </span><span class="n">-l</span> <span class="p">/</span><span class="n">dev</span><span class="p">/</span><span class="n">prn-dev</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c"># 権限が足りない場合（本端末は最初から 777 のことが多い）</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">adb</span> <span class="n">shell</span> <span class="n">su</span> <span class="n">-c</span> <span class="s2">&quot;chmod 777 /dev/ttyMSM1 /dev/prn-dev&quot;</span>
+</span></code></pre></div>
+<p>プロトコルの詳細は <a href="../../alcohol_checker/serial_protocol/">シリアル通信プロトコル</a> と <a href="../../printer/printer/">プリンター制御仕様</a> を参照してください。</p>
+<h2 id="7">7. セキュリティ状態の確認<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">adb</span> <span class="n">shell</span> <span class="n">getenforce</span>                        <span class="c"># -&gt; Permissive</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">adb</span> <span class="n">shell</span> <span class="n">getprop</span> <span class="n">ro</span><span class="p">.</span><span class="n">boot</span><span class="p">.</span><span class="n">veritymode</span>        <span class="c"># -&gt; disabled</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">adb</span> <span class="n">shell</span> <span class="n">getprop</span> <span class="n">ro</span><span class="p">.</span><span class="n">boot</span><span class="p">.</span><span class="n">verifiedbootstate</span> <span class="c"># -&gt; orange (unlocked)</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">adb</span> <span class="n">shell</span> <span class="n">getprop</span> <span class="n">ro</span><span class="p">.</span><span class="n">build</span><span class="p">.</span><span class="nb">type </span>            <span class="c"># -&gt; userdebug</span>
+</span></code></pre></div>
+<p>詳細な評価は <a href="../../software/security/">セキュリティ状態</a> を参照してください。</p>
+<h2 id="8">8. バックアップ<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<p>パーティションの RAW ダンプなど、本格的なバックアップ手順は <a href="../../software/backup_strategy/">バックアップ手順</a> にまとめています。</p>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c"># ポートフォワード + nc による高速ダンプ（約33MB/s）</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">adb</span> <span class="n">forward</span> <span class="n">tcp</span><span class="p">:</span><span class="n">9999</span> <span class="n">tcp</span><span class="p">:</span><span class="n">9999</span>
+</span></code></pre></div>
 
 
 

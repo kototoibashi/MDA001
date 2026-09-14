@@ -6,17 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Hikvision DS-MDA001 (Android端末) のハードウェアおよびソフトウェア解析ドキュメント">
+        <meta name="description" content="Hikvision DS-MDA001 (アルコールチェッカー・プリンター内蔵Android端末) のハードウェアおよびソフトウェア解析ドキュメント">
       
       
         <meta name="author" content="kototoibashi">
       
       
+        <link rel="canonical" href="https://kototoibashi.github.io/MDA001/hardware/partitions/">
+      
       
         <link rel="prev" href="../components/">
       
       
-        <link rel="next" href="../../network/interfaces/">
+        <link rel="next" href="../../alcohol_checker/test_modes/">
       
       
         
@@ -78,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#07-partition-table-specification" class="md-skip">
+        <a href="#partition-table" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -268,6 +270,16 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -290,7 +302,7 @@
   <span class="md-ellipsis">
     
   
-    ハードウェア・システム構成
+    この端末について
   
 
     
@@ -306,11 +318,39 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    ハードウェア・システム構成
+    この端末について
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../identity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端末の素性と出自
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -326,7 +366,7 @@
   <span class="md-ellipsis">
     
   
-    デバイス概要
+    基本情報・OS仕様
   
 
     
@@ -354,7 +394,7 @@
   <span class="md-ellipsis">
     
   
-    基板・ドライバ仕様
+    基板・IC・ドライバ
   
 
     
@@ -524,6 +564,16 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -546,7 +596,7 @@
   <span class="md-ellipsis">
     
   
-    ネットワーク・通信
+    アルコールチェッカー
   
 
     
@@ -562,7 +612,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    ネットワーク・通信
+    アルコールチェッカー
   
 
           </label>
@@ -575,14 +625,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/interfaces/" class="md-nav__link">
+      <a href="../../alcohol_checker/test_modes/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    インターフェース仕様
+    測定モードと運用仕様
   
 
     
@@ -595,121 +645,6 @@
   
 
               
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../network/wifi_enablement/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Wi-Fi有効化手順
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../network/bluetooth/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Bluetooth制限事項
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-      
-        
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    アルコールチェッカー機能
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    アルコールチェッカー機能
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -753,7 +688,7 @@
   <span class="md-ellipsis">
     
   
-    実際の測定コマンドの動作
+    実測挙動と非同期仕様
   
 
     
@@ -781,7 +716,7 @@
   <span class="md-ellipsis">
     
   
-    アルコール検知・AD値解析
+    AD値→濃度の換算
   
 
     
@@ -810,6 +745,14 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -822,17 +765,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    プリンター機能
+    サーマルプリンター
   
 
     
@@ -843,12 +786,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
-    プリンター機能
+    サーマルプリンター
   
 
           </label>
@@ -889,6 +832,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../printer/printing_tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    印字ノウハウ・ハマりどころ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../printer/print_server/" class="md-nav__link">
         
   
@@ -896,7 +867,7 @@
   <span class="md-ellipsis">
     
   
-    印刷サーバーアプリ
+    PrinterServerApp 開発記録
   
 
     
@@ -925,6 +896,167 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    無線・ネットワーク
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    無線・ネットワーク
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/interfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    インターフェース一覧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/wifi_enablement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wi-Fi 恒久有効化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/bluetooth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bluetooth 移植（失敗）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -947,7 +1079,7 @@
   <span class="md-ellipsis">
     
   
-    システム・ソフトウェア
+    システム改造・運用
   
 
     
@@ -963,11 +1095,39 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    システム・ソフトウェア
+    システム改造・運用
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セキュリティ状態
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -983,7 +1143,35 @@
   <span class="md-ellipsis">
     
   
-    内蔵アプリ・APK構造
+    内蔵アプリ・APK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/fixes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    不具合の修正記録
   
 
     
@@ -1011,7 +1199,100 @@
   <span class="md-ellipsis">
     
   
-    バックアップ手法
+    バックアップ手順
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    付録
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    付録
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自作ツール一覧
   
 
     
@@ -1032,14 +1313,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../software/security/" class="md-nav__link">
+      <a href="../../appendix/adb_reference/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    セキュリティ評価
+    ADBコマンドリファレンス
   
 
     
@@ -1170,7 +1451,7 @@
 
 
 <p><a href="https://github.com/kototoibashi/MDA001/blob/master/hardware/partitions.md">Markdown版はこちら</a></p>
-<h1 id="07-partition-table-specification">💾 07. パーティションテーブル解析仕様書 (Partition Table Specification)<a class="headerlink" href="#07-partition-table-specification" title="Permanent link">&para;</a></h1>
+<h1 id="partition-table">パーティションテーブル解析 (Partition Table)<a class="headerlink" href="#partition-table" title="Permanent link">&para;</a></h1>
 <p>本ドキュメントでは、ADBツールおよび<code>sgdisk</code>コマンドにより取得したAndroid端末（シリアル番号: <code>********</code> / Qualcomm MSM8953 SLM758）の全56個のGPTパーティション構造、デバイスマッピング (<code>device-mapper</code>)、および各パーティションの役割とマウント状態について詳細にまとめています。</p>
 <hr />
 <h2 id="1-storage-summary">📊 1. ストレージ概要 (Storage Summary)<a class="headerlink" href="#1-storage-summary" title="Permanent link">&para;</a></h2>
@@ -1200,14 +1481,14 @@
 <td style="text-align: left;"><code>/dev/block/mmcblk0p29</code></td>
 <td style="text-align: left;"><code>3.0 GiB</code></td>
 <td style="text-align: left;"><code>/</code> (<code>dm-0</code>)</td>
-<td style="text-align: left;"><code>ext4</code> (ro, dm-verity)</td>
+<td style="text-align: left;"><code>ext4</code> (ro, device-mapper 経由 / verity は無効)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong><code>vendor</code></strong></td>
 <td style="text-align: left;"><code>/dev/block/mmcblk0p30</code></td>
 <td style="text-align: left;"><code>1.0 GiB</code> (1024 MiB)</td>
 <td style="text-align: left;"><code>/vendor</code> (<code>dm-1</code>)</td>
-<td style="text-align: left;"><code>ext4</code> (ro, dm-verity)</td>
+<td style="text-align: left;"><code>ext4</code> (ro, device-mapper 経由 / verity は無効)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong><code>userdata</code></strong></td>
@@ -1826,18 +2107,22 @@
 </table>
 <hr />
 <h2 id="4-device-mapper">🔗 4. デバイスマッパー構成 (<code>device-mapper</code>)<a class="headerlink" href="#4-device-mapper" title="Permanent link">&para;</a></h2>
-<p>本端末では、<code>dm-verity</code> および暗号化レイヤーによって以下のマッピングが行われています。</p>
+<p>本端末では、device-mapper および暗号化レイヤーによって以下のマッピングが行われています。</p>
 <ul>
 <li><strong><code>dm-0</code></strong> (<code>/dev/block/dm-0</code>): <code>/dev/root</code></li>
 <li>元パーティション: <code>system</code> (<code>mmcblk0p29</code>, 3.0 GiB)</li>
-<li>用途: Android OSルートファイルシステム (<code>dm-verity</code> 読み取り専用保護)</li>
+<li>用途: Android OSルートファイルシステム（読み取り専用マウント）</li>
 <li><strong><code>dm-1</code></strong> (<code>/dev/block/dm-1</code>): <code>/vendor</code></li>
 <li>元パーティション: <code>vendor</code> (<code>mmcblk0p30</code>, 1.0 GiB)</li>
-<li>用途: Qualcomm / OEM ドライバ・HALファイルシステム (<code>dm-verity</code> 読み取り専用保護)</li>
+<li>用途: Qualcomm / OEM ドライバ・HALファイルシステム（読み取り専用マウント）</li>
 <li><strong><code>dm-2</code></strong> (<code>/dev/block/dm-2</code>): <code>/data</code></li>
 <li>元パーティション: <code>userdata</code> (<code>mmcblk0p56</code>, 9.1 GiB)</li>
 <li>用途: アプリデータおよび内部ストレージ (<code>ext4</code> 暗号化マウント)</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">dm-verity は有効ではありません</p>
+<p><code>system</code> / <code>vendor</code> は device-mapper 経由で読み取り専用マウントされていますが、<code>ro.boot.veritymode</code> は <code>disabled</code> であり、<strong>改ざん検知は動作していません</strong>。そのため <code>mount -o rw,remount</code> でそのまま書き換えても次回起動で弾かれません。詳細は <a href="../../software/security/">セキュリティ状態</a> を参照してください。</p>
+</div>
 <hr />
 <h2 id="5-backup-notes">💡 5. バックアップ時の注意点 (Backup Notes)<a class="headerlink" href="#5-backup-notes" title="Permanent link">&para;</a></h2>
 <ol>
@@ -1991,7 +2276,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.indexes", "navigation.top", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "content.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>

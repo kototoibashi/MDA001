@@ -1,4 +1,4 @@
-# 💾 06. バックアップ推奨戦略・手順ガイド (Backup Strategy Guide)
+# バックアップ戦略・手順ガイド (Backup Strategy Guide)
 
 本ドキュメントでは、本端末（`********`）の特性（`userdebug` ビルド・`Permissive` モード・Qualcomm MSM8953）に最適なバックアップ手法をまとめています。
 

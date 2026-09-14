@@ -6,17 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Hikvision DS-MDA001 (Android端末) のハードウェアおよびソフトウェア解析ドキュメント">
+        <meta name="description" content="Hikvision DS-MDA001 (アルコールチェッカー・プリンター内蔵Android端末) のハードウェアおよびソフトウェア解析ドキュメント">
       
       
         <meta name="author" content="kototoibashi">
       
       
+        <link rel="canonical" href="https://kototoibashi.github.io/MDA001/printer/printer/">
+      
       
         <link rel="prev" href="../../alcohol_checker/alcohol_ad_values/">
       
       
-        <link rel="next" href="../print_server/">
+        <link rel="next" href="../printing_tips/">
       
       
         
@@ -78,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#printer-control-documentation" class="md-skip">
+        <a href="#printer-control" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -266,6 +268,16 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -288,7 +300,7 @@
   <span class="md-ellipsis">
     
   
-    ハードウェア・システム構成
+    この端末について
   
 
     
@@ -304,11 +316,39 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    ハードウェア・システム構成
+    この端末について
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../identity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端末の素性と出自
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -324,7 +364,7 @@
   <span class="md-ellipsis">
     
   
-    デバイス概要
+    基本情報・OS仕様
   
 
     
@@ -352,7 +392,7 @@
   <span class="md-ellipsis">
     
   
-    基板・ドライバ仕様
+    基板・IC・ドライバ
   
 
     
@@ -409,6 +449,16 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -431,7 +481,7 @@
   <span class="md-ellipsis">
     
   
-    ネットワーク・通信
+    アルコールチェッカー
   
 
     
@@ -447,7 +497,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    ネットワーク・通信
+    アルコールチェッカー
   
 
           </label>
@@ -460,14 +510,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/interfaces/" class="md-nav__link">
+      <a href="../../alcohol_checker/test_modes/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    インターフェース仕様
+    測定モードと運用仕様
   
 
     
@@ -480,121 +530,6 @@
   
 
               
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../network/wifi_enablement/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Wi-Fi有効化手順
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../network/bluetooth/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Bluetooth制限事項
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-      
-        
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    アルコールチェッカー機能
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    アルコールチェッカー機能
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -638,7 +573,7 @@
   <span class="md-ellipsis">
     
   
-    実際の測定コマンドの動作
+    実測挙動と非同期仕様
   
 
     
@@ -666,7 +601,7 @@
   <span class="md-ellipsis">
     
   
-    アルコール検知・AD値解析
+    AD値→濃度の換算
   
 
     
@@ -697,6 +632,14 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -709,17 +652,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    プリンター機能
+    サーマルプリンター
   
 
     
@@ -730,12 +673,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
-    プリンター機能
+    サーマルプリンター
   
 
           </label>
@@ -816,42 +759,36 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. システムアーキテクチャ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        主なモジュールと構成ファイル
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-jni-interface-native" class="md-nav__link">
+  <a href="#2-jni" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. JNI Interface &amp; Native コマンド仕様
+        2. JNI インターフェース
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. JNI Interface &amp; Native コマンド仕様">
+    <nav class="md-nav" aria-label="2. JNI インターフェース">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#opcode" class="md-nav__link">
+  <a href="#21-4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        コマンドコード（Opcode）一覧
+        2.1 第4引数はプリンター機種ではなく「トランスポート選択」
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-write2-ioctl2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 戻り値は write(2) / ioctl(2) の戻り値そのもの
       
     </span>
   </a>
@@ -867,27 +804,10 @@
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. テキスト描画・ラスタライズ制御フロー
+        3. オペコード一覧
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="3. テキスト描画・ラスタライズ制御フロー">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-bit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1-bit モノクロ化・ビットパックアルゴリズム
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -895,19 +815,19 @@
   <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. レシート（許可証・測定結果）印字フォーマット
+        4. 2つのラスタパス — 1bit と グレースケール
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. レシート（許可証・測定結果）印字フォーマット">
+    <nav class="md-nav" aria-label="4. 2つのラスタパス — 1bit と グレースケール">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#raster-1bit" class="md-nav__link">
     <span class="md-ellipsis">
       
-        印字レイアウト構成
+        4.1 1bit パス（384 px）
       
     </span>
   </a>
@@ -915,10 +835,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#raster-gray" class="md-nav__link">
     <span class="md-ellipsis">
       
-        判定条件ロジック
+        4.2 グレースケールパス（240 px / 4bpp）
       
     </span>
   </a>
@@ -934,7 +854,7 @@
   <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. ハードウェア・デバイスノード仕様
+        5. レシート（許可証・測定結果）印字フォーマット
       
     </span>
   </a>
@@ -942,10 +862,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-api-comgzdsutilsprinter" class="md-nav__link">
+  <a href="#6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. API リファレンス概要 (com.gzds.utils.Printer)
+        6. ハードウェア・デバイスノード
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-api-comgzdsutilsprinter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. API リファレンス (com.gzds.utils.Printer)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        次に読む
       
     </span>
   </a>
@@ -968,6 +910,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../printing_tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    印字ノウハウ・ハマりどころ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../print_server/" class="md-nav__link">
         
   
@@ -975,7 +945,7 @@
   <span class="md-ellipsis">
     
   
-    印刷サーバーアプリ
+    PrinterServerApp 開発記録
   
 
     
@@ -1004,6 +974,167 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    無線・ネットワーク
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    無線・ネットワーク
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/interfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    インターフェース一覧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/wifi_enablement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wi-Fi 恒久有効化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/bluetooth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bluetooth 移植（失敗）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -1026,7 +1157,7 @@
   <span class="md-ellipsis">
     
   
-    システム・ソフトウェア
+    システム改造・運用
   
 
     
@@ -1042,11 +1173,39 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    システム・ソフトウェア
+    システム改造・運用
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セキュリティ状態
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1062,7 +1221,35 @@
   <span class="md-ellipsis">
     
   
-    内蔵アプリ・APK構造
+    内蔵アプリ・APK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/fixes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    不具合の修正記録
   
 
     
@@ -1090,7 +1277,100 @@
   <span class="md-ellipsis">
     
   
-    バックアップ手法
+    バックアップ手順
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    付録
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    付録
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自作ツール一覧
   
 
     
@@ -1111,14 +1391,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../software/security/" class="md-nav__link">
+      <a href="../../appendix/adb_reference/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    セキュリティ評価
+    ADBコマンドリファレンス
   
 
     
@@ -1174,42 +1454,36 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. システムアーキテクチャ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        主なモジュールと構成ファイル
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-jni-interface-native" class="md-nav__link">
+  <a href="#2-jni" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. JNI Interface &amp; Native コマンド仕様
+        2. JNI インターフェース
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. JNI Interface &amp; Native コマンド仕様">
+    <nav class="md-nav" aria-label="2. JNI インターフェース">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#opcode" class="md-nav__link">
+  <a href="#21-4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        コマンドコード（Opcode）一覧
+        2.1 第4引数はプリンター機種ではなく「トランスポート選択」
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-write2-ioctl2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 戻り値は write(2) / ioctl(2) の戻り値そのもの
       
     </span>
   </a>
@@ -1225,27 +1499,10 @@
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. テキスト描画・ラスタライズ制御フロー
+        3. オペコード一覧
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="3. テキスト描画・ラスタライズ制御フロー">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-bit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1-bit モノクロ化・ビットパックアルゴリズム
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1253,19 +1510,19 @@
   <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. レシート（許可証・測定結果）印字フォーマット
+        4. 2つのラスタパス — 1bit と グレースケール
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. レシート（許可証・測定結果）印字フォーマット">
+    <nav class="md-nav" aria-label="4. 2つのラスタパス — 1bit と グレースケール">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#raster-1bit" class="md-nav__link">
     <span class="md-ellipsis">
       
-        印字レイアウト構成
+        4.1 1bit パス（384 px）
       
     </span>
   </a>
@@ -1273,10 +1530,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#raster-gray" class="md-nav__link">
     <span class="md-ellipsis">
       
-        判定条件ロジック
+        4.2 グレースケールパス（240 px / 4bpp）
       
     </span>
   </a>
@@ -1292,7 +1549,7 @@
   <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. ハードウェア・デバイスノード仕様
+        5. レシート（許可証・測定結果）印字フォーマット
       
     </span>
   </a>
@@ -1300,10 +1557,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-api-comgzdsutilsprinter" class="md-nav__link">
+  <a href="#6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. API リファレンス概要 (com.gzds.utils.Printer)
+        6. ハードウェア・デバイスノード
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-api-comgzdsutilsprinter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. API リファレンス (com.gzds.utils.Printer)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        次に読む
       
     </span>
   </a>
@@ -1328,69 +1607,121 @@
 
 
 <p><a href="https://github.com/kototoibashi/MDA001/blob/master/printer/printer.md">Markdown版はこちら</a></p>
-<h1 id="printer-control-documentation">プリンター制御仕様書 (Printer Control Documentation)<a class="headerlink" href="#printer-control-documentation" title="Permanent link">&para;</a></h1>
-<p>本ドキュメントでは、Hikvision製アルコール検知端末 (<code>com.hikvision.alcoholtest</code>) に組み込まれているサーマルプリンター制御のアーキテクチャ、JNI/Nativeコマンド仕様、印字フロー、および制御コードについて解説します。</p>
+<h1 id="printer-control">プリンター制御仕様 (Printer Control)<a class="headerlink" href="#printer-control" title="Permanent link">&para;</a></h1>
+<p>DS-MDA001 に内蔵されたサーマルプリンターの制御アーキテクチャ、JNI / Native コマンド仕様、ラスタライズ方式、印字フォーマットをまとめます。</p>
+<p>本ページの内容は、元アプリ <code>com.hikvision.alcoholtest</code> の逆コンパイル結果に加え、<strong>ネイティブライブラリ <code>libgzds_utils.so</code> (armeabi, 18,000 bytes) の逆アセンブル</strong>によって裏取りしています。</p>
+<div class="admonition info">
+<p class="admonition-title">ソースの所在</p>
+<p>逆コンパイル済みソースはリポジトリの <code>apks/decompiled/com.hikvision.alcoholtest/sources/</code> 以下にあります（再配布はしていません）。</p>
+</div>
 <hr />
 <h2 id="1">1. システムアーキテクチャ<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<p>プリンター制御システムは、上位アプリケーション層からNative (C/C++) ライブラリ、シリアル通信ドライバ層までの多層構造で構成されています。</p>
 <pre class="mermaid"><code>graph TD
     A["Hikvision Activity&lt;br/&gt;(NormalTestModeActivity)"] --&gt;|PrintUtil.printAll()| B["PrintUtil&lt;br/&gt;(com.hikvision.alcoholtest.util)"]
     B --&gt;|High-Level API| C["Printer / CPrint&lt;br/&gt;(com.gzds.utils)"]
-    C --&gt;|JNI Command Call| D["libgzds_utils.so&lt;br/&gt;(Native Command &amp; Protocol)"]
-    C --&gt;|Serial Port I/O| E["CSerialPort&lt;br/&gt;(com.gzds.utils)"]
-    D &amp; E --&gt;|Character Device / SPI| F["内蔵サーマルプリンターハードウェア&lt;br/&gt;(/dev/prn-dev)"]</code></pre>
-<h3 id="_1">主なモジュールと構成ファイル<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+    C --&gt;|JNI: Command cmd,len,data,transport| D["libgzds_utils.so"]
+    D --&gt;|write / ioctl| F["内蔵サーマルプリンター&lt;br/&gt;(/dev/prn-dev)"]</code></pre>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">モジュール名</th>
+<th style="text-align: left;">モジュール</th>
 <th style="text-align: left;">パッケージ / パス</th>
-<th style="text-align: left;">役割・概要</th>
+<th style="text-align: left;">役割</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>PrintUtil</strong></td>
-<td style="text-align: left;"><a href="../../apks/decompiled/com.hikvision.alcoholtest/sources/com/hikvision/alcoholtest/util/PrintUtil.java">PrintUtil.java</a></td>
-<td style="text-align: left;">アルコール測定結果（許可証）や顔写真画像の非同期印刷タスク生成</td>
+<td style="text-align: left;"><code>com.hikvision.alcoholtest.util.PrintUtil</code></td>
+<td style="text-align: left;">許可証レシート・顔写真の非同期印刷タスク生成</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Printer</strong></td>
-<td style="text-align: left;"><a href="../../apks/decompiled/com.hikvision.alcoholtest/sources/com/gzds/utils/Printer.java">Printer.java</a></td>
-<td style="text-align: left;"><code>CPrint</code> のラッパークラス。Boolean型戻り値への変換インターフェース</td>
+<td style="text-align: left;"><code>com.gzds.utils.Printer</code></td>
+<td style="text-align: left;"><code>CPrint</code> のラッパー。戻り値を Boolean へ変換</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>CPrint</strong></td>
-<td style="text-align: left;"><a href="../../apks/decompiled/com.hikvision.alcoholtest/sources/com/gzds/utils/CPrint.java">CPrint.java</a></td>
-<td style="text-align: left;">テキストのBitmap描画、モノクロ化・ビットパック、JNI Nativeメソッド呼出</td>
+<td style="text-align: left;"><code>com.gzds.utils.CPrint</code></td>
+<td style="text-align: left;">テキストの Bitmap 描画、モノクロ化・ビットパック、JNI 呼出</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>CSerialPort</strong></td>
-<td style="text-align: left;"><a href="../../apks/decompiled/com.hikvision.alcoholtest/sources/com/gzds/utils/CSerialPort.java">CSerialPort.java</a></td>
-<td style="text-align: left;">Nativeシリアルポートオープン（<code>su</code>によるパーミッション昇格含む）</td>
+<td style="text-align: left;"><code>com.gzds.utils.CSerialPort</code></td>
+<td style="text-align: left;"><strong>プリンターではなく UART</strong> (<code>/dev/ttyMSM1</code>) 用。<code>su</code> によるパーミッション昇格を含む</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>libgzds_utils.so</strong></td>
-<td style="text-align: left;">Native Library (<code>System.loadLibrary("gzds_utils")</code>)</td>
-<td style="text-align: left;">プリンター制御コマンドパケット生成およびシリアル送信を行うC/C++共有ライブラリ</td>
+<td style="text-align: left;"><code>System.loadLibrary("gzds_utils")</code></td>
+<td style="text-align: left;">パケット組み立てとデバイスへの書き込み</td>
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="2-jni-interface-native">2. JNI Interface &amp; Native コマンド仕様<a class="headerlink" href="#2-jni-interface-native" title="Permanent link">&para;</a></h2>
-<p><code>CPrint</code> クラスでは、JNIを通じて <code>libgzds_utils.so</code> 内の <code>Command</code> 関数を呼び出し、プリンターに対して各種制御コマンドを発行します。</p>
-<div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">native</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">Command</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">param1</span><span class="p">,</span><span class="w"> </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">printerType</span><span class="p">);</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">native</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">Close</span><span class="p">();</span>
+<p><code>libgzds_utils.so</code> がエクスポートしている JNI シンボルは 5 つだけです。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Java_com_gzds_utils_CPrint_Open        (どの Java クラスからも宣言されていない — dead export)
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Java_com_gzds_utils_CPrint_Close
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Java_com_gzds_utils_CPrint_Command
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Java_com_gzds_utils_CSerialPort_open
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Java_com_gzds_utils_CSerialPort_close
 </span></code></pre></div>
-<h3 id="opcode">コマンドコード（Opcode）一覧<a class="headerlink" href="#opcode" title="Permanent link">&para;</a></h3>
+<p><code>/dev/prn-dev</code> は <code>Command</code> の中で遅延オープン (<code>open(path, O_RDWR)</code>) されます。<code>Open()</code> は使われていません。デバイスノードの権限は <code>vendor/etc/init/hw/init.target.rc</code> の <code>chmod 0777 /dev/prn-dev</code> により最初から全開です。</p>
+<hr />
+<h2 id="2-jni">2. JNI インターフェース<a class="headerlink" href="#2-jni" title="Permanent link">&para;</a></h2>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">native</span><span class="w"> </span><span class="kt">int</span><span class="w">  </span><span class="nf">Command</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">param1</span><span class="p">,</span><span class="w"> </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">printerType</span><span class="p">);</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">native</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">Close</span><span class="p">();</span>
+</span></code></pre></div>
+<h3 id="21-4">2.1 第4引数はプリンター機種ではなく「トランスポート選択」<a class="headerlink" href="#21-4" title="Permanent link">&para;</a></h3>
+<p>逆アセンブルの結果、<code>printerType</code> は<strong>パケットの組み立て方と送信方法を選ぶスイッチ</strong>であることが判明しました。</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: center;">Opcode (10進)</th>
+<th style="text-align: center;">値</th>
+<th style="text-align: left;">動作</th>
+<th style="text-align: left;">実使用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: left;"><code>ioctl(fd, op, {dataPtr, param1})</code>。オペコードごとに <code>IOCTL_PRINTER_TASK</code> 等へ分岐</td>
+<td style="text-align: left;"><strong>どこからも呼ばれていない（dead）</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: left;"><code>[cmd(1B)][param1(LE32)][param1 × 48 バイトのデータ]</code> を組み立てて <strong>1 回の <code>write(2)</code></strong></td>
+<td style="text-align: left;">通常の印字はすべてこれ</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: left;"><code>cmd</code> と <code>param1</code> を<strong>完全に無視</strong>し、<code>[0x67][固定120バイト]</code> の 121 バイトを <code>write(2)</code></td>
+<td style="text-align: left;">グレースケール専用</td>
+</tr>
+<tr>
+<td style="text-align: center;">その他</td>
+<td style="text-align: left;"><code>-1</code> を返して何もしない</td>
+<td style="text-align: left;">—</td>
+</tr>
+</tbody>
+</table>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>; libgzds_utils.so  Java_com_gzds_utils_CPrint_Command
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>0x1242: cmp.w sb, #2  ; beq 0x129c    -&gt; type 2 : 0x67 固定パケット
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>0x1248: cmp.w sb, #1  ; beq 0x12c6    -&gt; type 1 : raw write
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>0x124e: cmp.w sb, #0  ; bne 0x1296    -&gt; type 0 : ioctl
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>0x1296: mov.w r6, #-1
+</span></code></pre></div>
+<p><code>PrinterInit(int)</code> は単に <code>PrinterType</code> フィールドへ代入するだけで、実行時に渡される値は <strong>1 のみ</strong>です。グレースケールの <code>2</code> は <code>sendPrintPictureData()</code> の呼び出し側でハードコードされており、<code>PrinterType</code> を経由しません。</p>
+<h3 id="22-write2-ioctl2">2.2 戻り値は <code>write(2)</code> / <code>ioctl(2)</code> の戻り値そのもの<a class="headerlink" href="#22-write2-ioctl2" title="Permanent link">&para;</a></h3>
+<p>ネイティブ側にプロトコル応答のパース処理は存在しません。<code>getPrinterStatus()</code> が <code>== 1</code> と比較しているのは <code>write()</code> の戻り値です。ステータスの 0/1 の意味は <code>/dev/prn-dev</code> のカーネルドライバ側の仕様であり、<strong>本リポジトリの資料からは検証できていません</strong>（実挙動としてビジー中に 1 が返ることは確認済み）。</p>
+<hr />
+<h2 id="3">3. オペコード一覧<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Opcode</th>
 <th style="text-align: center;">Hex</th>
-<th style="text-align: left;">定数名 (CPrint)</th>
-<th style="text-align: left;">パラメータ / データ</th>
-<th style="text-align: left;">機能説明</th>
+<th style="text-align: left;">定数名</th>
+<th style="text-align: left;">Java 側の呼び出し元</th>
+<th style="text-align: left;"><code>printerType=1</code> での実際の効果</th>
 </tr>
 </thead>
 <tbody>
@@ -1398,131 +1729,194 @@
 <td style="text-align: center;"><strong>68</strong></td>
 <td style="text-align: center;"><code>0x44</code></td>
 <td style="text-align: left;"><code>PRINTER_STATUS</code></td>
-<td style="text-align: left;">-</td>
-<td style="text-align: left;">プリンターのステータス取得 (0=待機, 1=印刷中(BUSY)。紙の有無では変化しない)</td>
+<td style="text-align: left;"><code>getPrinterStatus()</code></td>
+<td style="text-align: left;"><code>write(fd, {0x44,0,0,0,0}, 5)</code>。<code>param1=0</code> のため<strong>データ <code>{20}</code> は送られない</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>85</strong></td>
 <td style="text-align: center;"><code>0x55</code></td>
 <td style="text-align: left;"><code>PRINTER_PRINTER_FEED</code></td>
-<td style="text-align: left;"><code>param1</code>: 送り量<br/><code>data</code>: <code>bufferMove</code></td>
-<td style="text-align: left;">紙送り（正方向）。<code>speed(byte[])</code> 関数でも使用</td>
+<td style="text-align: left;"><code>PrintLineFeed(n&gt;=0)</code> / <code>speed(byte[])</code></td>
+<td style="text-align: left;">紙送り。<code>param1=50</code> なら 5 + 2400 バイトのゼロ埋め</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>102</strong></td>
 <td style="text-align: center;"><code>0x66</code></td>
 <td style="text-align: left;"><code>PRINTER_TASK</code></td>
-<td style="text-align: left;"><code>param1</code>: 高さ (px)<br/><code>data</code>: ビットマップバイト列</td>
-<td style="text-align: left;">1bitモノクログラフィックデータ（テキスト描画結果含む）の印刷</td>
+<td style="text-align: left;"><code>PrintPixel()</code> / <code>PrintText()</code></td>
+<td style="text-align: left;"><strong>1bit ラスタ印字</strong>。<code>param1</code> = 行数、48 バイト/行</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>103</strong></td>
 <td style="text-align: center;"><code>0x67</code></td>
-<td style="text-align: left;">-</td>
-<td style="text-align: left;"><code>param1</code>: 120<br/><code>data</code>: 16階調グレースケールバイト</td>
-<td style="text-align: left;">顔写真等の画像データ印刷 (<code>sendPrintPictureData</code>)</td>
+<td style="text-align: left;">(定数なし)</td>
+<td style="text-align: left;"><code>sendPrintPictureData()</code></td>
+<td style="text-align: left;"><strong>16階調グレースケール</strong>。<code>printerType=2</code> 固定、常に 121 バイト</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>119</strong></td>
 <td style="text-align: center;"><code>0x77</code></td>
 <td style="text-align: left;"><code>PRINTER_PAPERCHECK</code></td>
-<td style="text-align: left;"><code>data</code>: <code>{20}</code></td>
-<td style="text-align: left;">用紙有無チェック (<code>PrintCheckPaper</code>)</td>
+<td style="text-align: left;"><code>PrintCheckPaper()</code></td>
+<td style="text-align: left;"><code>write(fd, {0x77,0,0,0,0}, 5)</code>。<strong>データ <code>{20}</code> は送られない</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>136</strong></td>
 <td style="text-align: center;"><code>0x88</code></td>
 <td style="text-align: left;"><code>PRINTER_DARKNESS</code></td>
-<td style="text-align: left;"><code>data</code>: <code>{darkness}</code> (1～20)</td>
-<td style="text-align: left;">印字濃度（ダークネス）の設定 (<code>PrinterSetDarkness</code>)</td>
+<td style="text-align: left;"><code>PrinterSetDarkness(byte)</code></td>
+<td style="text-align: left;"><code>write(fd, {0x88,0,0,0,0}, 5)</code>。<strong>濃度値が送信されていない</strong>（後述）</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>153</strong></td>
 <td style="text-align: center;"><code>0x99</code></td>
 <td style="text-align: left;"><code>PRINTER_BACKWARD</code></td>
-<td style="text-align: left;"><code>param1</code>: 逆送り量</td>
-<td style="text-align: left;">用紙の逆送り（バックフィード）</td>
+<td style="text-align: left;"><code>PrintLineFeed(n&lt;0)</code></td>
+<td style="text-align: left;">逆送り。<code>0x55</code> と同形式</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition bug">
+<p class="admonition-title">ダークネス設定・用紙チェックはデータが落ちている</p>
+<p><code>PrinterSetDarkness(b)</code> は <code>Command(0x88, 0, new byte[]{b}, 1)</code> を呼びますが、<code>printerType=1</code> のパケット組み立ては<strong>データ長を <code>param1 × 48</code> で計算する</strong>ため、<code>param1 == 0</code> だとペイロードが 0 バイトになります。つまり濃度値そのものがプリンターに届いていません。<code>PrintCheckPaper()</code> (<code>0x77</code>) と <code>getPrinterStatus()</code> (<code>0x44</code>) も同様に <code>{20}</code> が落ちます。</p>
+<p>これらが機能しているように見えるのは、<strong>オペコードだけで完結するコマンドだから</strong>と考えられます。濃度を実際に変えたい場合は <code>param1</code> の与え方を含めた別途検証が必要です。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title"><code>speed(byte[])</code> は範囲外読み出しになる</p>
+<p><code>speed()</code> は <code>Command(0x55, 1, bArr, 1)</code> を呼びます。<code>param1=1</code> なので native は <strong>48 バイト</strong>をコピーしますが、渡される配列は 1 バイトです。使わないでください。</p>
+</div>
 <hr />
-<h2 id="3">3. テキスト描画・ラスタライズ制御フロー<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
-<p>サーマルプリンターへのテキスト印刷は、文字コード直接送信ではなく、Androidの <code>Canvas</code> を使用してメモリ上でビットマップ画像に描画・ラスタライズしてからプリンターへ送出する方式が採用されています。</p>
-<pre class="mermaid"><code>sequenceDiagram
-    participant App as PrintUtil / Activity
-    participant CPrint as CPrint.java
-    participant Canvas as Android Canvas/Bitmap
-    participant Native as libgzds_utils.so
-
-    App-&gt;&gt;CPrint: PrintData("許可証", 40)
-    CPrint-&gt;&gt;CPrint: GetTextIfon() (フォント高さ・改行計算)
-    CPrint-&gt;&gt;Canvas: Bitmap.createBitmap() &amp; Canvas.drawText()
-    CPrint-&gt;&gt;CPrint: ピクセル走査 (ARGB_8888 -&gt; 1bit Monochrome Byte Array)
-    CPrint-&gt;&gt;Native: Command(102, mTextHeight, bArr, PrinterType)
-    CPrint-&gt;&gt;Canvas: mBitmap.recycle()</code></pre>
-<h3 id="1-bit">1-bit モノクロ化・ビットパックアルゴリズム<a class="headerlink" href="#1-bit" title="Permanent link">&para;</a></h3>
-<p><code>CPrint.PrintText()</code> 内で、描画された <code>ARGB_8888</code> ビットマップの全ピクセルを走査し、白以外のピクセル（<code>pixel != -1</code>）を黒ドット（ビット <code>1</code>）として1バイトに8ピクセル分パックします。</p>
-<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">i2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kt">byte</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kt">int</span><span class="w"> </span><span class="n">i3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i4</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">mTextHeight</span><span class="p">;</span><span class="w"> </span><span class="n">i4</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i5</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">mTextWidth</span><span class="p">;</span><span class="w"> </span><span class="n">i5</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mBitmap</span><span class="p">.</span><span class="na">getPixel</span><span class="p">(</span><span class="n">i5</span><span class="p">,</span><span class="w"> </span><span class="n">i4</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">            </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">byte</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i2</span><span class="p">));</span><span class="w"> </span><span class="c1">// 黒ドットのビットを立てる</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="p">}</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="n">i2</span><span class="o">--</span><span class="p">;</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i2</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">            </span><span class="n">bArr</span><span class="o">[</span><span class="n">i3</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">            </span><span class="n">i3</span><span class="o">++</span><span class="p">;</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">            </span><span class="n">i2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">            </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="p">}</span>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="p">}</span>
+<h2 id="4">4. 2つのラスタパス — 1bit と グレースケール<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>プリンターには <strong>1bit モノクロ</strong>と <strong>16階調グレースケール</strong>の 2 系統があり、<strong>印字幅が異なります</strong>。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">1bit モノクロ</th>
+<th style="text-align: left;">グレースケール</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Opcode</td>
+<td style="text-align: left;"><code>0x66</code> (102)</td>
+<td style="text-align: left;"><code>0x67</code> (103)</td>
+</tr>
+<tr>
+<td style="text-align: left;">トランスポート</td>
+<td style="text-align: left;"><code>printerType = 1</code></td>
+<td style="text-align: left;"><code>printerType = 2</code>（固定）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>印字幅</strong></td>
+<td style="text-align: left;"><strong>384 px</strong></td>
+<td style="text-align: left;"><strong>240 px</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">1行あたり</td>
+<td style="text-align: left;">48 バイト（8px/バイト）</td>
+<td style="text-align: left;">120 バイト（2px/バイト）</td>
+</tr>
+<tr>
+<td style="text-align: left;">bit/px</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;"><strong>4</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>param1</code></td>
+<td style="text-align: left;">行数</td>
+<td style="text-align: left;"><strong>native 側で無視される</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">1コマンドのバイト数</td>
+<td style="text-align: left;"><code>param1 × 48 + 5</code></td>
+<td style="text-align: left;">常に 121（＝1 ライン）</td>
+</tr>
+</tbody>
+</table>
+<p>グレースケールは<strong>印字幅が 384 → 240 px と狭くなります</strong>。顔写真のプリントを想定した機能と思われ、元アプリでの用途も測定者の顔写真のみです。</p>
+<h3 id="raster-1bit">4.1 1bit パス（384 px）<a class="headerlink" href="#raster-1bit" title="Permanent link">&para;</a></h3>
+<p><code>CPrint.PrintText()</code> は <code>ARGB_8888</code> ビットマップの全ピクセルを走査し、白以外 (<code>pixel != -1</code>) を黒ドットとして MSB 先頭で 1 バイトに 8 px パックします。</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">i2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kt">byte</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kt">int</span><span class="w"> </span><span class="n">i3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i4</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">mTextHeight</span><span class="p">;</span><span class="w"> </span><span class="n">i4</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i5</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">mTextWidth</span><span class="p">;</span><span class="w"> </span><span class="n">i5</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">   </span><span class="c1">// mTextWidth = 384</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mBitmap</span><span class="p">.</span><span class="na">getPixel</span><span class="p">(</span><span class="n">i5</span><span class="p">,</span><span class="w"> </span><span class="n">i4</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">            </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">byte</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i2</span><span class="p">));</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="n">i2</span><span class="o">--</span><span class="p">;</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i2</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">bArr</span><span class="o">[</span><span class="n">i3</span><span class="o">++]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="n">i2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="p">}</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="n">Command</span><span class="p">(</span><span class="mi">102</span><span class="p">,</span><span class="w"> </span><span class="n">mTextHeight</span><span class="p">,</span><span class="w"> </span><span class="n">bArr</span><span class="p">,</span><span class="w"> </span><span class="n">PrinterType</span><span class="p">);</span>
 </span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">384 という数字の出どころ</p>
+<p>逆コンパイル結果では <code>mTextWidth = Function.USE_VARARGS;</code> と表示されます。これは JNA の定数で、<strong>値は 384</strong> です（<code>com/sun/jna/Function.java</code> の <code>public static final int USE_VARARGS = 384;</code>）。jadx が元 APK のクラスパスにあった JNA の定数で置換したもので、native 側が <code>param1 × 48</code> バイトを読むことと完全に一致します。</p>
+</div>
+<h3 id="raster-gray">4.2 グレースケールパス（240 px / 4bpp）<a class="headerlink" href="#raster-gray" title="Permanent link">&para;</a></h3>
+<p>1 バイトに 2 ピクセルを詰め、<strong>上位ニブル = 左（偶数 x）、下位ニブル = 右（奇数 x）</strong>。値は反転輝度（0 = 白／無加熱、15 = 最黒）です。</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// ImageUtils.java — BT.601 を反転チャンネルに適用</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">luma</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(((</span><span class="mi">255</span><span class="o">-</span><span class="n">r</span><span class="p">)</span><span class="o">*</span><span class="mi">66</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="mi">255</span><span class="o">-</span><span class="n">g</span><span class="p">)</span><span class="o">*</span><span class="mi">129</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="mi">255</span><span class="o">-</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="mi">25</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">luma</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">bArr2</span><span class="o">[</span><span class="n">i3</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">byte</span><span class="p">)</span><span class="w"> </span><span class="p">((</span><span class="n">levelLeft</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">levelRight</span><span class="p">);</span>
+</span></code></pre></div>
+<p>送信は <strong>1 スキャンラインずつ</strong>です。240×240 の顔写真なら 240 回の呼び出しになります。</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// PrintUtil.java</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i3</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">240</span><span class="p">;</span><span class="w"> </span><span class="n">i3</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="n">CPrint</span><span class="p">.</span><span class="na">sendPrintPictureData</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="n">PrintUtil</span><span class="p">.</span><span class="na">getData</span><span class="p">(</span><span class="n">i2</span><span class="p">,</span><span class="w"> </span><span class="n">bArrImageTo16Gray</span><span class="p">));</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="n">i2</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">120</span><span class="p">;</span><span class="w">   </span><span class="c1">// 120 バイト = 240 px</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="admonition bug">
+<p class="admonition-title">元コードのニブルオーバーフロー</p>
+<p><code>ImageUtils.java</code> の <code>int i8 = i7 / 15;</code> は <code>i7</code> が 0〜255 のため <strong>0〜17</strong> を返し、4bit のニブル (<code>17 &lt;&lt; 4</code> = 272) を溢れさせます。自作の <a href="../print_server/">PrinterServerApp</a> 側では <code>(adjustedLuma / 15).coerceIn(1, 15)</code> として修正済みです。</p>
+</div>
 <hr />
-<h2 id="4">4. レシート（許可証・測定結果）印字フォーマット<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
-<p><code>PrintUtil.printAll()</code> によって出力されるアルコール測定結果レシートのフォーマット構成です。</p>
-<h3 id="_2">印字レイアウト構成<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>+------------------------------------------+
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>|             許可証                      | &lt;- タイトル (40pt)
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>|               スタンドアロンモード       | &lt;- 動作モード (30pt, 条件指定時)
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>| [顔写真 16階調グレースケール画像 240x120]  | &lt;- 写真データ (i == 1 の場合)
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>| ID：12345                                | &lt;- ユーザーID
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>| 氏名：山田 太郎                          | &lt;- 氏名
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>| 時間：2026-08-06 20:00:00                | &lt;- 測定日時
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>| 車両出帰状態：出庫                      | &lt;- 車両ステータス
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>| 車両番号：品川 500 あ 12-34               | &lt;- ナンバープレート
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>| アルコール濃度:0.00mg/L                  | &lt;- 測定濃度
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>| 温度：36.5℃                             | &lt;- 体温/センサー温度
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>| 判定：OK                                 | &lt;- 判定結果 (OK: &lt;0.15, NG: &gt;=0.15)
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>|                                          |
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>|                                          | &lt;- 紙送り 3行 (PrintLineFeed(3))
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>+------------------------------------------+
+<h2 id="5">5. レシート（許可証・測定結果）印字フォーマット<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p><code>PrintUtil.printAll()</code> が出力するレイアウト構成です。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>+------------------------------------------+
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>|             許可証                        | &lt;- タイトル (40pt)
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>|             スタンドアロンモード           | &lt;- 動作モード (30pt, 条件付き)
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>| [顔写真 16階調グレースケール 240px幅]      | &lt;- グレースケールパス
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>| ID：12345                                 |
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>| 氏名：山田 太郎                            |
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>| 時間：2026-08-06 20:00:00                 |
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>| 車両出帰状態：出庫                         |
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>| 車両番号：品川 500 あ 12-34                |
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>| アルコール濃度:0.00mg/L                    |
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>| 温度：36.5℃                               |
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>| 判定：OK                                   |
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>|                                          |
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>|                                          | &lt;- 紙送り 3行 (PrintLineFeed(3))
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>+------------------------------------------+
 </span></code></pre></div>
-<h3 id="_3">判定条件ロジック<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>判定は <strong>0.15 mg/L</strong>（日本の道交法基準）が閾値です。</p>
+<div class="admonition bug">
+<p class="admonition-title"><code>print()</code> と <code>printAll()</code> で境界値の扱いが違う</p>
 <ul>
-<li><strong>アルコール濃度 threshold</strong>: <code>0.15 mg/L</code></li>
-<li><code>濃度 &lt; 0.15 mg/L</code> <span class="arithmatex">\(\rightarrow\)</span> <strong>判定：OK</strong></li>
-<li><code>濃度 &gt;= 0.15 mg/L</code> <span class="arithmatex">\(\rightarrow\)</span> <strong>判定：NG</strong></li>
+<li><code>PrintUtil.print()</code> … <code>d &gt; 0.15</code> で NG、<code>d &lt;= 0.15</code> で OK → <strong>0.15 は OK</strong></li>
+<li><code>PrintUtil.printAll()</code> および DB 記録 … <code>d &gt;= 0.15</code> で NG、<code>d &lt; 0.15</code> で OK → <strong>0.15 は NG</strong></li>
 </ul>
+<p>ちょうど 0.15 mg/L のとき両者が食い違います。判定ロジック全体については <a href="../../alcohol_checker/test_modes/">測定モードと運用仕様</a> を参照してください。</p>
+</div>
 <hr />
-<h2 id="5">5. ハードウェア・デバイスノード仕様<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h2 id="6">6. ハードウェア・デバイスノード<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>プリンター専用デバイスノード</strong>: <code>/dev/prn-dev</code> (Native <code>libgzds_utils.so</code> 内で <code>ioctl</code> 制御)</li>
-<li><strong>汎用シリアルポートデバイス</strong>: <code>/dev/ttyMSM1</code> (アルコールセンサーモジュール等で使用されるUARTポート)</li>
-<li><strong>パーミッション自動昇格</strong>:
-  シリアルデバイスやプリンターノードのアクセス権限がない場合、<code>CSerialPort</code> コンストラクタ内部で <code>/system/bin/su</code> を実行し、自動的に <code>chmod 777</code> を発行してパーミッションを獲得します。</li>
+<li><strong>プリンター</strong>: <code>/dev/prn-dev</code>（<code>init.target.rc</code> で <code>chmod 0777</code>）</li>
+<li><strong>アルコールセンサー UART</strong>: <code>/dev/ttyMSM1</code>（プリンターとは無関係）</li>
+<li>用紙: 紙幅 57〜58mm、ロール外径 25mm まで</li>
 </ul>
-<div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">file</span><span class="p">.</span><span class="na">canRead</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="n">file</span><span class="p">.</span><span class="na">canWrite</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">Process</span><span class="w"> </span><span class="n">processExec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Runtime</span><span class="p">.</span><span class="na">getRuntime</span><span class="p">().</span><span class="na">exec</span><span class="p">(</span><span class="s">&quot;/system/bin/su&quot;</span><span class="p">);</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">processExec</span><span class="p">.</span><span class="na">getOutputStream</span><span class="p">().</span><span class="na">write</span><span class="p">((</span><span class="s">&quot;chmod 777 &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="na">getAbsolutePath</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;\nexit\n&quot;</span><span class="p">).</span><span class="na">getBytes</span><span class="p">());</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">processExec</span><span class="p">.</span><span class="na">waitFor</span><span class="p">();</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">}</span>
+<p><code>CSerialPort</code> のコンストラクタは、権限が足りない場合に <code>su</code> を実行して <code>chmod 777</code> を発行します。</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">file</span><span class="p">.</span><span class="na">canRead</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="n">file</span><span class="p">.</span><span class="na">canWrite</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">Process</span><span class="w"> </span><span class="n">processExec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Runtime</span><span class="p">.</span><span class="na">getRuntime</span><span class="p">().</span><span class="na">exec</span><span class="p">(</span><span class="s">&quot;/system/bin/su&quot;</span><span class="p">);</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="n">processExec</span><span class="p">.</span><span class="na">getOutputStream</span><span class="p">().</span><span class="na">write</span><span class="p">((</span><span class="s">&quot;chmod 777 &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="na">getAbsolutePath</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;\nexit\n&quot;</span><span class="p">).</span><span class="na">getBytes</span><span class="p">());</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="n">processExec</span><span class="p">.</span><span class="na">waitFor</span><span class="p">();</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="p">}</span>
 </span></code></pre></div>
 <hr />
-<h2 id="6-api-comgzdsutilsprinter">6. API リファレンス概要 (<code>com.gzds.utils.Printer</code>)<a class="headerlink" href="#6-api-comgzdsutilsprinter" title="Permanent link">&para;</a></h2>
-<p>外部モジュールから利用可能な主要メソッド：</p>
+<h2 id="7-api-comgzdsutilsprinter">7. API リファレンス (<code>com.gzds.utils.Printer</code>)<a class="headerlink" href="#7-api-comgzdsutilsprinter" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1535,54 +1929,60 @@
 <tbody>
 <tr>
 <td style="text-align: left;"><code>PrinterInit(int type)</code></td>
-<td style="text-align: left;"><code>int type</code></td>
 <td style="text-align: left;"><code>int</code></td>
-<td style="text-align: left;">プリンタータイプ初期化 (通常 <code>1</code>)</td>
+<td style="text-align: left;"><code>int</code></td>
+<td style="text-align: left;">トランスポート選択の設定（実質 <code>1</code> 固定）。詳細は §2.1</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>PrinterSetDarkness(byte darkness)</code></td>
+<td style="text-align: left;"><code>PrinterSetDarkness(byte)</code></td>
 <td style="text-align: left;"><code>byte</code> (1-20)</td>
 <td style="text-align: left;"><code>Boolean</code></td>
-<td style="text-align: left;">印字濃度設定</td>
+<td style="text-align: left;">印字濃度設定。<strong>現状の呼び出し方では値が送信されません</strong>（§3）</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>PrinterSetFont(Typeface font)</code></td>
+<td style="text-align: left;"><code>PrinterSetFont(Typeface)</code></td>
 <td style="text-align: left;"><code>Typeface</code></td>
 <td style="text-align: left;"><code>Boolean</code></td>
-<td style="text-align: left;">使用フォントスタイルの指定</td>
+<td style="text-align: left;">使用フォントの指定</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>PrinterSetFontZoom(float scale)</code></td>
+<td style="text-align: left;"><code>PrinterSetFontZoom(float)</code></td>
 <td style="text-align: left;"><code>float</code></td>
 <td style="text-align: left;"><code>Boolean</code></td>
-<td style="text-align: left;">フォント横方向倍率の指定 (<code>mZoomWidth</code>)</td>
+<td style="text-align: left;">フォント横方向倍率 (<code>mZoomWidth</code>)</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>PrintData(String text, int size)</code></td>
+<td style="text-align: left;"><code>PrintData(String, int)</code></td>
 <td style="text-align: left;"><code>String</code>, <code>int</code></td>
 <td style="text-align: left;"><code>Boolean</code></td>
-<td style="text-align: left;">テキスト文字列の印刷</td>
+<td style="text-align: left;">テキスト印刷（内部で 384px 幅にラスタライズ）</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>PrintLineFeed(int lines)</code></td>
+<td style="text-align: left;"><code>PrintLineFeed(int)</code></td>
 <td style="text-align: left;"><code>int</code></td>
 <td style="text-align: left;"><code>Boolean</code></td>
-<td style="text-align: left;">指定行数の紙送り（負数の場合はバックフィード）</td>
+<td style="text-align: left;">紙送り（負数でバックフィード）</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PrintCheckPaper()</code></td>
 <td style="text-align: left;">なし</td>
 <td style="text-align: left;"><code>Boolean</code></td>
-<td style="text-align: left;">用紙の有無状態チェック</td>
+<td style="text-align: left;">用紙有無チェック</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PrinterClose()</code></td>
 <td style="text-align: left;">なし</td>
 <td style="text-align: left;"><code>Boolean</code></td>
-<td style="text-align: left;">プリンターリソースの解放および終了</td>
+<td style="text-align: left;">リソース解放</td>
 </tr>
 </tbody>
 </table>
+<hr />
+<h2 id="_1">次に読む<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../printing_tips/">印字ノウハウ・ハマりどころ</a> — 実際にきれいに印字するための知見</li>
+<li><a href="../print_server/">PrinterServerApp 開発記録</a> — 自前アプリからの制御</li>
+</ul>
 
 
 
@@ -1638,7 +2038,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.indexes", "navigation.top", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "content.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>

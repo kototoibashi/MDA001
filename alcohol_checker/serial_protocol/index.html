@@ -6,14 +6,16 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Hikvision DS-MDA001 (Android端末) のハードウェアおよびソフトウェア解析ドキュメント">
+        <meta name="description" content="Hikvision DS-MDA001 (アルコールチェッカー・プリンター内蔵Android端末) のハードウェアおよびソフトウェア解析ドキュメント">
       
       
         <meta name="author" content="kototoibashi">
       
       
+        <link rel="canonical" href="https://kototoibashi.github.io/MDA001/alcohol_checker/serial_protocol/">
       
-        <link rel="prev" href="../../network/bluetooth/">
+      
+        <link rel="prev" href="../test_modes/">
       
       
         <link rel="next" href="../measurement_behavior/">
@@ -78,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#serial-communication-protocol-documentation" class="md-skip">
+        <a href="#_1" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -266,6 +268,16 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -288,7 +300,7 @@
   <span class="md-ellipsis">
     
   
-    ハードウェア・システム構成
+    この端末について
   
 
     
@@ -304,11 +316,39 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    ハードウェア・システム構成
+    この端末について
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../identity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端末の素性と出自
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -324,7 +364,7 @@
   <span class="md-ellipsis">
     
   
-    デバイス概要
+    基本情報・OS仕様
   
 
     
@@ -352,7 +392,7 @@
   <span class="md-ellipsis">
     
   
-    基板・ドライバ仕様
+    基板・IC・ドライバ
   
 
     
@@ -405,154 +445,21 @@
       
   
   
+    
+  
   
   
     
-    
-    
-    
-      
-        
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ネットワーク・通信
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    ネットワーク・通信
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../network/interfaces/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    インターフェース仕様
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../network/wifi_enablement/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Wi-Fi有効化手順
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../network/bluetooth/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Bluetooth制限事項
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
     
       
+        
       
-  
-  
-    
-  
-  
-  
-    
+        
+      
+        
+      
+        
+      
     
     
     
@@ -566,17 +473,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    アルコールチェッカー機能
+    アルコールチェッカー
   
 
     
@@ -587,16 +494,44 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
   
-    アルコールチェッカー機能
+    アルコールチェッカー
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test_modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    測定モードと運用仕様
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -815,7 +750,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         関連ドキュメント
@@ -848,7 +783,7 @@
   <span class="md-ellipsis">
     
   
-    実際の測定コマンドの動作
+    実測挙動と非同期仕様
   
 
     
@@ -876,7 +811,7 @@
   <span class="md-ellipsis">
     
   
-    アルコール検知・AD値解析
+    AD値→濃度の換算
   
 
     
@@ -905,6 +840,14 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -917,17 +860,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    プリンター機能
+    サーマルプリンター
   
 
     
@@ -938,12 +881,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
-    プリンター機能
+    サーマルプリンター
   
 
           </label>
@@ -984,6 +927,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../printer/printing_tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    印字ノウハウ・ハマりどころ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../printer/print_server/" class="md-nav__link">
         
   
@@ -991,7 +962,7 @@
   <span class="md-ellipsis">
     
   
-    印刷サーバーアプリ
+    PrinterServerApp 開発記録
   
 
     
@@ -1020,6 +991,167 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    無線・ネットワーク
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    無線・ネットワーク
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/interfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    インターフェース一覧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/wifi_enablement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wi-Fi 恒久有効化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/bluetooth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bluetooth 移植（失敗）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -1042,7 +1174,7 @@
   <span class="md-ellipsis">
     
   
-    システム・ソフトウェア
+    システム改造・運用
   
 
     
@@ -1058,11 +1190,39 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    システム・ソフトウェア
+    システム改造・運用
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セキュリティ状態
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1078,7 +1238,35 @@
   <span class="md-ellipsis">
     
   
-    内蔵アプリ・APK構造
+    内蔵アプリ・APK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/fixes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    不具合の修正記録
   
 
     
@@ -1106,7 +1294,100 @@
   <span class="md-ellipsis">
     
   
-    バックアップ手法
+    バックアップ手順
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    付録
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    付録
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自作ツール一覧
   
 
     
@@ -1127,14 +1408,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../software/security/" class="md-nav__link">
+      <a href="../../appendix/adb_reference/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    セキュリティ評価
+    ADBコマンドリファレンス
   
 
     
@@ -1332,7 +1613,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         関連ドキュメント
@@ -1360,8 +1641,13 @@
 
 
 <p><a href="https://github.com/kototoibashi/MDA001/blob/master/alcohol_checker/serial_protocol.md">Markdown版はこちら</a></p>
-<h1 id="serial-communication-protocol-documentation">シリアル通信仕様書 (Serial Communication Protocol Documentation)<a class="headerlink" href="#serial-communication-protocol-documentation" title="Permanent link">&para;</a></h1>
-<p>本ドキュメントでは、Hikvision製アルコール検知端末 (<code>com.hikvision.alcoholtest</code>) とアルコールセンサー基板（検知モジュール）間で行われるシリアル通信の物理層仕様、フレーム規約、コマンド一覧、および状態遷移ロジックについて解説します。</p>
+<h1 id="_1">シリアル通信プロトコル<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>本ドキュメントでは、アルコール検知端末のメイン基板とアルコールセンサー基板の間で行われるシリアル通信の物理層仕様、フレーム規約、コマンド一覧、状態遷移ロジックを解説します。</p>
+<p>内容は <code>com.hikvision.alcoholtest</code> の逆コンパイル結果（<code>apks/decompiled/</code> 以下）と、<a href="../../tools/">AlcoholTestDebugger</a> による実機の TCP ブリッジ経由パケット解析に基づいています。</p>
+<div class="admonition tip">
+<p class="admonition-title">先に読むと理解が早いページ</p>
+<p>どのコマンドが実際に使われ、どれが Dead Code なのかは <a href="../test_modes/">測定モードと運用仕様</a> にまとめています。</p>
+</div>
 <hr />
 <h2 id="1">1. 物理層およびシリアルポート仕様<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
 <p>アルコール検知端末のメイン基板とアルコールセンサーモジュールは、Android OS上のシリアルデバイスノードを介して調停されます。</p>
@@ -1403,7 +1689,7 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Java側ドライバー制御</strong></td>
-<td style="text-align: left;"><a href="../../apks/decompiled/com.hikvision.alcoholtest/sources/com/hikvision/alcoholtest/comassistant/SerialHelper.java">SerialHelper.java</a></td>
+<td style="text-align: left;"><code>SerialHelper.java</code></td>
 </tr>
 </tbody>
 </table>
@@ -1483,7 +1769,12 @@
 <div class="arithmatex">\[LRC = B_2 \oplus B_3 \oplus B_4 \oplus \dots \oplus B_{N-4}\]</div>
 <hr />
 <h2 id="3-command-catalog">3. コマンドフレーム一覧 (Command Catalog)<a class="headerlink" href="#3-command-catalog" title="Permanent link">&para;</a></h2>
-<p>ソースコード <a href="../../apks/decompiled/com.hikvision.alcoholtest/sources/com/hikvision/alcoholtest/util/OrderTools.java">OrderTools.java</a> で定義されている全送信コマンドの16進数パケット一覧です。</p>
+<p>ソースコード <code>OrderTools.java</code> で定義されている全送信コマンドの16進数パケット一覧です。</p>
+<div class="admonition warning">
+<p class="admonition-title">定義されているコマンドの大半は、公式アプリからは発行されません</p>
+<p>アプリが実際に送信するのは <strong>8 種類だけ</strong>です — <code>startTest</code> / <code>exitTest</code> / <code>findAlcoholAD</code> / <code>blow</code> / <code>exitBlow</code> / <code>AlcoholContent</code> / <code>demarcate</code> / <code>passiveTest</code>（うち <code>demarcate</code> と <code>passiveTest</code> は到達不能なコードパス）。
+残りは OEM ファームウェアのプロトコル表がそのまま残っているだけで、呼び出し元がありません。とはいえ<strong>センサー基板側は応答する可能性が高い</strong>ので、直接叩いて確かめる価値があります。詳細は <a href="../test_modes/#3">測定モードと運用仕様</a> を参照してください。</p>
+</div>
 <table>
 <thead>
 <tr>
@@ -1537,10 +1828,10 @@
 <td style="text-align: left;">呼気吹き込みモード終了</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>QuickBlow</code> / <code>blowQuick</code></td>
+<td style="text-align: left;"><code>QuickBlow</code> / <code>blowQuick</code><br/><code>quickTestStartAutoPump</code></td>
 <td style="text-align: left;"><code>FE020C00020101040309F0FE</code></td>
 <td style="text-align: left;"><code>0x04 / 0x03</code></td>
-<td style="text-align: left;">迅速吹き込み（スクリーニング）モード開始</td>
+<td style="text-align: left;"><strong>快速筛查</strong>（迅速スクリーニング）モード開始。3つの変数名すべてが同一フレームで、<strong>呼び出し元は 0 箇所</strong>（<a href="../test_modes/#quick-screening">Dead Code</a>）</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Countdown</code></td>
@@ -1648,7 +1939,7 @@
 <td style="text-align: left;"><code>passiveTest</code></td>
 <td style="text-align: left;"><code>FE020C0002010110001EF0FE</code></td>
 <td style="text-align: left;"><code>0x10 / 0x00</code></td>
-<td style="text-align: left;">パッシブ（被動）テスト実行指示</td>
+<td style="text-align: left;">被動（パッシブ）テスト実行指示。<strong>公式アプリからは到達不能</strong>だが基板は応答する</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>DateTime</code></td>
@@ -1696,7 +1987,7 @@
 </table>
 <hr />
 <h2 id="4">4. 受信パケット種別および状態遷移ロジック<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
-<p><a href="../../apks/decompiled/com.hikvision.alcoholtest/sources/com/hikvision/alcoholtest/activity/NormalTestModeActivity.java">NormalTestModeActivity.java</a> 内の <code>Handler.handleMessage</code> で処理されるレスポンス種別一覧です。</p>
+<p><code>NormalTestModeActivity.java</code> 内の <code>Handler.handleMessage</code> で処理されるレスポンス種別一覧です。</p>
 <h3 id="41-mrecvbuf7">4.1 応答ステータスコード (<code>mRecvBuf[7]</code>)<a class="headerlink" href="#41-mrecvbuf7" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -1756,38 +2047,57 @@
 <h3 id="52-cmdtypegetalcoholconcentration-cmdtypepassivetest">5.2 アルコール濃度値 (<code>CmdType.GetAlcoholConcentration</code> &amp; <code>CmdType.PassiveTest</code>)<a class="headerlink" href="#52-cmdtypegetalcoholconcentration-cmdtypepassivetest" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>受信位置</strong>: <code>mRecvBuf[9..12]</code> (4 Bytes Big-Endian <strong>IEEE 754 Float</strong>)</li>
-<li><strong>酒気帯び判定閾値 (中国 / 日本規約基準)</strong>:</li>
+<li><strong>単位</strong>: <code>mg/L (BrAC)</code> — 呼気中アルコール濃度。センサーが返す生の Float 値がそのまま mg/L です</li>
+<li><strong>中間応答</strong>: <code>mRecvBuf[8]</code> が <code>flag</code> として機能し、<code>0</code> は「分析中」の暫定応答。確定値は <code>1, 2, 3</code> のときのみ（<a href="../measurement_behavior/#2">実測挙動</a> 参照）</li>
 </ul>
+<p>判定閾値はアプリ内に <strong>2 系統</strong>あります。</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">濃度範囲 (mg/100ml)</th>
-<th style="text-align: left;">判定文字列 (<code>alcolholFlag</code>)</th>
-<th style="text-align: left;">画面表示</th>
-<th style="text-align: left;">データベース記録</th>
+<th style="text-align: left;">ラダー</th>
+<th style="text-align: left;">閾値</th>
+<th style="text-align: left;">判定</th>
+<th style="text-align: left;">状態</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>&lt; 20.0 mg/100ml</strong></td>
-<td style="text-align: left;">未超標 (Not Exceeding Standard)</td>
-<td style="text-align: left;">緑色 (<code>#006400</code>)</td>
-<td style="text-align: left;">OK (<code>0.0 &lt;= f &lt; 0.15 mg/L</code>)</td>
+<td style="text-align: left;">中国 GB 19522</td>
+<td style="text-align: left;"><code>&lt; 20</code></td>
+<td style="text-align: left;">未超标（緑 <code>#006400</code>）</td>
+<td style="text-align: left;">⚠️ <strong>動作しない</strong></td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>20.0 ～ 79.9 mg/100ml</strong></td>
-<td style="text-align: left;">飲酒後駕車 (Drinking Driving)</td>
-<td style="text-align: left;">黄色 (<code>#DAA520</code>)</td>
-<td style="text-align: left;">NG (<code>f &gt;= 0.15 mg/L</code>)</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>20 〜 79.9</code></td>
+<td style="text-align: left;">饮酒后驾车（黄 <code>#DAA520</code>）</td>
+<td style="text-align: left;">⚠️ <strong>動作しない</strong></td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>&gt;= 80.0 mg/100ml</strong></td>
-<td style="text-align: left;">酔酒後駕車 (Drunk Driving)</td>
-<td style="text-align: left;">赤色 (CATEGORY_MASK)</td>
-<td style="text-align: left;">NG (<code>f &gt;= 0.15 mg/L</code>)</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>&gt;= 80</code></td>
+<td style="text-align: left;">醉酒后驾车（赤）</td>
+<td style="text-align: left;">⚠️ <strong>動作しない</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">日本 道交法</td>
+<td style="text-align: left;"><code>&lt; 0.15 mg/L</code></td>
+<td style="text-align: left;">OK（画面表示・DB・レシート）</td>
+<td style="text-align: left;">✅ 実際に効く</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>&gt;= 0.15 mg/L</code></td>
+<td style="text-align: left;">NG</td>
+<td style="text-align: left;">✅ 実際に効く</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition bug">
+<p class="admonition-title">GB 19522 ラダーは単位換算を忘れている</p>
+<p>20 / 80 は <code>mg/100mL (BAC)</code> の数値ですが、比較対象の値は <code>mg/L (BrAC)</code> の生値のまま生成されています。実測値は 0.15 mg/L といったオーダーなので、<strong>この判定は常に「未超标」に落ちます</strong>。
+血中濃度に換算する場合の係数は <code>220</code>（<code>Utils.formatDensityString()</code>）です。詳細は <a href="../test_modes/#4">測定モードと運用仕様 §4</a> を参照してください。</p>
+</div>
 <h3 id="53">5.3 標定（キャリブレーション）データ構造<a class="headerlink" href="#53" title="Permanent link">&para;</a></h3>
 <p><code>CmdType.Demarcate</code> (<code>mRecvBuf[7] == 0x23</code>) のレスポンスに含まれるバイナリデータ構造体マップです。</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>  Index: 0   1   2   3   4   5   6   7   8   9..12   13..14   15..16   17..20   21..24   25..28   ...   57..60
@@ -1896,11 +2206,12 @@
 </tbody>
 </table>
 <hr />
-<h2 id="_1">関連ドキュメント<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h2 id="_2">関連ドキュメント<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../../hardware/overview/">overview.md</a> - デバイス概要</li>
-<li><a href="../../hardware/components/">components.md</a> - ハードウェアおよびドライバ構成</li>
-<li><a href="../../printer/printer/">printer.md</a> - サーマルプリンター制御仕様書</li>
+<li><a href="../test_modes/">測定モードと運用仕様</a> — どのコマンドが実際に使われるか</li>
+<li><a href="../measurement_behavior/">実測挙動と非同期仕様</a> — 応答レイテンシとハマりどころ</li>
+<li><a href="../alcohol_ad_values/">AD値→濃度の換算</a> — 生 AD 値からの推定式</li>
+<li><a href="../../tools/">自作ツール一覧</a> — プロトコルを叩くためのデバッガアプリ</li>
 </ul>
 
 
@@ -1957,7 +2268,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.indexes", "navigation.top", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "content.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>

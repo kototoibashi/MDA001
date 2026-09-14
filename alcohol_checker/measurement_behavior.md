@@ -1,4 +1,4 @@
-# 実際の測定コマンドの動作 (Measurement Behavior & Advanced Analysis)
+# 実測挙動と非同期仕様 (Measurement Behavior)
 
 本ドキュメントでは、`serial_protocol.md` で定義されたコマンド群が、**実際の測定時にどのような非同期挙動やレイテンシを示すか**、およびデバイスの状態遷移に関する実機検証（生TCPブリッジ経由でのパケット解析・アルコール蒸気テスト）の結果をまとめています。
 
@@ -43,7 +43,7 @@ sequenceDiagram
 
 ---
 
-## 2. 実証された濃度取得の非同期プロトコル
+## 2. 実証された濃度取得の非同期プロトコル {#2}
 
 濃度を取得するコマンド（`AlcoholContent` / `passiveTest`）は、**単一の要求に対する即座の応答フレームで確定値が返るとは限りません。**
 
@@ -71,8 +71,12 @@ sequenceDiagram
 
 「受動測定（被动测试）」モードは、対象者がマウスピースに息を吹き込むのではなく、機器が周囲の空気を吸引して検知するモードです。
 
+!!! note "公式アプリからは起動できません"
+    `passiveTest` (`0x10`) を発行するコードは `NormalTestModeActivity` に存在しますが、遷移条件となる `CmdType.ExitTestForWarm` がどこからも代入されず、起動ボタン `btn_passive_test` も `findViewById` されていないため **到達不能**です。
+    以下の検証は、すべて [AlcoholTestDebugger](../tools.md) から直接コマンドを送って行ったものです。詳細は [測定モードと運用仕様](test_modes.md#passive) を参照してください。
+
 ### 3.1 測定サイクル
-`passiveTest` コマンドを送信すると、確定応答（`flag=1,2,3`）が返るまで分析が継続されます。アプリ側では確定後に `findAlcoholAD` でベースラインを再確認し、再び `passiveTest` ループに入ることで常時監視（Passive Monitor）を実現できます。
+`passiveTest` コマンドを送信すると、確定応答（`flag=1,2,3`）が返るまで分析が継続されます。確定後に `findAlcoholAD` でベースラインを再確認し、再び `passiveTest` ループに入ることで常時監視（Passive Monitor）を実現できます。自作デバッガではこの方式で常時監視を実装しています。
 
 ### 3.2 サイクル境界のノイズ問題
 実機テストにおいて、`passiveTest` の測定サイクルが切り替わる瞬間（前回確定応答が届き、次回を送信する直後）に、`findAlcoholAD` で取得できる生のAD値が一時的に急上昇するノイズ現象が確認されました。

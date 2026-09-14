@@ -12,13 +12,13 @@
         <meta name="author" content="kototoibashi">
       
       
-        <link rel="canonical" href="https://kototoibashi.github.io/MDA001/software/security/">
+        <link rel="canonical" href="https://kototoibashi.github.io/MDA001/software/fixes/">
       
       
-        <link rel="prev" href="../../network/bluetooth/">
+        <link rel="prev" href="../applications/">
       
       
-        <link rel="next" href="../applications/">
+        <link rel="next" href="../backup_strategy/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>セキュリティ状態 - Hikvision DS-MDA001 解析レポート</title>
+        <title>不具合の修正記録 - Hikvision DS-MDA001 解析レポート</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#selinux-dm-verity" class="md-skip">
+        <a href="#known-defects-fixes" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              セキュリティ状態
+              不具合の修正記録
             
           </span>
         </div>
@@ -992,37 +992,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    セキュリティ状態
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
         
   
   
@@ -1038,109 +1011,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目次">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目次
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 調査結果の概要
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 各セキュリティ機能の詳細
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. 各セキュリティ機能の詳細">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-selinux-security-enhanced-linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.1. SELinux (Security-Enhanced Linux)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-dm-verity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.2. dm-verity (改ざん検知)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.3. ブートローダーのロック状態
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#24" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.4. その他のセキュリティ関連プロパティ
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 今後の方針・影響
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1178,10 +1048,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../fixes/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    不具合の修正記録
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1197,6 +1094,170 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 物理ホームボタンが一切反応しない
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 物理ホームボタンが一切反応しない">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        症状
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        原因
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        対策A: ソフトウェアナビゲーションバーで代替（最も手軽）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-gpio-dtb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        対策B: GPIO 監視スクリプトでエミュレート（DTB を触らない安全策）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-dtb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        対策C: DTB にノードを追記（根本解決）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-telephony-ims" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 着信しない（Telephony / IMS）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 着信しない（Telephony / IMS）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        症状
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        原因
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        対策
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 無線が全部死んでいる
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-usb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. USB では充電できない
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1388,30 +1449,91 @@
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 調査結果の概要
+        1. 物理ホームボタンが一切反応しない
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="1. 物理ホームボタンが一切反応しない">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        症状
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        原因
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        対策A: ソフトウェアナビゲーションバーで代替（最も手軽）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-gpio-dtb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        対策B: GPIO 監視スクリプトでエミュレート（DTB を触らない安全策）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-dtb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        対策C: DTB にノードを追記（根本解決）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#2-telephony-ims" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 各セキュリティ機能の詳細
+        2. 着信しない（Telephony / IMS）
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. 各セキュリティ機能の詳細">
+    <nav class="md-nav" aria-label="2. 着信しない（Telephony / IMS）">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-selinux-security-enhanced-linux" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1. SELinux (Security-Enhanced Linux)
+        症状
       
     </span>
   </a>
@@ -1419,10 +1541,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-dm-verity" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2. dm-verity (改ざん検知)
+        原因
       
     </span>
   </a>
@@ -1430,21 +1552,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#23" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.3. ブートローダーのロック状態
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#24" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.4. その他のセキュリティ関連プロパティ
+        対策
       
     </span>
   </a>
@@ -1460,7 +1571,18 @@
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. 今後の方針・影響
+        3. 無線が全部死んでいる
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-usb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. USB では充電できない
       
     </span>
   </a>
@@ -1484,49 +1606,84 @@
 
 
 
-<p><a href="https://github.com/kototoibashi/MDA001/blob/master/software/security.md">Markdown版はこちら</a></p>
-<h1 id="selinux-dm-verity">端末のセキュリティ機能（SELinux / dm-verity 等）の調査結果<a class="headerlink" href="#selinux-dm-verity" title="Permanent link">&para;</a></h1>
-<p>本ドキュメントでは、対象のAndroid端末におけるシステムレベルのセキュリティ機能（SELinux、dm-verity、ブートローダーのロック状態など）の調査結果をまとめる。</p>
-<h2 id="1">1. 調査結果の概要<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<p><strong>結論：この端末のセキュリティ機能は非常に緩く（無効化されており）、システム改造・解析を行う上で非常に自由度が高い状態である。</strong></p>
-<p>システム領域の改ざん検知や権限ブロックなどが働いていないため、root権限さえ確保できれば、システムファイルの直接編集、不要な標準アプリの削除、各種検証などが制限なく行える。</p>
-<h2 id="2">2. 各セキュリティ機能の詳細<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
-<p>adb shell経由で各種プロパティや状態を確認した結果は以下の通りである。</p>
-<h3 id="21-selinux-security-enhanced-linux">2.1. SELinux (Security-Enhanced Linux)<a class="headerlink" href="#21-selinux-security-enhanced-linux" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/kototoibashi/MDA001/blob/master/software/fixes.md">Markdown版はこちら</a></p>
+<h1 id="known-defects-fixes">不具合の修正記録 (Known Defects &amp; Fixes)<a class="headerlink" href="#known-defects-fixes" title="Permanent link">&para;</a></h1>
+<p>本ドキュメントは、DS-MDA001 を汎用 Android 端末として使おうとしたときに突き当たる「壊れている / 殺されている機能」と、その原因調査および修正手法をまとめたものです。</p>
+<p>いずれも <strong>専用端末として作り込まれた結果、汎用 Android としては設定が欠落している</strong> ことに起因しており、ハードウェアの故障ではありません。</p>
+<hr />
+<h2 id="1">1. 物理ホームボタンが一切反応しない<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h3 id="_1">症状<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>本体の物理ホームボタンを押しても OS が全く反応しない。</p>
+<h3 id="_2">原因<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p><code>adb shell getevent -l</code> で監視しても押下時に入力イベントが発生せず、Android フレームワーク以前の <strong>カーネルレベルで信号が捨てられている</strong> ことが判明しました。</p>
+<p>カーネルログ (<code>dmesg</code>) には起動時に <code>gpio_keys_polled</code> ドライバの <code>gpio_to_desc</code> エラーが出ており、これは Device Tree (DTB) における GPIO ピン割り当ての記述が誤っている／欠落している場合に発生します。</p>
+<p><code>/sys/kernel/debug/gpio</code> を総当たりで監視した結果、<strong>ホームボタンは物理的に GPIO 88 に結線されている</strong>ことを特定しました。押下で電圧が <code>1</code> → <code>0</code> に遷移する Active-Low 構成です。カーネルの DTB に「GPIO 88 がホームボタンである」という記述がないため、ボタンが死んでいます。</p>
+<h3 id="a">対策A: ソフトウェアナビゲーションバーで代替（最も手軽）<a class="headerlink" href="#a" title="Permanent link">&para;</a></h3>
+<p>物理ボタンを使わず、Android 標準の画面内ナビゲーションバーを強制表示させます。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>adb<span class="w"> </span>shell<span class="w"> </span>setprop<span class="w"> </span>qemu.hw.mainkeys<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>adb<span class="w"> </span>shell<span class="w"> </span>pkill<span class="w"> </span>SystemUI
+</span></code></pre></div>
+<p>恒久化する場合は <code>/system/build.prop</code> に <code>qemu.hw.mainkeys=0</code> を追記します。</p>
+<h3 id="b-gpio-dtb">対策B: GPIO 監視スクリプトでエミュレート（DTB を触らない安全策）<a class="headerlink" href="#b-gpio-dtb" title="Permanent link">&para;</a></h3>
+<p>Device Tree を書き換えず、バックグラウンドスクリプトで GPIO 88 の電圧を直接監視してホームキーイベントを発行します。</p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="ch">#!/system/bin/sh</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">echo</span><span class="w"> </span><span class="m">88</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/class/gpio/export<span class="w"> </span><span class="m">2</span>&gt;/dev/null
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">echo</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/class/gpio/gpio88/direction
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>cat<span class="w"> </span>/sys/class/gpio/gpio88/value<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span>input<span class="w"> </span>keyevent<span class="w"> </span><span class="m">3</span><span class="w">  </span><span class="c1"># KEYCODE_HOME</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>cat<span class="w"> </span>/sys/class/gpio/gpio88/value<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">      </span>sleep<span class="w"> </span><span class="m">0</span>.1
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="k">done</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="k">fi</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span>sleep<span class="w"> </span><span class="m">0</span>.1
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="k">done</span>
+</span></code></pre></div>
+<h3 id="c-dtb">対策C: DTB にノードを追記（根本解決）<a class="headerlink" href="#c-dtb" title="Permanent link">&para;</a></h3>
+<ol>
+<li><code>magiskboot</code> 等で <code>boot.img</code> から <code>dtb</code> を抽出</li>
+<li>
+<p><code>dtc</code> でデコンパイルし、<code>gpio_keys_polled</code> ノードへ以下を追記</p>
+<div class="language-dts highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="na">button</span><span class="err">@</span><span class="na">home</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Home&quot;</span><span class="p">;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">linux</span><span class="p">,</span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">102</span><span class="o">&gt;</span><span class="p">;</span><span class="w">      </span><span class="cm">/* KEY_HOME */</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">gpios</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&amp;</span><span class="na">tlmm</span><span class="w"> </span><span class="mi">88</span><span class="w"> </span><span class="mh">0x01</span><span class="o">&gt;</span><span class="p">;</span><span class="w"> </span><span class="cm">/* GPIO 88 (Active-Low) */</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">};</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>リコンパイルして <code>boot.img</code> を再構築しフラッシュ</p>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">boot パーティションの書き換えは文鎮化リスクがあります</p>
+<p>実行前に必ず <a href="../backup_strategy/">バックアップ手順</a> に従って <code>boot.img</code> を退避してください。</p>
+</div>
+<hr />
+<h2 id="2-telephony-ims">2. 着信しない（Telephony / IMS）<a class="headerlink" href="#2-telephony-ims" title="Permanent link">&para;</a></h2>
+<h3 id="_3">症状<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>IMS 接続（VoLTE 等）は正常に確立できているのに、外部からの着信で画面が出ない・鳴らない。「Telephony.apk が入っていないのでは？」と疑われる症状です。</p>
+<h3 id="_4">原因<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>Android の電話機能は単一の <code>Telephony.apk</code> ではなく複数コンポーネントで構成されますが、本端末には <code>TeleService.apk</code> (<code>com.android.phone</code>)、<code>Telecom.apk</code>、<code>QtiTelephonyService.apk</code>、<code>ims.apk</code> などの必須コンポーネントはすべて正常に存在していました。</p>
+<p><code>dumpsys telecom</code> を解析した結果、<strong>デフォルトの電話アプリ (Default Dialer) が未設定 (<code>null</code>)</strong> であることが判明。Telecom システムが着信のルーティング先を見つけられず、着信自体が破棄されていました。</p>
+<h3 id="_5">対策<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>端末にインストール済みのダイヤラーをデフォルトに指定します。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>adb<span class="w"> </span>shell<span class="w"> </span>telecom<span class="w"> </span>set-default-dialer<span class="w"> </span>org.codeaurora.dialer
+</span></code></pre></div>
+<hr />
+<h2 id="3">3. 無線が全部死んでいる<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>Wi-Fi / Bluetooth / セルラーは出荷時にソフトウェア・ハードウェア両面で無効化されています。原因の切り分けと復旧手順は独立したドキュメントにまとめています。</p>
 <ul>
-<li><strong>状態:</strong> <code>Permissive</code>（寛容モード）</li>
-<li><strong>確認コマンド:</strong> <code>getenforce</code></li>
-<li><strong>影響:</strong>
-  本来、ポリシーに違反するアクセスをブロックする機能であるが、<code>Permissive</code>モードでは「ルール違反をログに記録するのみ」であり、実際のアクセスブロックは行われない。これにより、権限周りのエラー（Permission Deniedなど）でシステムへの操作が弾かれるケースはほぼない。</li>
+<li><a href="../../network/wifi_enablement/">Wi-Fi 恒久有効化手順</a> — <strong>成功</strong></li>
+<li><a href="../../network/bluetooth/">Bluetooth 有効化の試行記録</a> — <strong>失敗（Qualcomm スタック非互換）</strong></li>
+<li><a href="../../network/interfaces/">ネットワークインターフェース一覧</a></li>
 </ul>
-<h3 id="22-dm-verity">2.2. dm-verity (改ざん検知)<a class="headerlink" href="#22-dm-verity" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>状態:</strong> <code>Disabled</code>（無効）</li>
-<li><strong>確認プロパティ:</strong> <code>[ro.boot.veritymode]: [disabled]</code></li>
-<li><strong>マウント状態:</strong> <code>/system</code>や<code>/vendor</code>等のマウントに<code>dm-</code> (device-mapper) を介したものが存在しない。</li>
-<li><strong>影響:</strong>
-  システム領域（<code>/system</code>など）の改ざんをブロック・検知する機能が無効になっている。そのため、<code>mount -o rw,remount /system</code> で書き込み可能にしてファイルを直接編集・差し替えても、次回起動時に文鎮化（ブートループ等）することはない。</li>
-</ul>
-<h3 id="23">2.3. ブートローダーのロック状態<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>状態:</strong> アンロック済み（Unlocked）</li>
-<li><strong>確認プロパティ:</strong> <code>[ro.boot.verifiedbootstate]: [orange]</code></li>
-<li><strong>影響:</strong>
-  AndroidのVerified Boot (AVB) のステータスが <code>orange</code> であることは、ブートローダーがアンロックされていることを意味する。メーカーの公式署名がないカスタムイメージ（boot.imgやrecovery.img）をフラッシュして起動させることが可能な状態である。</li>
-</ul>
-<h3 id="24">2.4. その他のセキュリティ関連プロパティ<a class="headerlink" href="#24" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>ユーザーデータ領域の暗号化:</strong> 有効 (<code>[ro.crypto.state]: [encrypted]</code>)
-  ※ Android標準仕様であり、システム改造自体を妨げるものではない。</li>
-<li><strong>adbのセキュア状態:</strong> 有効 (<code>[ro.secure]: [1]</code>)
-  ※ ただし、<code>su</code>バイナリなどが存在するか、root権限を取得できれば問題なく回避可能。</li>
-</ul>
-<h2 id="3">3. 今後の方針・影響<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
-<ul>
-<li>開発、デバッグ、カスタマイズの障壁となるカーネル/OSレベルの制限はほぼ解除された状態である。</li>
-<li>システムアプリの無効化・差し替えや、<code>/system</code> へのバイナリ・スクリプトの配置等が問題なく実行可能。</li>
-<li>セキュリティ機能がシステムを保護していないため、誤ったファイルを書き換えた際のリスク（起動不可になるリスク）は自己責任となる。変更前には必ず対象ファイルのバックアップを取るよう留意すること。</li>
-</ul>
+<p>いずれのケースでも、<strong>基板にアンテナ本体が実装されていない</strong>というハードウェア側の制約が最後に残ります。詳細は <a href="../../hardware/components/">基板・IC・ドライバ仕様</a> を参照してください。</p>
+<hr />
+<h2 id="4-usb">4. USB では充電できない<a class="headerlink" href="#4-usb" title="Permanent link">&para;</a></h2>
+<p>本体の USB ポートは ADB / RNDIS 用であり、充電には使えません。給電は専用 AC アダプタ（<strong>12V 2A / DC ジャック 外径 3.5mm・内径 1.1mm</strong>）が必要です。</p>
+<p>汎用の 12V アダプタを使う場合はジャック径に注意してください（一般的な 5.5mm/2.1mm とは異なります）。</p>
 
 
 

@@ -6,17 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Hikvision DS-MDA001 (Android端末) のハードウェアおよびソフトウェア解析ドキュメント">
+        <meta name="description" content="Hikvision DS-MDA001 (アルコールチェッカー・プリンター内蔵Android端末) のハードウェアおよびソフトウェア解析ドキュメント">
       
       
         <meta name="author" content="kototoibashi">
       
       
+        <link rel="canonical" href="https://kototoibashi.github.io/MDA001/software/applications/">
       
-        <link rel="prev" href="../../printer/print_server/">
+      
+        <link rel="prev" href="../security/">
       
       
-        <link rel="next" href="../backup_strategy/">
+        <link rel="next" href="../fixes/">
       
       
         
@@ -27,7 +29,7 @@
     
     
       
-        <title>内蔵アプリ・APK構造 - Hikvision DS-MDA001 解析レポート</title>
+        <title>内蔵アプリ・APK - Hikvision DS-MDA001 解析レポート</title>
       
     
     
@@ -78,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#04-apk-applications-extracted-apks" class="md-skip">
+        <a href="#apk-applications-extracted-apks" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -114,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              内蔵アプリ・APK構造
+              内蔵アプリ・APK
             
           </span>
         </div>
@@ -266,6 +268,16 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -288,7 +300,7 @@
   <span class="md-ellipsis">
     
   
-    ハードウェア・システム構成
+    この端末について
   
 
     
@@ -304,11 +316,39 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    ハードウェア・システム構成
+    この端末について
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../identity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端末の素性と出自
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -324,7 +364,7 @@
   <span class="md-ellipsis">
     
   
-    デバイス概要
+    基本情報・OS仕様
   
 
     
@@ -352,7 +392,7 @@
   <span class="md-ellipsis">
     
   
-    基板・ドライバ仕様
+    基板・IC・ドライバ
   
 
     
@@ -409,6 +449,16 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -431,7 +481,7 @@
   <span class="md-ellipsis">
     
   
-    ネットワーク・通信
+    アルコールチェッカー
   
 
     
@@ -447,7 +497,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    ネットワーク・通信
+    アルコールチェッカー
   
 
           </label>
@@ -460,14 +510,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/interfaces/" class="md-nav__link">
+      <a href="../../alcohol_checker/test_modes/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    インターフェース仕様
+    測定モードと運用仕様
   
 
     
@@ -480,121 +530,6 @@
   
 
               
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../network/wifi_enablement/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Wi-Fi有効化手順
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../network/bluetooth/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Bluetooth制限事項
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-      
-        
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    アルコールチェッカー機能
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    アルコールチェッカー機能
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -638,7 +573,7 @@
   <span class="md-ellipsis">
     
   
-    実際の測定コマンドの動作
+    実測挙動と非同期仕様
   
 
     
@@ -666,7 +601,7 @@
   <span class="md-ellipsis">
     
   
-    アルコール検知・AD値解析
+    AD値→濃度の換算
   
 
     
@@ -695,6 +630,14 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -707,17 +650,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    プリンター機能
+    サーマルプリンター
   
 
     
@@ -728,12 +671,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
-    プリンター機能
+    サーマルプリンター
   
 
           </label>
@@ -774,6 +717,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../printer/printing_tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    印字ノウハウ・ハマりどころ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../printer/print_server/" class="md-nav__link">
         
   
@@ -781,7 +752,158 @@
   <span class="md-ellipsis">
     
   
-    印刷サーバーアプリ
+    PrinterServerApp 開発記録
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    無線・ネットワーク
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    無線・ネットワーク
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/interfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    インターフェース一覧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/wifi_enablement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wi-Fi 恒久有効化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/bluetooth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bluetooth 移植（失敗）
   
 
     
@@ -812,6 +934,16 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -834,7 +966,7 @@
   <span class="md-ellipsis">
     
   
-    システム・ソフトウェア
+    システム改造・運用
   
 
     
@@ -850,11 +982,39 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    システム・ソフトウェア
+    システム改造・運用
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セキュリティ状態
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -879,7 +1039,7 @@
   <span class="md-ellipsis">
     
   
-    内蔵アプリ・APK構造
+    内蔵アプリ・APK
   
 
     
@@ -897,7 +1057,7 @@
   <span class="md-ellipsis">
     
   
-    内蔵アプリ・APK構造
+    内蔵アプリ・APK
   
 
     
@@ -1016,14 +1176,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../backup_strategy/" class="md-nav__link">
+      <a href="../fixes/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    バックアップ手法
+    不具合の修正記録
   
 
     
@@ -1044,14 +1204,135 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/" class="md-nav__link">
+      <a href="../backup_strategy/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    セキュリティ評価
+    バックアップ手順
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    付録
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    付録
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自作ツール一覧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/adb_reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADBコマンドリファレンス
   
 
     
@@ -1194,7 +1475,7 @@
 
 
 <p><a href="https://github.com/kototoibashi/MDA001/blob/master/software/applications.md">Markdown版はこちら</a></p>
-<h1 id="04-apk-applications-extracted-apks">📲 04. アプリケーション・抽出APKアーカイブ (Applications &amp; Extracted APKs)<a class="headerlink" href="#04-apk-applications-extracted-apks" title="Permanent link">&para;</a></h1>
+<h1 id="apk-applications-extracted-apks">内蔵アプリ・抽出APKアーカイブ (Applications &amp; Extracted APKs)<a class="headerlink" href="#apk-applications-extracted-apks" title="Permanent link">&para;</a></h1>
 <p>本ドキュメントでは、端末にインストールされているパッケージ、サードパーティアプリケーション、およびローカル環境へ全抽出した179個のAPKファイルの分類構造についてまとめています。</p>
 <hr />
 <h2 id="1-apk-extracted-apk-summary">📦 1. 抽出済み APK アーカイブ一覧 (Extracted APK Summary)<a class="headerlink" href="#1-apk-extracted-apk-summary" title="Permanent link">&para;</a></h2>
@@ -1290,7 +1571,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.indexes", "navigation.top", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "content.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>

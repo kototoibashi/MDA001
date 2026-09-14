@@ -1,6 +1,11 @@
-# シリアル通信仕様書 (Serial Communication Protocol Documentation)
+# シリアル通信プロトコル
 
-本ドキュメントでは、Hikvision製アルコール検知端末 (`com.hikvision.alcoholtest`) とアルコールセンサー基板（検知モジュール）間で行われるシリアル通信の物理層仕様、フレーム規約、コマンド一覧、および状態遷移ロジックについて解説します。
+本ドキュメントでは、アルコール検知端末のメイン基板とアルコールセンサー基板の間で行われるシリアル通信の物理層仕様、フレーム規約、コマンド一覧、状態遷移ロジックを解説します。
+
+内容は `com.hikvision.alcoholtest` の逆コンパイル結果（`apks/decompiled/` 以下）と、[AlcoholTestDebugger](../tools.md) による実機の TCP ブリッジ経由パケット解析に基づいています。
+
+!!! tip "先に読むと理解が早いページ"
+    どのコマンドが実際に使われ、どれが Dead Code なのかは [測定モードと運用仕様](test_modes.md) にまとめています。
 
 ---
 
@@ -17,7 +22,7 @@
 | **パリティ (Parity)** | None (パリティなし) |
 | **フロー制御** | None |
 | **Nativeライブラリ** | `libgzds_utils.so` (`com.gzds.utils.CSerialPort`) |
-| **Java側ドライバー制御** | [SerialHelper.java](../../apks/decompiled/com.hikvision.alcoholtest/sources/com/hikvision/alcoholtest/comassistant/SerialHelper.java) |
+| **Java側ドライバー制御** | `SerialHelper.java` |
 
 ---
 
@@ -57,7 +62,11 @@ $$LRC = B_2 \oplus B_3 \oplus B_4 \oplus \dots \oplus B_{N-4}$$
 
 ## 3. コマンドフレーム一覧 (Command Catalog)
 
-ソースコード [OrderTools.java](../../apks/decompiled/com.hikvision.alcoholtest/sources/com/hikvision/alcoholtest/util/OrderTools.java) で定義されている全送信コマンドの16進数パケット一覧です。
+ソースコード `OrderTools.java` で定義されている全送信コマンドの16進数パケット一覧です。
+
+!!! warning "定義されているコマンドの大半は、公式アプリからは発行されません"
+    アプリが実際に送信するのは **8 種類だけ**です — `startTest` / `exitTest` / `findAlcoholAD` / `blow` / `exitBlow` / `AlcoholContent` / `demarcate` / `passiveTest`（うち `demarcate` と `passiveTest` は到達不能なコードパス）。
+    残りは OEM ファームウェアのプロトコル表がそのまま残っているだけで、呼び出し元がありません。とはいえ**センサー基板側は応答する可能性が高い**ので、直接叩いて確かめる価値があります。詳細は [測定モードと運用仕様](test_modes.md#3) を参照してください。
 
 | コマンド名 (変数名) | 16進数コマンド文字列 | コマンドID / サブ | 機能・動作概要 |
 | :--- | :--- | :--- | :--- |
@@ -68,7 +77,7 @@ $$LRC = B_2 \oplus B_3 \oplus B_4 \oplus \dots \oplus B_{N-4}$$
 | `BuzzingLong` | `FE020C0002010103020FF0FE` | `0x03 / 0x02` | ブザー発音（長鳴） |
 | `blow` | `FE020C0002010104010BF0FE` | `0x04 / 0x01` | 呼気吹き込み待機モード開始 |
 | `exitBlow` | `FE020C00020101040208F0FE` | `0x04 / 0x02` | 呼気吹き込みモード終了 |
-| `QuickBlow` / `blowQuick` | `FE020C00020101040309F0FE` | `0x04 / 0x03` | 迅速吹き込み（スクリーニング）モード開始 |
+| `QuickBlow` / `blowQuick`<br/>`quickTestStartAutoPump` | `FE020C00020101040309F0FE` | `0x04 / 0x03` | **快速筛查**（迅速スクリーニング）モード開始。3つの変数名すべてが同一フレームで、**呼び出し元は 0 箇所**（[Dead Code](test_modes.md#quick-screening)） |
 | `Countdown` | `FE020C0002010105000BF0FE` | `0x05 / 0x00` | カウントダウン指示 |
 | `MPa` | `FE020C00020101060008F0FE` | `0x06 / 0x00` | 圧力 (MPa) 値読み出し |
 | `temperature` | `FE020C00020101070009F0FE` | `0x07 / 0x00` | センサー温度 (℃) 読み出し |
@@ -86,7 +95,7 @@ $$LRC = B_2 \oplus B_3 \oplus B_4 \oplus \dots \oplus B_{N-4}$$
 | `settingBlowLow` | `FE020E000201010D01010302F0FE` | `0x0D / 0x01` | 呼気検出感度【低】設定 |
 | `Pump` | `FE020C000201010E0000F0FE` | `0x0E / 0x00` | エアポンプ駆動指示 |
 | `coreVersion` | `FE020C000201010F0001F0FE` | `0x0F / 0x00` | ファームウェアコアバージョン取得 |
-| `passiveTest` | `FE020C0002010110001EF0FE` | `0x10 / 0x00` | パッシブ（被動）テスト実行指示 |
+| `passiveTest` | `FE020C0002010110001EF0FE` | `0x10 / 0x00` | 被動（パッシブ）テスト実行指示。**公式アプリからは到達不能**だが基板は応答する |
 | `DateTime` | `FE021A00020101110200000000...F0FE` | `0x11 / 0x02` | システム日時読み出し |
 | `getDeviceId` | `FE021600020101120200000000...F0FE` | `0x12 / 0x02` | デバイス固有識別ID取得 |
 | `getRTC` | `FE021300020101130200000000...F0FE` | `0x13 / 0x02` | RTC時計データ取得 |
@@ -99,7 +108,7 @@ $$LRC = B_2 \oplus B_3 \oplus B_4 \oplus \dots \oplus B_{N-4}$$
 
 ## 4. 受信パケット種別および状態遷移ロジック
 
-[NormalTestModeActivity.java](../../apks/decompiled/com.hikvision.alcoholtest/sources/com/hikvision/alcoholtest/activity/NormalTestModeActivity.java) 内の `Handler.handleMessage` で処理されるレスポンス種別一覧です。
+`NormalTestModeActivity.java` 内の `Handler.handleMessage` で処理されるレスポンス種別一覧です。
 
 ### 4.1 応答ステータスコード (`mRecvBuf[7]`)
 
@@ -137,13 +146,22 @@ graph TD
 
 ### 5.2 アルコール濃度値 (`CmdType.GetAlcoholConcentration` & `CmdType.PassiveTest`)
 - **受信位置**: `mRecvBuf[9..12]` (4 Bytes Big-Endian **IEEE 754 Float**)
-- **酒気帯び判定閾値 (中国 / 日本規約基準)**:
+- **単位**: `mg/L (BrAC)` — 呼気中アルコール濃度。センサーが返す生の Float 値がそのまま mg/L です
+- **中間応答**: `mRecvBuf[8]` が `flag` として機能し、`0` は「分析中」の暫定応答。確定値は `1, 2, 3` のときのみ（[実測挙動](measurement_behavior.md#2) 参照）
 
-| 濃度範囲 (mg/100ml) | 判定文字列 (`alcolholFlag`) | 画面表示 | データベース記録 |
+判定閾値はアプリ内に **2 系統**あります。
+
+| ラダー | 閾値 | 判定 | 状態 |
 | :--- | :--- | :--- | :--- |
-| **< 20.0 mg/100ml** | 未超標 (Not Exceeding Standard) | 緑色 (`#006400`) | OK (`0.0 <= f < 0.15 mg/L`) |
-| **20.0 ～ 79.9 mg/100ml** | 飲酒後駕車 (Drinking Driving) | 黄色 (`#DAA520`) | NG (`f >= 0.15 mg/L`) |
-| **>= 80.0 mg/100ml** | 酔酒後駕車 (Drunk Driving) | 赤色 (CATEGORY_MASK)| NG (`f >= 0.15 mg/L`) |
+| 中国 GB 19522 | `< 20` | 未超标（緑 `#006400`） | ⚠️ **動作しない** |
+| | `20 〜 79.9` | 饮酒后驾车（黄 `#DAA520`） | ⚠️ **動作しない** |
+| | `>= 80` | 醉酒后驾车（赤） | ⚠️ **動作しない** |
+| 日本 道交法 | `< 0.15 mg/L` | OK（画面表示・DB・レシート） | ✅ 実際に効く |
+| | `>= 0.15 mg/L` | NG | ✅ 実際に効く |
+
+!!! bug "GB 19522 ラダーは単位換算を忘れている"
+    20 / 80 は `mg/100mL (BAC)` の数値ですが、比較対象の値は `mg/L (BrAC)` の生値のまま生成されています。実測値は 0.15 mg/L といったオーダーなので、**この判定は常に「未超标」に落ちます**。
+    血中濃度に換算する場合の係数は `220`（`Utils.formatDensityString()`）です。詳細は [測定モードと運用仕様 §4](test_modes.md#4) を参照してください。
 
 ### 5.3 標定（キャリブレーション）データ構造
 
@@ -176,6 +194,7 @@ graph TD
 
 ## 関連ドキュメント
 
-- [overview.md](../hardware/overview.md) - デバイス概要
-- [components.md](../hardware/components.md) - ハードウェアおよびドライバ構成
-- [printer.md](../printer/printer.md) - サーマルプリンター制御仕様書
+- [測定モードと運用仕様](test_modes.md) — どのコマンドが実際に使われるか
+- [実測挙動と非同期仕様](measurement_behavior.md) — 応答レイテンシとハマりどころ
+- [AD値→濃度の換算](alcohol_ad_values.md) — 生 AD 値からの推定式
+- [自作ツール一覧](../tools.md) — プロトコルを叩くためのデバッガアプリ

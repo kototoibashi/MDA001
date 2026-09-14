@@ -1,9 +1,11 @@
-# 18. PrinterServerApp 開発とトラブルシューティング記録
+# PrinterServerApp 開発記録とトラブルシューティング
 
 ## 概要
 専用端末に内蔵された感熱式プリンター (`/dev/prn-dev`) を、ネットワーク経由（PCブラウザ等）およびローカルで制御するためのハイブリッドAndroidアプリ `PrinterServerApp` の開発記録です。
 
 元の業務アプリ (`com.hikvision.alcoholtest`) からプリンター制御用のネイティブライブラリとJNIラッパーを抽出し、HTTPサーバーと高度な画像2値化処理を持つPPT風Webエディタを新規に構築しました。
+
+プロトコル自体の仕様は [プリンター制御仕様](printer.md)、実践的な印字ノウハウは [印字ノウハウ・ハマりどころ](printing_tips.md) を参照してください。
 
 ## 1. プロジェクト構造と移植内容
 
@@ -16,7 +18,8 @@
 - **NanoHTTPD サーバー (`PrinterHttpServer.kt`)**:
   - ポート `8080` で動作。
   - `GET /api/projects`, `POST /api/project`: JSON形式でのレイアウトプロジェクト保存・読み込み。
-  - `POST /api/print`: Base64エンコードされた画像の直接印刷。
+  - `POST /api/print`: Base64エンコードされた画像の直接印刷（1bit / 384px）。
+  - `POST /api/print_raw_gray`: 16階調グレースケール印刷（240px）。
   - `assets/web/` 内の静的Webアセットのホスティング。
 - **Webレイアウトエディタ (`Fabric.js`)**:
   - PPT感覚でテキストや画像を自由に配置できるHTML5 Canvasベースのエディタ。
@@ -28,7 +31,7 @@
 
 ## 2. 開発中に発生した問題と解決策 (トラブルシューティング)
 
-### ① ネイティブラブラリ読み込みエラー (UnsatisfiedLinkError)
+### ① ネイティブライブラリ読み込みエラー (UnsatisfiedLinkError)
 **現象:**
 アプリ起動時に `java.lang.UnsatisfiedLinkError: couldn't find "libgzds_utils.so"` が発生。
 
@@ -70,7 +73,47 @@ Android 9 (API 28) 以降、デフォルトでHTTP（暗号化されていない
 
 ---
 
-## 3. 今後の拡張アイデア
+## 3. 2つの印字パスの実装
+
+`PrintUtil.kt` は、[プリンター制御仕様](printer.md#4) の 1bit / グレースケールの 2 系統をそれぞれ実装しています。切り替えは `PrinterSettings.isGradientMode`（設定画面のトグル、既定 OFF）です。
+
+### 3.1 1bit パス — できるだけ大きなチャンクで流し込む
+
+```kotlin
+val chunkHeight = bitmap.width * 4          // 384 * 4 = 1536 行
+while (y < bitmap.height) {
+    val currentHeight = minOf(chunkHeight, bitmap.height - y)
+    Bitmap.createBitmap(bitmap, 0, y, bitmap.width, currentHeight).use { chunk ->
+        res = CPrint.PrintWaterMarkBmp(chunk, "", 0, 24)
+    }
+    y += currentHeight
+    while (CPrint.getPrinterStatus() == 1) { Thread.sleep(50) }
+}
+```
+
+1 回の `write(2)` で流し込む最大サイズは **1536 行 × 48 バイト + 5 = 73,733 バイト**になります。`Command` の呼び出しを分割すると継ぎ目に横線が出るため、チャンクはできる限り大きく取っています（[印字ノウハウ §1](printing_tips.md)）。
+
+### 3.2 グレースケールパス (`printGradientNative`)
+
+```kotlin
+val targetWidth = 240                       // グラデーション印刷はプリンタ仕様で 240px 固定
+val widthBytes  = (width + 1) / 2           // = 120 バイト／ライン
+val chunkLength = targetWidth * 2           // = 480 行（ディザ・ステータス監視の単位）
+...
+for (y in 0 until currentChunkHeight) {
+    System.arraycopy(chunkBytes, y * widthBytes, sendBytes, 0, widthBytes)
+    CPrint.sendPrintPictureData(widthBytes, sendBytes)   // 1 ライン = 120 バイト
+}
+```
+
+こちらはネイティブ側でペイロード長 120 バイトが固定されているため、**1 スキャンラインずつしか送れません**。`chunkLength` はまとめ送りのためではなく、Floyd–Steinberg 誤差拡散とステータス監視の処理単位です。
+
+!!! note "元コードのニブルオーバーフローを修正済み"
+    元アプリの `ImageUtils.java` は `luma / 15` が 0〜17 を返してニブルを溢れさせます。本実装では `(adjustedLuma / 15).coerceIn(1, 15)` としてクランプしています。下限を 1 にしているため、グラデーションモードでは純白が出力されない点に注意してください。
+
+---
+
+## 4. 今後の拡張アイデア
 - **フォントの追加**: プレビュー環境(Web)と実際の印刷(Android Canvas)でフォントのレンダリング差を出さないため、同一のカスタムTTFフォントを組み込む。
-- **用紙幅の動的変更**: プリンターのピクセル幅 (今回384pxと推測) を動的に変更できるようにする設定画面の追加。
+- **用紙幅の動的変更**: 1bit パスの 384px はネイティブの逆アセンブルで確定済み（[根拠](printer.md#raster-1bit)）だが、設定画面から扱えるようにしておきたい。
 - **QRコード生成**: Webフロントエンド側に `qrcode.js` 等を導入し、エディタ上で直接QRコードを生成・配置する機能。

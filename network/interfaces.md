@@ -1,4 +1,4 @@
-# 🌐 03. ネットワーク・通信仕様 (Network & Connectivity)
+# ネットワーク・通信仕様 (Network & Connectivity)
 
 本ドキュメントでは、接続端末のネットワークインターフェース、IPアドレス設定、Wi-Fi/Bluetooth通信サブシステムについてまとめています。
 

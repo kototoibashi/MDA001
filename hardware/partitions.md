@@ -1,4 +1,4 @@
-# 💾 07. パーティションテーブル解析仕様書 (Partition Table Specification)
+# パーティションテーブル解析 (Partition Table)
 
 本ドキュメントでは、ADBツールおよび`sgdisk`コマンドにより取得したAndroid端末（シリアル番号: `********` / Qualcomm MSM8953 SLM758）の全56個のGPTパーティション構造、デバイスマッピング (`device-mapper`)、および各パーティションの役割とマウント状態について詳細にまとめています。
 
@@ -19,8 +19,8 @@
 
 | パーティション名 | ブロックデバイス | サイズ | マウントポイント / 用途 | マウント形式 / 状態 |
 | :--- | :--- | :--- | :--- | :--- |
-| **`system`** | `/dev/block/mmcblk0p29` | `3.0 GiB` | `/` (`dm-0`) | `ext4` (ro, dm-verity) |
-| **`vendor`** | `/dev/block/mmcblk0p30` | `1.0 GiB` (1024 MiB) | `/vendor` (`dm-1`) | `ext4` (ro, dm-verity) |
+| **`system`** | `/dev/block/mmcblk0p29` | `3.0 GiB` | `/` (`dm-0`) | `ext4` (ro, device-mapper 経由 / verity は無効) |
+| **`vendor`** | `/dev/block/mmcblk0p30` | `1.0 GiB` (1024 MiB) | `/vendor` (`dm-1`) | `ext4` (ro, device-mapper 経由 / verity は無効) |
 | **`userdata`** | `/dev/block/mmcblk0p56` | `9.1 GiB` | `/data` (`dm-2`) | `ext4` (rw, 暗号化) |
 | **`cache`** | `/dev/block/mmcblk0p31` | `256 MiB` | `/cache` | `ext4` (rw) |
 | **`persist`** | `/dev/block/mmcblk0p33` | `32 MiB` | `/mnt/vendor/persist` | `ext4` (rw, 固有データ) |
@@ -104,17 +104,20 @@
 
 ## 🔗 4. デバイスマッパー構成 (`device-mapper`)
 
-本端末では、`dm-verity` および暗号化レイヤーによって以下のマッピングが行われています。
+本端末では、device-mapper および暗号化レイヤーによって以下のマッピングが行われています。
 
 * **`dm-0`** (`/dev/block/dm-0`): `/dev/root`
   * 元パーティション: `system` (`mmcblk0p29`, 3.0 GiB)
-  * 用途: Android OSルートファイルシステム (`dm-verity` 読み取り専用保護)
+  * 用途: Android OSルートファイルシステム（読み取り専用マウント）
 * **`dm-1`** (`/dev/block/dm-1`): `/vendor`
   * 元パーティション: `vendor` (`mmcblk0p30`, 1.0 GiB)
-  * 用途: Qualcomm / OEM ドライバ・HALファイルシステム (`dm-verity` 読み取り専用保護)
+  * 用途: Qualcomm / OEM ドライバ・HALファイルシステム（読み取り専用マウント）
 * **`dm-2`** (`/dev/block/dm-2`): `/data`
   * 元パーティション: `userdata` (`mmcblk0p56`, 9.1 GiB)
   * 用途: アプリデータおよび内部ストレージ (`ext4` 暗号化マウント)
+
+!!! note "dm-verity は有効ではありません"
+    `system` / `vendor` は device-mapper 経由で読み取り専用マウントされていますが、`ro.boot.veritymode` は `disabled` であり、**改ざん検知は動作していません**。そのため `mount -o rw,remount` でそのまま書き換えても次回起動で弾かれません。詳細は [セキュリティ状態](../software/security.md) を参照してください。
 
 ---
 
