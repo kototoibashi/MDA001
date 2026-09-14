@@ -17,7 +17,7 @@
 | **パリティ (Parity)** | None (パリティなし) |
 | **フロー制御** | None |
 | **Nativeライブラリ** | `libgzds_utils.so` (`com.gzds.utils.CSerialPort`) |
-| **Java側ドライバー制御** | [SerialHelper.java](../apks/decompiled/com.hikvision.alcoholtest/sources/com/hikvision/alcoholtest/comassistant/SerialHelper.java) |
+| **Java側ドライバー制御** | [SerialHelper.java](../../apks/decompiled/com.hikvision.alcoholtest/sources/com/hikvision/alcoholtest/comassistant/SerialHelper.java) |
 
 ---
 
@@ -57,7 +57,7 @@ $$LRC = B_2 \oplus B_3 \oplus B_4 \oplus \dots \oplus B_{N-4}$$
 
 ## 3. コマンドフレーム一覧 (Command Catalog)
 
-ソースコード [OrderTools.java](../apks/decompiled/com.hikvision.alcoholtest/sources/com/hikvision/alcoholtest/util/OrderTools.java) で定義されている全送信コマンドの16進数パケット一覧です。
+ソースコード [OrderTools.java](../../apks/decompiled/com.hikvision.alcoholtest/sources/com/hikvision/alcoholtest/util/OrderTools.java) で定義されている全送信コマンドの16進数パケット一覧です。
 
 | コマンド名 (変数名) | 16進数コマンド文字列 | コマンドID / サブ | 機能・動作概要 |
 | :--- | :--- | :--- | :--- |
@@ -99,7 +99,7 @@ $$LRC = B_2 \oplus B_3 \oplus B_4 \oplus \dots \oplus B_{N-4}$$
 
 ## 4. 受信パケット種別および状態遷移ロジック
 
-[NormalTestModeActivity.java](../apks/decompiled/com.hikvision.alcoholtest/sources/com/hikvision/alcoholtest/activity/NormalTestModeActivity.java) 内の `Handler.handleMessage` で処理されるレスポンス種別一覧です。
+[NormalTestModeActivity.java](../../apks/decompiled/com.hikvision.alcoholtest/sources/com/hikvision/alcoholtest/activity/NormalTestModeActivity.java) 内の `Handler.handleMessage` で処理されるレスポンス種別一覧です。
 
 ### 4.1 応答ステータスコード (`mRecvBuf[7]`)
 

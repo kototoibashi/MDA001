@@ -21,10 +21,10 @@ graph TD
 
 | モジュール名 | パッケージ / パス | 役割・概要 |
 | :--- | :--- | :--- |
-| **PrintUtil** | [PrintUtil.java](../apks/decompiled/com.hikvision.alcoholtest/sources/com/hikvision/alcoholtest/util/PrintUtil.java) | アルコール測定結果（許可証）や顔写真画像の非同期印刷タスク生成 |
-| **Printer** | [Printer.java](../apks/decompiled/com.gzds.utils/Printer.java) | `CPrint` のラッパークラス。Boolean型戻り値への変換インターフェース |
-| **CPrint** | [CPrint.java](../apks/decompiled/com.gzds.utils/CPrint.java) | テキストのBitmap描画、モノクロ化・ビットパック、JNI Nativeメソッド呼出 |
-| **CSerialPort** | [CSerialPort.java](../apks/decompiled/com.gzds.utils/CSerialPort.java) | Nativeシリアルポートオープン（`su`によるパーミッション昇格含む） |
+| **PrintUtil** | [PrintUtil.java](../../apks/decompiled/com.hikvision.alcoholtest/sources/com/hikvision/alcoholtest/util/PrintUtil.java) | アルコール測定結果（許可証）や顔写真画像の非同期印刷タスク生成 |
+| **Printer** | [Printer.java](../../apks/decompiled/com.hikvision.alcoholtest/sources/com/gzds/utils/Printer.java) | `CPrint` のラッパークラス。Boolean型戻り値への変換インターフェース |
+| **CPrint** | [CPrint.java](../../apks/decompiled/com.hikvision.alcoholtest/sources/com/gzds/utils/CPrint.java) | テキストのBitmap描画、モノクロ化・ビットパック、JNI Nativeメソッド呼出 |
+| **CSerialPort** | [CSerialPort.java](../../apks/decompiled/com.hikvision.alcoholtest/sources/com/gzds/utils/CSerialPort.java) | Nativeシリアルポートオープン（`su`によるパーミッション昇格含む） |
 | **libgzds_utils.so** | Native Library (`System.loadLibrary("gzds_utils")`) | プリンター制御コマンドパケット生成およびシリアル送信を行うC/C++共有ライブラリ |
 
 ---
