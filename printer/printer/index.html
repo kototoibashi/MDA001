@@ -1327,6 +1327,7 @@
 
 
 
+<p><a href="https://github.com/kototoibashi/MDA001/blob/master/printer/printer.md">Markdown版はこちら</a></p>
 <h1 id="printer-control-documentation">プリンター制御仕様書 (Printer Control Documentation)<a class="headerlink" href="#printer-control-documentation" title="Permanent link">&para;</a></h1>
 <p>本ドキュメントでは、Hikvision製アルコール検知端末 (<code>com.hikvision.alcoholtest</code>) に組み込まれているサーマルプリンター制御のアーキテクチャ、JNI/Nativeコマンド仕様、印字フロー、および制御コードについて解説します。</p>
 <hr />
@@ -1398,7 +1399,7 @@
 <td style="text-align: center;"><code>0x44</code></td>
 <td style="text-align: left;"><code>PRINTER_STATUS</code></td>
 <td style="text-align: left;">-</td>
-<td style="text-align: left;">プリンターのステータス取得</td>
+<td style="text-align: left;">プリンターのステータス取得 (0=待機, 1=印刷中(BUSY)。紙の有無では変化しない)</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>85</strong></td>
