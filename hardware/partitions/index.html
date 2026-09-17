@@ -540,6 +540,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#7-dtb-dtbo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 7. DTB / DTBO の在り処と、フル解凍なしでの単体抽出
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧩 7. DTB / DTBO の在り処と、フル解凍なしでの単体抽出">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ddimggz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        フルディスクdd(.img.gz)から特定パーティションだけを高速抽出する
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -752,6 +780,8 @@
       
         
       
+        
+      
     
     
     
@@ -840,6 +870,34 @@
     
   
     印字ノウハウ・ハマりどころ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../printer/userland_grayscale_hack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    グレースケール フルワイド化Hack案
   
 
     
@@ -1430,6 +1488,34 @@
       
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-dtb-dtbo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 7. DTB / DTBO の在り処と、フル解凍なしでの単体抽出
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧩 7. DTB / DTBO の在り処と、フル解凍なしでの単体抽出">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ddimggz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        フルディスクdd(.img.gz)から特定パーティションだけを高速抽出する
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2221,6 +2307,34 @@
 </tr>
 </tbody>
 </table>
+<hr />
+<h2 id="7-dtb-dtbo">🧩 7. DTB / DTBO の在り処と、フル解凍なしでの単体抽出<a class="headerlink" href="#7-dtb-dtbo" title="Permanent link">&para;</a></h2>
+<p>この端末は「ベースDTBは<code>boot.img</code>にappend、<code>dtbo.img</code>は基板バリアント別のオーバーレイ」という
+Qualcomm標準構成です(2026-09-15確認)。</p>
+<ul>
+<li><strong>ベースDTB</strong>: <code>boot.img</code>内にappendされた生FDT。マジック<code>d00dfeed</code>で検索可能。
+  手元の<code>backup_images/boot.img</code>では<strong>オフセット<code>11648760</code>バイト、サイズ<code>302980</code>バイト</strong>に1個だけ存在。
+  <code>uyu-prn</code>(プリンター)ノードはこちら側。</li>
+<li><strong>DTBOオーバーレイ</strong>: <code>dtbo</code>パーティション(<code>p23</code>)。Android標準の<code>DT_TABLE_MAGIC</code>(<code>d7b7ab1e</code>)
+  ヘッダを持つテーブル形式で、この端末では<strong>エントリ1個のみ</strong>(<code>qcom,board-id</code>/<code>qcom,pmic-id</code>で
+  この基板専用に確定済み)。タッチパネル・NFC・カメラ・<strong>物理ボタン(<code>gpio_keys</code>)</strong>等、
+  Qualcomm QRDリファレンスデザインの標準ワークフローでボード差分として扱われる周辺機器がこちら側。
+  同じノード名(例: <code>gpio_keys</code>)を複数fragmentで再定義すると、後から適用されるfragmentが
+  プロパティ単位で上書き/追加マージされる(通常のdevicetreeオーバーレイ仕様通り)。</li>
+</ul>
+<h3 id="ddimggz">フルディスクdd(<code>.img.gz</code>)から特定パーティションだけを高速抽出する<a class="headerlink" href="#ddimggz" title="Permanent link">&para;</a></h3>
+<p><code>mmcblk0_full_20260810.img.gz</code>のような全ディスクdumpは数GB圧縮でも、GPT自体はディスク先頭
+数MB以内にあるため、<strong>全体を解凍せずにパーティションテーブルと目的のパーティションだけ</strong>を
+WSL経由で取り出せる(<code>gzip</code>はシーケンシャルだが、目的オフセットまでの読み捨てだけで済み、
+書き出しは不要):</p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 1. 先頭数MBだけ解凍してGPTを読む</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>zcat<span class="w"> </span>mmcblk0_full_20260810.img.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-c<span class="w"> </span><span class="m">4194304</span><span class="w"> </span>&gt;<span class="w"> </span>gpt_head.bin
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>sgdisk<span class="w"> </span>-p<span class="w"> </span>gpt_head.bin<span class="w">   </span><span class="c1"># Start(sector)/Sizeを確認</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># 2. 目的パーティションのセクタ位置が分かったら、そこまでdd skipして必要分だけcount</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>zcat<span class="w"> </span>mmcblk0_full_20260810.img.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>dd<span class="w"> </span><span class="nv">of</span><span class="o">=</span>dtbo.img<span class="w"> </span><span class="nv">bs</span><span class="o">=</span><span class="m">512</span><span class="w"> </span><span class="nv">skip</span><span class="o">=</span>&lt;Start&gt;<span class="w"> </span><span class="nv">count</span><span class="o">=</span>&lt;セクタ数&gt;
+</span></code></pre></div>
+<p>8.0 MiBの<code>dtbo</code>パーティション(開始セクタ790,528)なら1秒程度で抽出できる(全体解凍は不要)。</p>
 
 
 

@@ -1,0 +1,2115 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hikvision DS-MDA001 (アルコールチェッカー・プリンター内蔵Android端末) のハードウェアおよびソフトウェア解析ドキュメント">
+      
+      
+        <meta name="author" content="kototoibashi">
+      
+      
+        <link rel="canonical" href="https://kototoibashi.github.io/MDA001/printer/userland_grayscale_hack/">
+      
+      
+        <link rel="prev" href="../printing_tips/">
+      
+      
+        <link rel="next" href="../print_server/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>グレースケール フルワイド化Hack案 - Hikvision DS-MDA001 解析レポート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hack" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="Hikvision DS-MDA001 解析レポート" class="md-header__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hikvision DS-MDA001 解析レポート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              グレースケール フルワイド化Hack案
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hikvision DS-MDA001 解析レポート" class="md-nav__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Hikvision DS-MDA001 解析レポート
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    この端末について
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    この端末について
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../identity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端末の素性と出自
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基本情報・OS仕様
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基板・IC・ドライバ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/partitions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    パーティション構成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    アルコールチェッカー
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    アルコールチェッカー
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alcohol_checker/test_modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    測定モードと運用仕様
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alcohol_checker/serial_protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    シリアル通信プロトコル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alcohol_checker/measurement_behavior/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    実測挙動と非同期仕様
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alcohol_checker/alcohol_ad_values/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AD値→濃度の換算
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    サーマルプリンター
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    サーマルプリンター
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../printer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プリンター制御仕様
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../printing_tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    印字ノウハウ・ハマりどころ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    グレースケール フルワイド化Hack案
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    グレースケール フルワイド化Hack案
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 背景 — 何が制約になっているか
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 発想の転換 — カーネルドライバを経由しない
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 前提条件(確認済み)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 前提条件(確認済み)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-kernel-conftxt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 カーネルコンフィグ(kernel-conf.txt)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 ソフトウェア的な制約の緩さ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 手順
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 手順">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-gpio-spi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 既存ドライバから GPIO / SPI の専有を解放
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-spi-spidev-driver_override" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 SPIデバイスを spidev に driver_override で強制バインド
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-gpio-8-sysfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 GPIO 8本を sysfs 経由で制御
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 印字プロトコルをユーザーランドで再実装
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. リスク・未検証事項
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. リスク・未検証事項">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 タイミング精度
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 既存機能との排他
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 モーター位相のずれ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 未確認事項 → 実機確認済み(結果は§6参照)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-2026-09-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 実機検証結果(2026-09-15)と代替案
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 実機検証結果(2026-09-15)と代替案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 §4.2は成立しない
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-unbindbind" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 unbind/bindの反復自体が危険
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-dtbocompatible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 代替案: DTBOオーバーレイでの多重compatible化(未検証・要実機テスト)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 関連ページ
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../print_server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PrinterServerApp 開発記録
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    無線・ネットワーク
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    無線・ネットワーク
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/interfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    インターフェース一覧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/wifi_enablement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wi-Fi 恒久有効化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/bluetooth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bluetooth 移植（失敗）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    システム改造・運用
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    システム改造・運用
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セキュリティ状態
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/applications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    内蔵アプリ・APK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/fixes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    不具合の修正記録
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/backup_strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    バックアップ手順
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    付録
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    付録
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自作ツール一覧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/adb_reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADBコマンドリファレンス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 背景 — 何が制約になっているか
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 発想の転換 — カーネルドライバを経由しない
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 前提条件(確認済み)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 前提条件(確認済み)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-kernel-conftxt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 カーネルコンフィグ(kernel-conf.txt)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 ソフトウェア的な制約の緩さ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 手順
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 手順">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-gpio-spi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 既存ドライバから GPIO / SPI の専有を解放
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-spi-spidev-driver_override" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 SPIデバイスを spidev に driver_override で強制バインド
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-gpio-8-sysfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 GPIO 8本を sysfs 経由で制御
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 印字プロトコルをユーザーランドで再実装
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. リスク・未検証事項
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. リスク・未検証事項">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 タイミング精度
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 既存機能との排他
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 モーター位相のずれ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 未確認事項 → 実機確認済み(結果は§6参照)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-2026-09-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 実機検証結果(2026-09-15)と代替案
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 実機検証結果(2026-09-15)と代替案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 §4.2は成立しない
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-unbindbind" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 unbind/bindの反復自体が危険
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-dtbocompatible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 代替案: DTBOオーバーレイでの多重compatible化(未検証・要実機テスト)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 関連ページ
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><a href="https://github.com/kototoibashi/MDA001/blob/master/printer/userland_grayscale_hack.md">Markdown版はこちら</a></p>
+<h1 id="hack">グレースケール印字フルワイド化・高速化 Hack案(カーネル非改造)<a class="headerlink" href="#hack" title="Permanent link">&para;</a></h1>
+<p><code>0x67</code>(16階調グレースケール)印字モードには「印字幅が240pxに制限される」「階調段数が16固定」という制約があるが、これをカーネル改造・署名鍵の入手・カスタムビルドなしに、<strong>ユーザーランドからGPIO/SPIを直接叩いて自前実装する</strong>ことで回避できる可能性がある、という改造案をまとめる。</p>
+<div class="admonition danger">
+<p class="admonition-title">実機検証済み: この端末では§4.2の前提が成立しません</p>
+<p>2026-09-15、実機(<code>spi7.0</code>, カーネル Linux 4.9.193)で検証した結果、<strong><code>driver_override</code>ファイル自体が
+存在せず</strong>、§4.2の「<code>spidev</code>強制bind」は不可能と判明しました。加えて<code>unbind</code>/<code>bind</code>を短時間に
+繰り返すとGPIOが<code>-EBUSY</code>のまま解放されず<code>/dev/prn-dev</code>が消失し、<strong>再起動でしか復旧できない</strong>
+事象も発生しています。詳細と代替案(DTBOオーバーレイでの多重compatible化とそのリスク)は
+<a href="../../hardware/kernel_analysis/"><code>kernel_analysis.md</code> §7</a> を参照してください。本ページの§1〜§4は
+「当初の設計メモ」として、§4.4のGPIOシーケンス/タイミング定数(実装コードにも反映済み)は
+参考価値がありますが、§4.1〜4.3の手順そのものは<strong>このままでは実行できません</strong>。</p>
+</div>
+<hr />
+<h2 id="1">1. 背景 — 何が制約になっているか<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>カーネル内蔵の <code>uyu_printer</code> ドライバ(<code>/dev/prn-dev</code>)の <code>ioctl(0x67)</code> 経路(グレースケール印字)は、以下がバイナリにハードコードされている:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">制約</th>
+<th style="text-align: left;">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">印字幅</td>
+<td style="text-align: left;"><strong>240px固定</strong>(ヘッド物理幅384pxのうち中央240pxのみ。左右72pxずつ常時消灯)</td>
+</tr>
+<tr>
+<td style="text-align: left;">階調段数</td>
+<td style="text-align: left;"><strong>16段(15パス)固定</strong>(呼び出し元が<code>arg1=0x10</code>を決め打ちで渡している)</td>
+</tr>
+<tr>
+<td style="text-align: left;">ペイロード長</td>
+<td style="text-align: left;">ioctlハンドラが<code>memcpy</code>のコピー量を<code>0x78</code>(120バイト)に固定している</td>
+</tr>
+</tbody>
+</table>
+<p>これらは <code>uyu_printer.c</code> 側(カーネル内、r2ghidraで逆コンパイル済み)の複数箇所に散らばった定数で、1関数だけパッチしても直らない。詳細な解析結果は逆コンパイル調査ブランチ(<code>kernel_analysis.md</code> / <code>uyu_printer_decompiled.c</code>、別ブランチで作業中・未マージ)を参照。</p>
+<p>素直に直すには「カーネルソースを入手してビルドし直す」か「同等機能を持つカーネルモジュールを自作する」必要があるが、いずれも以下のハードルがある:</p>
+<ul>
+<li>OEM(MeiG)固有のカーネルソースは現時点で未入手(GPL開示請求中)</li>
+<li>カーネルモジュール署名(<code>CONFIG_MODULE_SIG_FORCE=y</code>)が有効。デフォルト鍵("Build time autogenerated kernel key")のままではあるが、秘密鍵の現物は未入手</li>
+<li><code>CONFIG_KPROBES</code> が無効化されており、実行時の関数フックも不可</li>
+</ul>
+<hr />
+<h2 id="2">2. 発想の転換 — カーネルドライバを経由しない<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>サーマルヘッドの制御に使われているのは、突き詰めると <strong>GPIO 8本 + SPI 1本</strong> だけである(詳細は<a href="../printer/">プリンター制御仕様</a>・逆コンパイル解析を参照)。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">信号</th>
+<th style="text-align: left;">役割</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>PRN_STB</code></td>
+<td style="text-align: left;">ストローブ(発熱パルス)。SPI転送直後にHigh→ウェイト→Lowで1パス分の加熱</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>PRN_MT_A</code> / <code>PRN_MT_B</code> / <code>PRN_MT_A_0</code> / <code>PRN_MT_B_0</code></td>
+<td style="text-align: left;">ステッピングモーター4相(紙送り)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Heat_En</code> / <code>Print_En</code></td>
+<td style="text-align: left;">発熱・印字系の元電源スイッチ</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>P_Paper</code></td>
+<td style="text-align: left;">用紙検知</td>
+</tr>
+<tr>
+<td style="text-align: left;">SPI(384bit/48バイト)</td>
+<td style="text-align: left;">1ライン分のドットパターン転送</td>
+</tr>
+</tbody>
+</table>
+<p>これらは全て <strong>Linuxの汎用サブシステム(GPIOLIB, SPIコア)で標準的に制御できる種類のI/O</strong>であり、<code>uyu_printer</code>という専用ドライバでなければ制御できないわけではない。既存ドライバがこれらのGPIO/SPIを<code>gpio_request</code>/<code>spi_setup</code>で専有しているのが唯一の障壁であり、そこを解放してやれば<strong>ユーザーランドから直接叩ける</strong>。</p>
+<hr />
+<h2 id="3">3. 前提条件(確認済み)<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>この端末で本Hackが成立する根拠となる設定値は以下の通り確認済み。</p>
+<h3 id="31-kernel-conftxt">3.1 カーネルコンフィグ(<code>kernel-conf.txt</code>)<a class="headerlink" href="#31-kernel-conftxt" title="Permanent link">&para;</a></h3>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="na">CONFIG_SPI</span><span class="o">=</span><span class="s">y</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="na">CONFIG_SPI_QUP</span><span class="o">=</span><span class="s">y</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="na">CONFIG_SPI_SPIDEV</span><span class="o">=</span><span class="s">y</span><span class="w">      </span><span class="c1"># 汎用SPIユーザーランドドライバがビルドイン済み</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="na">CONFIG_GPIOLIB</span><span class="o">=</span><span class="s">y</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="na">CONFIG_GPIO_SYSFS</span><span class="o">=</span><span class="s">y</span><span class="w">      </span><span class="c1"># sysfs経由のユーザーランドGPIO制御が有効</span>
+</span></code></pre></div>
+<p><code>spidev</code>・GPIO sysfsインターフェースは追加のカーネルビルド無しで<strong>既に使える状態</strong>にある。</p>
+<h3 id="32">3.2 ソフトウェア的な制約の緩さ<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<p><a href="../../software/security/">端末のセキュリティ機能の調査結果</a>より:</p>
+<ul>
+<li>SELinux: <code>Permissive</code>(ポリシー違反はログのみ、ブロックされない)</li>
+<li>dm-verity: <code>Disabled</code></li>
+<li>ブートローダー: アンロック済み(<code>verifiedbootstate: orange</code>)</li>
+<li><code>fastboot getvar all</code>: <code>unlocked:yes</code> / <code>secure:no</code>(Qualcomm Secure Bootも無効)</li>
+<li>root: <code>su</code>バイナリ経由で確保可能(<a href="../printer/">プリンター制御仕様</a>参照)</li>
+</ul>
+<p>この組み合わせにより、<strong>rootさえ取れれば sysfs 操作は無制限に行える</strong>(SELinuxに止められない)。</p>
+<hr />
+<h2 id="4">4. 手順<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>すべて実機上のシェル操作のみで完結し、<strong>リブート・カーネル再ビルド・DTB書き換えは不要</strong>。</p>
+<h3 id="41-gpio-spi">4.1 既存ドライバから GPIO / SPI の専有を解放<a class="headerlink" href="#41-gpio-spi" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># uyu_prn デバイスを platform driver から unbind</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># (デバイス名・ドライバ名は /sys/bus/platform/drivers/ 配下で要確認)</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">echo</span><span class="w"> </span>&lt;uyu-prnのデバイス名&gt;<span class="w"> </span>&gt;<span class="w"> </span>/sys/bus/platform/drivers/&lt;uyu_prnドライバ名&gt;/unbind
+</span></code></pre></div>
+<p>これで <code>uyu_prn_remove()</code> が呼ばれ、GPIO 8本・SPIデバイス・<code>/dev/prn-dev</code> (misc device) が全て解放される。<strong>この間、既存の1bit印字パス(<code>0x66</code>)も使えなくなる</strong>点に注意。</p>
+<h3 id="42-spi-spidev-driver_override">4.2 SPIデバイスを <code>spidev</code> に <code>driver_override</code> で強制バインド<a class="headerlink" href="#42-spi-spidev-driver_override" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># SPIデバイスノードを特定(例: spiX.Y)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ls<span class="w"> </span>/sys/bus/spi/devices/
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># devicetreeのcompatible文字列(&quot;qcom,prn-dev&quot;)を無視して</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># driver_override で spidev を強制指定</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nb">echo</span><span class="w"> </span>spidev<span class="w"> </span>&gt;<span class="w"> </span>/sys/bus/spi/devices/spiX.Y/driver_override
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nb">echo</span><span class="w"> </span>spiX.Y<span class="w"> </span>&gt;<span class="w"> </span>/sys/bus/spi/drivers/spidev/bind
+</span></code></pre></div>
+<p>成功すると <code>/dev/spidevX.Y</code> が生成され、<code>ioctl(SPI_IOC_MESSAGE)</code> で生のSPI転送がユーザーランドから可能になる。<code>driver_override</code> はLinux標準の仕組みで、devicetreeの<code>compatible</code>一致チェックをバイパスして任意のドライバに強制bindできる。</p>
+<h3 id="43-gpio-8-sysfs">4.3 GPIO 8本を sysfs 経由で制御<a class="headerlink" href="#43-gpio-8-sysfs" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">echo</span><span class="w"> </span>&lt;N&gt;<span class="w"> </span>&gt;<span class="w"> </span>/sys/class/gpio/export
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">echo</span><span class="w"> </span>out<span class="w"> </span>&gt;<span class="w"> </span>/sys/class/gpio/gpio&lt;N&gt;/direction
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">echo</span><span class="w"> </span><span class="m">1</span><span class="w">   </span>&gt;<span class="w"> </span>/sys/class/gpio/gpio&lt;N&gt;/value
+</span></code></pre></div>
+<p>対象GPIO番号は devicetree(<code>uyu-prn</code>ノード)から確認済み。</p>
+<h3 id="44">4.4 印字プロトコルをユーザーランドで再実装<a class="headerlink" href="#44" title="Permanent link">&para;</a></h3>
+<p>逆コンパイル解析で判明している <code>LineColorRank_Print</code> のロジック(疑似コード、フル幅・可変段数版に拡張):</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// N = 任意の階調段数(元は16固定)、WIDTH = 384(元は240固定)</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">pass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">pass</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">pass</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="c1">// WIDTHドットぶん、「そのドットの階調値 &gt;= pass」でビットを立てる</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">byte_i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">byte_i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">WIDTH</span><span class="o">/</span><span class="mi">8</span><span class="p">;</span><span class="w"> </span><span class="n">byte_i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="n">packed</span><span class="p">[</span><span class="n">byte_i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pack_8_bits</span><span class="p">(</span><span class="n">dot</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">pass</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">gray_data</span><span class="p">[</span><span class="n">dot</span><span class="p">]));</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="n">spi_transfer</span><span class="p">(</span><span class="n">fd_spidev</span><span class="p">,</span><span class="w"> </span><span class="n">packed</span><span class="p">,</span><span class="w"> </span><span class="n">WIDTH</span><span class="o">/</span><span class="mi">8</span><span class="p">);</span><span class="w">   </span><span class="c1">// ioctl(SPI_IOC_MESSAGE)</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="n">gpio_write</span><span class="p">(</span><span class="n">PRN_STB</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="n">usleep</span><span class="p">(</span><span class="n">strobe_us</span><span class="p">);</span><span class="w">                          </span><span class="c1">// 元はTK/TB(144/6us)相当</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="n">gpio_write</span><span class="p">(</span><span class="n">PRN_STB</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="p">}</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="n">motor_forward_one_step</span><span class="p">();</span><span class="w">  </span><span class="c1">// GPIO 4相を自前でシーケンス制御</span>
+</span></code></pre></div>
+<p>段数<code>N</code>とストローブ幅<code>strobe_us</code>を自由なパラメータにできるので、<a href="../printing_tips/">階調数を落として高速化</a>する運用も、そのままここに組み込める。</p>
+<hr />
+<h2 id="5">5. リスク・未検証事項<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h3 id="51">5.1 タイミング精度<a class="headerlink" href="#51" title="Permanent link">&para;</a></h3>
+<p>カーネル内の <code>__udelay()</code> は割込み無効のビジーウェイトで確実に指定時間止まるが、ユーザーランドの <code>usleep()</code> はスケジューラの影響を受け、数十µs単位でブレる可能性がある。ストローブ幅(144〜150µs相当)に対してどの程度のジッタが許容されるかは<strong>実機で試すまで不明</strong>。</p>
+<p>対策候補:
+- プロセスを <code>SCHED_FIFO</code> のリアルタイム優先度にする(<code>chrt -f 99 ...</code>)
+- <code>mlockall()</code> でページフォルト由来の遅延を排除
+- それでも精度が足りなければ、ストローブのHigh/Low自体をSPI転送に相乗りさせる(SPIクロックは正確なので、ダミーバイトの転送時間でウェイトを代用する)等の工夫が要る</p>
+<h3 id="52">5.2 既存機能との排他<a class="headerlink" href="#52" title="Permanent link">&para;</a></h3>
+<p><code>uyu_prn</code>をunbindしている間は <code>/dev/prn-dev</code> 経由の通常の1bit印字(<code>0x66</code>)・用紙検知(<code>0x77</code>)が使えなくなる。運用上は「グレースケール印字ジョブの間だけunbind→終わったら<code>bind</code>し直して元のドライバに戻す」という排他制御が必要。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 元に戻す</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">echo</span><span class="w"> </span>&lt;uyu-prnのデバイス名&gt;<span class="w"> </span>&gt;<span class="w"> </span>/sys/bus/platform/drivers/&lt;uyu_prnドライバ名&gt;/bind
+</span></code></pre></div>
+<h3 id="53">5.3 モーター位相のずれ<a class="headerlink" href="#53" title="Permanent link">&para;</a></h3>
+<p><code>Motor_Cycle</code>(ステッピングモーターの半歩位相トグル)は元ドライバ内のstatic変数で管理されている。unbind/自前実装/再bindを繰り返すと、機械的な位相が元ドライバの想定とずれる可能性がある。実害は「多少のガタつき」程度と思われるが未検証。</p>
+<h3 id="54-6">5.4 未確認事項 → 実機確認済み(結果は§6参照)<a class="headerlink" href="#54-6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>~~<code>uyu-prn</code>デバイスの正確な <code>platform driver</code> 名・sysfsパス~~ → <strong>前提が誤り</strong>。<code>prn-dev</code>は
+  platform driverではなく<strong>SPIドライバ</strong>として<code>spi7.0</code>に直接bindされている
+  (<code>readlink /sys/bus/spi/devices/spi7.0/driver</code> → <code>.../bus/spi/drivers/prn-dev</code>)。</li>
+<li>~~SPIデバイスのバス番号・チップセレクト~~ → <strong><code>spi7.0</code></strong>(<code>/dev/spidev7.0</code>)と確認済み。</li>
+<li>~~<code>spidev</code>の<code>of_match_table</code>に許可された<code>compatible</code>文字列が<code>driver_override</code>経由でも通るか~~ →
+  <strong>そもそも<code>driver_override</code>ファイルがこの端末のカーネルに存在しない</strong>ため検証不能。詳細は§6。</li>
+</ul>
+<hr />
+<h2 id="6-2026-09-15">6. 実機検証結果(2026-09-15)と代替案<a class="headerlink" href="#6-2026-09-15" title="Permanent link">&para;</a></h2>
+<h3 id="61-42">6.1 §4.2は成立しない<a class="headerlink" href="#61-42" title="Permanent link">&para;</a></h3>
+<p><code>/sys/bus/spi/devices/spi7.0/driver_override</code> が存在しない(SPIバスの<code>driver_override</code>対応は
+mainlineで4.9より新しいカーネルの機能で、この端末(Linux 4.9.193)にはバックポートされていない)。
+<code>driver_override</code>無しで<code>echo spi7.0 &gt; /sys/bus/spi/drivers/spidev/bind</code>を直接試しても、
+<code>compatible = "qcom,prn-dev"</code>が<code>spidev</code>の<code>of_device_id</code>/<code>spi_device_id</code>テーブル
+(<code>rohm,dh2228fv</code>等の標準プレースホルダーのみ)にマッチせず、<code>probe()</code>が呼ばれないまま失敗する。</p>
+<h3 id="62-unbindbind">6.2 unbind/bindの反復自体が危険<a class="headerlink" href="#62-unbindbind" title="Permanent link">&para;</a></h3>
+<p><code>unbind</code>→(spidev bind失敗)→再度<code>unbind</code>→<code>prn-dev</code>へbind、を短時間に繰り返したところ、
+2回目の再bindで<code>gpio_init</code>が<code>Heat_En</code>/<code>Print_En</code>の<code>gpio_request</code>で<code>-EBUSY(-16)</code>を返し、
+<code>/dev/prn-dev</code>が消失。<strong>sysfs操作だけでは復旧できず、実機の再起動が必要だった</strong>。
+<code>PrinterServerApp</code>がステータスポーリング等で<code>/dev/prn-dev</code>を掴んだままの状態で<code>unbind</code>すると
+GPIO解放処理が正しく完了しない可能性がある(未検証の推測)。テストする際は必ず
+<code>am force-stop com.example.printerserver</code>してから行うこと。</p>
+<h3 id="63-dtbocompatible">6.3 代替案: DTBOオーバーレイでの多重compatible化(未検証・要実機テスト)<a class="headerlink" href="#63-dtbocompatible" title="Permanent link">&para;</a></h3>
+<p><code>boot.img</code>のベースDTを触らず、<code>dtbo.img</code>に新しいfragmentを追加して
+<code>target-path = "/soc/spi@7af7000/uyu-prn";</code>で直接ターゲット指定し、<code>compatible</code>に
+元の文字列を残したまま追加する:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>compatible = &quot;qcom,prn-dev&quot;, &quot;rohm,dh2228fv&quot;;
+</span></code></pre></div>
+<p>こうすれば<code>unbind</code>後に<code>spidev</code>への<code>bind</code>が(標準のcompatibleマッチで)成功するはずだが、
+<strong>この変更は「起動時に毎回評価される」静的なものなので、通常起動時に<code>prn-dev</code>と<code>spidev</code>の
+どちらが自動bindを勝ち取るかが問題になる</strong>。両ドライバとも<code>device_initcall</code>(レベル6)で
+登録されるため、勝敗は<code>drivers/uyu/</code>と<code>drivers/spi/spidev.c</code>のカーネルリンク順次第で決まり、
+机上では確定できない。もし<code>spidev</code>が勝つと、<strong>通常の1bit印字(<code>0x66</code>)が起動するたびに
+使えなくなる</strong>。実機でdtboを焼いて再起動し、<code>readlink /sys/bus/spi/devices/spi7.0/driver</code>で
+どちらが勝つか確認するまでは採用の可否が判断できない。</p>
+<p>DTBO抽出・書き換えの一般的な手順(パーティション位置の特定、<code>dd</code>によるフル解凍なしの
+部分抽出など)は <a href="../../hardware/partitions/">パーティションテーブル解析</a> を参照。</p>
+<hr />
+<h2 id="7">7. 関連ページ<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../printer/">プリンター制御仕様</a> — GPIO/SPIの役割、ioctlオペコード一覧</li>
+<li><a href="../../hardware/kernel_analysis/">カーネル <code>uyu_printer.c</code> 逆コンパイル解析</a> — GPIOシーケンス・タイミング定数の一次情報源、§7に本Hackの実機検証結果</li>
+<li><a href="../printing_tips/">印字ノウハウ・ハマりどころ</a> — ディザリング等、既存の実用ノウハウ</li>
+<li><a href="../../software/security/">端末のセキュリティ機能の調査結果</a> — 本Hackの前提となるセキュリティ状態</li>
+<li><a href="../../hardware/partitions/">パーティションテーブル解析</a> — DTBO抽出・書き換えの参考情報</li>
+<li><a href="../print_server/">PrinterServerApp 開発記録</a> — 現行の印刷実装</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.indexes", "navigation.top", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "content.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../javascripts/load_mermaid.js"></script>
+      
+    
+  </body>
+</html>

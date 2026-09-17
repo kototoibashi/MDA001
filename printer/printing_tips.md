@@ -139,4 +139,5 @@ while (CPrint.getPrinterStatus() == 1) {
 ## 関連ページ
 
 - [プリンター制御仕様](printer.md) — プロトコルとオペコードの詳細
+- [グレースケール フルワイド化Hack案](userland_grayscale_hack.md) — 240px/16段固定の制約をカーネル非改造で回避する案
 - [PrinterServerApp 開発記録](print_server.md) — 上記を実装した自作アプリ

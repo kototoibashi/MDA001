@@ -637,6 +637,8 @@
       
         
       
+        
+      
     
     
     
@@ -725,6 +727,34 @@
     
   
     印字ノウハウ・ハマりどころ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../printer/userland_grayscale_hack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    グレースケール フルワイド化Hack案
   
 
     
@@ -1167,10 +1197,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#c-dtb" class="md-nav__link">
+  <a href="#c-dtbo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        対策C: DTB にノードを追記（根本解決）
+        対策C: DTBO を修正（根本解決・実機検証済み）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        切り分けに使った確認コマンド
       
     </span>
   </a>
@@ -1186,16 +1227,16 @@
   <a href="#2-telephony-ims" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 着信しない（Telephony / IMS）
+        2. 通話が一切できない（Telephony / IMS）— 未解決・断念
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. 着信しない（Telephony / IMS）">
+    <nav class="md-nav" aria-label="2. 通話が一切できない（Telephony / IMS）— 未解決・断念">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         症状
@@ -1206,10 +1247,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        原因
+        分かったこと(部分的な原因)
       
     </span>
   </a>
@@ -1217,10 +1258,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        対策
+        試した対策(効果は限定的)
       
     </span>
   </a>
@@ -1502,10 +1543,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#c-dtb" class="md-nav__link">
+  <a href="#c-dtbo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        対策C: DTB にノードを追記（根本解決）
+        対策C: DTBO を修正（根本解決・実機検証済み）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        切り分けに使った確認コマンド
       
     </span>
   </a>
@@ -1521,16 +1573,16 @@
   <a href="#2-telephony-ims" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 着信しない（Telephony / IMS）
+        2. 通話が一切できない（Telephony / IMS）— 未解決・断念
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. 着信しない（Telephony / IMS）">
+    <nav class="md-nav" aria-label="2. 通話が一切できない（Telephony / IMS）— 未解決・断念">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         症状
@@ -1541,10 +1593,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        原因
+        分かったこと(部分的な原因)
       
     </span>
   </a>
@@ -1552,10 +1604,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        対策
+        試した対策(効果は限定的)
       
     </span>
   </a>
@@ -1616,8 +1668,38 @@
 <p>本体の物理ホームボタンを押しても OS が全く反応しない。</p>
 <h3 id="_2">原因<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p><code>adb shell getevent -l</code> で監視しても押下時に入力イベントが発生せず、Android フレームワーク以前の <strong>カーネルレベルで信号が捨てられている</strong> ことが判明しました。</p>
-<p>カーネルログ (<code>dmesg</code>) には起動時に <code>gpio_keys_polled</code> ドライバの <code>gpio_to_desc</code> エラーが出ており、これは Device Tree (DTB) における GPIO ピン割り当ての記述が誤っている／欠落している場合に発生します。</p>
-<p><code>/sys/kernel/debug/gpio</code> を総当たりで監視した結果、<strong>ホームボタンは物理的に GPIO 88 に結線されている</strong>ことを特定しました。押下で電圧が <code>1</code> → <code>0</code> に遷移する Active-Low 構成です。カーネルの DTB に「GPIO 88 がホームボタンである」という記述がないため、ボタンが死んでいます。</p>
+<p><code>/sys/kernel/debug/gpio</code> を総当たりで監視した結果、<strong>ホームボタンは物理的に GPIO 88 に結線されている</strong>ことを特定しました。押下で電圧が <code>1</code> → <code>0</code> に遷移する Active-Low 構成です。</p>
+<div class="admonition bug">
+<p class="admonition-title">訂正(2026-09-15): 「記述が欠落」ではなく「番号が1つズレている」</p>
+<p>当初「DTBにホームボタンの記述が存在しない」としていましたが、<code>dtbo.img</code>(<code>boot.img</code>ではない)を
+展開して確認した結果、<code>gpio_keys</code>ノード配下に<strong><code>home</code>エントリ自体はすでに存在</strong>していました。
+ただし<code>gpios</code>プロパティが<code>GPIO 87</code>(<code>0x57</code>)を指しており、実際の配線である<code>GPIO 88</code>と
+<strong>1つズレていた</strong>のが真因、という当初の分析。この後さらに2つの問題が発覚したため、
+最終的な結論は下の「解決済み」ノートを参照。</p>
+</div>
+<div class="admonition success">
+<p class="admonition-title">解決済み(2026-09-16〜18 実機検証): 3段階のバグが重なっていた</p>
+<p>GPIO番号の1ズレを直すだけでは動かず、調査の結果<strong>3つの独立したバグが積み重なっていた</strong>ことが判明した。</p>
+<ol>
+<li><strong>番号ズレ</strong>: <code>gpios</code>が<code>GPIO 87</code>(<code>0x57</code>)を指していたが実配線は<code>GPIO 88</code>(<code>0x58</code>)。</li>
+<li><strong>そもそも死んでいるドライバ</strong>: <code>home</code>エントリは無印<code>gpio_keys</code>(割り込み版)ノードにあったが、
+   この端末のカーネルは<code>CONFIG_KEYBOARD_GPIO</code>が無効(<code>CONFIG_KEYBOARD_GPIO_POLLED</code>のみ有効)で、
+   割り込み版<code>gpio-keys</code>ドライバ自体がビルドされていない。DTをどう直しても<code>/sys/bus/platform/devices/soc:gpio_keys/</code>に
+   <code>driver</code>シンボリックリンクが付かず(=probeされない)ため、<strong><code>gpio_keys_polled</code>ノード側に<code>home</code>エントリを
+   移設する</strong>必要がある。</li>
+<li><strong>キーコードの取り違え</strong>: <code>linux,code = &lt;0x66&gt;</code>(Linux <code>KEY_HOME</code>=PCキーボードの「文頭移動」)を
+   指定していたが、Android標準<code>/system/usr/keylayout/Generic.kl</code>ではこのスキャンコードは
+   <code>KEYCODE_MOVE_HOME</code>にマップされ、システムのHome画面遷移(<code>KEYCODE_HOME</code>)には紐付かない。
+   <code>KEYCODE_HOME</code>に化けるのは<code>linux,code = &lt;0xac&gt;</code>(Linux <code>KEY_HOMEPAGE</code>=172)の方だった。
+   この結果、カーネルもInputReaderも正常に動作している(<code>dumpsys input</code>で該当デバイスの
+   <code>KeyDowns</code>/<code>DownTime</code>が実際の押下と一致して更新される)のに、<code>PhoneWindowManager</code>の
+   <code>mHomePressed</code>まで届かず<strong>画面上は何も起きない</strong>という、切り分けが最も厄介なパターンになっていた。</li>
+</ol>
+<p>最終的な修正内容は対策Cの手順を参照。切り分けの決め手は<code>dumpsys input</code>の該当デバイスの
+<code>KeyDowns</code>/<code>DownTime</code>(カーネル→InputReaderは正常)と<code>dumpsys window policy</code>の
+<code>mHomePressed</code>(InputReader→PhoneWindowManagerで止まっている)を比較したこと。
+詳細な抽出手順・fragment構造は <a href="../../hardware/partitions/">パーティションテーブル解析 §7</a> を参照。</p>
+</div>
 <h3 id="a">対策A: ソフトウェアナビゲーションバーで代替（最も手軽）<a class="headerlink" href="#a" title="Permanent link">&para;</a></h3>
 <p>物理ボタンを使わず、Android 標準の画面内ナビゲーションバーを強制表示させます。</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>adb<span class="w"> </span>shell<span class="w"> </span>setprop<span class="w"> </span>qemu.hw.mainkeys<span class="w"> </span><span class="m">0</span>
@@ -1640,37 +1722,89 @@
 </span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span>sleep<span class="w"> </span><span class="m">0</span>.1
 </span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="k">done</span>
 </span></code></pre></div>
-<h3 id="c-dtb">対策C: DTB にノードを追記（根本解決）<a class="headerlink" href="#c-dtb" title="Permanent link">&para;</a></h3>
+<h3 id="c-dtbo">対策C: DTBO を修正（根本解決・実機検証済み）<a class="headerlink" href="#c-dtbo" title="Permanent link">&para;</a></h3>
+<p>編集対象は <code>boot.img</code> ではなく <strong><code>dtbo</code> パーティション</strong>(<code>/dev/block/by-name/dtbo</code>)です。<code>dtbo.img</code>は
+Android標準の<code>DT_TABLE_MAGIC</code>ヘッダを持つテーブル形式なので、生の<code>dtc</code>ではなく<code>mkdtboimg.py</code>
+(AOSP <code>system/libufdt/utils/src/mkdtboimg.py</code>)でunpack/repackする必要があります。</p>
 <ol>
-<li><code>magiskboot</code> 等で <code>boot.img</code> から <code>dtb</code> を抽出</li>
+<li><code>dtbo</code>パーティションを抽出・バックアップ(<code>dtbo</code>・<code>dtbobak</code>両方。手順は<a href="../../hardware/partitions/">パーティションテーブル解析 §7</a>参照)</li>
+<li><code>mkdtboimg.py dump dtbo_orig.img -o dtbo_dump -b dtbo_</code> でunpack(実際のdtbバイナリは<code>-b</code>で指定した接頭辞の方、<code>dtbo_.0</code>)</li>
+<li><code>dtc -I dtb -O dts dtbo_.0 -o dtbo.dts</code> でデコンパイル(overlay特有の<code>avoid_default_addr_size</code>等の警告は無視してよい、<code>FATAL ERROR</code>でなければ成功)</li>
 <li>
-<p><code>dtc</code> でデコンパイルし、<code>gpio_keys_polled</code> ノードへ以下を追記</p>
-<div class="language-dts highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="na">button</span><span class="err">@</span><span class="na">home</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Home&quot;</span><span class="p">;</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">linux</span><span class="p">,</span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">102</span><span class="o">&gt;</span><span class="p">;</span><span class="w">      </span><span class="cm">/* KEY_HOME */</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">gpios</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&amp;</span><span class="na">tlmm</span><span class="w"> </span><span class="mi">88</span><span class="w"> </span><span class="mh">0x01</span><span class="o">&gt;</span><span class="p">;</span><span class="w"> </span><span class="cm">/* GPIO 88 (Active-Low) */</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">};</span>
+<p><strong><code>gpio_keys_polled</code></strong>(<code>gpio_keys</code>無印ではない。理由は上の「解決済み」ノート参照)ノードに<code>home</code>エントリを新規追加</p>
+<div class="language-diff highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w"> </span> gpio_keys_polled {
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w"> </span>     ...
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w"> </span>     key_switch { ... };
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="gi">+</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="gi">+     home {</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="gi">+         label = &quot;home&quot;;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="gi">+         gpios = &lt;0xffffffff 0x58 0x01&gt;;  /* GPIO 88, Active-Low */</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="gi">+         linux,input-type = &lt;0x01&gt;;</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="gi">+         linux,code = &lt;0xac&gt;;             /* KEY_HOMEPAGE → Android KEYCODE_HOME */</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="gi">+         debounce-interval = &lt;0x0f&gt;;</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="gi">+     };</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w"> </span> };
 </span></code></pre></div>
 </li>
 <li>
-<p>リコンパイルして <code>boot.img</code> を再構築しフラッシュ</p>
+<p><strong><code>__fixups__</code>ノードの<code>tlmm</code>文字列リストに新しいパスを追記する(これを忘れると他のボタンまで巻き添えで死ぬ)</strong>。
+   <code>gpios</code>の第1セルは外部(ベースDT側)の<code>tlmm</code>ノードへのphandle参照で、dtcはこのデコンパイル済みdtsから
+   自動でfixupを生成できない(overlay対象が別blob=ベースツリー側のため)。手動で1行追加が必要:</p>
+<div class="language-diff highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="gd">- .../gpio_keys_polled/key_switch:gpios:0\0/fragment@46/__overlay__/meig-hwversion:...</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="gi">+ .../gpio_keys_polled/key_switch:gpios:0\0/fragment@46/__overlay__/gpio_keys_polled/home:gpios:0\0/fragment@46/__overlay__/meig-hwversion:...</span>
+</span></code></pre></div>
+<p>追記を忘れると、追加した<code>home</code>の<code>gpios</code>が実機上で無効なphandle(<code>0xffffffff</code>)のまま残り、
+<code>gpio-keys-polled</code>ドライバの<code>of_get_named_gpio()</code>がその1エントリで失敗して<strong>probe関数自体が
+エラーリターンし、同じノード内の<code>vol_up</code>/<code>vol_down</code>/<code>key_back</code>等まで全滅する</strong>(実機で再現済み)。</p>
+</li>
+<li>
+<p><code>dtc -@ -I dts -O dtb dtbo.dts -o dtbo_new.dtb</code> でリコンパイル → <code>mkdtboimg.py create dtbo_new.img dtbo_new.dtb</code> で再パック → <code>dtbo</code>パーティションへ書き戻し</p>
 </li>
 </ol>
+<h3 id="_3">切り分けに使った確認コマンド<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>「<code>getevent</code>ではイベントが出るのにOSが無反応」という状態を切り分けるには、<code>InputReader</code>(カーネル直後)と
+<code>PhoneWindowManager</code>(Android側ポリシー層)のどちらで止まっているかを見るのが決め手になった。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># InputReaderが実際に押下を受理しているか(カーネルのタイムスタンプと一致するはず)</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>adb<span class="w"> </span>shell<span class="w"> </span>dumpsys<span class="w"> </span>input<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A<span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="s2">&quot;Device N: soc:gpio_keys_polled&quot;</span><span class="w">   </span><span class="c1"># KeyDowns / DownTime を見る</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># PhoneWindowManagerのHome判定まで届いているか</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>adb<span class="w"> </span>shell<span class="w"> </span>dumpsys<span class="w"> </span>window<span class="w"> </span>policy<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>mHomePressed<span class="w">   </span><span class="c1"># 押している間だけtrueになるはず</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># Android側のHome処理自体が生きているかの独立確認(仮想注入)</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>adb<span class="w"> </span>shell<span class="w"> </span>input<span class="w"> </span>keyevent<span class="w"> </span>KEYCODE_HOME
+</span></code></pre></div>
+<p><code>KeyDowns</code>/<code>DownTime</code>は更新されるのに<code>mHomePressed</code>が常に<code>false</code>なら、キーコードのマッピング
+(<code>linux,code</code>と<code>/system/usr/keylayout/Generic.kl</code>の対応、<code>adb shell su 0 cat /system/usr/keylayout/Generic.kl</code>で確認)を疑う。</p>
 <div class="admonition warning">
-<p class="admonition-title">boot パーティションの書き換えは文鎮化リスクがあります</p>
-<p>実行前に必ず <a href="../backup_strategy/">バックアップ手順</a> に従って <code>boot.img</code> を退避してください。</p>
+<p class="admonition-title">dtbo パーティションの書き換えは文鎮化リスクがあります</p>
+<p>実行前に必ず <a href="../backup_strategy/">バックアップ手順</a> に従って <code>dtbo.img</code>(および念のため <code>boot.img</code>)を退避してください。書き込みイメージのサイズは元パーティションと同一に保つこと。</p>
 </div>
 <hr />
-<h2 id="2-telephony-ims">2. 着信しない（Telephony / IMS）<a class="headerlink" href="#2-telephony-ims" title="Permanent link">&para;</a></h2>
-<h3 id="_3">症状<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>IMS 接続（VoLTE 等）は正常に確立できているのに、外部からの着信で画面が出ない・鳴らない。「Telephony.apk が入っていないのでは？」と疑われる症状です。</p>
-<h3 id="_4">原因<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h2 id="2-telephony-ims">2. 通話が一切できない（Telephony / IMS）— 未解決・断念<a class="headerlink" href="#2-telephony-ims" title="Permanent link">&para;</a></h2>
+<p><strong>要約(技術詳細は読み飛ばしてOK): SMSは送受信できるが、着信・発信の音声通話が一切ダメ。原因不明のまま断念した。</strong></p>
+<div class="admonition danger">
+<p class="admonition-title">未解決(2026-09-18時点): 断念</p>
+<p><strong>そもそもマイクが無いから、ソフトウェア側をどれだけ直しても実用的な通話は成立しない。</strong>
+IMS Registration(SIP <code>REGISTER</code>によるP-CSCF/S-CSCFへの登録)・SMS送受信は正常に動作しており、
+<strong>発信側から見た呼び出し待ちビヘイビアも正常</strong>——つまり回線・IMS登録・着信シグナリングまでは
+ネットワーク/ベースバンド側で問題なく処理されている。しかし<strong>着信・発信を問わず音声通話が
+まるごと成立しない</strong>(着信は鳴動・着信画面表示ともに無し、発信側も通話にならない)。
+下記の「デフォルトダイヤラー設定」はTelecomの着信ルーティングという一因を潰しただけで、
+通話自体は復旧していない。この端末は業務上通話機能を使わないため、これ以上の追及はせず断念した。
+<strong>そもそも本体にマイクが実装されていない可能性が高く</strong>、SMS(データ経路)は生きているのに
+音声だけがまるごと死んでいる状況から見ても、<strong>通話用の音声パス(ベースバンドのオーディオ経路、
+または関連ハードウェアの欠如)に根本的な問題がある</strong>可能性が高いと見ている。</p>
+</div>
+<h3 id="_4">症状<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>IMS Registration(SIP <code>REGISTER</code>)自体は成功しており、SMSの送受信も正常に動作する。この端末に電話をかけると、<strong>発信側は正常な端末に対してと同じ呼び出し待ち(呼出音・呼び出し中表示)のビヘイビアになる</strong>——つまり回線・IMS登録・着信シグナリングまではネットワーク側で正常に処理されている。しかし<strong>端末側では着信音が鳴らず、着信画面も一切表示されない</strong>。さらに、<strong>この端末から発信した場合も通話(音声)が成立しない</strong>——着信・発信どちらの方向でも音声通話がまるごと機能しない。「Telephony.apk が入っていないのでは？」と疑われる症状だが、後述の通りコンポーネント自体は揃っている。</p>
+<h3 id="_5">分かったこと(部分的な原因)<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>Android の電話機能は単一の <code>Telephony.apk</code> ではなく複数コンポーネントで構成されますが、本端末には <code>TeleService.apk</code> (<code>com.android.phone</code>)、<code>Telecom.apk</code>、<code>QtiTelephonyService.apk</code>、<code>ims.apk</code> などの必須コンポーネントはすべて正常に存在していました。</p>
 <p><code>dumpsys telecom</code> を解析した結果、<strong>デフォルトの電話アプリ (Default Dialer) が未設定 (<code>null</code>)</strong> であることが判明。Telecom システムが着信のルーティング先を見つけられず、着信自体が破棄されていました。</p>
-<h3 id="_5">対策<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_6">試した対策(効果は限定的)<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>端末にインストール済みのダイヤラーをデフォルトに指定します。</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>adb<span class="w"> </span>shell<span class="w"> </span>telecom<span class="w"> </span>set-default-dialer<span class="w"> </span>org.codeaurora.dialer
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>adb<span class="w"> </span>shell<span class="w"> </span>telecom<span class="w"> </span>set-default-dialer<span class="w"> </span>org.codeaurora.dialer
 </span></code></pre></div>
+<p>これでTelecom側のルーティング未設定という問題は解消したはずだが、それでも着信は最終的に復旧しなかった。マイク実装の疑いも含め、原因は1つではない可能性が高い。</p>
 <hr />
 <h2 id="3">3. 無線が全部死んでいる<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <p>Wi-Fi / Bluetooth / セルラーは出荷時にソフトウェア・ハードウェア両面で無効化されています。原因の切り分けと復旧手順は独立したドキュメントにまとめています。</p>

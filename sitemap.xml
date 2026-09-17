@@ -2,86 +2,94 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://kototoibashi.github.io/MDA001/</loc>
-         <lastmod>2026-09-14</lastmod>
+         <lastmod>2026-09-17</lastmod>
     </url>
     <url>
          <loc>https://kototoibashi.github.io/MDA001/identity/</loc>
-         <lastmod>2026-09-14</lastmod>
+         <lastmod>2026-09-17</lastmod>
     </url>
     <url>
          <loc>https://kototoibashi.github.io/MDA001/tools/</loc>
-         <lastmod>2026-09-14</lastmod>
+         <lastmod>2026-09-17</lastmod>
     </url>
     <url>
          <loc>https://kototoibashi.github.io/MDA001/alcohol_checker/alcohol_ad_values/</loc>
-         <lastmod>2026-09-14</lastmod>
+         <lastmod>2026-09-17</lastmod>
     </url>
     <url>
          <loc>https://kototoibashi.github.io/MDA001/alcohol_checker/measurement_behavior/</loc>
-         <lastmod>2026-09-14</lastmod>
+         <lastmod>2026-09-17</lastmod>
     </url>
     <url>
          <loc>https://kototoibashi.github.io/MDA001/alcohol_checker/serial_protocol/</loc>
-         <lastmod>2026-09-14</lastmod>
+         <lastmod>2026-09-17</lastmod>
     </url>
     <url>
          <loc>https://kototoibashi.github.io/MDA001/alcohol_checker/test_modes/</loc>
-         <lastmod>2026-09-14</lastmod>
+         <lastmod>2026-09-17</lastmod>
     </url>
     <url>
          <loc>https://kototoibashi.github.io/MDA001/appendix/adb_reference/</loc>
-         <lastmod>2026-09-14</lastmod>
+         <lastmod>2026-09-17</lastmod>
     </url>
     <url>
          <loc>https://kototoibashi.github.io/MDA001/hardware/components/</loc>
-         <lastmod>2026-09-14</lastmod>
+         <lastmod>2026-09-17</lastmod>
+    </url>
+    <url>
+         <loc>https://kototoibashi.github.io/MDA001/hardware/kernel_analysis/</loc>
+         <lastmod>2026-09-17</lastmod>
     </url>
     <url>
          <loc>https://kototoibashi.github.io/MDA001/hardware/overview/</loc>
-         <lastmod>2026-09-14</lastmod>
+         <lastmod>2026-09-17</lastmod>
     </url>
     <url>
          <loc>https://kototoibashi.github.io/MDA001/hardware/partitions/</loc>
-         <lastmod>2026-09-14</lastmod>
+         <lastmod>2026-09-17</lastmod>
     </url>
     <url>
          <loc>https://kototoibashi.github.io/MDA001/network/bluetooth/</loc>
-         <lastmod>2026-09-14</lastmod>
+         <lastmod>2026-09-17</lastmod>
     </url>
     <url>
          <loc>https://kototoibashi.github.io/MDA001/network/interfaces/</loc>
-         <lastmod>2026-09-14</lastmod>
+         <lastmod>2026-09-17</lastmod>
     </url>
     <url>
          <loc>https://kototoibashi.github.io/MDA001/network/wifi_enablement/</loc>
-         <lastmod>2026-09-14</lastmod>
+         <lastmod>2026-09-17</lastmod>
     </url>
     <url>
          <loc>https://kototoibashi.github.io/MDA001/printer/print_server/</loc>
-         <lastmod>2026-09-14</lastmod>
+         <lastmod>2026-09-17</lastmod>
     </url>
     <url>
          <loc>https://kototoibashi.github.io/MDA001/printer/printer/</loc>
-         <lastmod>2026-09-14</lastmod>
+         <lastmod>2026-09-17</lastmod>
     </url>
     <url>
          <loc>https://kototoibashi.github.io/MDA001/printer/printing_tips/</loc>
-         <lastmod>2026-09-14</lastmod>
+         <lastmod>2026-09-17</lastmod>
+    </url>
+    <url>
+         <loc>https://kototoibashi.github.io/MDA001/printer/userland_grayscale_hack/</loc>
+         <lastmod>2026-09-17</lastmod>
     </url>
     <url>
          <loc>https://kototoibashi.github.io/MDA001/software/applications/</loc>
-         <lastmod>2026-09-14</lastmod>
+         <lastmod>2026-09-17</lastmod>
     </url>
     <url>
          <loc>https://kototoibashi.github.io/MDA001/software/backup_strategy/</loc>
-         <lastmod>2026-09-14</lastmod>
+         <lastmod>2026-09-17</lastmod>
     </url>
     <url>
          <loc>https://kototoibashi.github.io/MDA001/software/fixes/</loc>
-         <lastmod>2026-09-14</lastmod>
+         <lastmod>2026-09-17</lastmod>
     </url>
     <url>
          <loc>https://kototoibashi.github.io/MDA001/software/security/</loc>
-         <lastmod>2026-09-14</lastmod>
+         <lastmod>2026-09-17</lastmod>
     </url>
 </urlset>

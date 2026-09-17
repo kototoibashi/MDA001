@@ -1,0 +1,2331 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hikvision DS-MDA001 (アルコールチェッカー・プリンター内蔵Android端末) のハードウェアおよびソフトウェア解析ドキュメント">
+      
+      
+        <meta name="author" content="kototoibashi">
+      
+      
+        <link rel="canonical" href="https://kototoibashi.github.io/MDA001/hardware/kernel_analysis/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Kernel analysis - Hikvision DS-MDA001 解析レポート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#uyu_printerc" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="Hikvision DS-MDA001 解析レポート" class="md-header__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hikvision DS-MDA001 解析レポート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Kernel analysis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hikvision DS-MDA001 解析レポート" class="md-nav__button md-logo" aria-label="Hikvision DS-MDA001 解析レポート" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Hikvision DS-MDA001 解析レポート
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    この端末について
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    この端末について
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../identity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端末の素性と出自
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基本情報・OS仕様
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基板・IC・ドライバ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../partitions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    パーティション構成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    アルコールチェッカー
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    アルコールチェッカー
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alcohol_checker/test_modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    測定モードと運用仕様
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alcohol_checker/serial_protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    シリアル通信プロトコル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alcohol_checker/measurement_behavior/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    実測挙動と非同期仕様
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alcohol_checker/alcohol_ad_values/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AD値→濃度の換算
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    サーマルプリンター
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    サーマルプリンター
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../printer/printer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プリンター制御仕様
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../printer/printing_tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    印字ノウハウ・ハマりどころ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../printer/userland_grayscale_hack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    グレースケール フルワイド化Hack案
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../printer/print_server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PrinterServerApp 開発記録
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    無線・ネットワーク
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    無線・ネットワーク
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/interfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    インターフェース一覧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/wifi_enablement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wi-Fi 恒久有効化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/bluetooth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bluetooth 移植（失敗）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    システム改造・運用
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    システム改造・運用
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セキュリティ状態
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/applications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    内蔵アプリ・APK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/fixes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    不具合の修正記録
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/backup_strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    バックアップ手順
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    付録
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    付録
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自作ツール一覧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/adb_reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADBコマンドリファレンス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. 手法・ツール
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 復元された関数一覧(事実)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-uyu_prn_probe-gpio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. デバイス初期化(uyu_prn_probe)で判明した GPIO 対応表(事実)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. デバイス初期化(uyu_prn_probe)で判明した GPIO 対応表(事実)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-gpio-devicetreedtsgpiochip0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 実機での GPIO 番号確定(事実、devicetree.dts+実機gpiochip0ダンプで裏取り済み)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-prn_dev_unlocked_ioctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. prn_dev_unlocked_ioctl のコマンド一覧(事実+一部推測)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. prn_dev_unlocked_ioctl のコマンド一覧(事実+一部推測)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 引数の実体(事実)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 switch 構造(事実)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-darkness-0x88-r2ghidra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 濃度(darkness)設定コマンド 0x88 の演算式(事実、r2ghidraで再確認)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35-2binary16printer_work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 【重要】2値(binary)モードと16階調モードの併存(事実、printer_workのタグ分岐を追加解析して判明)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-heatr2ghidra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 発熱(Heat)・モーター駆動の実装方式(事実+推測、根拠付き。r2ghidraで大幅更新)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 発熱(Heat)・モーター駆動の実装方式(事実+推測、根拠付き。r2ghidraで大幅更新)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 結論(先出し、更新版)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-1linecolorrank_print-r2ghidra-pdg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 1ライン分の階調データ生成(LineColorRank_Print, 事実、r2ghidra pdg で確認)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-spir2ghidra-pdg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 多重パス(階調)ループとSPI転送・ストローブ制御(事実、r2ghidra pdg の実際の擬似コード)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-pwm2352" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 「PWMか2値か」への回答(更新版。3.5節の2モード併存を踏まえた最終結論)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-r2ghidra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 印刷ジョブの全体フロー(事実、r2ghidraで更新)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-r2ghidra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 未解明・要追加調査の項目(正直な棚卸し、r2ghidra導入後に更新)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-unbindspidev2026-09-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 実機検証: unbind+spidev化によるユーザーランド直叩きは不成立(事実、2026-09-15実機テスト)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><a href="https://github.com/kototoibashi/MDA001/blob/master/hardware/kernel_analysis.md">Markdown版はこちら</a></p>
+<h1 id="uyu_printerc">カーネル <code>uyu_printer.c</code> 逆コンパイル解析<a class="headerlink" href="#uyu_printerc" title="Permanent link">&para;</a></h1>
+<p>対象: <code>backup_images/boot.img</code> から抽出したカーネルイメージ(Linux 4.9.193, msm-4.9, <code>LA.UM.8.6.2</code>)。
+ソースは <code>/home3/build3/clarence/zthj_758/LA.UM.8.6.2/kernel/msm-4.9/drivers/uyu/uyu_printer.c</code>(非公開、入手不可)。
+本ドキュメントは、ビルド済みバイナリを逆コンパイルして得た結果のみに基づく再構成である。</p>
+<h2 id="0">0. 手法・ツール<a class="headerlink" href="#0" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>vmlinux-to-elf</code> で <code>backup_images/derived/kernel/kernel_raw.bin</code>(gzip解凍済みの生 ARM64 Image)から
+  <code>kernel.elf</code> を生成。カーネル内蔵の kallsyms を利用して <strong>124,717個のシンボル</strong>(関数名含む)を
+  完全復元できた。これにより <code>uyu_printer.c</code> 由来と思われる関数がほぼ全て個別のシンボル名で
+  判別可能になった(静的関数含む)。<strong>さらにグローバル変数のシンボル名(<code>HEAT_DELAY</code>, <code>TK</code>, <code>TB</code>,
+  <code>Heat_En</code>, <code>PRN_MT_A</code> 等)も kallsyms から実名で復元できており、以下の記述はオフセット推測ではなく
+  実シンボル名に基づく。</strong></li>
+<li>当初 r2ghidra(Ghidraベースの逆コンパイラプラグイン)は本環境(WSL)でのビルドに必要な
+  radare2 開発用ヘッダ/pkg-config ファイルが欠けており断念し、<strong>radare2 の生アセンブリ(<code>pd</code>/<code>pdf</code>)を
+  人手で読む</strong>方針で1次調査を行った(2節・3節の一部はその結果)。
+  その後、<strong>radare2 6.2.2 をソースから <code>$HOME/.local</code> にビルドし直し(<code>meson</code>+<code>ninja</code>、sudo不要)、
+  <code>r2pm -ci r2ghidra</code> で r2ghidra 本体を、<code>r2ghidra_sleigh-6.1.4.zip</code>(事前ダウンロード済みのsleigh仕様
+  データ、<code>unzip</code>コマンドが無かったため Python の <code>zipfile</code> で手動展開)で sleigh アーキテクチャ定義を
+  導入し、<code>pdg</code>(Ghidra擬似コード出力)による正式な逆コンパイルに成功した</strong>。4節以降の記述は
+  この <code>pdg</code> 出力で得られた、より正確な情報に基づいて更新・訂正している。</li>
+<li>使用コマンド例:
+  <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vmlinux-to-elf kernel_raw.bin kernel.elf
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>r2 -q -e scr.color=0 -c &#39;pD &lt;size&gt; @ &lt;addr&gt;&#39; kernel.elf        # 生アセンブリ
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>r2 -q -e scr.color=0 -e bin.relocs.apply=true \
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>   -c &#39;af @ sym.&lt;func&gt;; pdg @ sym.&lt;func&gt;&#39; kernel.elf           # r2ghidra 擬似コード
+</span></code></pre></div>
+  (<code>af</code> だけでは関数境界の自動判定を誤り隣接関数と結合されることがあったため、必要に応じて
+  <code>afu &lt;end_addr&gt;</code> で関数終端を明示した。)</li>
+<li>本ファイルの「事実」は上記の手法で得たアセンブリ/擬似コードから直接読み取れる内容、
+  「推測」は複数箇所の状況証拠から筆者(Claude)が組み立てた解釈。<strong>r2ghidra導入後に判明した内容で
+  当初の推測が訂正された箇所は、その旨を明記している。</strong></li>
+</ul>
+<h2 id="1">1. 復元された関数一覧(事実)<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>kallsyms から復元された、本ドライバに属すると判断できる関数(アドレスは仮想アドレス、
+ELF内 <code>kernel.elf</code> 基準):</p>
+<table>
+<thead>
+<tr>
+<th>アドレス</th>
+<th>シンボル</th>
+<th>種別</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0xffffff8008e15460</td>
+<td><code>gpio_init</code></td>
+<td>GLOBAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e156e0</td>
+<td><code>Print_On</code></td>
+<td>GLOBAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e15708</td>
+<td><code>Print_Off</code></td>
+<td>GLOBAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e15730</td>
+<td><code>Heat_On</code></td>
+<td>GLOBAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e15778</td>
+<td><code>Heat_Off</code></td>
+<td>GLOBAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e157b8</td>
+<td><code>motor_step1</code></td>
+<td>GLOBAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e15840</td>
+<td><code>motor_step2</code></td>
+<td>GLOBAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e15890</td>
+<td><code>motor_step3</code></td>
+<td>GLOBAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e158e8</td>
+<td><code>motor_step4</code></td>
+<td>GLOBAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e15940</td>
+<td><code>motor_step5</code></td>
+<td>GLOBAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e15990</td>
+<td><code>motor_step6</code></td>
+<td>GLOBAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e159e8</td>
+<td><code>motor_step7</code></td>
+<td>GLOBAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e15a40</td>
+<td><code>motor_step8</code></td>
+<td>GLOBAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e15a98</td>
+<td><code>motor_forward_one_step</code></td>
+<td>GLOBAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e15ba8</td>
+<td><code>motor_backward_one_step</code></td>
+<td>GLOBAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e15cc8</td>
+<td><code>motor_move_lines</code></td>
+<td>GLOBAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e15d20</td>
+<td><code>PaperCheck</code></td>
+<td>GLOBAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e15d88</td>
+<td><code>printer_dowork</code></td>
+<td>GLOBAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e15dc0</td>
+<td><code>LineColorRankData_Manage</code></td>
+<td>GLOBAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e15e58</td>
+<td><code>IdlePrint</code></td>
+<td>GLOBAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e15f70</td>
+<td><code>LineColorRank_Print</code></td>
+<td>GLOBAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e161f8</td>
+<td><code>pic_motor_forward_one_step</code></td>
+<td>GLOBAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e162e0</td>
+<td><code>Print_Picture</code></td>
+<td>GLOBAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e16328</td>
+<td><code>printer_work</code></td>
+<td>GLOBAL FUNC(workqueue本体)</td>
+</tr>
+<tr>
+<td>0xffffff8008e166a0</td>
+<td><code>uyu_prn_probe</code></td>
+<td>LOCAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e16a38</td>
+<td><code>uyu_prn_remove</code></td>
+<td>LOCAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e16ad0</td>
+<td><code>prn_dev_read</code></td>
+<td>LOCAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e16b08</td>
+<td><code>prn_dev_write</code></td>
+<td>LOCAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e16c50</td>
+<td><code>prn_dev_unlocked_ioctl</code></td>
+<td>LOCAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e170b8</td>
+<td><code>prn_dev_open</code></td>
+<td>LOCAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e17128</td>
+<td><code>prn_dev_release</code></td>
+<td>LOCAL FUNC</td>
+</tr>
+<tr>
+<td>0xffffff8008e14df0</td>
+<td><code>slm758_dev_probe</code></td>
+<td>LOCAL FUNC(アルコールボード/ライト等の親デバイス)</td>
+</tr>
+</tbody>
+</table>
+<p>グローバル変数(データオブジェクト、<code>kallsyms</code> の OBJ エントリ。r2ghidra の <code>pdg</code> 出力で
+実際の読み書き箇所まで確認済み):</p>
+<table>
+<thead>
+<tr>
+<th>シンボル</th>
+<th>アドレス</th>
+<th>役割(事実)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Heat_En</code></td>
+<td><code>0xa91f000+0x1d4</code>域</td>
+<td>devicetree <code>en-heat</code> の GPIO番号キャッシュ</td>
+</tr>
+<tr>
+<td><code>Print_En</code></td>
+<td>同域</td>
+<td>devicetree <code>en-gpio</code> の GPIO番号キャッシュ</td>
+</tr>
+<tr>
+<td><code>PRN_MT_A</code> / <code>PRN_MT_A_0</code> / <code>PRN_MT_B</code> / <code>PRN_MT_B_0</code></td>
+<td>同域</td>
+<td>devicetree <code>mt-a</code>/<code>mt-a0</code>/<code>mt-b</code>/<code>mt-b0</code> のGPIO番号キャッシュ(ステッピングモーター4相)</td>
+</tr>
+<tr>
+<td><code>PRN_STB</code></td>
+<td>同域</td>
+<td>devicetree <code>stb</code>(ストローブ)のGPIO番号キャッシュ</td>
+</tr>
+<tr>
+<td><code>P_Paper</code></td>
+<td>同域</td>
+<td>devicetree <code>p-paper</code>(用紙検知)のGPIO番号キャッシュ</td>
+</tr>
+<tr>
+<td><code>task_busy</code></td>
+<td><code>0xa91f050</code></td>
+<td>ヘッド発熱中/デバイスビジーを表すフラグ。<code>Heat_On</code>が1、<code>Heat_Off</code>が0にする。ioctl <code>0x44</code>はこの値を読むだけ</td>
+</tr>
+<tr>
+<td><code>Motor_Cycle</code></td>
+<td><code>0xa91f1f4</code></td>
+<td>ステッピングモーターの半歩位相を切り替えるトグルカウンタ(2値、<code>motor_forward_one_step</code>内で±1して2で割った余りのように振る舞う)</td>
+</tr>
+<tr>
+<td><code>MOTOR_DELAY</code></td>
+<td><code>0xedb0ab8</code></td>
+<td>モーター1相あたりのウェイト時間(µs, <code>__udelay</code>直結)。ioctl <code>0x55</code>で設定</td>
+</tr>
+<tr>
+<td><code>HEAT_DELAY</code></td>
+<td><code>0xedb0abc</code></td>
+<td>ioctl <code>0x88</code>(濃度設定)で書き込まれる値(1100〜3000, 詳細は3.3節)。<strong>2値印字モード(<code>printer_work</code>のタグ<code>0xf0</code>経路、ioctl <code>0x66</code>)のストローブ幅として使われている(3.5節で確定)。16階調モード(<code>0x67</code>/<code>Print_Picture</code>)では使われない</strong></td>
+</tr>
+<tr>
+<td><code>TB</code></td>
+<td><code>0xedb0ac0</code></td>
+<td>初期値 <code>6</code>(実バイナリの <code>.data</code> から直接確認)。<code>LineColorRank_Print</code>内でストローブ幅の一部として使用</td>
+</tr>
+<tr>
+<td><code>TK</code></td>
+<td><code>0xedb0ac4</code></td>
+<td>初期値 <code>144</code>(同上)。<code>LineColorRank_Print</code>内でストローブ幅の基準値として使用</td>
+</tr>
+<tr>
+<td><code>printer_work_lock</code></td>
+<td><code>0xedb0ac8</code></td>
+<td><code>printer_work</code>のための <code>mutex</code>実体、および「作業をキューする際にロック中かどうか」の判定に使用</td>
+</tr>
+<tr>
+<td><code>gPrn</code></td>
+<td>(probe内で確保)</td>
+<td>デバイス本体構造体(SPI/GPIO/kfifo/workqueueをまとめた <code>kmem_cache_alloc_trace(size=0x138)</code> の動的確保構造体)へのグローバルポインタ</td>
+</tr>
+<tr>
+<td><code>LineColorRankData</code></td>
+<td><code>0xa91f054</code></td>
+<td>1ラインぶんの4bit階調バッファ(384エントリ)</td>
+</tr>
+</tbody>
+</table>
+<p><code>MOTOR_DELAY</code>, <code>HEAT_DELAY</code>, <code>TB</code>, <code>TK</code>, <code>printer_work_lock</code> が
+<code>0xedb0ab8</code>〜<code>0xedb0ac8</code>に連続して並んでいることから、これらは1つの構造体
+(または連続したstatic変数群)のフィールドであると判断できる。</p>
+<h2 id="2-uyu_prn_probe-gpio">2. デバイス初期化(<code>uyu_prn_probe</code>)で判明した GPIO 対応表(事実)<a class="headerlink" href="#2-uyu_prn_probe-gpio" title="Permanent link">&para;</a></h2>
+<p><code>of_get_named_gpio_flags()</code> の呼び出し順序と、直前にセットされる devicetree プロパティ名文字列
+(<code>.rodata</code> から直接読み取り)を突き合わせた結果:</p>
+<table>
+<thead>
+<tr>
+<th>シンボル名(r2ghidra復元)</th>
+<th>devicetree プロパティ名</th>
+<th>用途(後続コードから判明)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Heat_En</code></td>
+<td><code>en-heat</code></td>
+<td>サーマルヘッド発熱イネーブル(マスタースイッチ、<code>Heat_On</code>/<code>Heat_Off</code>が操作。3.4節参照)</td>
+</tr>
+<tr>
+<td><code>Print_En</code></td>
+<td><code>en-gpio</code></td>
+<td><code>prn_dev_open</code>/<code>gpio_init</code>で出力0/1に固定操作。ioctl <code>0x77</code>でも状態読取に使われる</td>
+</tr>
+<tr>
+<td><code>PRN_MT_A</code></td>
+<td><code>mt-a</code></td>
+<td>ステッピングモーター相A</td>
+</tr>
+<tr>
+<td><code>PRN_MT_B</code></td>
+<td><code>mt-b</code></td>
+<td>ステッピングモーター相B</td>
+</tr>
+<tr>
+<td><code>PRN_MT_A_0</code></td>
+<td><code>mt-a0</code></td>
+<td>ステッピングモーター相A0(相補相)</td>
+</tr>
+<tr>
+<td><code>PRN_MT_B_0</code></td>
+<td><code>mt-b0</code></td>
+<td>ステッピングモーター相B0(相補相)</td>
+</tr>
+<tr>
+<td><code>PRN_STB</code></td>
+<td><code>stb</code></td>
+<td><strong>ヘッドストローブ(発熱パルス)信号</strong>。<code>LineColorRank_Print</code>内でSPI転送直後にHigh→delay→Lowされる</td>
+</tr>
+<tr>
+<td><code>P_Paper</code></td>
+<td><code>p-paper</code></td>
+<td>用紙検出センサー入力</td>
+</tr>
+</tbody>
+</table>
+<p>これはプロンプトに記載の devicetree ノード(<code>en-gpio</code>, <code>en-heat</code>, <code>mt-a/a0/b/b0</code>, <code>p-paper</code>, <code>stb</code>)と完全に一致する。
+(シンボル名は r2ghidra による正式デコンパイルで実名を確認済み。当初はオフセット <code>+0x1d4</code>等で
+記述していたが、実際のCソースコードの変数名がそのままkallsymsに残っていたため、それに置き換えた。)</p>
+<h3 id="21-gpio-devicetreedtsgpiochip0">2.1 実機での GPIO 番号確定(事実、<code>devicetree.dts</code>+実機<code>gpiochip0</code>ダンプで裏取り済み)<a class="headerlink" href="#21-gpio-devicetreedtsgpiochip0" title="Permanent link">&para;</a></h3>
+<p><code>hardware-notes/devicetree.dts</code> の <code>spi@7af7000/uyu-prn</code> ノード(<code>&lt;phandle 0x103 pin flags&gt;</code>形式、
+<code>0x103</code> = <code>pinctrl@1000000</code>(<code>qcom,msm8953-pinctrl</code>, TLMM本体))と、実機<code>cat /sys/kernel/debug/gpio</code>の
+<code>gpiochip0: GPIOs 0-141, parent: platform/1000000.pinctrl</code>(base=0)を突き合わせて確定:</p>
+<table>
+<thead>
+<tr>
+<th>シンボル名</th>
+<th>devicetreeプロパティ</th>
+<th>GPIO番号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PRN_STB</code></td>
+<td><code>stb</code></td>
+<td><strong>48</strong></td>
+</tr>
+<tr>
+<td><code>PRN_MT_A</code></td>
+<td><code>mt-a</code></td>
+<td><strong>0</strong></td>
+</tr>
+<tr>
+<td><code>PRN_MT_A_0</code></td>
+<td><code>mt-a0</code></td>
+<td><strong>93</strong></td>
+</tr>
+<tr>
+<td><code>PRN_MT_B</code></td>
+<td><code>mt-b</code></td>
+<td><strong>131</strong></td>
+</tr>
+<tr>
+<td><code>PRN_MT_B_0</code></td>
+<td><code>mt-b0</code></td>
+<td><strong>28</strong></td>
+</tr>
+<tr>
+<td><code>Print_En</code></td>
+<td><code>en-gpio</code></td>
+<td><strong>128</strong></td>
+</tr>
+<tr>
+<td><code>Heat_En</code></td>
+<td><code>en-heat</code></td>
+<td><strong>18</strong></td>
+</tr>
+<tr>
+<td><code>P_Paper</code></td>
+<td><code>p-paper</code></td>
+<td><strong>17</strong></td>
+</tr>
+</tbody>
+</table>
+<p>idle時(印字ジョブなし)は全て<code>value:0</code>(<code>Print_En</code>/<code>Heat_En</code>はactive-high、<code>Print_On()</code>/<code>Heat_On()</code>が
+<code>gpiod_direction_output_raw(desc, 1)</code>を呼ぶことと整合)。</p>
+<h2 id="3-prn_dev_unlocked_ioctl">3. <code>prn_dev_unlocked_ioctl</code> のコマンド一覧(事実+一部推測)<a class="headerlink" href="#3-prn_dev_unlocked_ioctl" title="Permanent link">&para;</a></h2>
+<h3 id="31">3.1 引数の実体(事実)<a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<p><code>ioctl(fd, cmd, arg)</code> の <code>arg</code>(第3引数、ユーザ空間ポインタ)は次の構造体を指す:</p>
+<p><div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">uyu_prn_ioctl_arg</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kt">void</span><span class="w">   </span><span class="o">*</span><span class="n">buf</span><span class="p">;</span><span class="w">   </span><span class="c1">// +0x0: ユーザバッファへのポインタ</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kt">size_t</span><span class="w">  </span><span class="n">len</span><span class="p">;</span><span class="w">   </span><span class="c1">// +0x8: バッファ長 or サブコマンド識別に使う値</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">};</span>
+</span></code></pre></div>
+(アセンブリで <code>ldr x19,[x20,8]</code>(len) → <code>ldr x20,[x20]</code>(buf) と読み出している。フィールド名・型は推測)</p>
+<h3 id="32-switch">3.2 switch 構造(事実)<a class="headerlink" href="#32-switch" title="Permanent link">&para;</a></h3>
+<p>コンパイラはコマンド値 <code>0x55</code>〜<code>0x77</code>(35個, <code>0x23</code>)の範囲をジャンプテーブル化し、
+それ以外の <code>0x44</code>, <code>0x88</code>, <code>0x99</code> は個別の <code>cmp</code>/<code>b.eq</code> で分岐している。
+ジャンプテーブル実体はデータ領域 <code>0xffffff80091ec9d4</code>(35バイト、各バイトが
+<code>(target - 0xffffff8008e16cf0) / 4</code> のオフセット)。</p>
+<p>デコード結果、テーブル中で実装があるのは <strong>4個のコマンドのみ</strong>で、残りは
+「未実装(何もせず0を返す)」だった(r2ghidra <code>pdg</code> による正式デコンパイルで確定):</p>
+<table>
+<thead>
+<tr>
+<th>cmd (hex)</th>
+<th>実装</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0x44</code></td>
+<td>●</td>
+<td>グローバル <code>task_busy</code> フラグを読み取って返すだけ(<code>Heat_On</code>/<code>Heat_Off</code>が書き込む。3.4節で訂正あり)</td>
+</tr>
+<tr>
+<td><code>0x55</code></td>
+<td>●</td>
+<td><strong>モーター速度テーブル参照</strong>。ユーザバッファ先頭1バイト<code>(byte-1)</code>が<code>0x27</code>(39)以下なら<code>0x91f3000+0xcf8</code>の40エントリテーブルを引き、結果をグローバル<code>MOTOR_DELAY</code>(µs, <code>__udelay</code>直結)に書き込む。範囲外なら固定値<code>1000</code>。<code>len</code>(バッファ長フィールド)が0でなければ、続けてタグ<code>0xf1</code>+4バイトを<code>prn_fifo</code>に<code>kfifo_in</code>し、<code>printer_work_lock==1</code>なら<code>queue_work_on</code>。テーブルの実データ内容は未解読。</td>
+</tr>
+<tr>
+<td>0x56〜0x65, 0x68〜0x76</td>
+<td>✗未実装</td>
+<td>何もせず戻り値0(switch内でdefault相当に<code>goto</code>するだけ)</td>
+</tr>
+<tr>
+<td><code>0x66</code></td>
+<td>●</td>
+<td><strong>複数コマンドの一括投入</strong>。<code>kmalloc(len*0x30)</code>(0x30=48バイト)し、ユーザバッファから<code>len*48</code>バイトを<code>__memcpy</code>。各48バイトレコードを先頭から走査し、<strong>非ゼロバイトが1つでもあれば</strong>タグ<code>0xf0</code>+レコード全体(48バイト)を、<strong>全48バイトがゼロなら</strong>タグ<code>0xf1</code>+4バイト値<code>1</code>を代わりに<code>kfifo_in</code>する。各レコード処理後<code>printer_work_lock==1</code>なら<code>queue_work_on</code>。最後にバッファを<code>kfree</code>し、処理件数・<code>HEAT_DELAY</code>・<code>MOTOR_DELAY</code>の現在値を<code>printk</code>でログ出力する(これは<code>0x66</code>固有の処理であり、当初「<code>0x76</code>/<code>0x77</code>のデバッグダンプ」と推測していたのは誤りだった — 訂正)。<strong>48バイトレコードの内部レイアウトは未解読</strong>。</td>
+</tr>
+<tr>
+<td><code>0x67</code></td>
+<td>●</td>
+<td><strong>単一印刷ジョブ投入</strong>。<code>kmem_cache_alloc_trace</code>で固定長<strong>120バイト(0x78)</strong>の構造体を確保し、ユーザバッファから120バイトをそのままコピー。タグ<code>0xf3</code>+120バイトを<code>prn_fifo</code>に<code>kfifo_in</code>し、確保したバッファは直後に<code>kfree</code>(fifoへコピー済みのため)。<code>printer_work_lock==1</code>なら<code>queue_work_on</code>。<strong>120バイト構造体の内部レイアウトは未解読</strong>。</td>
+</tr>
+<tr>
+<td><code>0x77</code></td>
+<td>●</td>
+<td>GPIO <code>Print_En</code>(devicetree<code>en-gpio</code>)と<code>P_Paper</code>(<code>p-paper</code>)のraw値をそれぞれ読んで<code>printk</code>し、<code>P_Paper==0</code>なら真(1)を返す。<strong>用紙切れ/検知コマンド</strong>とほぼ断定できる。</td>
+</tr>
+<tr>
+<td><code>0x88</code></td>
+<td>●</td>
+<td><strong>濃度(darkness)/発熱レベル設定コマンド</strong>。詳細は3.3節。</td>
+</tr>
+<tr>
+<td><code>0x99</code></td>
+<td>●</td>
+<td><code>len</code>が0でなければ、タグ<code>0xf2</code>+<code>len</code>自身の値(4バイト)を<code>kfifo_in</code>する(<code>0x55</code>と合流する共有コード経由)。<code>len==0</code>なら<code>printer_work_lock</code>のチェックのみ行い、必要なら<code>queue_work_on</code>する(既存キューを起こす「キック専用」コマンドの可能性)。</td>
+</tr>
+<tr>
+<td>上記以外</td>
+<td>✗</td>
+<td><code>printk</code>でログ出力のみ、戻り値0(未知/無効コマンド)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>訂正メモ</strong>: r2ghidra導入前の手動アセンブリ解読では、ジャンプテーブルのバイトオフセット計算を
+誤り、GPIOセンサー読み取りコマンドを<code>0x75</code>、デバッグダンプを<code>0x76</code>/<code>0x77</code>固有の処理と記載していたが、
+正式デコンパイルの結果、GPIO読み取りは<code>0x77</code>のみであり、デバッグダンプの<code>printk</code>は<code>0x66</code>処理の
+末尾に過ぎないことが判明した。上表は訂正済みの内容。</p>
+</blockquote>
+<h3 id="33-darkness-0x88-r2ghidra">3.3 濃度(darkness)設定コマンド <code>0x88</code> の演算式(事実、r2ghidraで再確認)<a class="headerlink" href="#33-darkness-0x88-r2ghidra" title="Permanent link">&para;</a></h3>
+<p>r2ghidra <code>pdg</code> が出力した実際の擬似コード(シンボル名は実名):</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cmd</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x88</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">printk</span><span class="p">(</span><span class="s">&quot;...&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">puVar11</span><span class="p">);</span><span class="w">   </span><span class="c1">// *puVar11 = level (ユーザ指定, 1バイト, buf[0])</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">HEAT_DELAY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="o">*</span><span class="n">puVar11</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xff</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">0x44c</span><span class="p">;</span><span class="w">   </span><span class="c1">// 1100 + 100*(level-1)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mh">0x13</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">puVar11</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">           </span><span class="c1">// (level-1) &gt; 19  つまり level &gt; 20 または level == 0</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="n">HEAT_DELAY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2000</span><span class="p">;</span><span class="w">               </span><span class="c1">// 範囲外は安全値にクランプ</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="k">goto</span><span class="w"> </span><span class="o">&lt;</span><span class="mh">0x77</span><span class="n">と共有するGPIO読み取りコードへ</span><span class="o">&gt;</span><span class="p">;</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">}</span>
+</span></code></pre></div>
+<ul>
+<li><strong>事実</strong>: <code>level</code> 1〜20 に対し <code>HEAT_DELAY = 1100 + 100*(level-1)</code> (単位はコード上は不明だが、
+  <code>MOTOR_DELAY</code>・<code>TK</code>・<code>TB</code>が全て<code>__udelay</code>の引数としてマイクロ秒で使われていることから、
+  同じ単位系(µs)である可能性が高い)が計算され、グローバル変数<code>HEAT_DELAY</code>に格納される。
+  範囲外入力時は<code>2000</code>にクランプされる。</li>
+<li><code>0x88</code>のハンドラは処理の最後に<strong><code>0x77</code>と全く同じGPIO読み取りコード(<code>Print_En</code>/<code>P_Paper</code>)へ
+  合流</strong>する(=<code>0x88</code>コマンドも副作用として用紙センサー状態を返す)。これは今回r2ghidraで
+  初めて明確になった制御フローで、手動アセンブリ解読の段階でも合流先アドレスの一致には
+  気づいていたが、<code>pdg</code>によって「同一コードの共有」であることが確定した。</li>
+<li><strong>訂正の経緯</strong>: 当初は「この<code>HEAT_DELAY</code>の値がそのまま<code>LineColorRank_Print</code>のストローブ幅に
+  なっている」と推測していたが、<code>LineColorRank_Print</code>を正式にデコンパイルした結果、
+  そちらで使われているのは<code>HEAT_DELAY</code>ではなく固定値<code>TK</code>/<code>TB</code>(144µs/6µs)だった。
+  その後<code>printer_work</code>のタグ別ディスパッチ(3.5節)を追加調査した結果、
+  <strong><code>HEAT_DELAY</code>は<code>LineColorRank_Print</code>(16階調モード)ではなく、別の"2値モード"専用コードパス
+  (タグ<code>0xf0</code>、ioctl <code>0x66</code>経由)でストローブ幅として使われている</strong>ことが判明した。
+  つまり<code>0x88</code>の濃度設定は無効・デッドコードだったわけではなく、<strong>2値印字モードの濃度制御として
+  ちゃんと機能している</strong>(詳細は3.5節)。</li>
+</ul>
+<h2 id="35-2binary16printer_work">3.5 【重要】2値(binary)モードと16階調モードの併存(事実、<code>printer_work</code>のタグ分岐を追加解析して判明)<a class="headerlink" href="#35-2binary16printer_work" title="Permanent link">&para;</a></h2>
+<p>3.3節・4.3節で「<code>HEAT_DELAY</code>を読み出す箇所が見つからない」としていたのは誤りで、
+<code>printer_work</code>本体のタグ別ディスパッチ(<code>kfifo</code>から取り出した先頭1バイトのタグ値で分岐する
+4値のジャンプテーブル、5節参照)を追加調査した結果、<strong>このドライバには全く異なる2つの印字経路が
+存在し、片方だけが<code>HEAT_DELAY</code>を使っている</strong>ことが判明した。</p>
+<table>
+<thead>
+<tr>
+<th>タグ</th>
+<th>投入元コマンド</th>
+<th>処理</th>
+<th>濃度制御方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0xf0</code></td>
+<td>ioctl <code>0x66</code>(全ゼロでない48バイトレコード)</td>
+<td>48バイト(=384ビット)を<strong>そのまま1回だけ</strong><code>spi_sync</code>。ストローブ(<code>PRN_STB</code>)を<strong><code>HEAT_DELAY</code>(=ioctl <code>0x88</code>で設定、1100〜3000µs)ぶんだけ1回High</strong>にしてから紙送り。</td>
+<td><strong>2値(ON/OFFのみ)。濃度はストローブのパルス幅=<code>HEAT_DELAY</code>で直接制御</strong></td>
+</tr>
+<tr>
+<td><code>0xf1</code></td>
+<td>ioctl <code>0x66</code>(全ゼロの48バイトレコード、値=1が代入)</td>
+<td>4バイト値を取り出し、その回数だけ<code>motor_forward_one_step</code>(印字なし・紙送りのみ)</td>
+<td>(印字なし)</td>
+</tr>
+<tr>
+<td><code>0xf2</code></td>
+<td>(詳細未確認、符号付き4バイト値で前後に紙送り)</td>
+<td>正負に応じ<code>motor_forward_one_step</code>/<code>motor_backward_one_step</code>をN回</td>
+<td>(印字なし)</td>
+</tr>
+<tr>
+<td><code>0xf3</code></td>
+<td>ioctl <code>0x67</code>(単一印刷ジョブ、120バイト)</td>
+<td>120バイトを<code>LineColorRank_Print(0x10, ptr)</code>に渡す(第1引数<code>0x10</code>=16固定)</td>
+<td><strong>16階調(15パスのマルチパス階調)。ストローブ幅は固定値<code>TK</code>(144µs、初回のみ+<code>TB</code>=6µs)で、<code>HEAT_DELAY</code>は使われない</strong></td>
+</tr>
+</tbody>
+</table>
+<p><code>Print_Picture</code>(画像印刷用の別エントリポイント)も<code>LineColorRank_Print(0x10, ...)</code>を固定値で
+240回呼び出しており、常に16階調モードを使う。</p>
+<p><strong>つまり本ドライバは「2値モード」と「16階調(疑似階調)モード」の両方を実装しており、</strong>
+- <strong>2値モード</strong>(<code>0x66</code>ioctl経由): 1ドットあたり1ビットのバイナリ印字。<strong>濃度はユーザが<code>0x88</code>で
+  設定した<code>HEAT_DELAY</code>(単発ストローブ幅、1100〜3000µs)で直接制御</strong>される。
+- <strong>16階調モード</strong>(<code>0x67</code>ioctl経由、または画像印刷<code>Print_Picture</code>): 1ドットあたり4bit(0〜15)の
+  階調値を、最大15回のマルチパス多重ストローブで疑似階調表現する。<strong>この経路のストローブ幅は
+  ユーザ設定<code>HEAT_DELAY</code>ではなく、コード中に埋め込まれた固定値<code>TK</code>/<code>TB</code>(144µs/6µs)を使う</strong>ため、
+  <code>0x88</code>で濃度を変えても16階調モードの印字結果には影響しない(現状のバイナリを見る限り)。</p>
+<p>どちらのモードを使うかは、<strong>呼び出し元アプリケーションがどのioctl(<code>0x66</code> vs <code>0x67</code>)を使うかで
+決まる</strong>ため、テキスト印字は2値+濃度調整可能、写真/画像印字は16階調固定という役割分担に
+なっていると推測できる(この役割分担自体は「推測」だが、コードの構造とそれぞれのバッファサイズ
+(48バイト=1bpp384ドット vs 120バイト=4bpp展開データ)から見て妥当性が高い)。</p>
+<h2 id="4-heatr2ghidra">4. 発熱(Heat)・モーター駆動の実装方式(事実+推測、根拠付き。r2ghidraで大幅更新)<a class="headerlink" href="#4-heatr2ghidra" title="Permanent link">&para;</a></h2>
+<h3 id="41">4.1 結論(先出し、更新版)<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<p><strong>サーマルヘッドの駆動は「2値ON/OFFの単純な点灯制御」ではなく、
+「SPIで1ライン分のドットパターンを転送 → ストローブ(<code>PRN_STB</code>)GPIOを一定時間Highにして発熱 → Lowで消灯、
+を複数パス(階調段数ぶん)繰り返す」方式であり、各パスのストローブ時間はソフトウェアの<code>udelay</code>
+(ビジーウェイト)で作られている。</strong> これはr2ghidraによる正式デコンパイル後も変わらない結論だが、
+<strong>「ストローブ時間がユーザ設定の濃度値と連動しているか」については、r2ghidra導入前の推測が
+誤りだったことが判明した</strong>(4.3節)。</p>
+<ul>
+<li>ハードウェアPWMペリフェラルは使っていない(<code>pwm_config</code>/<code>pwm_enable</code>等の呼び出しは
+  当該関数群から一切呼ばれていない — <strong>事実</strong>、<code>pdg</code>出力の呼び出し一覧に存在しないことを確認済み)。</li>
+<li>単なる2値(0/1しかない)描画でもない。<strong>「複数回の弱いストローブパルスの多重照射」による
+  疑似階調(マルチパス halftoning)</strong>を行っている(4.2, 4.3節)。</li>
+<li>一方、当初推測していた「パルス幅そのものをユーザ設定の濃度値(<code>0x88</code>)で変える」という
+  <strong>2種類目の階調制御については、r2ghidraの結果、根拠が失われた</strong>(4.3節で訂正)。</li>
+</ul>
+<h3 id="42-1linecolorrank_print-r2ghidra-pdg">4.2 1ライン分の階調データ生成(<code>LineColorRank_Print</code>, 事実、r2ghidra <code>pdg</code> で確認)<a class="headerlink" href="#42-1linecolorrank_print-r2ghidra-pdg" title="Permanent link">&para;</a></h3>
+<p>先頭ループは、入力バッファ(1バイトに2ドットぶんパックされた4bit値、上位ニブル・下位ニブルの順)を
+<strong>1バイト=2ドットの4bit階調値(0〜15)に展開</strong>し、グローバル配列<code>LineColorRankData</code>
+(384エントリ = <code>0x180</code>、ヘッド全幅ぶんのライン バッファ)に書き込む。</p>
+<p><strong>訂正</strong>: 当初「384ドット全体が入力バッファから埋まる」かのように記載していたが、
+展開ループの条件式を精査した結果、実際に入力バッファ(<code>arg2</code>、ioctl <code>0x67</code> の120バイト構造体)
+から埋められるのは<strong>インデックス<code>0x48</code>(72)〜<code>0x137</code>(311)の240要素だけ</strong>で、それ以外
+(先頭72ドット・末尾72ドット、計144ドット)は無条件に<code>0</code>(消灯)でゼロ埋めされる:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">uVar14</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">uVar11</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">uVar14</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mh">0x48</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mh">0xf0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                     </span><span class="c1">// 0x48(72) &lt;= uVar14 &lt; 0x48+0xf0(312)</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span><span class="n">LineColorRankData</span><span class="p">[</span><span class="n">uVar11</span><span class="p">]</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">arg2</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w">  </span><span class="c1">// 上位ニブル</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="n">LineColorRankData</span><span class="p">[</span><span class="n">uVar11</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">arg2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xf</span><span class="p">;</span><span class="w">  </span><span class="c1">// 下位ニブル</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="n">arg2</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="n">LineColorRankData</span><span class="p">[</span><span class="n">uVar11</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x0</span><span class="p">;</span><span class="w">              </span><span class="c1">// 範囲外は常に消灯</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="n">uVar11</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">uVar14</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uVar11</span><span class="p">;</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">uVar14</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mh">0x180</span><span class="p">);</span><span class="w">                             </span><span class="c1">// 0x180 = 384</span>
+</span></code></pre></div>
+<p>120バイト(ioctl <code>0x67</code>のペイロードサイズ)× 1バイト2ドット = ちょうど240ドット分のデータ量で
+あり、このサイズが範囲(72〜311, 240要素)を過不足なく埋め切ることからも、この読み方が
+正しいことが裏付けられる。</p>
+<p><strong>つまり <code>LineColorRank_Print</code>(階調モード)が実際に画像データとして使うのはヘッド全幅384ドットの
+うち中央240ドットのみで、左右72ドットずつは常にOFF(余白)である。</strong> 一方 <code>0x66</code>(2値モード)は
+48バイト=384bitをそのままSPI転送するため、こちらは<strong>フル384ドット幅</strong>を使用する
+(3.5節参照)。ヘッド自体の物理解像度は384ドットだが、階調モードのアプリ側は240ドット幅の
+画像しか渡していない(または渡せない)ことになる。</p>
+<h3 id="43-spir2ghidra-pdg">4.3 多重パス(階調)ループとSPI転送・ストローブ制御(事実、r2ghidra <code>pdg</code> の実際の擬似コード)<a class="headerlink" href="#43-spir2ghidra-pdg" title="Permanent link">&para;</a></h3>
+<p>第1引数(呼び出し元 <code>printer_work</code> から渡る、階調段数/濃度ランク数と思われる値)の下位バイトが
+2以上のとき、<code>pass = 1</code> から <code>pass == (arg1 &amp; 0xff)</code> まで(=<code>pass</code>は<code>1</code>〜<code>arg1-1</code>)以下をループする
+(r2ghidra <code>pdg</code>出力をそのまま整形、シンボル名は実名):</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">uint8_t</span><span class="w"> </span><span class="n">pass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="c1">// 384ドットを8ドットずつ処理し、1バイト(8ドット)のビットマップを作る</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mh">0x30</span><span class="p">;</span><span class="w"> </span><span class="n">group</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">           </span><span class="c1">// 48回 = 384/8</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="c1">// 各ドットについて、&quot;そのドットの階調値 &gt;= pass&quot; ならビットを立てる</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="c1">// (階調値が大きい=濃いドットほど、より多くのパスで発熱される)</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="n">packed_byte</span><span class="p">[</span><span class="n">group</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pack_8_bits</span><span class="p">(</span><span class="n">dot</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">pass</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">LineColorRankData</span><span class="p">[</span><span class="n">dot</span><span class="p">]));</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="n">spi_sync</span><span class="p">(</span><span class="n">gPrn</span><span class="o">-&gt;</span><span class="n">spi</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">xfer_of_48_bytes</span><span class="p">);</span><span class="w">   </span><span class="c1">// 384ビット=48バイトをSPIでヘッドへシフト</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="c1">// ストローブ(PRN_STB)を一定時間Highにして加熱</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">strobe_us</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TK</span><span class="p">;</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pass</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">        </span><span class="n">strobe_us</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">TB</span><span class="p">;</span><span class="w">      </span><span class="c1">// 初回パスだけ TB ぶん余分に加熱(TK=144, TB=6 が初期値)</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">    </span><span class="n">gpiod_direction_output_raw</span><span class="p">(</span><span class="n">gpio_to_desc</span><span class="p">(</span><span class="n">PRN_STB</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="n">__udelay</span><span class="p">(</span><span class="n">strobe_us</span><span class="p">);</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="n">gpiod_direction_output_raw</span><span class="p">(</span><span class="n">gpio_to_desc</span><span class="p">(</span><span class="n">PRN_STB</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="n">pass</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">pass</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="p">(</span><span class="n">arg1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xff</span><span class="p">));</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="n">motor_forward_one_step</span><span class="p">();</span><span class="w">   </span><span class="c1">// 全パス終了後に紙送り1ステップ</span>
+</span></code></pre></div>
+<ul>
+<li><strong>事実として確認できること(r2ghidraで確定)</strong>:</li>
+<li><code>pass &lt;= LineColorRankData[dot]</code>という比較でビット列を作っている
+    (=濃いドットほど、より多くのパス回数で発熱される多重パス階調方式)。</li>
+<li><code>spi_sync()</code>の呼び出しがパスのたびに行われ、直後に<code>PRN_STB</code>GPIOへの
+    <code>gpiod_direction_output_raw(1)</code> → <code>__udelay()</code> → <code>gpiod_direction_output_raw(0)</code>という
+    「SPI転送→ストローブパルス」のペアが実行される。</li>
+<li><strong>ストローブ幅は<code>TK</code>(初期値<code>144</code>)を基準とし、パス1回目のみ<code>TB</code>(初期値<code>6</code>)を加算した
+    <code>TK+TB</code>(=150)を使う</strong>。2回目以降は<code>TK</code>(=144)固定。これは<code>.data</code>セクションの初期値を
+    直接読み取って確認した実測値。</li>
+<li><code>TK</code>・<code>TB</code>はグローバル変数<code>MOTOR_DELAY</code>・<code>HEAT_DELAY</code>と連続したアドレス
+    (<code>0xedb0ac0</code>/<code>0xedb0ac4</code>)に配置された、同じ制御構造体らしきものの一部。</li>
+<li>
+<p>モーター(紙送り)は<strong>1ライン=複数パスの後に1回だけ</strong>前進させる(<code>motor_forward_one_step</code>)。
+    パスごとに紙を動かしているわけではない(=多重パスは同一ラインの重ね書きであり、
+    紙送りを伴わない)。</p>
+</li>
+<li>
+<p><strong><code>HEAT_DELAY</code>はこの16階調モードでは使われない</strong>: このモードのストローブ幅は<code>TK</code>/<code>TB</code>という
+  別のグローバル変数(初期値144µs/6µs)で決まっており、<code>TK</code>/<code>TB</code>に書き込みを行っている関数は
+  今回デコンパイルした範囲(<code>printer_work</code>, <code>uyu_prn_probe</code>, <code>gpio_init</code>, <code>Print_Picture</code>,
+  <code>LineColorRankData_Manage</code>, <code>IdlePrint</code>, <code>PaperCheck</code>, <code>pic_motor_forward_one_step</code>)の
+  どこにも見つからず、<code>.data</code>の初期値がそのまま使われていると考えられる。
+  一方<code>HEAT_DELAY</code>(ioctl <code>0x88</code>で設定)は<strong>別の"2値印字モード"(3.5節、タグ<code>0xf0</code>経路)で
+  ちゃんと使われている</strong>ことが<code>printer_work</code>本体の追加調査で判明した。つまり
+  「濃度設定<code>0x88</code>はデッドコードでは全くなく、2値モードの濃度制御として機能している。
+  ただし16階調モード(このセクションの<code>LineColorRank_Print</code>)には影響しない」という
+  <strong>役割分担がある</strong>、というのが最終的な結論(3.5節も参照)。</p>
+</li>
+<li><code>rank_count</code>(<code>arg1</code>、多重パスの段数)は、今回追跡できた2つの呼び出し元(<code>printer_work</code>の
+  タグ<code>0xf3</code>ハンドラ、および<code>Print_Picture</code>)がいずれも<strong><code>0x10</code>(16)を固定で渡している</strong>ことを
+  確認した。したがって現状把握している範囲では、<code>LineColorRank_Print</code>は常に16階調
+  (15パス)で呼ばれており、「呼び出し元によってパス数が可変」という仕組みは確認できていない。</li>
+</ul>
+<h3 id="44-pwm2352">4.4 「PWMか2値か」への回答(更新版。3.5節の2モード併存を踏まえた最終結論)<a class="headerlink" href="#44-pwm2352" title="Permanent link">&para;</a></h3>
+<p>このドライバは<strong>2値モードと16階調モードを両方持ち、印字経路(ioctlコマンド)によって
+使い分けている</strong>(3.5節)。それぞれの駆動方式は:</p>
+<ul>
+<li><strong>2値モード</strong>(<code>0x66</code>ioctl / タグ<code>0xf0</code>): 1ラインにつき<strong>SPI転送1回+ストローブ1回のみ</strong>。
+  ドット自体はON/OFFの2値だが、<strong>その単発ストローブの持続時間(<code>HEAT_DELAY</code>, 1100〜3000µs)を
+  ユーザが<code>0x88</code>で調整できる</strong>。古典的な高周波PWM(デューティ比変調)ではなく、
+  <code>__udelay()</code>による単発ワンショットパルスの幅そのものを変える方式。</li>
+<li><strong>16階調モード</strong>(<code>0x67</code>ioctl / <code>Print_Picture</code>): 同一ラインに対し最大15回のSPI転送と
+  ストローブを繰り返し、ドットごとの閾値比較で参加パス数を変える<strong>多重パス階調方式</strong>。
+  各パスのストローブ幅は固定値<code>TK</code>/<code>TB</code>(144µs/6µs)で、<code>0x88</code>の濃度設定の影響を受けない。</li>
+</ul>
+<p>したがって、「2値かPWMか」という問いへの答えは<strong>両方</strong>であり、かつ<strong>モードによって
+濃度制御の方式が異なる</strong>(2値モード=パルス幅変調、16階調モード=多重パス空間階調)という
+のが、バイナリから直接確認できる最も正確な記述である。</p>
+<h2 id="5-r2ghidra">5. 印刷ジョブの全体フロー(事実、r2ghidraで更新)<a class="headerlink" href="#5-r2ghidra" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ユーザ空間アプリ
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>   │ ioctl(cmd=0x67, {buf, len})  … 1ジョブ(120B)投入 (タグ0xf3)
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>   │ ioctl(cmd=0x66, {buf, len})  … 複数ジョブ一括投入 (タグ0xf0/0xf1)
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>   │ write()                     … prn_dev_write() が内部で
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>   │                                prn_dev_unlocked_ioctl() を直接呼び出す
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>   ▼
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>prn_fifo (kfifo, gPrn+0x70) に [タグ1バイト + ペイロード] 形式で投入
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>   │
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>   │ queue_work_on(8, wq, &amp;gPrn-&gt;work)   … gPrn-&gt;work.func = printer_work (probe時にセット)
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>   ▼
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>printer_work()  [workqueueコンテキスト]
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>   │ mutex_lock(printer_work_lock)
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>   │ Heat_En を GPIO出力1にし、task_busy=1  ← ジョブ全体の開始時に1回だけ実行(事実、pdgで確認)
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>   │ __kfifo_out()でタグ1バイトを取り出し続ける限りループ:
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>   │   タグ値(0xf0〜0xf3、3.5節)に応じたジャンプテーブルで分岐
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>   │     - 0xf0: 48バイト1回のみSPI転送 + ストローブ幅=HEAT_DELAYで1回発熱 → 2値印字(3.5節)
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>   │     - 0xf1: 4バイト値ぶんmotor_forward_one_step (紙送りのみ)
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>   │     - 0xf2: 符号付き4バイト値に応じ前後に紙送り (詳細未解読)
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>   │     - 0xf3: 120バイトをLineColorRank_Print(16, ...)へ → 16階調印字(3.5節・4節)
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>   │ kfifoが空になったら: Heat_En を GPIO出力0にし、task_busy=0  ← ジョブ全体の終了時に1回だけ
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>   │ mutex_unlock
+</span></code></pre></div>
+<p><strong>訂正</strong>: 当初「<code>Heat_On</code>/<code>Heat_Off</code>は各印字ラインの直前直後に呼ばれる」かのように読める書き方を
+していたが、r2ghidraで<code>printer_work</code>本体を正式デコンパイルした結果、<strong><code>Heat_En</code>(発熱マスタースイッチ)
+のON/OFFはジョブ全体(=<code>printer_work</code>が1回のkfifo枯渇まで処理する区間)の最初と最後に1回ずつだけ
+実行される</strong>ことが分かった。ライン単位の実際の発熱制御は、4.3節の<code>PRN_STB</code>ストローブパルスが
+担っている。つまり<code>Heat_En</code>は「印字ヘッド電源の大元のスイッチ(かつ<code>task_busy</code>状態フラグ)」、
+<code>PRN_STB</code>は「1パスごとの実際の発熱トリガー」という<strong>2段構成</strong>である。</p>
+<h2 id="6-r2ghidra">6. 未解明・要追加調査の項目(正直な棚卸し、r2ghidra導入後に更新)<a class="headerlink" href="#6-r2ghidra" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>0x55</code>テーブル(<code>0x91f3000+0xcf8</code>, 40エントリ)の実データ値。</li>
+<li><code>0x66</code>/<code>0x67</code>で投入される48バイト・120バイトレコードの内部フィールドレイアウト
+  (<code>0x66</code>の「全ゼロか否か」で2値印字/紙送りコマンドに分岐する理由・仕様は3.5節で解明したが、
+  48バイトが具体的にどのアプリ層フォーマット(フォント/文字コード等)から生成されるかは未解読)。</li>
+<li><code>TK</code>/<code>TB</code>(16階調モードのストローブ幅、固定値144µs/6µs)に書き込みを行う関数が見つかっていない。
+  ユーザやアプリ側からこれらを調整する手段(sysfs属性や別のioctl等)が存在するのかどうかは未解明。</li>
+<li>タグ<code>0xf2</code>(符号付き4バイト値による紙送り)の正確な意味論(<code>0xf1</code>との使い分け)は未解読。</li>
+<li><code>LineColorRank_Print</code>の第1引数(多重パス段数)は、今回追跡できた2つの呼び出し元(<code>printer_work</code>
+  タグ<code>0xf3</code>、<code>Print_Picture</code>)ではいずれも<code>16</code>固定だった。可変にする呼び出し元が別途存在するかは未確認。</li>
+<li><code>slm758_dev_probe</code>(指紋センサー/カメラライト/アルコールボード)は本調査のスコープ外につき未着手。</li>
+</ul>
+<p>r2ghidraによる正式な擬似Cコード生成が実現したことで、当初の手動アセンブリ解読より格段に
+正確な情報(実変数名・正しいswitch構造・関数境界)が得られたが、それでも上記の項目は
+「値は追えるがそれがどう使われるかのコード」までは到達できておらず、追加調査が必要。</p>
+<h2 id="7-unbindspidev2026-09-15">7. 実機検証: <code>unbind</code>+<code>spidev</code>化によるユーザーランド直叩きは不成立(事実、2026-09-15実機テスト)<a class="headerlink" href="#7-unbindspidev2026-09-15" title="Permanent link">&para;</a></h2>
+<p><a href="../../printer/userland_grayscale_hack/">userland_grayscale_hack.md</a> が前提としていた
+「<code>unbind</code>→<code>driver_override</code>→<code>spidev</code>強制bind」を実機(<code>spi7.0</code>, カーネル Linux 4.9.193)で試した結果:</p>
+<ul>
+<li><strong><code>/sys/bus/spi/devices/spi7.0/driver_override</code> というファイルが存在しない</strong>。SPIバスの
+  <code>driver_override</code>対応はmainlineでは4.9より新しいカーネルの機能で、この端末にはバックポートされていない。</li>
+<li><code>driver_override</code>無しで<code>echo spi7.0 &gt; /sys/bus/spi/drivers/spidev/bind</code>を直接試しても、
+  <code>compatible = "qcom,prn-dev"</code>が<code>spidev</code>の<code>of_device_id</code>/<code>spi_device_id</code>テーブル
+  (<code>rohm,dh2228fv</code>等の標準プレースホルダーのみ)にマッチせず、<code>bind</code>は静かに失敗する
+  (<code>probe()</code>自体が呼ばれない)。</li>
+<li><code>unbind</code>→(bind失敗)→再度<code>unbind</code>→<code>bind</code>を短時間に繰り返したところ、2回目の<code>prn-dev</code>への
+  再bindで<code>gpio_init</code>が<code>Heat_En</code>/<code>Print_En</code>の<code>gpio_request</code>で<code>-EBUSY(-16)</code>を返し、
+  <code>/dev/prn-dev</code>が消失。<strong>再起動でのみ復旧できた</strong>(sysfs操作だけでは直せなかった)。
+  <code>uyu_prn_remove()</code>のGPIO解放処理が、char device側がまだopen中(<code>PrinterServerApp</code>が
+  ステータスポーリング等で掴んでいた可能性)だと正しく完了しない、という推測はあるが未検証。</li>
+</ul>
+<p><strong>結論</strong>: この端末では<code>driver_override</code>頼みのユーザーランド直叩きは成立しない。代替案として
+「DTBOのオーバーレイfragmentで<code>uyu-prn</code>ノードの<code>compatible</code>に<code>"qcom,prn-dev", "rohm,dh2228fv"</code>のように
+<code>spidev</code>が拾える文字列を追加し、通常起動時と手動<code>unbind</code>/<code>bind</code>後のどちらでも該当ドライバが
+bindできるようにする」というアイデアがあるが、<strong>起動時に<code>prn-dev</code>と<code>spidev</code>のどちらが自動bindを
+勝ち取るかはカーネルのリンク順(<code>device_initcall</code>のリンク順)次第で不確定</strong>であり、実機で
+検証しない限り「通常の1bit印字が起動するたびに死ぬ」リスクが残る。詳細は
+<a href="../../printer/userland_grayscale_hack/">userland_grayscale_hack.md</a> を参照。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.indexes", "navigation.top", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "content.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../javascripts/load_mermaid.js"></script>
+      
+    
+  </body>
+</html>

@@ -146,3 +146,38 @@
 | **`vendor`** | `vendor.img` | 1,024.00 MB | `c37c013d6526d751c04f9e4f24e1fab34f5f6f16fd500743fa3cfd47611be290` | `c37c013d6526d751c04f9e4f24e1fab34f5f6f16fd500743fa3cfd47611be290` | ✅ **100% 完全一致** |
 | **`system`** | `system.img` | 3,072.00 MB | `c546f14fa2ee7dddd69c63b4f1481947604b8b36d79a6b00b41a5cb619429ad5` | `c546f14fa2ee7dddd69c63b4f1481947604b8b36d79a6b00b41a5cb619429ad5` | ✅ **100% 完全一致** |
 | **`userdata`** | `userdata.img.gz` | 344.21 MB (解凍時 9.1GB) | `969818ff0d4cc1e67a1300544134b60d67c0c3e1555ca19bde7a8ac526a43a04` | `63fa51090a282c82c5a44b4dbddc357b8456e91555473fb9c0fe85edd2a47e73` | ⚠️ **動的変化あり (仕様)** |
+
+---
+
+## 🧩 7. DTB / DTBO の在り処と、フル解凍なしでの単体抽出
+
+この端末は「ベースDTBは`boot.img`にappend、`dtbo.img`は基板バリアント別のオーバーレイ」という
+Qualcomm標準構成です(2026-09-15確認)。
+
+- **ベースDTB**: `boot.img`内にappendされた生FDT。マジック`d00dfeed`で検索可能。
+  手元の`backup_images/boot.img`では**オフセット`11648760`バイト、サイズ`302980`バイト**に1個だけ存在。
+  `uyu-prn`(プリンター)ノードはこちら側。
+- **DTBOオーバーレイ**: `dtbo`パーティション(`p23`)。Android標準の`DT_TABLE_MAGIC`(`d7b7ab1e`)
+  ヘッダを持つテーブル形式で、この端末では**エントリ1個のみ**(`qcom,board-id`/`qcom,pmic-id`で
+  この基板専用に確定済み)。タッチパネル・NFC・カメラ・**物理ボタン(`gpio_keys`)**等、
+  Qualcomm QRDリファレンスデザインの標準ワークフローでボード差分として扱われる周辺機器がこちら側。
+  同じノード名(例: `gpio_keys`)を複数fragmentで再定義すると、後から適用されるfragmentが
+  プロパティ単位で上書き/追加マージされる(通常のdevicetreeオーバーレイ仕様通り)。
+
+### フルディスクdd(`.img.gz`)から特定パーティションだけを高速抽出する
+
+`mmcblk0_full_20260810.img.gz`のような全ディスクdumpは数GB圧縮でも、GPT自体はディスク先頭
+数MB以内にあるため、**全体を解凍せずにパーティションテーブルと目的のパーティションだけ**を
+WSL経由で取り出せる(`gzip`はシーケンシャルだが、目的オフセットまでの読み捨てだけで済み、
+書き出しは不要):
+
+```sh
+# 1. 先頭数MBだけ解凍してGPTを読む
+zcat mmcblk0_full_20260810.img.gz | head -c 4194304 > gpt_head.bin
+sgdisk -p gpt_head.bin   # Start(sector)/Sizeを確認
+
+# 2. 目的パーティションのセクタ位置が分かったら、そこまでdd skipして必要分だけcount
+zcat mmcblk0_full_20260810.img.gz | dd of=dtbo.img bs=512 skip=<Start> count=<セクタ数>
+```
+
+8.0 MiBの`dtbo`パーティション(開始セクタ790,528)なら1秒程度で抽出できる(全体解凍は不要)。
